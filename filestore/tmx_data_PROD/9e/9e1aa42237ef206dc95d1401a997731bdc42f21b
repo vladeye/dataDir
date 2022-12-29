@@ -1,0 +1,1215 @@
+Received: from SA0PR01MB6268.prod.exchangelabs.com (2603:10b6:806:e6::18) by
+ SN2PR01MB1967.prod.exchangelabs.com with HTTPS; Thu, 28 Jul 2022 19:09:54
+ +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass; 
+ =?utf-8?q?b=3DPeR7cLj1Lgq5S8V312y1D2gsm1nUeV2IjmbMFqYfd3aPvuCgFqUyZeB/sfXt2?=
+ =?utf-8?q?//3bNGuK4QYEZ+UwkmJDZ9YVEjEbE+WK+L+xyjPYKGKZ6M7yafzQz7Vqksq24qBbr?=
+ =?utf-8?q?wydiAqFbQWu8MbH8ySmkFPal0rktbdmqSCNUwypOVi7R3ujFP2RMfX40oZYivtg55?=
+ =?utf-8?q?RL9/xxNSBKhSEwDj0DkR3fEZC00zIO3CmbnbsXrNUuJiXRhDPeAPjLUR8tg4E9/0h?=
+ =?utf-8?q?A6Y84qMo1otsy4YVJTV9RC/HLMUnTC+IsA9Hneox/4FLjE7moF7Y75fqS5a4txZTE?=
+ =?utf-8?q?l0O2L7fw3Me+qqkMbWIrg=3D=3D?=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AConte?=
+ =?utf-8?q?nt-Type=3AMIME-Version=3AX-MS-Exchange-AntiSpam-MessageData-Chunk?=
+ =?utf-8?q?Count=3AX-MS-Exchange-AntiSpam-MessageData-0=3AX-MS-Exchange-Anti?=
+ =?utf-8?q?Spam-MessageData-1=3B?=
+ bh=yvaqGOJbRWNO5cG4qRF3g+vEdIVcgzfCCuPUSs/vOzg=; =?utf-8?q?b=3DdJKwFuZIgtaE?=
+ =?utf-8?q?YEsIoI7+1NhMkmsrlQZ6oLmApFS3it2aR/0tcIaBJIK5Xtw5VXMO0hrmBBKjakeF1?=
+ =?utf-8?q?I/nN3jY03zAYHq6WRIlnCJjH4QMwoxFBg7Vt7MC8M7B6W54iherOf0q4993+1CK0G?=
+ =?utf-8?q?VC9AQvjIo5/T01GLK+65qKB/KPv0IMjyBrh85NLcgwhIKOCKHoPUs2Kp3yyUdci7Z?=
+ =?utf-8?q?8jbuL7Ivq7dpwWirfU+NVz9hhbthC7AGKBf3M65CO4PN+hKJwtS5CwSlFz+r13CPy?=
+ =?utf-8?q?Tv1HtlDoXZ5g5/09BukwEvJrvei3zhuIguWXDSMwhRtdDaWHvbLCh8m7pBnUMqiQr?=
+ =?utf-8?q?yPn7Q=3D=3D?=
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 68.232.139.250) smtp.rcpttodomain=tmxintermodal.com smtp.mailfrom=dsv.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=dsv.com;
+ dkim=pass (signature was verified) header.d=dsv.com; dkim=pass (signature was
+ verified) header.d=dsv.com; arc=pass (0 oda=1 ltdi=1
+ spf=[1,1,smtp.mailfrom=dsv.com] dkim=[1,1,header.d=dsv.com]
+ dmarc=[1,1,header.from=dsv.com])
+Received: from MW2PR2101CA0023.namprd21.prod.outlook.com (2603:10b6:302:1::36)
+ by SA0PR01MB6268.prod.exchangelabs.com (2603:10b6:806:e6::18) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5482.6; Thu, 28 Jul 2022 19:09:51 +0000
+Received: from CO1NAM11FT026.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:302:1:cafe::2c) by MW2PR2101CA0023.outlook.office365.com
+ (2603:10b6:302:1::36) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5438.3 via Frontend
+ Transport; Thu, 28 Jul 2022 19:09:51 +0000
+Authentication-Results: spf=pass (sender IP is 68.232.139.250)
+ smtp.mailfrom=dsv.com; dkim=pass (signature was verified)
+ header.d=dsv.com;dmarc=pass action=none header.from=dsv.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of dsv.com designates
+ 68.232.139.250 as permitted sender) receiver=protection.outlook.com;
+ client-ip=68.232.139.250; helo=esa4.dsv.c3s2.iphmx.com; pr=C
+Received: from esa4.dsv.c3s2.iphmx.com (68.232.139.250) by
+ CO1NAM11FT026.mail.protection.outlook.com (10.13.175.67) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5482.10 via Frontend Transport; Thu, 28 Jul 2022 19:09:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=dsv.com; i=@dsv.com; q=dns/txt; s=dsv13122017;
+  t=1659035390; x=1690571390;
+  h=from:to:subject:date:message-id:references:in-reply-to:
+   mime-version;
+  bh=yvaqGOJbRWNO5cG4qRF3g+vEdIVcgzfCCuPUSs/vOzg=;
+  b=UCKuzVHgE7rd/GOP1bVE6Hlav1/vdKtyUxF1Dh50zALZSNDIFe3ltfyV
+   C0Ce+Hv96jEGtOcI0RGsVzzSeff0iuneFcD2g6MafiCDy3uDx9s8flneR
+   50UQl23AFKZVu0O6PrNTj+E7j60cb7tP28eRWce9Box/z4Dpov16+cy4A
+   PAJ/MlQ74r+49wSL/ImmxxkAOnj86oxPtSf2Ov5a81twUyxblOnVCTKrG
+   EGyc/dWgc9qQxuN+22hThpWsGndhEZa4jTDgqFgArt937PEsjxCBCIUNK
+   Y3fOjpRWHpg8VWqAK3ND1/qyaQlKLcfDjnlvYGW+yU9N+wQR31Hnzbxs/
+   Q==;
+X-Attachment-filename: ~WRD0628.jpg
+X-IronPort-AV: E=Sophos;i="5.93,199,1654552800"; 
+   d="jpg'145?scan'145,208,217,145";a="254900325"
+Received: from mail-am6eur05lp2109.outbound.protection.outlook.com (HELO
+ EUR05-AM6-obe.outbound.protection.outlook.com) ([104.47.18.109])  by
+ ob1.dsv.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256; 28 Jul
+ 2022 21:09:48 +0200
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none; 
+ =?utf-8?q?b=3DJ55kNPh91Ka2J76+Zqmwu6d/3ue5VHwHHi1Hc8nquX3WfjMndkF1kanQAW9RL?=
+ =?utf-8?q?b15834CWmSOE0uwbX7z2Ypy9RkgCMSgOq+Tq+OVOKoQgjenEwQii79IqHbjXCXHnH?=
+ =?utf-8?q?tBC39HRSKQ/YYGvKL6CUflokxDOjssCnufDgfr3qrF/4Q1qIPO7LZrnCAdokjD8ef?=
+ =?utf-8?q?xovzqJ6QfFmbhBNUjCndt/q6qkbNa5X7VNZK80ZxlixL3dQzACVcTIgNt18OIVkQC?=
+ =?utf-8?q?QPrdDkDFNE4W/EC9b2DIjvZUSkTPHY/vOd6B8NGvJfYYIhQu7HnPd3EqRsJn74mBn?=
+ =?utf-8?q?Xx8aETqAQi5l0fRQrQnAw=3D=3D?=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AConte?=
+ =?utf-8?q?nt-Type=3AMIME-Version=3AX-MS-Exchange-AntiSpam-MessageData-Chunk?=
+ =?utf-8?q?Count=3AX-MS-Exchange-AntiSpam-MessageData-0=3AX-MS-Exchange-Anti?=
+ =?utf-8?q?Spam-MessageData-1=3B?=
+ bh=yvaqGOJbRWNO5cG4qRF3g+vEdIVcgzfCCuPUSs/vOzg=; =?utf-8?q?b=3Dno0FqjCkLPn3?=
+ =?utf-8?q?YcrswldLKvkBigWdn3rp0n6bOjoZG/G8ygQLC9b+GJpzFSVgAgZiCf/4KE+JNLfwM?=
+ =?utf-8?q?8qu1+QWnikVQPb6KKi+01/0+vs8uLOoAAbkUXYGK9HGbcRDB7XDm7FIsNfHr5Q2js?=
+ =?utf-8?q?XofWHI+iAy2HqXveBMUun9IVXSjcuVRT3jdZgzSUjzvqpQLm8Eheosib3fVxlRcOn?=
+ =?utf-8?q?r4lD8IA73Qjild4PbHG63cXLxS2EBYi/iv7SjhTC7Cn74giUHSwQRXHnhRcVbw8Sn?=
+ =?utf-8?q?DQNH9sUtmwPOH9H0tAUEMzui6DzCpWxt6DkiBfaQCl3HZVTwth91TLPrDH1IO/20H?=
+ =?utf-8?q?rq46Q=3D=3D?=
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=dsv.com; dmarc=pass action=none header.from=dsv.com; dkim=pass
+ header.d=dsv.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=DSV.COM; s=selector2; 
+ =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AContent-Type=3AMIME-Vers?=
+ =?utf-8?q?ion=3AX-MS-Exchange-SenderADCheck=3B?=
+ bh=yvaqGOJbRWNO5cG4qRF3g+vEdIVcgzfCCuPUSs/vOzg=; =?utf-8?q?b=3D0wd+jZcNXX/X?=
+ =?utf-8?q?fpA+CQS5HRDS5KBK40qyW8DVrvHuuHl6A/QYUUPm4bKrzawSHCk6cr+Kg2wSQDZlj?=
+ =?utf-8?q?VfIMOrQjciFAb4A5LHN+eVm7aMf77R8u+IMcIoZqu1AdQraYetbR868i7/j25OL/L?=
+ =?utf-8?q?UUZhJk13xl6ofxHJIjO3F1I3Q0PkI=3D?=
+Received: from PA4PR06MB7309.eurprd06.prod.outlook.com (2603:10a6:102:fc::18)
+ by VI1PR0602MB3230.eurprd06.prod.outlook.com (2603:10a6:802:10::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5482.6; Thu, 28 Jul
+ 2022 19:09:47 +0000
+Received: from PA4PR06MB7309.eurprd06.prod.outlook.com
+ ([fe80::f1bb:6222:2c37:d742]) by PA4PR06MB7309.eurprd06.prod.outlook.com
+ ([fe80::f1bb:6222:2c37:d742%6]) with mapi id 15.20.5482.011; Thu, 28 Jul 2022
+ 19:09:47 +0000
+From: Misty Owings - DSV <misty.owings@dsv.com>
+To: "TMX Intermodal DSV - NC, Misty Owings" <catchall@tmxintermodal.com>
+Subject: RE: TMX Intermodal - Immediate availability in Charleston ***
+Thread-Topic: TMX Intermodal - Immediate availability in Charleston ***
+Thread-Index: AQHYoq5c0PnwD44eSEiRAPcnTcPS+a2UJZbA
+Date: Thu, 28 Jul 2022 19:09:47 +0000
+Message-ID: 
+ <PA4PR06MB7309B901FF1C67F63F5D194E8B969@PA4PR06MB7309.eurprd06.prod.outlook.com>
+References: 
+ <428315000124554.1659032267.427742719650269-openerp-569-res.partner@ip-172-31-25-70>
+In-Reply-To: 
+ <428315000124554.1659032267.427742719650269-openerp-569-res.partner@ip-172-31-25-70>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+Authentication-Results-Original: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=dsv.com;
+X-MS-Office365-Filtering-Correlation-Id: f83a1607-6931-451b-3ef9-08da70ccbf5c
+x-ms-traffictypediagnostic: 
+ VI1PR0602MB3230:EE_|CO1NAM11FT026:EE_|SA0PR01MB6268:EE_
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+X-Microsoft-Antispam-Untrusted: BCL:0;
+X-Microsoft-Antispam-Message-Info-Original:  =?utf-8?q?ZqqdOnrHDsd0MTSPUYzaG?=
+ =?utf-8?q?xxmpLYfZ6QO9r73r+i7oFukGLVdPJGkjBgJvJ21oV0fuDuS8QD25C2kv6ZwrHOXth?=
+ =?utf-8?q?/OsJsN9O4E4Ej3pVQ53sjkDd+Q/Clt8siMjwT94gmU7FVHS3ojCEOZWFTRiMBWcW3?=
+ =?utf-8?q?JHF07fP4d5Ba4FHD2Jc+lRKu6sOuMZIQkxNUxxloDaby5B3OvuerCLYMAHzbsUwVY?=
+ =?utf-8?q?hgber/ukkAuSYr4DyncXeqO7Ti6KjE6f1SGOMuesM0UGIRwQhdW5M8bhOv98Bi4Ut?=
+ =?utf-8?q?Z1UwcZ2/nbaMViFvJ/IrWfi8LpsJAiMiB58ViAg/vSMHCIYzrJdKMgcv/IvjHrp3G?=
+ =?utf-8?q?UvoW1q1fI4aj0VhG+sXiQHjwRKagbchm2sPCMiSSwKONbxZvPQDqHdNpEMlYsbBrI?=
+ =?utf-8?q?aMwsCpA8klPEQma2nUeksbJ/xY0KwkJUyZeOfHKxB7a0kVz94D3PTEBiigluf2tRj?=
+ =?utf-8?q?9a1ulI8j+INLSJ7Qx0vmlUarczo7r7dBqeIfEvm0oiTNaOWU9X8k+SJegaI9G2XCd?=
+ =?utf-8?q?hGwwgHMgq0mec2pJR2nBhfAD2XFtWLG49SZ5FCFFP8Rd4AOIM9DJJ/RLl0UHNnkSo?=
+ =?utf-8?q?KAWKqShOQCLBXVCoHZoN9Z5h9efXjXUltODj55VtixIlJv75miaMkfUziXVzf1ayi?=
+ =?utf-8?q?OPOXByYZJSY+8lnqjRMmtsI0RBanyYWoknHquiN0FqPiY2kzC85bA/XfI5Q5827LX?=
+ =?utf-8?q?3FQY9XhRcY1wJMWW8ddGmELffpRnBFCHTnU9sv4DFGedrlSUeXburR6+FGEj+/fDS?=
+ =?utf-8?q?6bPDQ1EhEkeqim6Rv2ODygZ+cQCmnhs+MypIQ82iRXR2r4ILSh5pmWVdrB9WOfvDN?=
+ =?utf-8?q?llxOrHiHFEojlKc2l+CqSq2hVT5cR8USSRuA8SfJ8YDMQFSUVcGw=3D=3D?=
+X-Forefront-Antispam-Report-Untrusted:  =?utf-8?q?CIP=3A255=2E255=2E255=2E25?=
+ =?utf-8?b?NTtDVFJZOjtMQU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOlBB?=
+ =?utf-8?q?4PR06MB7309=2Eeurprd06=2Eprod=2Eoutlook=2Ecom=3BPTR=3A=3BCAT=3ANO?=
+ =?utf-8?b?TkU7U0ZTOigxMzIzMDAxNikoNDYzNjAwOSkoMzQ2MDAyKSgzNzYwMDIpKDM5NjAw?=
+ =?utf-8?b?MykoMzk4NjA0MDAwMDIpKDEzNjAwMykoMzY2MDA0KSg0MTMwMDcwMDAwMSko?=
+ =?utf-8?q?7696005=29=2840140700001=29=2833656002=29=286506007=29=28186003?=
+ =?utf-8?b?KSg5Njg2MDAzKSgxNjYwMDIpKDk5OTM2MDAzKSgxMjIwMDAwMDEpKDM4MDcw?=
+ =?utf-8?q?700005=29=2853546011=29=2826005=29=282906002=29=2883380400001=29?=
+ =?utf-8?q?=28478600001=29=2876116006=29=2866946007=29=2855016003=29=2838100?=
+ =?utf-8?q?700002=29=288936002=29=2871200400001=29=2852536014=29=2866476007?=
+ =?utf-8?b?KSg4Njc2MDAyKSg2NjQ0NjAwOCkoNjkxNjAwOSkoNjQ3NTYwMDgpKDU2NjAz?=
+ =?utf-8?b?MDAwMDIpKDMxNjAwMikoNjY1NTYwMDgpKDg2MzYyMDAxKSgxNDc3MzAwMSk7?=
+ =?utf-8?q?DIR=3AOUT=3BSFP=3A1101=3B?=
+X-MS-Exchange-AntiSpam-MessageData-Original-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-Original-0: 
+ =?us-ascii?Q?9nAxJwFzw3JG780xJDFINbAAX1Y2pAPBLqmuNC5HgnoFVezpv/wU/OGoN1EC?=
+ =?us-ascii?Q?F3ODtmqHjxFMwC2dKB+RgI9r6ntbKXtOAmvcGA4cKitzDmlghI296RqKr1R6?=
+ =?us-ascii?Q?HN8od9E437IKy7o7eSxDvrbCRaTF3vKU8m1qRu0lmbJ30bQuNpM1fhwmV4qw?=
+ =?us-ascii?Q?B5va46EBi6LwYeavtubdtvILd3WRQp68AbEYrrVFdtYMyKhHqpDSZapkmtqe?=
+ =?us-ascii?Q?CjR0J0SnGPgLzVgkrWfxb2uMjmr5RgCFVnHmwizwa8OjTpisYz0cfQYpmgm4?=
+ =?us-ascii?Q?Jv/uj9OhiMVuT1pOiYFN853edAj6qb2v3ERYdrmjPpFtmJtLnakeaCmqUJhz?=
+ =?us-ascii?Q?gkpLDxnRNIjus0GceGb68Uea+CfA5N88AibrzLZgkK62G+L0wnhUF6Tgo/q6?=
+ =?us-ascii?Q?q3YPy+LGLHVt1w+cI+QDxO3WW1TzlKA9IDayCJVkVkIhrQVkMPmlkWc91VTt?=
+ =?us-ascii?Q?O/2xDBdGugfvdJUMUBzfNZiUrBIiGKl3z8r1s4ZrAiGOTpKO6p7BUDsBkwPO?=
+ =?us-ascii?Q?jxE2vLxhEk6WtoUjbxghS8g1HCkUq8VaZOXpn7BFkfTMV4SS/XCUAO9QwvTW?=
+ =?us-ascii?Q?gfoMVZOy2JWNYRoXWYQQofEhLZzf+rb3Tgfeadu/su29UbEqb0ucPKtP4KpE?=
+ =?us-ascii?Q?9R8ziuM1K6WVJLeOzSzCTfFRewWo6Xd5QLmheQ4jS2bcARAE6Cu3QQFWPcQ4?=
+ =?us-ascii?Q?dBnb0Tm4nNHseDg8s4W9WsfHvWuSu/LNtCsXeKzzmmn0zTr0Ceoc9u3X2c94?=
+ =?us-ascii?Q?WQTzl+KPqyNJNtheMdZxFV/4zLC6zfXo/E6FTABfE6RgyOWKHuCRfCfsNcL+?=
+ =?us-ascii?Q?EU2oTG2oJGs0XlzBO452ovERz5sahU/Gj2bzcDmhbKOVAa4c3O9L03IJQLz3?=
+ =?us-ascii?Q?WuJxhnSm4tYbCTg8TV0BiY7GjaX2NDxIDWTKm/nc/d37hr2UrYqwpKDGygzv?=
+ =?us-ascii?Q?Te7bFs57YkeVRP64uiqkCC5PsiB6bm38nO072y+oMRPjsQE9qs49NE0NFf+m?=
+ =?us-ascii?Q?M/QdxEnsBZY/CZ/1d4liYaSc6irv0Qn6tUNt2vo/X5DAJpd5yLWpQmAN6rbE?=
+ =?us-ascii?Q?s4ew1Lurh/XEkKxNvMsptNyOfUADY7yrDQiP9bRPco4T1n5pIYCuTJwqhe4k?=
+ =?us-ascii?Q?qrM4yVD1Ie/i/dMH7q6T+uyWMJ65fUaPj4KUmpzNly51QScHN7H/SUHp5pKq?=
+ =?us-ascii?Q?DPDz/EUx5Zd+xvYxq6nRxOyiGxT1ZTzCQfH2kwddJURpDGd2VFkSConLUoBM?=
+ =?us-ascii?Q?uQHI+SOAqEGZ8SqxDMM43eJQiNFg4gHvTGn6nRCN094qEwKVLLBO1WCqxAdp?=
+ =?us-ascii?Q?dQw3hcn9BDuShxT3xKf67hIK7y2mSPRY7eUADSQFOGkm4N0QVILVFSGJGXfC?=
+ =?us-ascii?Q?d/4cYFuAhT1A3yL0nsjKzjlJ6dlLtKMtbuDYjq0/sC2mmUpJUw6K8RPdbcZm?=
+ =?us-ascii?Q?cMzOvWetTa8wkpdlNh6hOj8bzE+3KiJ7ys/2rJQ6afIMp3UE3KBCZkxKGQyB?=
+ =?us-ascii?Q?0wtGcNas7QkjB/Y5XEaI9tXuz2FjdpWr+ve2Vc/0c/qp4pzIdTp/XLr4WVnM?=
+ =?us-ascii?Q?qnN0134AqcIA1T263uibBkrvLl2nCCKXvhVqxNw5?=
+Content-Type: multipart/related;
+	boundary="_004_PA4PR06MB7309B901FF1C67F63F5D194E8B969PA4PR06MB7309eurp_";
+	type="multipart/alternative"
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0602MB3230
+Return-Path: misty.owings@dsv.com
+X-MS-Exchange-Organization-ExpirationStartTime: 28 Jul 2022 19:09:51.2479
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ f83a1607-6931-451b-3ef9-08da70ccbf5c
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: 
+ CO1NAM11FT026.eop-nam11.prod.protection.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource: 
+ CO1NAM11FT026.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id-Prvs: 
+ 53cfb112-7a7c-4752-b778-08da70ccbd15
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjY4LjIzMi4xMzkuMjUwO0NUUlk6VVM7?=
+ =?utf-8?b?TEFORzplbjtTQ0w6MTtTUlY6O0lQVjpOTEk7U0ZWOk5TUE07SDplc2E0LmRzdi5j?=
+ =?utf-8?q?3s2=2Eiphmx=2Ecom=3BPTR=3Aesa4=2Edsv=2Ec3s2=2Eiphmx=2Ecom=3BCAT?=
+ =?utf-8?b?Ok5PTkU7U0ZTOigxMzIzMDAxNikoNDYzNjAwOSkoMjIxODYwMDMpKDU1MDE2?=
+ =?utf-8?q?003=29=2858800400005=29=2840140700001=29=2815974865002=29=2833656?=
+ =?utf-8?b?MDAyKSg4NjM2MjAwMSkoNzU5NjAwMykoMzU2MDA1KSg0NTA4MDQwMDAwMiko?=
+ =?utf-8?q?9686003=29=2883310400002=29=287696005=29=2883320400002=29=2886360?=
+ =?utf-8?q?04=29=2883290400002=29=28336012=29=2883300400002=29=2883380400001?=
+ =?utf-8?b?KSgyNjAwNSkoNjUwNjAwNykoMzM5NjQwMDQpKDUzNTQ2MDExKSg2NjU3NDAxNSko?=
+ =?utf-8?q?83280400002=29=281096003=29=2830864003=29=285660300002=29=2852536?=
+ =?utf-8?q?014=29=2884300400001=29=2834756004=29=286916009=29=287636003=29?=
+ =?utf-8?b?KDE2NjAwMikoODY3NjAwMikoOTc5MDkwMDAwMykoMTQ3NzMwMDEpO0RJUjpJTkI7?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jul 2022 19:09:50.7792
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ f83a1607-6931-451b-3ef9-08da70ccbf5c
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ CO1NAM11FT026.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR01MB6268
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:04.1447674
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5458.026
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506458)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?Windows-1252?Q?Gvorag4pnJi4uAvxjq/fCAiSJzwGt5jd/XXXEtPFFRfWQQu6aU+Z6jAr?=
+ =?Windows-1252?Q?JoKBE3C0FN3IHTZ0fdWy/2OfXbkWkv0wnjYJYUOVum7znY9VdCrdeZah?=
+ =?Windows-1252?Q?BrvqcJT0U+RKFeNRCdb5B08jtmvpcIjuKOKJZ6LK5zy1IZFd0yoJev6m?=
+ =?Windows-1252?Q?O7Ci+kIIXw+X3/SLMxyYKAneJxldC9MeruK9basVIYPgO5IasfQOFXHX?=
+ =?Windows-1252?Q?yjxkhDQ1bIEgFDUeuFUDtIYe9/oDye9DMjN7l3s0//O5NBXRy5LlV5m4?=
+ =?Windows-1252?Q?wePFle/DN78F4ZYc9bMvhrQxZduWLOxhvhfNiLtbLLybp/x/VvXKzcN+?=
+ =?Windows-1252?Q?JQOcCdE0iLtoKu1CxAlVemktHzQZ3+z+NRN9wMdlK0Z+Okd+kvRs/3Ou?=
+ =?Windows-1252?Q?VuTZbGe9NqYXLKLHf5Ty+uv3qaaBcmDhAvMkQMCMK66q/mCZECmTmfJ7?=
+ =?Windows-1252?Q?m4CnEA9GBeMHI5Yv9tTBiOHIeBWuJiwGq/AzUZ5LUG2KZfPaUQZP+u6m?=
+ =?Windows-1252?Q?Ipwgk0BwItrp0ODu9ARxGOtOMRug68GxjB3UQeAVCOaND77yWswOddg2?=
+ =?Windows-1252?Q?RSJ9Osmg+0hfQMKl8W0oLMn+QgZEMT/O1khBHqVgZFMkD39lfUuZ36wP?=
+ =?Windows-1252?Q?XXxw9Hr95qVa0S2G17zr/Hqe8eU9opvMcLHZ8+h8anGaHd+wsmg7IdZk?=
+ =?Windows-1252?Q?Vbw9oEzHi2tWbmXcE1lBCVCwzfoj1IevQ+tdbxYDK6WHzowWN6qZWnJ3?=
+ =?Windows-1252?Q?wuz957sG1XdwovdQwUB3qtsNaOym5RpEeKIxdkQmusI5PbA/lN2ovBDF?=
+ =?Windows-1252?Q?/YnZuHvV2h1OzH+Dx5M52c/iYQp5ddqP13+5JZRFHWo0KBXPZ+Bg3vYy?=
+ =?Windows-1252?Q?HNbwKtCcxcN0bD25t6Le3mjV2Lud9gOiIX4fjpqXKV7BENl0P5zEYK7e?=
+ =?Windows-1252?Q?hUokWRk3g/kLtYYCF0U2kieIfsQ+NyFBUmm/zvU3aa6sdPi22l5mVqan?=
+ =?Windows-1252?Q?sOrZ/riinhJoKfNR0CIwwS2oZIzFv2VDOp+2LUan2YYqTA026BXzO1T6?=
+ =?Windows-1252?Q?8fy9gYGxZWhEmlx72MuHchFsMOftSWzTwnel6PKmgD+iOD4wkOhaZVaA?=
+ =?Windows-1252?Q?bN+3OAb/xgH4zaA/l+Vnhb6Uik4KFQHqdMgYoIF9/W6esr9qBEjCQB86?=
+ =?Windows-1252?Q?WRxslJAjx2EzuUAsw3px0MTE/WLXDaL6v3wrS0SlYQYxMQdsjj/Z9WG1?=
+ =?Windows-1252?Q?KCDh9svdb7tmeylqbuvuIljmJy574qKxxyFtjNZ9zREwFl8FIx713wCI?=
+ =?Windows-1252?Q?ah4EqcBbyOpDG9ANYDG0BPeWaUlTB11wvBfC2j/CizEqon2nFwMtc5gV?=
+ =?Windows-1252?Q?ABRY2lm6tjEjOIHb7bpdNtabgI4ChKlon/s76lspXLmdV6VTi6RUeWwO?=
+ =?Windows-1252?Q?EUBaNIu0X8SYI2G9MImDvAshpgLoMk9jaDXGP9Ao575I2mYOsBofsDBd?=
+ =?Windows-1252?Q?MPIScZANmBZV7JVLA4ZJFQkluZwHjDFvVo0TEKfjsqi9vAR+GX61+VpQ?=
+ =?Windows-1252?Q?bEGK6ntHbGfoOIr64HOPaGWo4ggkz6KHiDF25/rPSfCqgRqk3R6E/OWr?=
+ =?Windows-1252?Q?i+r7e41Rtf4TCuZ2ATv5d2QpEq3eoXnUz7980GfG59s9jij9H5GxKxj9?=
+ =?Windows-1252?Q?WloKNt6oSTPtyjvJXi5VarDQ89tJZupery38q8IKZ3/eoFGj/IIcbzuY?=
+ =?Windows-1252?Q?SATfnJ+w3cJpE6yYOcRntVj4hAf5kL2O1d2CVrGD5cMp2TyeNSqyAD1h?=
+ =?Windows-1252?Q?B10kHNuRx7NRE54z6JcGGINYXujPFqBslR6pLK2v88bKKwlSdeG+IFIk?=
+ =?Windows-1252?Q?0uCjjG/J7+N33Mb13p0lEvVoIOMTtQeropLu0zh8JgyrUorwk4PRAd6O?=
+ =?Windows-1252?Q?ChbaF9ZSyNE/zH2n8jeUO3CkeQB+3F3Ou0eQZIxXqu2TeZqWIuQk70Hu?=
+ =?Windows-1252?Q?ueGQrSklz/5Ntfu1pZsDSyerWH30u29KMIXOUDwkTWAy3urP/x46APR8?=
+ =?Windows-1252?Q?suH1OZveZzCMrLa1IPHnxpv9jLdykbpsVMO85Rbh1yq8xwVC1I9qZwdV?=
+ =?Windows-1252?Q?IqLUceZloIeX7ycSGLEMSCWg8IUYAEpZk9imNcgyF5whp43IXaMB9Hbz?=
+ =?Windows-1252?Q?upCzEL1TdK8=3D?=
+MIME-Version: 1.0
+
+--_004_PA4PR06MB7309B901FF1C67F63F5D194E8B969PA4PR06MB7309eurp_
+Content-Type: multipart/alternative;
+	boundary="_000_PA4PR06MB7309B901FF1C67F63F5D194E8B969PA4PR06MB7309eurp_"
+
+--_000_PA4PR06MB7309B901FF1C67F63F5D194E8B969PA4PR06MB7309eurp_
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Stacey,
+  It was  a pleasure speaking with you also. Thank you for reaching out to =
+me. I will keep you in mind in the future.
+
+Due to current market conditions there are industry wide vessel delays, rai=
+l delays, trucker shortages, container/chassis shortages, port congestion, =
+and vessel schedule unreliability. Please expect delays.
+Changes in the earliest port/terminal/rail receiving dates because of vesse=
+l delays may result in additional fees for your account ( Per diem, trucker=
+ redelivery fees, port congestion fees, additional chassis fees, yard stora=
+ge fees, demurrage, etc).
+Best regards,
+
+Misty Owings, Operations, Ocean Export, Charlotte, NC, 28217 Air & Sea US
+
+misty.owings@dsv.com<mailto:misty.owings@dsv.com>  |  Office +1 7043576114 =
+x1920  |  www.dsv.com<https://www.dsv.com/>
+
+From: Stacey Russell <houinsidesales@tmxintermodal.com>
+Sent: Thursday, July 28, 2022 2:18 PM
+To: Misty Owings - DSV <misty.owings@dsv.com>
+Subject: TMX Intermodal - Immediate availability in Charleston ***
+
+External email:Be careful with links and attachments
+
+Good afternoon Misty,
+
+It was a pleasure speaking with you and thank you so much for your time. I =
+want to apologize again for our lack of response to your availability/quote=
+ request earlier this month.
+
+I hope you'll take a look at our capacities provided below and keep us in m=
+ind for anything we may be of assistance with. Feel free to share with othe=
+rs in your organization.
+
+Below is our current availability in all branches.
+
+[Image removed by sender. image0]
+
+Have a great day!
+
+
+
+Best Regards,
+
+We have availability in the following Terminals:
+ATLANTA, JACKSONVILLE, CHARLESTON & HOUSTON
+
+
+NJ/NY  Imports  -->  njimports@tmxintermodal.com<mailto:dispatch@tmxintermo=
+dal.com>
+
+NJ/NY  Exports  -->  njexports@tmxintermodal.com<mailto:dispatch@tmxintermo=
+dal.com>
+
+Atlanta               --->  atl<mailto:atldispatch@tmxintermodal.com>custom=
+erservice<mailto:dispatch@tmxintermodal.com>@tmxintermodal.com<mailto:atldi=
+spatch@tmxintermodal.com>
+
+Charleston         --->  chs<mailto:chsdispatch@tmxintermodal.com>customers=
+ervice<mailto:dispatch@tmxintermodal.com>@tmxintermodal.com<mailto:chsdispa=
+tch@tmxintermodal.com>
+
+Houston             --->  hou<mailto:houdispatch@tmxintermodal.com>customer=
+service<mailto:dispatch@tmxintermodal.com>@tmxintermodal.com<mailto:houdisp=
+atch@tmxintermodal.com>
+
+Jacksonville      --->  jax<mailto:jaxdispatch@tmxintermodal.com>customerse=
+rvice<mailto:dispatch@tmxintermodal.com>@tmxintermodal.com<mailto:jaxdispat=
+ch@tmxintermodal.com>
+
+Savannah          --->  sav<mailto:savdispatch@tmxintermodal.com>customerse=
+rvice<mailto:dispatch@tmxintermodal.com>@tmxintermodal.com<mailto:savdispat=
+ch@tmxintermodal.com>
+
+Virginia             --->  orf<mailto:orf>customerservice<mailto:dispatch@t=
+mxintermodal.com>@tmxintermodal.com<mailto:orfdispatch@tmxintermodal.com>
+
+
+[Image removed by sender. TMX Intermodal][Image removed by sender. TMX Inte=
+rmodal]<https://eur03.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2=
+Fwww.tmxintermodal.com%2F&data=3D05%7C01%7Cmisty.owings%40dsv.com%7Cc84fc31=
+d64c347a5c4ef08da70c57e16%7C4a90c23a3ece4ef2b857522f23b8204c%7C0%7C0%7C6379=
+46290769556508%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIi=
+LCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=3D6BVZWuEAU471cqO8IMZA=
+NjvVGtWHcuI9XwKLV6KK7ps%3D&reserved=3D0>
+
+=E2=80=A2 HAZMAT
+=E2=80=A2 LIQUOR
+=E2=80=A2 REEFER
+=E2=80=A2 OVERWEIGHT
+=E2=80=A2 TRIAXLE CHASSIS
+
+Stacey Romaire
+Inside Sales Executive
+
+Office: 346-787-4800<tel:3467874800>
+ext. 407
+
+houinsidesales@tmxintermodal.com<mailto:houinsidesales@tmxintermodal.com>
+[Image removed by sender.]
+[Image removed by sender.]<https://eur03.safelinks.protection.outlook.com/?=
+url=3Dhttps%3A%2F%2Fwww.facebook.com%2Ftmx.intermodal%2F&data=3D05%7C01%7Cm=
+isty.owings%40dsv.com%7Cc84fc31d64c347a5c4ef08da70c57e16%7C4a90c23a3ece4ef2=
+b857522f23b8204c%7C0%7C0%7C637946290769556508%7CUnknown%7CTWFpbGZsb3d8eyJWI=
+joiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%=
+7C&sdata=3DLCpQfgEg0mTDRRAtXMjVYb2A0pAgjgie16hOSA2jsds%3D&reserved=3D0>
+[Image removed by sender.]<https://eur03.safelinks.protection.outlook.com/?=
+url=3Dhttps%3A%2F%2Ftwitter.com%2Ftmxintermodal%3Flang%3Den&data=3D05%7C01%=
+7Cmisty.owings%40dsv.com%7Cc84fc31d64c347a5c4ef08da70c57e16%7C4a90c23a3ece4=
+ef2b857522f23b8204c%7C0%7C0%7C637946290769556508%7CUnknown%7CTWFpbGZsb3d8ey=
+JWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%=
+7C%7C&sdata=3DvBxxuzy0JCfLTBdMqrs1W0JqbGVScNzslP549JkYsTo%3D&reserved=3D0>
+[Image removed by sender.]<https://eur03.safelinks.protection.outlook.com/?=
+url=3Dhttps%3A%2F%2Foutlook.office.com%2Fmail%2Foptions%2Fmail%2FmessageCon=
+tent%2FRoamingSignatureOptions&data=3D05%7C01%7Cmisty.owings%40dsv.com%7Cc8=
+4fc31d64c347a5c4ef08da70c57e16%7C4a90c23a3ece4ef2b857522f23b8204c%7C0%7C0%7=
+C637946290769556508%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2l=
+uMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=3D8RVbnR1SWstmr9M=
+CdqRJ3JTFnX8ITNZ5ZFpQ9qI9nJk%3D&reserved=3D0>
+
+www.tmxintermodal.com<https://eur03.safelinks.protection.outlook.com/?url=
+=3Dhttps%3A%2F%2Fwww.tmxintermodal.com%2F&data=3D05%7C01%7Cmisty.owings%40d=
+sv.com%7Cc84fc31d64c347a5c4ef08da70c57e16%7C4a90c23a3ece4ef2b857522f23b8204=
+c%7C0%7C0%7C637946290769556508%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAi=
+LCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=3D6BVZ=
+WuEAU471cqO8IMZANjvVGtWHcuI9XwKLV6KK7ps%3D&reserved=3D0>
+[Image removed by sender.]
+
+Sent by TMX Intermodal <https://eur03.safelinks.protection.outlook.com/?url=
+=3Dhttp%3A%2F%2Ftmxintermodal.com%2F&data=3D05%7C01%7Cmisty.owings%40dsv.co=
+m%7Cc84fc31d64c347a5c4ef08da70c57e16%7C4a90c23a3ece4ef2b857522f23b8204c%7C0=
+%7C0%7C637946290769556508%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQI=
+joiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=3DotSI33fqB=
+BaAhpeojkMnYVxBDSrZ5L6gnCquxEStAN4%3D&reserved=3D0> using Odoo<https://eur0=
+3.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fwww.odoo.com%2F%3Fu=
+tm_source%3Ddb%26utm_medium%3Demail&data=3D05%7C01%7Cmisty.owings%40dsv.com=
+%7Cc84fc31d64c347a5c4ef08da70c57e16%7C4a90c23a3ece4ef2b857522f23b8204c%7C0%=
+7C0%7C637946290769556508%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIj=
+oiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=3DbxLBmEK4AD=
+HEqi4TeGaMf6U5LrzD1RWvnMyupkeyj6Q%3D&reserved=3D0>.
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+
+--_000_PA4PR06MB7309B901FF1C67F63F5D194E8B969PA4PR06MB7309eurp_
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><m=
+eta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:Helvetica;
+	panose-1:2 11 6 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Lucida Handwriting";
+	panose-1:3 1 1 1 1 1 1 1 1 1;}
+@font-face
+	{font-family:inherit;
+	panose-1:0 0 0 0 0 0 0 0 0 0;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+span.EmailStyle19
+	{mso-style-type:personal-reply;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+</head>
+<body lang=3D"EN-US" link=3D"blue" vlink=3D"purple" style=3D"word-wrap:brea=
+k-word">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">Stacey,<o:p></o:p></p>
+<p class=3D"MsoNormal">&nbsp; It was&nbsp; a pleasure speaking with you als=
+o. Thank you for reaching out to me. I will keep you in mind in the future.
+<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<div>
+<p class=3D"MsoNormal"><b><span style=3D"color:red">Due to current market c=
+onditions there are industry wide vessel delays, rail delays, trucker short=
+ages, container/chassis shortages, port congestion, and vessel schedule unr=
+eliability. Please expect delays.<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal"><b><span style=3D"font-size:10.0pt;font-family:&quot=
+;Arial&quot;,sans-serif;color:red">Changes in the earliest port/terminal/ra=
+il receiving dates because of vessel delays may result in additional fees f=
+or your account ( Per diem, trucker redelivery
+ fees, port congestion fees, additional chassis fees, yard storage fees, de=
+murrage, etc).<o:p></o:p></span></b></p>
+<p class=3D"MsoNormal" style=3D"mso-margin-top-alt:auto;margin-bottom:7.5pt=
+;line-height:12.0pt">
+<span style=3D"font-size:10.0pt;font-family:&quot;Arial&quot;,sans-serif;co=
+lor:black">Best regards,<br>
+&nbsp;<br>
+Misty Owings, Operations, Ocean Export, Charlotte, NC, 28217 Air &amp; Sea =
+US<br>
+<br>
+<a href=3D"mailto:misty.owings@dsv.com"><span style=3D"color:black">misty.o=
+wings@dsv.com</span></a>&nbsp; |&nbsp; Office +1 7043576114 x1920&nbsp; |&n=
+bsp;
+<a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Fwww.dsv.com%2F&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.com%7Cf83a=
+16076931451b3ef908da70ccbf5c%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C6=
+37946321953302145%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luM=
+zIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DJhTp72TEg6wmd=
+dCP4bEdVS6%2BBrbRyNPBRDB0Sbxu3zU%3D&amp;reserved=3D0" originalsrc=3D"https:=
+//www.dsv.com/" shash=3D"nmHONJD1UUsyk8kLl5LuDRPhT81yYpvXhBj9SxOSu6qsNg03Xq=
+jbNfodqvQTVhbdG/G25atlrQfntEuz3EQUFm/BuyL+thuLEY2H1GBmcEt3YV6Oi60XhT08SYr5m=
+kzsdrYeFhHnXMFL1ofw5SC1D6lXvOVcq7gFi/EYS3Vg72A=3D"><span style=3D"color:bla=
+ck">www.dsv.com</span></a><o:p></o:p></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<div style=3D"border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0in =
+0in 0in">
+<p class=3D"MsoNormal"><b>From:</b> Stacey Russell &lt;houinsidesales@tmxin=
+termodal.com&gt;
+<br>
+<b>Sent:</b> Thursday, July 28, 2022 2:18 PM<br>
+<b>To:</b> Misty Owings - DSV &lt;misty.owings@dsv.com&gt;<br>
+<b>Subject:</b> TMX Intermodal - Immediate availability in Charleston ***<o=
+:p></o:p></p>
+</div>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div style=3D"border:solid #9C6500 1.0pt;padding:2.0pt 2.0pt 2.0pt 2.0pt">
+<p class=3D"MsoNormal" style=3D"line-height:12.0pt;background:#FFEB9C"><spa=
+n style=3D"font-size:10.0pt;color:#9C6500">External email:</span><span styl=
+e=3D"font-size:10.0pt;color:black">Be careful with links and attachments<o:=
+p></o:p></span></p>
+</div>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<div>
+<div>
+<div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E;border:no=
+ne windowtext 1.0pt;padding:0in">Good afternoon Misty,</span><span style=3D=
+"font-size:12.0pt;color:black"><o:p></o:p></span></p>
+</div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;color:black"><o:p>&nbsp;</o:p></span></p>
+</div>
+<div>
+<div>
+<div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E">It was a=
+ pleasure speaking with you and thank you so much for your time. I want to =
+apologize again for our lack of response to your
+ availability/quote request earlier this month.&nbsp;<o:p></o:p></span></p>
+</div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E"><o:p>&nb=
+sp;</o:p></span></p>
+</div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E">I hope y=
+ou'll take a look at our capacities provided below and keep us in mind for =
+anything we may be of assistance with. Feel free
+ to share with others in your organization.&nbsp;<o:p></o:p></span></p>
+</div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E"><o:p>&nb=
+sp;</o:p></span></p>
+</div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E">Below is=
+ our current availability in all branches.<o:p></o:p></span></p>
+</div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E"><o:p>&nb=
+sp;</o:p></span></p>
+</div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E;border:so=
+lid windowtext 1.0pt;padding:0in"><img border=3D"0" width=3D"720" height=3D=
+"1280" style=3D"width:7.5in;height:13.3333in" id=3D"Picture_x0020_1" src=3D=
+"cid:~WRD0628.jpg" alt=3D"Image removed by sender. image0"></span><span sty=
+le=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:#201F1E"=
+><br>
+<br>
+Have a great day!&nbsp;<o:p></o:p></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<p style=3D"margin:0in"><span style=3D"font-size:10.0pt;font-family:&quot;H=
+elvetica&quot;,sans-serif"><o:p>&nbsp;</o:p></span></p>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:12.0pt;color:black"><o:p>&nbsp;</o:p></span></p>
+</div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><i><span style=3D"=
+font-size:12.0pt;font-family:&quot;Lucida Handwriting&quot;;color:black;bor=
+der:none windowtext 1.0pt;padding:0in">Best Regards,</span></i><span style=
+=3D"font-size:12.0pt;color:black">
+<o:p></o:p></span></p>
+<div>
+<div>
+<p class=3D"MsoNormal" style=3D"vertical-align:baseline"><span style=3D"fon=
+t-size:10.0pt;font-family:&quot;Helvetica&quot;,sans-serif;color:black"><o:=
+p>&nbsp;</o:p></span></p>
+</div>
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;vertical=
+-align:baseline">
+<span style=3D"font-size:10.0pt;font-family:&quot;Helvetica&quot;,sans-seri=
+f;color:black;border:none windowtext 1.0pt;padding:0in;background:yellow">W=
+e have availability in the following Terminals:</span><span style=3D"font-s=
+ize:10.0pt;font-family:&quot;Helvetica&quot;,sans-serif;color:black"><o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;vertical=
+-align:baseline">
+<span style=3D"font-size:10.0pt;font-family:&quot;Helvetica&quot;,sans-seri=
+f;color:#ED5C57;border:none windowtext 1.0pt;padding:0in;background:yellow"=
+>ATLANTA, JACKSONVILLE, CHARLESTON &amp; HOUSTON</span><span style=3D"font-=
+size:10.0pt;font-family:&quot;Helvetica&quot;,sans-serif;color:black"><o:p>=
+</o:p></span></p>
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;vertical=
+-align:baseline">
+<span style=3D"font-size:10.0pt;font-family:&quot;Helvetica&quot;,sans-seri=
+f;color:black"><o:p>&nbsp;</o:p></span></p>
+<div>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<b><span style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow">NJ/NY=
+&nbsp; Imports</span></b><span style=3D"font-size:12.0pt;font-family:&quot;=
+inherit&quot;,serif;color:black;border:none windowtext 1.0pt;padding:0in;ba=
+ckground:yellow">&nbsp;
+ --&gt;&nbsp;&nbsp;<a href=3D"mailto:dispatch@tmxintermodal.com" target=3D"=
+_blank"><span style=3D"color:#7C7BAD;text-decoration:none">njimports@tmxint=
+ermodal.com</span></a>&nbsp;&nbsp;</span><span style=3D"color:black;border:=
+none windowtext 1.0pt;padding:0in;background:yellow"><o:p></o:p></span></p>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<b><span style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow">NJ/NY=
+&nbsp; Exports</span></b><span style=3D"font-size:12.0pt;font-family:&quot;=
+inherit&quot;,serif;color:black;border:none windowtext 1.0pt;padding:0in;ba=
+ckground:yellow">&nbsp;
+ --&gt;&nbsp;&nbsp;<a href=3D"mailto:dispatch@tmxintermodal.com" target=3D"=
+_blank"><span style=3D"color:#7C7BAD;text-decoration:none">njexports@tmxint=
+ermodal.com</span></a></span><span style=3D"color:black;border:none windowt=
+ext 1.0pt;padding:0in;background:yellow"><o:p></o:p></span></p>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<b><span style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow">Atlan=
+ta&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;---&gt;&nbsp;&nbsp=
+;<a href=3D"mailto:atldispatch@tmxintermodal.com" target=3D"_blank"><span s=
+tyle=3D"color:#7C7BAD;text-decoration:none">atl</span></a></span></b><span =
+style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:black=
+;border:none windowtext 1.0pt;padding:0in;background:yellow"><a href=3D"mai=
+lto:dispatch@tmxintermodal.com" target=3D"_blank"><span style=3D"color:#7C7=
+BAD;text-decoration:none">customerservice</span></a><b><a href=3D"mailto:at=
+ldispatch@tmxintermodal.com" target=3D"_blank"><span style=3D"color:#7C7BAD=
+;text-decoration:none">@tmxintermodal.com</span></a></b></span><span style=
+=3D"color:black;border:none windowtext 1.0pt;padding:0in;background:yellow"=
+><o:p></o:p></span></p>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<b><span style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow">Charl=
+eston&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;---&gt;&nbsp;&nbsp;<a href=3D"mailto=
+:chsdispatch@tmxintermodal.com" target=3D"_blank"><span style=3D"color:#7C7=
+BAD;text-decoration:none">chs</span></a></span></b><span style=3D"font-size=
+:12.0pt;font-family:&quot;inherit&quot;,serif;color:black;border:none windo=
+wtext 1.0pt;padding:0in;background:yellow"><a href=3D"mailto:dispatch@tmxin=
+termodal.com" target=3D"_blank"><span style=3D"color:#7C7BAD;text-decoratio=
+n:none">customerservice</span></a><b><a href=3D"mailto:chsdispatch@tmxinter=
+modal.com" target=3D"_blank"><span style=3D"color:#7C7BAD;text-decoration:n=
+one">@tmxintermodal.com</span></a></b></span><span style=3D"color:black;bor=
+der:none windowtext 1.0pt;padding:0in;background:yellow"><o:p></o:p></span>=
+</p>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<b><span style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow">Houst=
+on&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;---&gt;&nbsp;&nbsp;<a hre=
+f=3D"mailto:houdispatch@tmxintermodal.com" target=3D"_blank"><span style=3D=
+"color:#7C7BAD;text-decoration:none">hou</span></a></span></b><span style=
+=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;color:black;bord=
+er:none windowtext 1.0pt;padding:0in;background:yellow"><a href=3D"mailto:d=
+ispatch@tmxintermodal.com" target=3D"_blank"><span style=3D"color:#7C7BAD;t=
+ext-decoration:none">customerservice</span></a><b><a href=3D"mailto:houdisp=
+atch@tmxintermodal.com" target=3D"_blank"><span style=3D"color:#7C7BAD;text=
+-decoration:none">@tmxintermodal.com</span></a></b></span><span style=3D"co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow"><o:p>=
+</o:p></span></p>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<b><span style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow">Jacks=
+onville&nbsp; &nbsp; &nbsp; ---&gt;&nbsp;&nbsp;<a href=3D"mailto:jaxdispatc=
+h@tmxintermodal.com" target=3D"_blank"><span style=3D"color:#7C7BAD;text-de=
+coration:none">jax</span></a></span></b><span style=3D"font-size:12.0pt;fon=
+t-family:&quot;inherit&quot;,serif;color:black;border:none windowtext 1.0pt=
+;padding:0in;background:yellow"><a href=3D"mailto:dispatch@tmxintermodal.co=
+m" target=3D"_blank"><span style=3D"color:#7C7BAD;text-decoration:none">cus=
+tomerservice</span></a><b><a href=3D"mailto:jaxdispatch@tmxintermodal.com" =
+target=3D"_blank"><span style=3D"color:#7C7BAD;text-decoration:none">@tmxin=
+termodal.com</span></a></b></span><span style=3D"color:black;border:none wi=
+ndowtext 1.0pt;padding:0in;background:yellow"><o:p></o:p></span></p>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<b><span style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow">Savan=
+nah&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ---&gt;&nbsp;&nbsp;<a href=3D"mailto:=
+savdispatch@tmxintermodal.com" target=3D"_blank"><span style=3D"color:#7C7B=
+AD;text-decoration:none">sav</span></a></span></b><span style=3D"font-size:=
+12.0pt;font-family:&quot;inherit&quot;,serif;color:black;border:none window=
+text 1.0pt;padding:0in;background:yellow"><a href=3D"mailto:dispatch@tmxint=
+ermodal.com" target=3D"_blank"><span style=3D"color:#7C7BAD;text-decoration=
+:none">customerservice</span></a><b><a href=3D"mailto:savdispatch@tmxinterm=
+odal.com" target=3D"_blank"><span style=3D"color:#7C7BAD;text-decoration:no=
+ne">@tmxintermodal.com</span></a></b></span><span style=3D"color:black;bord=
+er:none windowtext 1.0pt;padding:0in;background:yellow"><o:p></o:p></span><=
+/p>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<b><span style=3D"font-size:12.0pt;font-family:&quot;inherit&quot;,serif;co=
+lor:black;border:none windowtext 1.0pt;padding:0in;background:yellow">Virgi=
+nia&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;---&gt;&nbsp;&nbsp;<a hr=
+ef=3D"mailto:orf" target=3D"_blank"><span style=3D"color:#7C7BAD;text-decor=
+ation:none">orf</span></a></span></b><span style=3D"font-size:12.0pt;font-f=
+amily:&quot;inherit&quot;,serif;color:black;border:none windowtext 1.0pt;pa=
+dding:0in;background:yellow"><a href=3D"mailto:dispatch@tmxintermodal.com" =
+target=3D"_blank"><span style=3D"color:#7C7BAD;text-decoration:none">custom=
+erservice</span></a><b><a href=3D"mailto:orfdispatch@tmxintermodal.com" tar=
+get=3D"_blank"><span style=3D"color:#7C7BAD;text-decoration:none">@tmxinter=
+modal.com</span></a></b></span><span style=3D"color:black;border:none windo=
+wtext 1.0pt;padding:0in;background:yellow"><o:p></o:p></span></p>
+<p align=3D"center" style=3D"margin:0in;text-align:center;background:white;=
+vertical-align:baseline">
+<span style=3D"color:black;border:none windowtext 1.0pt;padding:0in;backgro=
+und:yellow"><o:p>&nbsp;</o:p></span></p>
+</div>
+</div>
+</div>
+<div>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td style=3D"padding:.75pt .75pt .75pt .75pt">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"600" style=3D"width:6.25in;background:black;=
+border-collapse:collapse">
+<tbody>
+<tr>
+<td style=3D"padding:.75pt .75pt .75pt .75pt">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td width=3D"325" valign=3D"top" style=3D"width:243.75pt;padding:.75pt .75p=
+t .75pt .75pt">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td style=3D"padding:.75pt .75pt .75pt .75pt">
+<div align=3D"center">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;border-collapse:collapse">
+<tbody>
+<tr>
+<td valign=3D"top" style=3D"padding:.75pt .75pt .75pt .75pt">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td style=3D"padding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" style=3D"mso-element:frame;mso-element-frame-hspace:=
+2.25pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-el=
+ement-anchor-horizontal:column;mso-height-rule:exactly">
+<a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Fwww.tmxintermodal.com%2F&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.=
+com%7Cf83a16076931451b3ef908da70ccbf5c%7Cea53da9730f747b6b275c7aa732edda6%7=
+C0%7C0%7C637946321953302145%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJ=
+QIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DfSq=
+9Ow%2B7HucycMR1S3WB29VCCgI2ix1nM79CBPP34xE%3D&amp;reserved=3D0" originalsrc=
+=3D"https://www.tmxintermodal.com/" shash=3D"Ecqfn0nEnXxbaVaKLUN4BD7NRIOQD0=
+LshSG3S6TTdEQ/AiSZyHOxy5vk4lhrifU/r5WNMb9UAyZX7omGaHKP4uhxsuiUPWw8Tnsd8IaBW=
+w6RpijNkwpOsdFxN1dQB7BVAFnRJKJBozIpXwJVDH9/M0Js0BoRFjWXS2rvvmBvchE=3D" targ=
+et=3D"_blank"><span style=3D"color:#7C7BAD;border:none windowtext 1.0pt;pad=
+ding:0in;text-decoration:none"><img border=3D"0" width=3D"150" height=3D"82=
+" style=3D"width:1.5625in;height:.8541in" id=3D"Picture_x0020_2" src=3D"cid=
+:~WRD0628.jpg" alt=3D"Image removed by sender. TMX Intermodal"><img border=
+=3D"0" width=3D"150" height=3D"50" style=3D"width:1.5625in;height:.5208in" =
+id=3D"Picture_x0020_3" src=3D"cid:~WRD0628.jpg" alt=3D"Image removed by sen=
+der. TMX Intermodal"></span></a><o:p></o:p></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:11.25pt 0in 0in 15.0pt">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td style=3D"padding:.75pt .75pt .75pt .75pt">
+<p style=3D"margin:0in;line-height:15.0pt;mso-element:frame;mso-element-fra=
+me-hspace:2.25pt;mso-element-wrap:around;mso-element-anchor-vertical:paragr=
+aph;mso-element-anchor-horizontal:column;mso-height-rule:exactly">
+<span style=3D"font-size:10.0pt;font-family:&quot;Helvetica&quot;,sans-seri=
+f;color:white;text-transform:uppercase">=E2=80=A2 HAZMAT<br>
+=E2=80=A2 LIQUOR<br>
+=E2=80=A2 REEFER<br>
+=E2=80=A2 OVERWEIGHT<br>
+=E2=80=A2 TRIAXLE CHASSIS<o:p></o:p></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td valign=3D"top" style=3D"padding:.75pt .75pt .75pt .75pt">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td style=3D"padding:16.5pt 0in 0in 0in">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td style=3D"border:none;border-right:solid #FF641C 2.25pt;padding:0in 5.25=
+pt 0in 0in">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td style=3D"padding:.75pt .75pt .75pt .75pt">
+<p align=3D"right" style=3D"margin:0in;text-align:right;line-height:12.0pt;=
+mso-element:frame;mso-element-frame-hspace:2.25pt;mso-element-wrap:around;m=
+so-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;m=
+so-height-rule:exactly">
+<b><span style=3D"font-size:10.5pt;font-family:&quot;inherit&quot;,serif;co=
+lor:white;border:none windowtext 1.0pt;padding:0in">Stacey Romaire</span></=
+b><span style=3D"font-size:10.0pt;font-family:&quot;Helvetica&quot;,sans-se=
+rif;color:white"><br>
+</span><i><span style=3D"font-size:10.0pt;font-family:&quot;inherit&quot;,s=
+erif;color:white;border:none windowtext 1.0pt;padding:0in">Inside Sales Exe=
+cutive</span></i><span style=3D"font-size:10.0pt;font-family:&quot;Helvetic=
+a&quot;,sans-serif;color:white"><br>
+<br>
+Office:<span style=3D"border:none windowtext 1.0pt;padding:0in">&nbsp;</spa=
+n><a href=3D"tel:3467874800"><b><span style=3D"font-family:&quot;inherit&qu=
+ot;,serif;color:white;border:none windowtext 1.0pt;padding:0in;text-decorat=
+ion:none">346-787-4800</span></b></a><br>
+</span><i><span style=3D"font-size:10.0pt;font-family:&quot;inherit&quot;,s=
+erif;color:white;border:none windowtext 1.0pt;padding:0in">ext. 407</span><=
+/i><span style=3D"font-size:10.0pt;font-family:&quot;Helvetica&quot;,sans-s=
+erif;color:white"><br>
+<br>
+<a href=3D"mailto:houinsidesales@tmxintermodal.com"><span style=3D"color:wh=
+ite;border:none windowtext 1.0pt;padding:0in;text-decoration:none">houinsid=
+esales@tmxintermodal.com</span></a><o:p></o:p></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:11.25pt 0in 0in 0in">
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;mso-elem=
+ent:frame;mso-element-frame-hspace:2.25pt;mso-element-wrap:around;mso-eleme=
+nt-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-heigh=
+t-rule:exactly">
+<span style=3D"border:solid windowtext 1.0pt;padding:0in"><img border=3D"0"=
+ width=3D"90" height=3D"30" style=3D"width:.9375in;height:.3125in" id=3D"Pi=
+cture_x0020_4" src=3D"cid:~WRD0628.jpg" alt=3D"Image removed by sender."></=
+span><o:p></o:p></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:6.0pt 0in 0in 0in">
+<div align=3D"center">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" style=3D"border-collapse:collapse">
+<tbody>
+<tr>
+<td style=3D"padding:0in 2.25pt 0in 2.25pt">
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;mso-elem=
+ent:frame;mso-element-frame-hspace:2.25pt;mso-element-wrap:around;mso-eleme=
+nt-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-heigh=
+t-rule:exactly">
+<a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Fwww.facebook.com%2Ftmx.intermodal%2F&amp;data=3D05%7C01%7Ccatchall%40tm=
+xintermodal.com%7Cf83a16076931451b3ef908da70ccbf5c%7Cea53da9730f747b6b275c7=
+aa732edda6%7C0%7C0%7C637946321953302145%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4=
+wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp=
+;sdata=3D%2FvOgUAE0AwwL3Fy6h1uuhcKsWCibKZaUCTU8SJydTOo%3D&amp;reserved=3D0"=
+ originalsrc=3D"https://www.facebook.com/tmx.intermodal/" shash=3D"ubjbQQK7=
+DbU8TQO2B4JY0UFQon8HuoUW4xcZBiFcAp5BiFS9fVMeWykYy42YkI4OH3FFdSMp1BKOzpiUj4r=
+05jY9MC+8K4fxZjYIbhY6DKYyCEJ7w092/ZPHuxMTgGsVf6W6Mg9DuyvjtmbpXKukeJS84mqqiN=
+P2pv13Py5+YIk=3D" target=3D"_blank"><span style=3D"color:#7C7BAD;border:non=
+e windowtext 1.0pt;padding:0in;text-decoration:none"><img border=3D"0" widt=
+h=3D"24" height=3D"25" style=3D"width:.25in;height:.2604in" id=3D"Picture_x=
+0020_5" src=3D"cid:~WRD0628.jpg" alt=3D"Image removed by sender."></span></=
+a><o:p></o:p></p>
+</td>
+<td style=3D"padding:0in 2.25pt 0in 2.25pt">
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;mso-elem=
+ent:frame;mso-element-frame-hspace:2.25pt;mso-element-wrap:around;mso-eleme=
+nt-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-heigh=
+t-rule:exactly">
+<a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Ftwitter.com%2Ftmxintermodal%3Flang%3Den&amp;data=3D05%7C01%7Ccatchall%4=
+0tmxintermodal.com%7Cf83a16076931451b3ef908da70ccbf5c%7Cea53da9730f747b6b27=
+5c7aa732edda6%7C0%7C0%7C637946321953302145%7CUnknown%7CTWFpbGZsb3d8eyJWIjoi=
+MC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&=
+amp;sdata=3DWHmXnhhf4tOK%2FiHv19prH%2BG4KSLz06lEkprmnKeabQU%3D&amp;reserved=
+=3D0" originalsrc=3D"https://twitter.com/tmxintermodal?lang=3Den" shash=3D"=
+aE4RS7Gne/j+3kfod1Xs62DM+wM/gRd8bXipzQmkUT0s+iapSITuOueVEu+7k6Iqrxhrxjr5y63=
+80n8jaFUmVI4kp9H98n+qR4eKuXHJn2VFmSkYsijTv7oK4mHYu9ydBAb+wF97t4QMyVa/CPERoU=
+TdB0ryEPsfP3SzRWxoy/0=3D" target=3D"_blank"><span style=3D"color:#7C7BAD;bo=
+rder:none windowtext 1.0pt;padding:0in;text-decoration:none"><img border=3D=
+"0" width=3D"24" height=3D"25" style=3D"width:.25in;height:.2604in" id=3D"P=
+icture_x0020_6" src=3D"cid:~WRD0628.jpg" alt=3D"Image removed by sender."><=
+/span></a><o:p></o:p></p>
+</td>
+<td style=3D"padding:0in 2.25pt 0in 2.25pt">
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;mso-elem=
+ent:frame;mso-element-frame-hspace:2.25pt;mso-element-wrap:around;mso-eleme=
+nt-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-heigh=
+t-rule:exactly">
+<a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2=
+F%2Foutlook.office.com%2Fmail%2Foptions%2Fmail%2FmessageContent%2FRoamingSi=
+gnatureOptions&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.com%7Cf83a1607=
+6931451b3ef908da70ccbf5c%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C63794=
+6321953458400%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiL=
+CJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DQJEbf5g%2B7sZ1kph=
+66KQlsTrqNUeE1legTwNAleVqnC0%3D&amp;reserved=3D0" originalsrc=3D"https://ou=
+tlook.office.com/mail/options/mail/messageContent/RoamingSignatureOptions" =
+shash=3D"MwC5FlpiNi7z9XImUhp2LMlCpxjhfJdo88Yr2/7wxr3FqyqG2oNnWO5vDM3RRwlV9+=
+tb0jK9jN8itRtLqgRMTcP+bwejv85cj7DCbjzso42GDzelxgERMyQXbZCLSO+u58TBQAqy/tWZA=
+3tGhLTm0rGOdhYxF2zoLb+QPocU8V4=3D" target=3D"_blank"><span style=3D"color:#=
+7C7BAD;border:none windowtext 1.0pt;padding:0in;text-decoration:none"><img =
+border=3D"0" width=3D"24" height=3D"25" style=3D"width:.25in;height:.2604in=
+" id=3D"Picture_x0020_7" src=3D"cid:~WRD0628.jpg" alt=3D"Image removed by s=
+ender."></span></a><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:9.0pt 0in 9.0pt 0in">
+<div align=3D"center">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;border-collapse:collapse">
+<tbody>
+<tr>
+<td style=3D"padding:.75pt .75pt .75pt .75pt">
+<p align=3D"center" style=3D"margin:0in;text-align:center;line-height:10.5p=
+t;mso-element:frame;mso-element-frame-hspace:2.25pt;mso-element-wrap:around=
+;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column=
+;mso-height-rule:exactly">
+<span style=3D"font-size:10.0pt;font-family:&quot;Helvetica&quot;,sans-seri=
+f;color:white"><a href=3D"https://nam11.safelinks.protection.outlook.com/?u=
+rl=3Dhttps%3A%2F%2Fwww.tmxintermodal.com%2F&amp;data=3D05%7C01%7Ccatchall%4=
+0tmxintermodal.com%7Cf83a16076931451b3ef908da70ccbf5c%7Cea53da9730f747b6b27=
+5c7aa732edda6%7C0%7C0%7C637946321953458400%7CUnknown%7CTWFpbGZsb3d8eyJWIjoi=
+MC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&=
+amp;sdata=3DXlE9nspiqrscpncBBL5xIlt1jri4Ln4FichZeRUeUu8%3D&amp;reserved=3D0=
+" originalsrc=3D"https://www.tmxintermodal.com/" shash=3D"zQm7QoJ40F9CTtkiq=
+hicdnwPb9QnrQm63UOUpPd4kFXfR/fJyr8esN2L4wDln0s8xivgaSIpLufW+bZFWmft0DdG+bJj=
+/c9c5TNbx/x34FjBIWdhD2vPK7/rz94TL96hXDZnonvx6n9dLmX7ECWBpr8qdAxgVllnmgbptLW=
+j4kw=3D" target=3D"_blank"><span style=3D"color:green;border:none windowtex=
+t 1.0pt;padding:0in;text-decoration:none">www.tmxintermodal.com</span></a><=
+o:p></o:p></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width=3D"275" style=3D"width:206.25pt;padding:.75pt .75pt .75pt .75pt">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" align=3D"left" width=3D"100%" style=3D"width:100.0%;border-collapse:=
+collapse">
+<tbody>
+<tr>
+<td style=3D"padding:.75pt .75pt .75pt .75pt">
+<p class=3D"MsoNormal" align=3D"center" style=3D"margin-bottom:12.0pt;text-=
+align:center;mso-element:frame;mso-element-frame-hspace:2.25pt;mso-element-=
+wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizo=
+ntal:column;mso-height-rule:exactly">
+<span style=3D"border:solid windowtext 1.0pt;padding:0in"><img border=3D"0"=
+ width=3D"275" height=3D"207" style=3D"width:2.8645in;height:2.1562in" id=
+=3D"Picture_x0020_8" src=3D"cid:~WRD0628.jpg" alt=3D"Image removed by sende=
+r."></span><o:p></o:p></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p style=3D"margin-top:24.0pt"><span style=3D"color:#555555">Sent by <a hre=
+f=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Ftmx=
+intermodal.com%2F&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.com%7Cf83a1=
+6076931451b3ef908da70ccbf5c%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C63=
+7946321953458400%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMz=
+IiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3D1qC6pOixzgcwZu=
+j5kZ%2F8VJNLyDT8XfATW049s6OSQFg%3D&amp;reserved=3D0" originalsrc=3D"http://=
+tmxintermodal.com/" shash=3D"kLDzgpDS9hfQS2Zm8s7yPPBmD3fZklKU2AuOOkBpMHtvMo=
+dIROZuAhFcHiOit1LI4wIqwNU06isJmLljyL3C4GtDaK9MfhyjdUgtP4LcAny6IwWLKNGHzWs8M=
+aeLtJiwQDyqJLFmdPhGkA42dKCk9q2fQgy4ejzgmJYEejqWI70=3D">
+<span style=3D"color:#875A7B;text-decoration:none">TMX Intermodal </span></=
+a>using <a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dht=
+tps%3A%2F%2Fwww.odoo.com%2F%3Futm_source%3Ddb%26utm_medium%3Demail&amp;data=
+=3D05%7C01%7Ccatchall%40tmxintermodal.com%7Cf83a16076931451b3ef908da70ccbf5=
+c%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637946321953458400%7CUnknown=
+%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6=
+Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DoSd0mOgEEOX6wSSKcwSF8jAAK6vvH76TohYZuSPi=
+Piw%3D&amp;reserved=3D0" originalsrc=3D"https://www.odoo.com/?utm_source=3D=
+db&amp;utm_medium=3Demail" shash=3D"t9zZme+7ZUoK4/L5XnBS60fjW8z1uNTftusrG79=
+lXdb9Y9M4kJd28XPGh5ac0PP4Mmlcu39u3mu3KqWJVP4O4ZgEtevMnsUzWK+NaXJ3khj2YvElOm=
+2OykIYXB6Tw6e/Ph9GT0o7PwaTwUK047Aq8e0lC3S2icmX5/B2Fn+Ls3I=3D" target=3D"_bl=
+ank">
+<span style=3D"color:#875A7B;text-decoration:none">Odoo</span></a>. <o:p></=
+o:p></span></p>
+</div>
+<p class=3D"MsoNormal">*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED=
+ TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE T=
+O GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DI=
+EM BEGINS. TMX INTERMODAL WILL NOT
+ BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES =
+THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTM=
+ENTS FOR PICK-UPS AND DELIVERIES. ***
+<o:p></o:p></p>
+</div>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+--_000_PA4PR06MB7309B901FF1C67F63F5D194E8B969PA4PR06MB7309eurp_--
+
+--_004_PA4PR06MB7309B901FF1C67F63F5D194E8B969PA4PR06MB7309eurp_
+Content-Type: image/jpeg; name="~WRD0628.jpg"
+Content-Description: ~WRD0628.jpg
+Content-Disposition: inline; filename="~WRD0628.jpg"; size=823;
+	creation-date="Thu, 28 Jul 2022 19:08:56 GMT";
+	modification-date="Thu, 28 Jul 2022 19:09:47 GMT"
+Content-ID: <~WRD0628.jpg>
+Content-Transfer-Encoding: base64
+
+/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a
+HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy
+MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABkAGQDASIA
+AhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA
+AAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3
+ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm
+p6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA
+AwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx
+BhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK
+U1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3
+uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iii
+gAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKA
+CiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK
+KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoo
+ooAKKKKACiiigAooooAKKKKACiiigD//2Q==
+
+--_004_PA4PR06MB7309B901FF1C67F63F5D194E8B969PA4PR06MB7309eurp_--

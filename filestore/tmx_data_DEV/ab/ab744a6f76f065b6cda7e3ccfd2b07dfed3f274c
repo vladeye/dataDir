@@ -1,0 +1,684 @@
+Received: from BN8PR01MB5603.prod.exchangelabs.com (2603:10b6:408:b9::16) by
+ MW4PR01MB6212.prod.exchangelabs.com with HTTPS; Mon, 19 Sep 2022 12:42:38
+ +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass; 
+ =?utf-8?q?b=3Deo85DHfcMdETt30PyVsWxGS6CEz1lvtW93yYalPkARP8otwUEYKmHl3XcrdO4?=
+ =?utf-8?q?SYkx0qc8STvPf7e8PFTkGevlS0u93yz+wk2hLWfIkYWSSmPgZkHcNIQ3uMTHmkw+j?=
+ =?utf-8?q?A7oYYqSK0lzrTzncczY1eZRG3ESk7FwHPdh6GJ8HY5MgrfZybv43vPHULVCb5Yf7t?=
+ =?utf-8?q?cspZsfIEMQahnGFx26fBVGtX8QjCN9HvPTWSLhDYq0OPvdVt2BsjxVL/v/9EWqD2F?=
+ =?utf-8?q?/gExW1PCOnLh4LNQKM+88WrYaeQ7OJSnnJColahiM2nGhdmyH7+5ZDIK+qQJIgwlN?=
+ =?utf-8?q?82kWRvzcqlT3PJarabb1w=3D=3D?=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AConte?=
+ =?utf-8?q?nt-Type=3AMIME-Version=3AX-MS-Exchange-AntiSpam-MessageData-Chunk?=
+ =?utf-8?q?Count=3AX-MS-Exchange-AntiSpam-MessageData-0=3AX-MS-Exchange-Anti?=
+ =?utf-8?q?Spam-MessageData-1=3B?=
+ bh=zb1n0LzDJITVSlEJ1bCHderVoAUqiDrLGVrFxqv/lvg=; =?utf-8?q?b=3DCrgUvCkqV9Jf?=
+ =?utf-8?q?bH4sT3vwY7p5zdiuAO2t/6iR5RdFvViVxaIbQhjtP5+lyaFpMuft8VhBzlWqgh4Kv?=
+ =?utf-8?q?OO5VexJXNmnqoO/APVyeFiSl9RVaAdiZAA3RcS4oxyu/wjnt1XnhM4jifMCT0fTN9?=
+ =?utf-8?q?u/FwEMMYOnm2MzuoDz4SQDjwi5hXxC8OOJYCpyIth7SFTKfsRBJnd/1kk7Dhs2STD?=
+ =?utf-8?q?Q1j4NO7WI66t20SKCAeLZXZqRX8OjY9TXQu0mIwHc1BK55YoHd7U3a8GoQ/goieHD?=
+ =?utf-8?q?sot9L7yj0Z9PJey6xXheeyAImcG/vIzCLVTzCH+g+TGrVDJBl3543ccoKzjsVRPh+?=
+ =?utf-8?q?wYtqA=3D=3D?=
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 40.107.239.94) smtp.rcpttodomain=tmxintermodal.com
+ smtp.mailfrom=pammlogistics.llc; dmarc=bestguesspass action=none
+ header.from=pammlogistics.llc; dkim=none (message not signed); arc=pass (0
+ oda=1 ltdi=1 spf=[1,1,smtp.mailfrom=pammlogistics.llc]
+ dkim=[1,1,header.d=pammlogistics.llc]
+ dmarc=[1,1,header.from=pammlogistics.llc])
+Received: from DM6PR02CA0117.namprd02.prod.outlook.com (2603:10b6:5:1b4::19)
+ by BN8PR01MB5603.prod.exchangelabs.com (2603:10b6:408:b9::16) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.15; Mon, 19 Sep 2022 12:42:36 +0000
+Received: from DM6NAM11FT112.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:1b4:cafe::4e) by DM6PR02CA0117.outlook.office365.com
+ (2603:10b6:5:1b4::19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5632.21 via Frontend
+ Transport; Mon, 19 Sep 2022 12:42:36 +0000
+Authentication-Results: spf=pass (sender IP is 40.107.239.94)
+ smtp.mailfrom=pammlogistics.llc; dkim=none (message not signed)
+ header.d=none;dmarc=bestguesspass action=none
+ header.from=pammlogistics.llc;compauth=pass reason=109
+Received-SPF: Pass (protection.outlook.com: domain of pammlogistics.llc
+ designates 40.107.239.94 as permitted sender)
+ receiver=protection.outlook.com; client-ip=40.107.239.94;
+ helo=IND01-BMX-obe.outbound.protection.outlook.com; pr=C
+Received: from IND01-BMX-obe.outbound.protection.outlook.com (40.107.239.94)
+ by DM6NAM11FT112.mail.protection.outlook.com (10.13.173.77) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.12 via Frontend Transport; Mon, 19 Sep 2022 12:42:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none; 
+ =?utf-8?q?b=3DMTPKECyJfS4wqI+wUExLWcLXt2YY7fgMyNehnsr559A+QxDv8Iq3rshqtHI4f?=
+ =?utf-8?q?mQ/UGZ7g21FDL+ktLAayrQxd7tv9kJouPNiIs4XZduyxcGc0ukkLS5gtoAG2o89o0?=
+ =?utf-8?q?5YguPxKt3VXfHdOcJPwvpqwAg0e9r7K+c6jkpTgf3nyfzKrFPtFj7BT8EuFKHrn1e?=
+ =?utf-8?q?h7kLNAfTsaZP5VbAj4fiR5rSphazWYYlnplrGAIlWWUUXpf6K6D0TnSvjYPNyTCWb?=
+ =?utf-8?q?zAZsISGVUjPpUkhKYqgTEUTaLsgowWO8loYYdtP2/whCbUbL/AI0UhuRxu2eRgJqG?=
+ =?utf-8?q?NATWhbUJpb4B+ebX/7nlg=3D=3D?=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AConte?=
+ =?utf-8?q?nt-Type=3AMIME-Version=3AX-MS-Exchange-AntiSpam-MessageData-Chunk?=
+ =?utf-8?q?Count=3AX-MS-Exchange-AntiSpam-MessageData-0=3AX-MS-Exchange-Anti?=
+ =?utf-8?q?Spam-MessageData-1=3B?=
+ bh=zb1n0LzDJITVSlEJ1bCHderVoAUqiDrLGVrFxqv/lvg=; =?utf-8?q?b=3DjpglX2HYe70F?=
+ =?utf-8?q?NkxoGYMp5X4AMixQzAeR9s86Na3S7kMAlF4pV7wXLlOIXCahzCEi2JJfFNvY6a8xs?=
+ =?utf-8?q?VeUfNERuYEZT5IBbZbxuf5IVwXx3VEP3ziLcFeYSeu+tTppk/4Ii8+dasmfdLywko?=
+ =?utf-8?q?9CRmAMcX5ITlmjKp7ZVULjTcOsity6kH3yxsEM6NQlC+cROoi002Fguxi9x4O/ZXz?=
+ =?utf-8?q?y5mt2sXKf2uaI/bdVScFln3WFcK0tfHkDO6alrTDEJj/IaksEpPwITFiBTLqDIHli?=
+ =?utf-8?q?FXuWiEiowZCwiTG3nA1tOxYQ3OQYnu6FJOnMAWSluBmfaR8f5AbUWtJQ0YaW9ZiNZ?=
+ =?utf-8?q?1noIw=3D=3D?=
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=pammlogistics.llc; dmarc=pass action=none
+ header.from=pammlogistics.llc; dkim=pass header.d=pammlogistics.llc; arc=none
+Received: from PN2P287MB0304.INDP287.PROD.OUTLOOK.COM (2603:1096:c01:dd::7) by
+ PN0P287MB0181.INDP287.PROD.OUTLOOK.COM (2603:1096:c01:e4::11) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.15; Mon, 19 Sep 2022 12:42:30 +0000
+Received: from PN2P287MB0304.INDP287.PROD.OUTLOOK.COM
+ ([fe80::390f:c113:528e:8298]) by PN2P287MB0304.INDP287.PROD.OUTLOOK.COM
+ ([fe80::390f:c113:528e:8298%6]) with mapi id 15.20.5632.021; Mon, 19 Sep 2022
+ 12:42:30 +0000
+From: Archie Mckenzie <archie@pammlogistics.llc>
+To: "TMX Intermodal Pamm Logistics LLC, Archie Mckenzie"
+	<catchall@tmxintermodal.com>
+Subject: Re: CONGRATULATIONS YOUR TMX CREDENTIALS ARE NOW ACTIVE!!
+Thread-Topic: CONGRATULATIONS YOUR TMX CREDENTIALS ARE NOW ACTIVE!!
+Thread-Index: AQHYy/tWCnqivqCWNE6ycIuOU9QgNa3msmjt
+Date: Mon, 19 Sep 2022 12:42:30 +0000
+Message-ID: 
+ <PN2P287MB0304A07BB50A3FC2C4660022C14D9@PN2P287MB0304.INDP287.PROD.OUTLOOK.COM>
+References: 
+ <221049970864692.1663573327.665949583053589-openerp-15136-res.partner@ip-172-31-25-70>
+In-Reply-To: 
+ <221049970864692.1663573327.665949583053589-openerp-15136-res.partner@ip-172-31-25-70>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+msip_labels: 
+Authentication-Results-Original: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=pammlogistics.llc;
+x-ms-traffictypediagnostic: 
+ PN2P287MB0304:EE_|PN0P287MB0181:EE_|DM6NAM11FT112:EE_|BN8PR01MB5603:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4e2c442e-f5b3-4901-515d-08da9a3c6de5
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+X-Microsoft-Antispam-Untrusted: BCL:0;
+X-Microsoft-Antispam-Message-Info-Original:  =?utf-8?q?30TjDcBzsxzycUdlQDcnI?=
+ =?utf-8?q?NFgGoJQESUeaf2xDsOnv6fWdvqx2v0sqnv8iORUKlP1Zcdx5y/JgPKgZZbKOBv4wD?=
+ =?utf-8?q?MvaH3dxCvXWJ+KVOHZfan6oGaT7MZtJ2U3PdI8NvMdzktVFju2fkUyiBRacfosWf1?=
+ =?utf-8?q?C5I5OkbfRrgbSuP3HiLw0bIrHrUOOuq1ekHCjLsaYGckv5Zi2tSB0rQezg6JltVlS?=
+ =?utf-8?q?c1bi3xf4ThPv9X4xb3QY1OQIuR7rL7RVf/T8XQWQkb93NChm0Wwz40qYsUHg90Aqq?=
+ =?utf-8?q?66v7B9PxVVS/VjlDpdjtB41HTTm0/6FKDwMkj5pvpz0Uh7eEFyb+Ke53+51Tf5Bfi?=
+ =?utf-8?q?lbP/moO+i1l7p5RO7LOaLfTkmT9OVyymBuSRG2/TazdT25RDKSiVXVRuY0QJAjhzW?=
+ =?utf-8?q?OqjxKsoXDe4H4IiWjMI+mRzAV/2fKfW6t0BHwSxG/pxzOqCIVUyPI1avmTLt2AG6m?=
+ =?utf-8?q?0Q5je5aiv93P/6FeJv088Ba/XjP5mUMR0qBbMwH0eQ2DkTvM2qde+T6/ZDBYi6HQ9?=
+ =?utf-8?q?c4LgMc6Q/SaZtuavPmluYJsB8Q4TW7NngmRbYXwwrbmfnhpDlX/6WkeN/N4QUVLak?=
+ =?utf-8?q?H16NX+6dNrAIucGWJKbejqL9b75I7v7CEaPcV8embj0wgUBOpeJ6NF8+BTGEOP+9V?=
+ =?utf-8?q?eu+Eco0zdXoQwELm4mrzNoff2nSFgb2urFOCpE31DkVLe9X1ikK+Dn7jnGr/oFWXi?=
+ =?utf-8?q?x9BAlMTqxgCt50G/D43fiDQu85xHnwekpEug7EHbBxkWkQPMn8c8ZgZ1UUsWGsmt+?=
+ =?utf-8?q?AWJIiEjya55xHq+QBsmq2UVn5C9cP1uIUszrQ4M9QoeM+1vXN4LJQ=3D=3D?=
+X-Forefront-Antispam-Report-Untrusted:  =?utf-8?q?CIP=3A255=2E255=2E255=2E25?=
+ =?utf-8?b?NTtDVFJZOjtMQU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOlBO?=
+ =?utf-8?q?2P287MB0304=2EINDP287=2EPROD=2EOUTLOOK=2ECOM=3BPTR=3A=3BCAT=3ANON?=
+ =?utf-8?b?RTtTRlM6KDEzMjMwMDIyKSgzNjYwMDQpKDEzNjAwMykoMzQwOTYwMDUpKDM5NjAw?=
+ =?utf-8?b?MykoMzc2MDAyKSgzOTgzMDQwMDAwMykoMzQ2MDAyKSg0NTExOTkwMTUpKDcw?=
+ =?utf-8?q?66003=29=2866946007=29=2876116006=29=285660300002=29=288676002=29?=
+ =?utf-8?q?=2866556008=29=2866446008=29=2866476007=29=2864756008=29=28919560?=
+ =?utf-8?b?MTcpKDY5MTYwMDkpKDg2MzYyMDAxKSg4OTM2MDAyKSgzMTYwMDIpKDMzNjU2?=
+ =?utf-8?q?002=29=28122000001=29=2838100700002=29=2840140700001=29=288338040?=
+ =?utf-8?b?MDAwMSkoNTI1MzYwMTQpKDUzNTQ2MDExKSg1NTIzNjAwNCkoNzY5NjAwNSko?=
+ =?utf-8?q?41300700001=29=286506007=29=2871200400001=29=28478600001=29=28999?=
+ =?utf-8?b?MzYwMDMpKDE2NjAwMikoMTg2MDAzKSg1NTAxNjAwMykoOTY4NjAwMykoMjYwMDUp?=
+ =?utf-8?q?=2838070700005=29=282906002=29=2819627405001=29=28141343001=29=28?=
+ =?utf-8?q?48373003=29=3BDIR=3AOUT=3BSFP=3A1102=3B?=
+X-MS-Exchange-AntiSpam-MessageData-Original-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-Original-0: 
+ =?us-ascii?Q?7V0HEC1/qHLkT0mwa2RCC40WqTFiW1RlmdwAN0GUmkwaD/nN7T9I3T3VZNsQ?=
+ =?us-ascii?Q?XzS16I/k5wcArgHkxXpkU4ednGaOka4tIKu4FukDmvH/9pohxqEv3xBwQWCk?=
+ =?us-ascii?Q?IyrLPQW4Yj9EWDfBhZ/knAOV3xA/NvF4aETD7am2X0Fbek+KXtTNNuyNUxP/?=
+ =?us-ascii?Q?Doo8ZaYq9LYHlV7i3ygOD9O0EpO4oB2eDEzoBu6fD7lUX6H/mbwzHOgXRMQW?=
+ =?us-ascii?Q?AkMFkUtgoUG++ZcMM58mfhxlelNCiNUI/V9vFDI4gKuHnB1aNAxAXAsqpXBH?=
+ =?us-ascii?Q?dx+MYN5bPUlyY0zJv8mKRUvpk0NjpeACJC0mwBTm2UtUvckm4KZHStiE54I/?=
+ =?us-ascii?Q?ROJ8XLVINNOw5bnirlx2gVIuQ/UM4S9YiGApFmbd6Q5Pssmh1XdI12+5bxp2?=
+ =?us-ascii?Q?YxsSfvIt3ZESPmy8L5a5xf91fJ96175aMtRU5e4yhzMNQ3m/kfQuEgufyjRj?=
+ =?us-ascii?Q?xUWg6qKKCH47P3KKxtjcEGVN6tJKCYZu7Ar8mwzN2lQKT5tymEAAj29bIOgh?=
+ =?us-ascii?Q?0X7IdcSbZ4RGzqW+pVLKoEFnbyARzXPRqCd9/auFaUaw3tD0rzTbqxL1wuVL?=
+ =?us-ascii?Q?gPHIW/M4AX0MNHZFEVlHHjwNFaKZdlWgP1xSUdQeCgHbDlTclJBmIt0iTF4V?=
+ =?us-ascii?Q?zN0QbMUFD4PuUrGwd19azYpFdb7YT/fuPwbHoyBOSCkgF5awpyLuCWxSheyf?=
+ =?us-ascii?Q?DYS8Dpd/JY1cTx4TgnYc+tfImuy49RaJv3+8cFRDzNj91dnsAGrJZjvJdgB7?=
+ =?us-ascii?Q?yEVC2tbr8a2xxLkyNoKzvq0ddsapg0i8ioDSRN1F4wNbwz2oY7PJH7ENsm2+?=
+ =?us-ascii?Q?5Nh6FrAytqaoSOUdbTFw3FW4nzZrXmVohvLuCwXOWJiCsfrKGtUB0sA/lqUC?=
+ =?us-ascii?Q?wXsLEeaXvb5JYphCQiq1BD4TwsQ9U5WGVty8Zc4E4SGM8MnsJMTYuGP/scIc?=
+ =?us-ascii?Q?j/UXBGy3epaA6wUXFZhHqi1xAy1WIDwaRFGRDVCrcPPZqpMgXHkJrzPfUzXi?=
+ =?us-ascii?Q?UIaxR57hKZQPb25nj6/1DDjWVaLGnjyD8IShBjulF5zrdBLSzzZWQyQD49R5?=
+ =?us-ascii?Q?lXX+j0ffuHyFXHYroDmE0oQRBDqp815Qm9ZsyDfyOmhtLKWShrf9HAhtbel/?=
+ =?us-ascii?Q?adbbN9bzQY+bsEoID1lvFzhw6/FKFrwZhaQWIQEJ4inrherEn2I9Q9M7Xtsy?=
+ =?us-ascii?Q?r2vzQ7yIN01ZPEuthlV/AkLOXNkRZNGlqvQwpNZbkIvm8HPWxd1J3cn6lUNP?=
+ =?us-ascii?Q?DFTUgdgGidWBP0IRPq2awQIt9GqNsDixfGKSYVtnOGfRBUpHpDa6RgAmdCaR?=
+ =?us-ascii?Q?0tBQQjS1XbOQgXjprWKotFCpEe/lpQP2lZll7SZiUgRZ3bKB1nRywpsENtNG?=
+ =?us-ascii?Q?bm55OvghsqQVgkq1YNe+9Fzr8kuwbWp3XZmMV+LSISmNqlPkOikXxIw/AW9P?=
+ =?us-ascii?Q?Vq3qsOKFlLE8arr129kgQtOYt8Qb/7eCuxpeSMG9jVTDsTSZxWWYFJeADoWM?=
+ =?us-ascii?Q?RzFmg0rgoo0yfkFJpBinVU7Kf0YR4ym9a6enTFwnghPT3pIeF9XJrwHs4KpW?=
+ =?us-ascii?Q?6OclgoKJqJ7v/jjBHXVyNJqrRm+NH88WmdXxcURl?=
+Content-Type: multipart/related;
+	boundary="_004_PN2P287MB0304A07BB50A3FC2C4660022C14D9PN2P287MB0304INDP_";
+	type="multipart/alternative"
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PN0P287MB0181
+Return-Path: archie@pammlogistics.llc
+X-MS-Exchange-Organization-ExpirationStartTime: 19 Sep 2022 12:42:35.8806
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ 4e2c442e-f5b3-4901-515d-08da9a3c6de5
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: 
+ DM6NAM11FT112.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersPromoted: 
+ DM6NAM11FT112.eop-nam11.prod.protection.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource: 
+ DM6NAM11FT112.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id-Prvs: 
+ 8045f399-4251-4186-c281-08da9a3c6a97
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjQwLjEwNy4yMzkuOTQ7Q1RSWTpJTjtM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOklORDAxLUJNWC1v?=
+ =?utf-8?q?be=2Eoutbound=2Eprotection=2Eoutlook=2Ecom=3BPTR=3Amail-bmxind01o?=
+ =?utf-8?q?n2094=2Eoutbound=2Eprotection=2Eoutlook=2Ecom=3BCAT=3ANONE=3BSFS?=
+ =?utf-8?b?OigxMzIzMDAyMikoNDYzNjAwOSkoNDUxMTk5MDE1KSg3MDY2MDAzKSgyMjE4?=
+ =?utf-8?q?6003=29=281096003=29=2834756004=29=285660300002=29=288676002=29?=
+ =?utf-8?q?=286916009=29=2886362001=29=2845080400002=29=2833656002=29=288330?=
+ =?utf-8?q?0400002=29=2866574015=29=2883320400002=29=2883280400002=29=288331?=
+ =?utf-8?q?0400002=29=2883290400002=29=2840140700001=29=2883380400001=29=288?=
+ =?utf-8?q?4300400001=29=2858800400005=29=2852536014=29=2853546011=29=287696?=
+ =?utf-8?b?MDA1KSg2NTA2MDA3KSgzMzk2NDAwNCkoNzYzNjAwMykoMzM2MDEyKSgxNjYwMDIp?=
+ =?utf-8?b?KDU1MDE2MDAzKSg4NjM2MDA0KSg5Njg2MDAzKSgzNTYwMDUpKDI2MDA1KSgxOTYy?=
+ =?utf-8?q?7405001=29=28141343001=29=2848373003=29=3BDIR=3AINB=3B?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Sep 2022 12:42:35.3650
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ 4e2c442e-f5b3-4901-515d-08da9a3c6de5
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ DM6NAM11FT112.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN8PR01MB5603
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.8028816
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5632.018
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?iso-8859-1?Q?NO3X8CAgz561XF/7svmkyGw7MQiBEuph0grBergZAN62pUvSvwe89WK136?=
+ =?iso-8859-1?Q?foluz9l7GIi1jhmz2nLQM7bWo2tIjquaOzdLgVxAHMAJRGzroMTQ9n4lCy?=
+ =?iso-8859-1?Q?SC5XMQEkRdKPl1HjrHDVykh3camN1XQeGlJsZuHuYmwbhMoRG9/+NfqKH1?=
+ =?iso-8859-1?Q?YNcJ4hLosr+84P8ZIRLnctL3NzSwIGHiIkjz9O6E16XXIbcVTGtdYwsLjR?=
+ =?iso-8859-1?Q?I0OvFUL1B7+x8elTtR9owkl2C9t/fNM2GL1HfkYMdxdJEpqqN6olAXNgPG?=
+ =?iso-8859-1?Q?c1bzmsz7yo21ZccZ+9yFZ0XCQOPsovtFN4hx/mQi3WKtssjyPoe5QUJe02?=
+ =?iso-8859-1?Q?LHx/XmbuirTrSfRO2v5lBqHNaxH4UsaGtJ6BP+XAPCs8OgSlifxerjSoMx?=
+ =?iso-8859-1?Q?QPCMpyGDhAPgKlAE3o7PkpfmwO2YA00PhFVGTBQ41/Xy9n+Hl6zMoaR0/n?=
+ =?iso-8859-1?Q?Txap51+1naWfSHIeZT4a0YGPVcjzz6VJlCLqcVFHNCIBi5SHd2mrMKjhjD?=
+ =?iso-8859-1?Q?xZ1Lx84WjlIy4pZ1wF0T/YKmARlinlFWHCH9vCj+6bsyEoRYvbu7DZqEeF?=
+ =?iso-8859-1?Q?ZdkTdlQYRjMsGgbLuhhQzDLZezI+JwjsEJx5On+ahRjBOGX1k/qAfgzpJh?=
+ =?iso-8859-1?Q?AL3E5+mh3WCbjT3jf3bxz64DHIF8zD/g3YCtyRxUKB9jTUsqrs46B1Sc4Z?=
+ =?iso-8859-1?Q?eMdGp6slsV+9bUpIqIzaZkuAHeHFg5kekdZC2xD7pF6jrYbTS2rAalfr1S?=
+ =?iso-8859-1?Q?uXR1bF8lUFg+yigggXslGvIPKddPiDdOORKidZvdKPMeaQI/Dk7oQ1qGJx?=
+ =?iso-8859-1?Q?n7eINqdgRQYPEaCGQjmhWh7YP0rkW6R6ilaZd1aqhB/QvqQwK+TBf04FA/?=
+ =?iso-8859-1?Q?tBDSp4TkSYIEXLmsKwBDbeZvZwQOuKhC+W56siT0hrdttSQN/lXDdTLV5B?=
+ =?iso-8859-1?Q?4jyA6dOZIcFj/npz1EUHFibDP6/PSM7S450CLJW3rgdbJ0deQqGbb29GSL?=
+ =?iso-8859-1?Q?Zqj+zqrViAY9k/c9b8L9Oa6z+GqUJmiFFP4iopGghNkfcoZjOfDv4fXtvO?=
+ =?iso-8859-1?Q?zEVREhkHef0odMfyM4hKKPpAes/ISAS5ZRjD/Ukntkvq6woUiquDditig/?=
+ =?iso-8859-1?Q?eBstorNPWXIqrD5dx2BZjdfAJMiavWL6rLXd7LwohmYhQrKyHMEZGRgIXc?=
+ =?iso-8859-1?Q?DsRs+8lOk1u73UUHsFDvApPgk6WfkYLuP33OORkPnUxljGfdyAr+kKsyDr?=
+ =?iso-8859-1?Q?ICxnBtEDk4XGXWbeiajQlWrV7salvYHpFc+OsGwe1yugUQSWn81U9d4fGi?=
+ =?iso-8859-1?Q?erKwklNolU+9JXeE6/z9f3tmwuz+lnQsQjxi/zt+v95Cv0sD09CK3i7Ov0?=
+ =?iso-8859-1?Q?af2E+bNBtQ70gEdn0mNe4G+xGBxNWu+Bzp6FUHXh9vixA4BK4NMGgFwutS?=
+ =?iso-8859-1?Q?JcTHvcXmC6KpXs8gRuioOpGhMe6aND4EZB+SUwAb0O3N9EA4tqv6rzqBdm?=
+ =?iso-8859-1?Q?6ukcRNhjLksKRx7BctDSObIA1TxZSY663dkFEPC2S/Y8uB0nkBZM4N5OqA?=
+ =?iso-8859-1?Q?e5zoghKLJ0/TI/QjMp4XlalwHOBj0rPKYeWYwR9pRUDNfwghuhN8T7KNYK?=
+ =?iso-8859-1?Q?4bD7nmn6MfuPS4wz34SDpjjS43zbydGB/Sf4B7gHpWaD6/63gHMMHcqmmH?=
+ =?iso-8859-1?Q?rFJCdmWlWC7EbLTX5arbEwEb4Hhf9i6s489h+u24aXPq1SZuh3OReYynUY?=
+ =?iso-8859-1?Q?EBM6G91S6sVH0aCf2wm66wgtT4IcnsJbVJ5MClxh5nAH+oZVtg1fnlRyba?=
+ =?iso-8859-1?Q?JzOizX2TJpso5iI6LKds+lb8zJJ1EtK/JZrL24AIp3BEU0ZqMbOxEXHG/W?=
+ =?iso-8859-1?Q?6ycAPMvA81V9O2QzStlOkUfx1WJud354ZSPDICAl48YfU4W/SrUc1llNbZ?=
+ =?iso-8859-1?Q?y1HBgvHP1zylVhr4XGdq4bHtCiynNbhTIm1f48PWQhTRm5UmuFOWa2Wfe3?=
+ =?iso-8859-1?Q?CF/GuT?=
+MIME-Version: 1.0
+
+--_004_PN2P287MB0304A07BB50A3FC2C4660022C14D9PN2P287MB0304INDP_
+Content-Type: multipart/alternative;
+	boundary="_000_PN2P287MB0304A07BB50A3FC2C4660022C14D9PN2P287MB0304INDP_"
+
+--_000_PN2P287MB0304A07BB50A3FC2C4660022C14D9PN2P287MB0304INDP_
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Xavier,
+
+Unfortunately, I am not able to log in to the system. Can you please check?
+
+
+[cid:b9dd6b90-e758-4724-b8cb-7b7fc76ff9c7]
+
+Archie Mckenzie
+
+Logistics Co-Ordinator
+
+Pamm Logistics LLC
+
+Email: archie@pammlogistics.l<mailto:archie@pammlogistics.com>lc
+
+Ph: (425) 818-4141| 1314 145th St SW Lynnwood, WA 98087|
+
+MC 1302603 | For Billing Enquiry, Please contact billing@pammlogistics.llc<=
+mailto:billing@pammlogistics.llc>
+
+This e-mail is the property of Pamm Logistics LLC and may contain confident=
+ial and privileged material for the sole use of the intended recipient(s). =
+Any review, use, distribution, or disclosure by others is strictly prohibit=
+ed. If you are not the intended recipient (or authorized to receive for the=
+ recipient), please contact the sender or reply to Pamm Logistics LLC messa=
+ging info@pammlogistics.llc<mailto:info@pammlogistics.llc> and delete all c=
+opies of the message. This email (and any attachments hereto) are not inten=
+ded to be an offer (or an acceptance) and do not create or evidence a bindi=
+ng and enforceable contract between Pamm Logistics LLC and the intended rec=
+ipient or any other party, and may not be relied on by anyone as the basis =
+of a contract by estoppel or otherwise. Thank you.
+________________________________
+From: Contacts <xavierc@tmxintermodal.com>
+Sent: Monday, September 19, 2022 3:42 AM
+To: Archie Mckenzie <archie@pammlogistics.llc>
+Subject: CONGRATULATIONS YOUR TMX CREDENTIALS ARE NOW ACTIVE!!
+
+
+Congratulations !!!! You are set up in our system. Tomorrow morning, using =
+the credentials found below you have full access to our rates portal, track=
+ing system, and your documents per load.
+
+
+Just log into tmxintermodal.com and get started !!!!
+
+
+
+ Please reach out if you have any questions.
+
+
+
+
+USERNAME:archie@pammlogistics.llc
+
+PASSWORD:1148928
+
+Sent by TMX Intermodal <http://tmxintermodal.com> using Odoo<https://www.od=
+oo.com?utm_source=3Ddb&utm_medium=3Demail>.
+
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+
+--_000_PN2P287MB0304A07BB50A3FC2C4660022C14D9PN2P287MB0304INDP_
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><s=
+tyle type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bott=
+om:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 11pt;=
+ color: rgb(0, 36, 81); background-color: rgb(255, 255, 255);" class=3D"ele=
+mentToProof">
+Hi Xavier,</div>
+<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 11pt;=
+ color: rgb(0, 36, 81); background-color: rgb(255, 255, 255);" class=3D"ele=
+mentToProof">
+<br>
+</div>
+<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 11pt;=
+ color: rgb(0, 36, 81); background-color: rgb(255, 255, 255);" class=3D"ele=
+mentToProof">
+Unfortunately, I am not able to log in to the system. Can you please check?=
+</div>
+<div>
+<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 11pt;=
+ color: rgb(0, 36, 81);">
+<br>
+</div>
+<div id=3D"Signature">
+<div>
+<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 11pt;=
+ color: rgb(0, 36, 81);">
+<div dir=3D"ltr" align=3D"left" style=3D"font-family: Arial, Helvetica, san=
+s-serif; font-size: small; text-align: -webkit-left; margin-left: 0pt; colo=
+r: rgb(80, 0, 80); background-color: rgb(255, 255, 255);">
+<table style=3D"border:none;border-collapse:collapse">
+<tbody>
+<tr style=3D"height:87pt">
+<td style=3D"font-family:&quot;Google Sans&quot;, Roboto, RobotoDraft, Helv=
+etica, Arial, sans-serif;margin:0px;vertical-align:top;padding:5pt;overflow=
+:hidden">
+<p dir=3D"ltr" style=3D"line-height:1.44;margin-top:0pt;margin-bottom:0pt">=
+<span style=3D"font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0);"><=
+span style=3D"border:none;display:inline-block;overflow:hidden;width:197px;=
+height:71px"><img style=3D"max-width: 100%;" data-outlook-trace=3D"F:1|T:1"=
+ src=3D"cid:b9dd6b90-e758-4724-b8cb-7b7fc76ff9c7"></span></span></p>
+</td>
+<td style=3D"font-family:&quot;Google Sans&quot;, Roboto, RobotoDraft, Helv=
+etica, Arial, sans-serif;margin:0px;vertical-align:top;padding:5pt;overflow=
+:hidden">
+<p dir=3D"ltr" style=3D"line-height:1.44;margin-top:0pt;margin-bottom:0pt">=
+<span style=3D"font-size:11pt;font-family:Calibri, sans-serif"><font color=
+=3D"#073763" style=3D"">Archie Mckenzie</font></span></p>
+<p dir=3D"ltr" style=3D"line-height:1.44;margin-top:0pt;margin-bottom:0pt">=
+<span style=3D"font-size:11pt;font-family:Calibri, sans-serif;font-weight:7=
+00"><font color=3D"#073763" style=3D"">Logistics Co-Ordinator</font></span>=
+</p>
+<p dir=3D"ltr" style=3D"line-height:1.44;margin-top:0pt;margin-bottom:0pt">=
+<span style=3D"font-size:11pt;font-family:Calibri, sans-serif;font-weight:7=
+00"><font color=3D"#073763" style=3D"">Pamm Logistics LLC</font></span></p>
+<p dir=3D"ltr" style=3D"line-height:1.44;margin-top:0pt;margin-bottom:0pt">=
+<font color=3D"#073763" style=3D""><span style=3D"font-size:11pt;font-famil=
+y:Calibri, sans-serif">Email:
+</span><span style=3D"font-size:11pt;font-family:Calibri, sans-serif;font-s=
+tyle:italic"><a href=3D"mailto:archie@pammlogistics.com" target=3D"_blank" =
+style=3D"color: rgb(17, 85, 204);">archie@pammlogistics.l</a>lc</span></fon=
+t></p>
+<p dir=3D"ltr" style=3D"line-height:1.44;margin-top:0pt;margin-bottom:0pt">=
+<font color=3D"#073763" style=3D""><span style=3D"font-size:11pt;font-famil=
+y:Calibri, sans-serif">Ph: (425) 818-4141|
+</span><span style=3D"font-size:10pt;font-family:Calibri, sans-serif">1314 =
+145th St SW Lynnwood, WA 98087</span><span style=3D"font-size:11pt;font-fam=
+ily:Calibri, sans-serif">|</span></font></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p dir=3D"ltr" style=3D"font-family: Arial, Helvetica, sans-serif; font-siz=
+e: small; text-align: -webkit-left; line-height: 1.38; margin-top: 0pt; mar=
+gin-bottom: 0pt; color: rgb(80, 0, 80); background-color: rgb(255, 255, 255=
+);">
+<span style=3D"font-size: 8pt; font-family: Arial; color: rgb(0, 0, 0);">MC=
+ 1302603 | For Billing Enquiry, Please contact
+<a href=3D"mailto:billing@pammlogistics.llc" target=3D"_blank" style=3D"col=
+or: rgb(17, 85, 204);">
+billing@pammlogistics.llc</a></span></p>
+<br style=3D"color: rgb(80, 0, 80); font-family: Arial, Helvetica, sans-ser=
+if; font-size: small; text-align: -webkit-left; background-color: rgb(255, =
+255, 255);">
+<span style=3D"text-align: -webkit-left; font-size: 6pt; font-family: Arial=
+; color: rgb(0, 0, 0);">This e-mail is the property of Pamm Logistics LLC a=
+nd may contain confidential and privileged material for the sole use of the=
+ intended recipient(s). Any review,
+ use, distribution, or disclosure by others is strictly prohibited. If you =
+are not the intended recipient (or authorized to receive for the recipient)=
+, please contact the sender or reply to Pamm Logistics LLC messaging
+<a href=3D"mailto:info@pammlogistics.llc" target=3D"_blank" style=3D"color:=
+ rgb(17, 85, 204);">
+info@pammlogistics.llc</a>&nbsp;and delete all copies of the message. This =
+email (and any attachments hereto) are not intended to be an offer (or an a=
+cceptance) and do not create or evidence a binding and enforceable contract=
+ between Pamm Logistics LLC and the intended
+ recipient or any other party, and may not be relied on by anyone as the ba=
+sis of a contract by estoppel or otherwise. Thank you</span><span style=3D"=
+text-align: -webkit-left; font-size: 8pt; font-family: Arial; color: rgb(0,=
+ 0, 0);">.</span><br>
+</div>
+</div>
+</div>
+</div>
+<div id=3D"appendonsend"></div>
+<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Contacts &lt;xavierc@=
+tmxintermodal.com&gt;<br>
+<b>Sent:</b> Monday, September 19, 2022 3:42 AM<br>
+<b>To:</b> Archie Mckenzie &lt;archie@pammlogistics.llc&gt;<br>
+<b>Subject:</b> CONGRATULATIONS YOUR TMX CREDENTIALS ARE NOW ACTIVE!!</font=
+>
+<div>&nbsp;</div>
+</div>
+<div>
+<div>
+<div>
+<p class=3D"x_x_elementToProof" style=3D"margin:0px; font-family:Calibri,sa=
+ns-serif; font-size:11pt; color:rgb(0,0,0); line-height:11.75pt">
+<span class=3D"x_elementToProof" style=3D"margin:0px; padding:0px; border:1=
+pt none windowtext; font-weight:inherit; font-size:inherit; line-height:inh=
+erit; font-family:&quot;Comic Sans MS&quot;,serif,EmojiFont; vertical-align=
+:baseline; color:inherit">Congratulations !!!!
+ You are set up in our system. Tomorrow morning, using the credentials foun=
+d below you have full access to our rates portal, tracking system, and your=
+ documents per load.</span><span style=3D"margin:0px; padding:0px; border:1=
+pt none windowtext; vertical-align:baseline; color:inherit"></span><span st=
+yle=3D"margin:0px; padding:0px; border:0px; vertical-align:baseline; color:=
+inherit"></span></p>
+<p class=3D"x_x_elementToProof" style=3D"margin:0px; font-family:Calibri,sa=
+ns-serif; font-size:11pt; color:rgb(0,0,0); line-height:11.75pt">
+<span style=3D"margin:0px; padding:0px; border:0px; vertical-align:baseline=
+; color:inherit"><br>
+</span></p>
+<p class=3D"x_x_elementToProof" style=3D"margin:0px; font-family:Calibri,sa=
+ns-serif; font-size:11pt; color:rgb(0,0,0); line-height:11.75pt">
+<span style=3D"margin:0px; padding:0px; border:0px; font-weight:inherit; fo=
+nt-size:14pt; line-height:normal; font-family:&quot;Comic Sans MS&quot;,Cha=
+lkboard,cursive; vertical-align:baseline; color:rgb(12,100,192)">Just log i=
+nto tmxintermodal.com and get started !!!!</span></p>
+<p style=3D"margin:0px; font-family:Calibri,sans-serif; font-size:11pt; col=
+or:rgb(0,0,0); line-height:11.75pt">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; vertica=
+l-align:baseline; color:inherit">&nbsp;</span><span style=3D"margin:0px; pa=
+dding:0px; border:1pt none windowtext; vertical-align:baseline; color:inher=
+it"></span><span style=3D"margin:0px; padding:0px; border:0px; vertical-ali=
+gn:baseline; color:inherit"></span></p>
+<p style=3D"margin:0px; font-family:Calibri,sans-serif; font-size:11pt; col=
+or:rgb(0,0,0); line-height:11.75pt">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; font-we=
+ight:inherit; font-size:inherit; line-height:inherit; font-family:&quot;Com=
+ic Sans MS&quot;,serif,EmojiFont; vertical-align:baseline; color:inherit">&=
+nbsp;Please reach out if you have any questions.</span><span style=3D"margi=
+n:0px; padding:0px; border:1pt none windowtext; vertical-align:baseline; co=
+lor:inherit"></span><span style=3D"margin:0px; padding:0px; border:0px; ver=
+tical-align:baseline; color:inherit"></span></p>
+<p class=3D"x_x_elementToProof" style=3D"margin:0px; font-family:Calibri,sa=
+ns-serif; font-size:11pt; color:rgb(0,0,0); margin-bottom:8pt; line-height:=
+15.6933px">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; vertica=
+l-align:baseline; color:inherit"><br>
+</span></p>
+<p style=3D"margin:0px; font-family:Calibri,sans-serif; font-size:11pt; col=
+or:rgb(0,0,0); margin-bottom:8pt; line-height:15.6933px">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; vertica=
+l-align:baseline; color:inherit">&nbsp;</span><span style=3D"margin:0px; pa=
+dding:0px; border:0px; vertical-align:baseline; color:inherit"></span></p>
+<p class=3D"x_x_elementToProof" style=3D"margin:0px; font-family:Calibri,sa=
+ns-serif; font-size:11pt; color:rgb(0,0,0); margin-bottom:8pt; line-height:=
+15.6933px">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; font-we=
+ight:inherit; font-size:inherit; line-height:inherit; font-family:&quot;Com=
+ic Sans MS&quot;,serif,EmojiFont; vertical-align:baseline; color:inherit; b=
+ackground-color:yellow">USERNAME</span><span style=3D"margin:0px; padding:0=
+px; border:1pt none windowtext; font-weight:inherit; font-size:inherit; lin=
+e-height:inherit; font-family:&quot;Comic Sans MS&quot;,serif,EmojiFont; ve=
+rtical-align:baseline; color:inherit">:archie@pammlogistics.llc<b style=3D"=
+font-weight:bolder"></b></span><span style=3D"margin:0px; padding:0px; bord=
+er:0px; vertical-align:baseline; color:inherit"></span></p>
+<p class=3D"x_x_elementToProof" style=3D"margin:0px; font-family:Calibri,sa=
+ns-serif; font-size:11pt; color:rgb(0,0,0); margin-bottom:8pt; line-height:=
+15.6933px">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; font-we=
+ight:inherit; font-size:inherit; line-height:inherit; font-family:&quot;Com=
+ic Sans MS&quot;,serif,EmojiFont; vertical-align:baseline; color:inherit; b=
+ackground-color:yellow">PASSWORD</span><span style=3D"margin:0px; padding:0=
+px; border:1pt none windowtext; font-weight:inherit; font-size:inherit; lin=
+e-height:inherit; font-family:&quot;Comic Sans MS&quot;,serif,EmojiFont; ve=
+rtical-align:baseline; color:inherit">:1148928</span></p>
+</div>
+<p style=3D"color:#555555; margin-top:32px">Sent <span>by <a href=3D"https:=
+//nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Ftmxintermodal.=
+com%2F&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.com%7C4e2c442ef5b34901=
+515d08da9a3c6de5%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C6379918815835=
+53461%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6I=
+k1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DX8J5vs%2FyeAqFuhGsN3y5dY0=
+FTv5ni%2FZRypjEa8dNepc%3D&amp;reserved=3D0" originalsrc=3D"http://tmxinterm=
+odal.com/" shash=3D"RYtwSNISZ7MaYF4Jy6eTXALU9D+B8HUDO04bq406UU3WhyJiRFZUDsR=
+0c2jJOUAVopzf48w4wg2UqjFy/pc/a96JQSygRfJTvMZqf3jpSA/lzMkEoPteh2j5f8bJrmfB7e=
+54TG4AT8lH3/31dSMTVyq/KSbIHoJy+p5yfPqmi5s=3D" style=3D"text-decoration:none=
+; color:#875A7B">
+<span>TMX Intermodal</span> </a></span>using <a target=3D"_blank" href=3D"h=
+ttps://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fwww.odoo=
+.com%2F%3Futm_source%3Ddb%26utm_medium%3Demail&amp;data=3D05%7C01%7Ccatchal=
+l%40tmxintermodal.com%7C4e2c442ef5b34901515d08da9a3c6de5%7Cea53da9730f747b6=
+b275c7aa732edda6%7C0%7C0%7C637991881583553461%7CUnknown%7CTWFpbGZsb3d8eyJWI=
+joiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%=
+7C&amp;sdata=3DN79undZrwgPrFpE2Bh%2FwL2pMx0E4Ox1TSPNZH0PZTvU%3D&amp;reserve=
+d=3D0" originalsrc=3D"https://www.odoo.com/?utm_source=3Ddb&amp;utm_medium=
+=3Demail" shash=3D"n3mBFDvx1skMQFsIk/SDsFHGbkjqKkRVQFyLl5TeBQ2TJU7OALcIfdVj=
+W97DUud8fy78o83fYs3oRBscQCrPcQ4IlRObXToXFxQuHmVwgkkyyonglqGXC5tkovgGB0YHjfA=
+2p9sXPK7JGOw89pB+03jgnNi8HpekcsvcxqLrMZw=3D" style=3D"text-decoration:none;=
+ color:#875A7B">
+Odoo</a>. </p>
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+--_000_PN2P287MB0304A07BB50A3FC2C4660022C14D9PN2P287MB0304INDP_--
+
+--_004_PN2P287MB0304A07BB50A3FC2C4660022C14D9PN2P287MB0304INDP_
+Content-Type: image/png; name="Outlook-r1njbmfj.png"
+Content-Description: Outlook-r1njbmfj.png
+Content-Disposition: inline; filename="Outlook-r1njbmfj.png"; size=4774;
+	creation-date="Mon, 19 Sep 2022 12:42:30 GMT";
+	modification-date="Mon, 19 Sep 2022 12:42:30 GMT"
+Content-ID: <b9dd6b90-e758-4724-b8cb-7b7fc76ff9c7>
+Content-Transfer-Encoding: base64
+
+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
+
+--_004_PN2P287MB0304A07BB50A3FC2C4660022C14D9PN2P287MB0304INDP_--

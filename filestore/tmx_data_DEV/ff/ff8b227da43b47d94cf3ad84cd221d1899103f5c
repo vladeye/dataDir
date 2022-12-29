@@ -1,0 +1,774 @@
+Received: from BYAPR01MB4517.prod.exchangelabs.com (2603:10b6:a03:95::25) by
+ MW4PR01MB6212.prod.exchangelabs.com with HTTPS; Tue, 11 Oct 2022 16:05:09
+ +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass; 
+ =?utf-8?q?b=3DG9Q2RWpTDR22Ag+7gKws8XGK2e7glGIAYxle8dDAT1xu2U1EDUr+s9P4djooS?=
+ =?utf-8?q?0Ak6p700LnB1aUCwkejE54YUHP4/mMwTA4DQxGBnmUXFaFIJHR0GIIlmCYKvcLOMY?=
+ =?utf-8?q?5HGxuMXuM4nJBK9bCM+KxhsKJOIyqDIeypz9v04cWxpOEi9ZBweuMw9oAW0b7ui3N?=
+ =?utf-8?q?dH5HBfpFGk3JzewuKBXkl4Q/qtwT/n4xu+DJFPdJ2wn7qxWJ9A0MaAiO7SsbcjFHG?=
+ =?utf-8?q?6gjPVfpctNqqvqbgL1QBt+2CL3vhU4HDK/0I86tA+UhEQZdG7ppiJf8KHBM9JGp3t?=
+ =?utf-8?q?OpP3tVp1ij/S4HUs5Dr+Q=3D=3D?=
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AConte?=
+ =?utf-8?q?nt-Type=3AMIME-Version=3AX-MS-Exchange-AntiSpam-MessageData-Chunk?=
+ =?utf-8?q?Count=3AX-MS-Exchange-AntiSpam-MessageData-0=3AX-MS-Exchange-Anti?=
+ =?utf-8?q?Spam-MessageData-1=3B?=
+ bh=63WLJ5Qp63OOF/+NMEEO5O7k32yP7B7k/LsDCcuaf6g=; =?utf-8?q?b=3DBPIp/L8Va4YI?=
+ =?utf-8?q?BU9Uc/Vj+yAX+Atw6wRYvOHW8lmTl4WKOl0FYY1pkaHt5AzsHmfbCshFbdNJ0dU1K?=
+ =?utf-8?q?0aSKPeaj3uEwdsI0aydjcD7WiIoSQS50qUHX6QPSmuRWEG/D7LWl0m7wb+sQBAwFe?=
+ =?utf-8?q?A2yXMZSFWUoPt6IfibTMfhw5Bgx/c91EsI22Mc8w3t0pn1l/VFIt8Hi4G+zQaMSWJ?=
+ =?utf-8?q?+wRb7rjkRDs4qfBY+fgRRtPsqoLJ/o6iYHdU3ssx270uExDMtWJoOwVzm0yqCxduI?=
+ =?utf-8?q?WwxWe9wSQwgVAzBZrOu6DWHxswZ6H5bFe5irjihkT+k5bWgm0KIaKpgVRu0C6plga?=
+ =?utf-8?q?zCeCQ=3D=3D?=
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 40.107.20.47) smtp.rcpttodomain=tmxintermodal.com smtp.mailfrom=gw-world.com;
+ dmarc=bestguesspass action=none header.from=gw-world.com; dkim=pass
+ (signature was verified) header.d=gw-world.com; arc=pass (0 oda=1 ltdi=1
+ spf=[1,1,smtp.mailfrom=gw-world.com])
+Received: from MW4PR03CA0057.namprd03.prod.outlook.com (2603:10b6:303:8e::32)
+ by BYAPR01MB4517.prod.exchangelabs.com (2603:10b6:a03:95::25) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5709.15; Tue, 11 Oct 2022 16:05:06 +0000
+Received: from CO1NAM11FT065.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:303:8e:cafe::23) by MW4PR03CA0057.outlook.office365.com
+ (2603:10b6:303:8e::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5709.19 via Frontend
+ Transport; Tue, 11 Oct 2022 16:05:05 +0000
+Authentication-Results: spf=pass (sender IP is 40.107.20.47)
+ smtp.mailfrom=gw-world.com; dkim=pass (signature was verified)
+ header.d=gw-world.com;dmarc=bestguesspass action=none
+ header.from=gw-world.com;compauth=pass reason=109
+Received-SPF: Pass (protection.outlook.com: domain of gw-world.com designates
+ 40.107.20.47 as permitted sender) receiver=protection.outlook.com;
+ client-ip=40.107.20.47; helo=EUR05-DB8-obe.outbound.protection.outlook.com;
+ pr=C
+Received: from EUR05-DB8-obe.outbound.protection.outlook.com (40.107.20.47) by
+ CO1NAM11FT065.mail.protection.outlook.com (10.13.174.62) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5709.10 via Frontend Transport; Tue, 11 Oct 2022 16:05:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none; 
+ =?utf-8?q?b=3DbNoGO9mOlmotWjGK9bh/lIe5xNylpoP4vSOFWgfSxum6KIq1MPiSUtllaceoz?=
+ =?utf-8?q?0J3ButmDcEmsTkgxfOTLsYOpxCHMdg75quKz8ijEmqRFHLsNlXAEhh7NcG3OqGypM?=
+ =?utf-8?q?tLG4VtU0LetBCeJN6MbqAoNt6pT0tYbJ03FCnOo7UX8CIix0Hs47Ofjv1xujAh1I6?=
+ =?utf-8?q?rxch2dwhX3TlhCGTIdX50WQ63N/2boOwCplukN+peCo5988b3mhu2FSxKEgHEqMyx?=
+ =?utf-8?q?m5xomEaClAYah6yaHLdKkL1iasNJj8akGyeiExUVe2y8ylG5Pj85JlE2UiaYaMmlG?=
+ =?utf-8?q?Y7WA7Ljr4/xlut0/31LVA=3D=3D?=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AConte?=
+ =?utf-8?q?nt-Type=3AMIME-Version=3AX-MS-Exchange-AntiSpam-MessageData-Chunk?=
+ =?utf-8?q?Count=3AX-MS-Exchange-AntiSpam-MessageData-0=3AX-MS-Exchange-Anti?=
+ =?utf-8?q?Spam-MessageData-1=3B?=
+ bh=63WLJ5Qp63OOF/+NMEEO5O7k32yP7B7k/LsDCcuaf6g=; =?utf-8?q?b=3DPT8bM0eJCjBM?=
+ =?utf-8?q?jNEoxl7Lw1qWPUGz8hkJeCF5DZHw2S/nwDRgC9FZaoA2l7Tl3JgkHEhrZWKjU7tLN?=
+ =?utf-8?q?NcrkArTwaIiaTya2ZpCLQVoqvv+iVDuP48EEvKaTrmPc0V96URVVJ5VUFn5Es0YSE?=
+ =?utf-8?q?FAMvi3iPJClF472ELr3zwJIepL0mVYZTBwaz6NjALTZ1VixzoCUrn+efkqzu2zpmE?=
+ =?utf-8?q?WwAT6a8yZTeg4uWgFxL+rTUAO7fGmcgr3C33Z1ruIsgZc8u0JzABFFW6Sx0SLV1tV?=
+ =?utf-8?q?Tk8pTmpQat0qBs/N6b54DB6jxKHEEFSp7vvfa+IYTDRC098VWXOg/b+MzHmIBdUO8?=
+ =?utf-8?q?bNdgQ=3D=3D?=
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 104.40.229.156) smtp.rcpttodomain=tmxintermodal.com
+ smtp.mailfrom=gw-world.com; dmarc=bestguesspass action=none
+ header.from=gw-world.com; dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gw-world.com;
+ s=selector1; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AContent-Typ?=
+ =?utf-8?q?e=3AMIME-Version=3AX-MS-Exchange-SenderADCheck=3B?=
+ bh=63WLJ5Qp63OOF/+NMEEO5O7k32yP7B7k/LsDCcuaf6g=; =?utf-8?q?b=3DCkJyiuT7Te3X?=
+ =?utf-8?q?HFaWF8KDWj1nBz8eg1HxKffiC1xyuMtXPT0otIv0mPe0S5y/8bwZgIFnnLnzDhQot?=
+ =?utf-8?q?qdyIhDjLAjonIzj0Jy1X/4YUPN9rYMaSJbhR2mEKtAkC1jf7vMPG0QJPRrRurMRow?=
+ =?utf-8?q?sjxgbHoGzA96P5avO9h8q75qQJVfFr+C+lG37PwKK+qwxV12dXncAg7AQajjBhuEO?=
+ =?utf-8?q?WPXMgfaMlNOdKLxGUvYWZ2c9VmxT5bQxJ2QB0yBHlB9D75FZYjhyW/ruI4Xm4llzN?=
+ =?utf-8?q?SH+jH6V7B0kKiyvbYY9XaSurYZzVPY3t6RexoP3rgcSuvFB70Z1YPw5diprc/eZ1e?=
+ =?utf-8?q?KMkvQ=3D=3D?=
+Received: from AM5PR1001CA0067.EURPRD10.PROD.OUTLOOK.COM
+ (2603:10a6:206:15::44) by DB9PR02MB8891.eurprd02.prod.outlook.com
+ (2603:10a6:10:3dd::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5709.15; Tue, 11 Oct
+ 2022 16:05:01 +0000
+Received: from AM0EUR02FT049.eop-EUR02.prod.protection.outlook.com
+ (2603:10a6:206:15:cafe::f3) by AM5PR1001CA0067.outlook.office365.com
+ (2603:10a6:206:15::44) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5676.17 via Frontend
+ Transport; Tue, 11 Oct 2022 16:05:01 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 104.40.229.156)
+ smtp.mailfrom=gw-world.com; dkim=none (message not signed)
+ header.d=none;dmarc=bestguesspass action=none header.from=gw-world.com;
+Received-SPF: Pass (protection.outlook.com: domain of gw-world.com designates
+ 104.40.229.156 as permitted sender) receiver=protection.outlook.com;
+ client-ip=104.40.229.156; helo=eu1.smtp.exclaimer.net; pr=C
+Received: from eu1.smtp.exclaimer.net (104.40.229.156) by
+ AM0EUR02FT049.mail.protection.outlook.com (10.13.54.116) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5709.10 via Frontend Transport; Tue, 11 Oct 2022 16:05:00 +0000
+Received: from EUR05-VI1-obe.outbound.protection.outlook.com (104.47.17.171)
+	 by eu1.smtp.exclaimer.net (104.40.229.156) with Exclaimer Signature Manager
+	 ESMTP Proxy eu1.smtp.exclaimer.net (tlsversion=TLS12,
+	 tlscipher=TLS_ECDHE_WITH_AES256_SHA384); Tue, 11 Oct 2022 16:05:01 +0000
+X-ExclaimerHostedSignatures-MessageProcessed: true
+X-ExclaimerProxyLatency: 6820497
+X-ExclaimerImprintLatency: 4399098
+X-ExclaimerImprintAction: 223dd21145e5460c9a815f324876a5bf
+Content-Type: multipart/related;
+	boundary="----_=_NextPart_3eb5b92b-3aee-4901-a32e-9f3829922e18"
+Received: from DB9PR02MB6796.eurprd02.prod.outlook.com (2603:10a6:10:1f9::19)
+ by AM0PR02MB5891.eurprd02.prod.outlook.com (2603:10a6:208:183::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5709.15; Tue, 11 Oct
+ 2022 16:04:58 +0000
+Received: from DB9PR02MB6796.eurprd02.prod.outlook.com
+ ([fe80::ea56:6f2:f373:c16d]) by DB9PR02MB6796.eurprd02.prod.outlook.com
+ ([fe80::ea56:6f2:f373:c16d%6]) with mapi id 15.20.5709.015; Tue, 11 Oct 2022
+ 16:04:58 +0000
+From: Paul Ryan pry460 <paul.ryan@gw-world.com>
+To: "TMX Intermodal GW WORLDWIDE, Paul Ryan" <catchall@tmxintermodal.com>
+Subject: Re: Assistance Please?
+Thread-Topic: Assistance Please?
+Thread-Index: AQHY3YpWJ090bgND2EelRSsU4hR/eK4JW0vO
+Date: Tue, 11 Oct 2022 16:04:58 +0000
+Message-ID: 
+ <DB9PR02MB6796EED44DD2A719F611142AC8239@DB9PR02MB6796.eurprd02.prod.outlook.com>
+References: 
+ <266229810937739.1665503824.180737495422363-openerp-16216-res.partner@ip-172-31-25-70>
+In-Reply-To: 
+ <266229810937739.1665503824.180737495422363-openerp-16216-res.partner@ip-172-31-25-70>
+Accept-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+Authentication-Results-Original: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=gw-world.com;
+x-ms-traffictypediagnostic:  =?utf-8?q?DB9PR02MB6796=3AEE=5F=7CAM0PR02MB5891?=
+ =?utf-8?q?=3AEE=5F=7CAM0EUR02FT049=3AEE=5F=7CDB9PR02MB8891=3AEE=5F=7CCO1NAM?=
+ =?utf-8?q?11FT065=3AEE=5F=7CBYAPR01MB4517=3AEE=5F?=
+X-MS-Office365-Filtering-Correlation-Id: 59306c0e-80d1-49fb-fdf3-08daaba25bad
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam-Untrusted: BCL:0;
+X-Microsoft-Antispam-Message-Info-Original:  =?utf-8?q?dzSz5XAE6xsvyzwgDhIEy?=
+ =?utf-8?q?RQz4Hf48Aw6xQ9VkkgM6q6AfgaEpRg9JR3KL7XVtTuRsvYI0cdvdu/VGOcGByK6n/?=
+ =?utf-8?q?bP2MWOmnAvMZqh6344lIpAvLoqo93Uer4dD/hPAiQfXdbuFlvvBdui7Bec9mjnbxw?=
+ =?utf-8?q?rpxnEtcQe3xM1nEH7xAbefk22yFRCP1uXuVvMQtQv5YBf+bTiZHV2k4jq36aZGPM6?=
+ =?utf-8?q?zWIbPJil5Zm5GWNS+SxMrwvB1EcT+foOglMW7a+SVcop2//ljK47RzDoKS2XawWA7?=
+ =?utf-8?q?SXcUDvckBc7tNmLDDoveYK/rIrar8V8gkPdwpvqTZ65KAsnFV8Zpjp4fULS2af3oi?=
+ =?utf-8?q?9mqIthDcywpdB9cQ3UslZjvU5idB5DbQBym2Qpw7NsFnvvraW0gNlKT1y1t9lwbde?=
+ =?utf-8?q?Yi8BuOp8pJ0HMbNtiJcQ9blzlIldGbt0BUPRGaI9bTWKb9cayyzMrN95yN4AApLCM?=
+ =?utf-8?q?p1BNM3b8q9X+9eGqQQeapIGYvXBScry01M32CX3MbnG9M2HgOJ3u4HRapv6oVkIbl?=
+ =?utf-8?q?T1gMiqhuYxnoHZiKoFxaSIh7NIicCOfk8JLDyYZX40jlJsfqW1dI8UXqsfmL7R0jP?=
+ =?utf-8?q?YpshM9vNfv7o55ztfCOt/zDf0nn3z8jqHiAd5KSyQHjvPfijjlNaui2RucNLIbEV9?=
+ =?utf-8?q?k1eezVxBVL7O6Fse4iIa07NUSBCr+4LQugT7xeTPf+5Yl+XuW1hp8M3ACHJoosrG6?=
+ =?utf-8?q?wgvphfMEzBRnBLmvIJCUmNBpg0Qqh4QgZGLIm3AwwGjiZoihI4CBGQ8JuvvoqU4+P?=
+ =?utf-8?q?8pEQJn5e1w4lTcJKMWZL8+FeCkEwlYnd9UM67Gn1C+VE4gtJjQRP6JqOh7jO0o6EW?=
+ =?utf-8?q?xHOvwntsntYT4Gh25QrUm20fBh84F7?=
+X-Forefront-Antispam-Report-Untrusted:  =?utf-8?q?CIP=3A255=2E255=2E255=2E25?=
+ =?utf-8?b?NTtDVFJZOjtMQU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOkRC?=
+ =?utf-8?q?9PR02MB6796=2Eeurprd02=2Eprod=2Eoutlook=2Ecom=3BPTR=3A=3BCAT=3ANO?=
+ =?utf-8?b?TkU7U0ZTOigxMzIzMDAyMikoNDYzNjAwOSkoMzk4NjA0MDAwMDIpKDM3NjAwMiko?=
+ =?utf-8?b?MzY2MDA0KSgzNDYwMDIpKDEzNjAwMykoMzk2MDAzKSg0NTExOTkwMTUpKDE2?=
+ =?utf-8?q?6002=29=2838100700002=29=28122000001=29=2886362001=29=28380707000?=
+ =?utf-8?b?MDUpKDkxOTU2MDE3KSg3MTE2MDAzKSg3Njk2MDA1KSg2NTA2MDA3KSg1MzU0?=
+ =?utf-8?q?6011=29=2841300700001=29=2866446008=29=2866476007=29=2866556008?=
+ =?utf-8?b?KSg2Njk0NjAwNykoNzYxMTYwMDYpKDY0NzU2MDA4KSg4Njc2MDAyKSg0Nzg2?=
+ =?utf-8?b?MDAwMDEpKDcxMjAwNDAwMDAxKSg5NjYwMDUpKDk2ODYwMDMpKDMxNjAwMiko?=
+ =?utf-8?q?6916009=29=282906002=29=283480700007=29=285660300002=29=288936002?=
+ =?utf-8?b?KSgxODYwMDMpKDUyNTM2MDE0KSg2NjU3NDAxNSkoODMzODA0MDAwMDEpKDMz?=
+ =?utf-8?q?656002=29=2840140700001=29=2855016003=29=2819273905006=29=2813086?=
+ =?utf-8?q?0200001=29=3BDIR=3AOUT=3BSFP=3A1101=3B?=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR02MB5891
+Return-Path: paul.ryan@gw-world.com
+X-EOPAttributedMessage: 1
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: 
+ AM0EUR02FT049.eop-EUR02.prod.protection.outlook.com
+X-MS-Office365-Filtering-Correlation-Id-Prvs: 
+ 499ea4a8-7a5d-486a-3b61-08daaba25884
+X-Microsoft-Antispam-Untrusted: BCL:0;
+X-Microsoft-Antispam-Message-Info-Original:  =?utf-8?q?hJiUr5BFjIxjn8Cp+DxOA?=
+ =?utf-8?q?qAJFDS5OHUG6GCuyboluwfjBt0WQcQ3D6V2bHZWKy0hkGwD7HzEh4eD+zS8vgaH0H?=
+ =?utf-8?q?EBJRZpPzzH6NX3J6fUB0k6hpw4uDFN72VTd/s7HY4Ol6PLFyCVtmTr7AxQ95a7UhG?=
+ =?utf-8?q?X1LiXxWRQaAMII9K37dheEGs0fpI7uIQ0RAJpuAUyhW43TCuJl4o1FWWi5Nsa4sOs?=
+ =?utf-8?q?riy8JJsNnFicr+V9353/p5lWgZyvABAhFwXh3+6JaIUSkTp1fcE40KJlNVPcuMPkS?=
+ =?utf-8?q?kMI5Q9XEzSW4HRkDB988GRDRT66zjDz9m1i01crcDEEpGDgCn76zghMH84k+LJxYZ?=
+ =?utf-8?q?h15Htakc9xEdTkGxFU/8Est6BMxbPGzRLS990dJg56oYVl5K+plh7AiNdNUO4g98R?=
+ =?utf-8?q?9ue21yrLaXgklSs5SWL26zPoazP1L1qQhQkxpuoGcWobWkimxCQsCkRPLzUnm52y0?=
+ =?utf-8?q?4yJHAPCJdBUMblzT5YLuHOqlLwqTN9rYdOcLP2iwZkMlsccTNhkzt1wm09pqjHWfs?=
+ =?utf-8?q?FnHxezpZ9qu3mv3JVwn93Bd1LQiGGgJ9xtOmz3KD4aumv885Iea/ZbyCBAZdy9L93?=
+ =?utf-8?q?mD17XszIUW4KO1hqcBJB8lajBkd9RYt93cwJiMgYCKN8T/SfKqqF5vUZjHYsIbsMd?=
+ =?utf-8?q?Cyp7n3ldUPlqXz6ZghCKD2D8QjjEaA0bpMObWZhVbrmWnujLQgXPqMv9xQNYhG6Zv?=
+ =?utf-8?q?pYqXuQG3w9kquGZRSboAmREEQrYtdautjRBmCbvL5SpTsZCEJ2SgjqFWqt4bxFR9h?=
+ =?utf-8?q?pqGx9MO4xyaaWLtpPZDqyZ/0Mk67DVtPSqg64txGYDHcWevi2ezSa7SdIEmE8gsxj?=
+ =?utf-8?q?TKcw4+UjBZSG8ILwIGi2tO/64Ij3tUCN9wUxeIVq+wIfLO5omNaA=3D=3D?=
+X-Forefront-Antispam-Report-Untrusted:  =?utf-8?q?CIP=3A104=2E40=2E229=2E156?=
+ =?utf-8?b?O0NUUlk6Tkw7TEFORzplbjtTQ0w6MTtTUlY6O0lQVjpDQUw7U0ZWOk5TUE07SDpl?=
+ =?utf-8?q?u1=2Esmtp=2Eexclaimer=2Enet=3BPTR=3Aeu1=2Esmtp=2Eexclaimer=2Enet?=
+ =?utf-8?b?O0NBVDpOT05FO1NGUzooMTMyMzAwMjIpKDQ2MzYwMDkpKDEzNjAwMykoMzQ2MDAy?=
+ =?utf-8?b?KSgzNzYwMDIpKDM5NjAwMykoMzk4NjA0MDAwMDIpKDQ1MTE5OTAxNSkoNDY5?=
+ =?utf-8?q?66006=29=2840470700004=29=2836840700001=29=289686003=29=28966005?=
+ =?utf-8?q?=29=2852536014=29=288936002=29=2845080400002=29=2840140700001=29?=
+ =?utf-8?q?=287696005=29=285660300002=29=2840480700001=29=2819273905006=29?=
+ =?utf-8?q?=2815974865002=29=2826005=29=2886362001=29=2870586007=29=28711600?=
+ =?utf-8?b?MykoODY3NjAwMikoMTg2MDAzKSgzNjg2MDcwMDAwMSkoNjkxNjAwOSkoNDA0?=
+ =?utf-8?q?60700003=29=2855016003=29=2833656002=29=286506007=29=2853546011?=
+ =?utf-8?b?KSgzMzk2NDAwNCkoMTU4NDMzNDUwMDQpKDQ3ODYwMDAwMSkoMzM2MDEyKSgz?=
+ =?utf-8?q?16002=29=283480700007=29=2841300700001=29=2866574015=29=287020600?=
+ =?utf-8?b?NikoNzYzNjAwMykoODMzODA0MDAwMDEpKDQ3MDc2MDA1KSgzNTYwMDUpKDc1?=
+ =?utf-8?q?96003=29=282906002=29=2882740400003=29=2882310400005=29=28166002?=
+ =?utf-8?q?=29=28130860200001=29=28563064011=29=3BDIR=3AOUT=3BSFP=3A1101=3B?=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR02MB8891
+X-MS-Exchange-Organization-ExpirationStartTime: 11 Oct 2022 16:05:03.7527
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ 59306c0e-80d1-49fb-fdf3-08daaba25bad
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: 
+ CO1NAM11FT065.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersPromoted: 
+ CO1NAM11FT065.eop-nam11.prod.protection.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource: 
+ CO1NAM11FT065.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id-Prvs: 
+ b675768f-c71e-432e-8c73-08daaba25a20
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjQwLjEwNy4yMC40NztDVFJZOklFO0xB?=
+ =?utf-8?b?Tkc6ZW47U0NMOjE7U1JWOjtJUFY6TkxJO1NGVjpOU1BNO0g6RVVSMDUtREI4LW9i?=
+ =?utf-8?q?e=2Eoutbound=2Eprotection=2Eoutlook=2Ecom=3BPTR=3Amail-db8eur05on?=
+ =?utf-8?q?2047=2Eoutbound=2Eprotection=2Eoutlook=2Ecom=3BCAT=3ANONE=3BSFS?=
+ =?utf-8?b?OigxMzIzMDAyMikoNDYzNjAwOSkoNDUxMTk5MDE1KSgyMjE4NjAwMykoNjUw?=
+ =?utf-8?b?NjAwNykoMzM2NTYwMDIpKDY5MTYwMDkpKDk2ODYwMDMpKDc2MzYwMDMpKDMz?=
+ =?utf-8?q?6012=29=285660300002=29=2853546011=29=2855016003=29=2833964004=29?=
+ =?utf-8?q?=2826005=29=288636004=29=2852536014=29=287696005=29=2884300400001?=
+ =?utf-8?b?KSgxNjYwMDIpKDEwOTYwMDMpKDY2NTc0MDE1KSgzNDgwNzAwMDA3KSgxNTg0?=
+ =?utf-8?q?3345004=29=28966005=29=2886362001=29=2840140700001=29=288676002?=
+ =?utf-8?q?=29=2858800400005=29=287116003=29=2819273905006=29=2815974865002?=
+ =?utf-8?q?=29=2883380400001=29=2834756004=29=2845080400002=29=2813086020000?=
+ =?utf-8?q?1=29=28563064011=29=3BDIR=3AINB=3B?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Oct 2022 16:05:03.4558
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ 59306c0e-80d1-49fb-fdf3-08daaba25bad
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: =?utf-8?q?Te?=
+ =?utf-8?q?nantId=3Dd430f0b8-e30e-4a8d-b589-3f97a9617219=3BIp=3D=5B104=2E40?=
+ =?utf-8?b?LjIyOS4xNTZdO0hlbG89W2V1MS5zbXRwLmV4Y2xhaW1lci5uZXRd?=
+X-MS-Exchange-CrossTenant-AuthSource: 
+ CO1NAM11FT065.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR01MB4517
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:06.0237225
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5709.021
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?utf-8?B?UmxheHJwaHJQbkVPWFV5SFhTSEhiYW1sNW5LeWN4Tis1Mjc2Z21SOWNsMHdS?=
+ =?utf-8?B?b0xOaHRaS09HaGRIcE16ckxwaFk4c1pQRnBwSWR2ZDR5UG80aU5NVGNMTk82?=
+ =?utf-8?B?VVBpb2MrWG42SUdiTE1sQkEwMDZaTm16UUJsOVhuTU9Sa2xBVFc1UVl0OWxq?=
+ =?utf-8?B?a0ZiQ3ZxTTlkbk1YR2U3dnpudUxkUi80KzVDNkRjYVBkSFpmeHdkQ05nK1dL?=
+ =?utf-8?B?WFdVTnc2S2dsWEFseThiTmFIc1ZKSUVaZlQvc2VxK3BZVmhISXZBOUUrUEE4?=
+ =?utf-8?B?OTRzeGFBVHFmUkVJUFBTbEhYNjREZW55MGFseEsrNW5keEpxUnpDVUR0dDE2?=
+ =?utf-8?B?a3pRNmZjd1htczRRbUh0bW54TDcwa2hTRDhtM0ZqUWlsczJ4ZURwWlZxN2wr?=
+ =?utf-8?B?dXhlc2Jib1M1NXdlVy9CZFBSTVFNZVRsejdFRGdMeWZMVmtZUzBJVEt3dCtZ?=
+ =?utf-8?B?OFM0SG5BaCtmeklKT2FVcVJ2aWFlMXBDUHlGWFY5MlNzdi9YbExBTk80R3Qw?=
+ =?utf-8?B?c0VuUmhQbW5wdzUwWWROOTl6VG52U2hwNWhnU3R3TUhnaEhsUi91cUZNdVVt?=
+ =?utf-8?B?ajRaeTlKbWg2Umw2NWwzYmpTeDRNSUxFbUQycHpXUUs2S20xZzN1aFIxYkZV?=
+ =?utf-8?B?aFd6TkNpdE9Fd0s4L0dnMkdyNkYwK2FGN1VZWVJ2RWQvSWRUemN5U3ZYek5u?=
+ =?utf-8?B?a0h6eHNuZU95cCswUUtDRk4vWjBFSVhFTkp6cGZ1dFMxQUJnQ29xa0p5NUJq?=
+ =?utf-8?B?MTRwNDdFeDAwbHhaRFMzaFBpWDhOaUE5cTZ3MG8xNDBhUkVMeE5uczR3RDd1?=
+ =?utf-8?B?ai9KMnVydlk2TTFYelJZOEJWZXFDcytGekEwSWxHNy9scnFXbnd6VjdXMENC?=
+ =?utf-8?B?UDJVK3NoWEJ0UmJiV29LWGMwSlgxRG9lSlgrRXRrcnhZT2FDNERuSUJhNWZC?=
+ =?utf-8?B?OGprSVluQ2FiQTR2Nm13TEFFcStXOGNmeGtLMVdCZHZSZ3JJcExtVlBDL01Q?=
+ =?utf-8?B?NE43RnFZSEk1TmcvMFc5M0VEWUhPMUJrYURBZjlacjk4ZFhLL0V4cXpTaW9y?=
+ =?utf-8?B?VzF1QTlNcHlQUXJPZGpUMkNhTU13bmtMK0JoYTBTelJ0RThBTnBlYmVqUGcz?=
+ =?utf-8?B?bEI4aFg4SEEvQnl5N2xRYThPeE8xTFJYL2lUU0RXZlI5bFFSM3ErZ0dETldH?=
+ =?utf-8?B?dTdKNHFPS1Y5ZE5vbGZ6Y3pNSEpESmtTV29xaVExRnFNb0w0OVlCTGtNRWUz?=
+ =?utf-8?B?MnpXV3hnQkFjN2VGM1RTNTZOaW5mcWp6a2djd3VEVG9nYjZ1UmxiWTRybWFE?=
+ =?utf-8?B?Y0ZnUkRES2s3b0tZN1NRck5FdjVKMDBzUWQxQkVuQUF2YVNYU1VWdmFHUmF0?=
+ =?utf-8?B?NUM2T2g0YXBZQWRKamxVK0NXYWl4UzRUT0R6QytTNnpFUUlaR2VwN2c3RDkz?=
+ =?utf-8?B?QWQzOHBTL1JhVUc3YVA5YnlDdDdJMnFXNHlYengzdGtVb2NRWm1KWm43V0pN?=
+ =?utf-8?B?NDhENTJDQVhjanlNQ0dwWE96TGZ0U3FSc0p0bEMrWFoyVE1FNmRkcy9UM1A0?=
+ =?utf-8?B?V0dCNExlVE4yZC9xdmU5YnU5dzJjNGxjRFVPb3ZjOTc1V0xDVGhwRm1LUDI0?=
+ =?utf-8?B?citSYVBsaWJQRUcxS0pTbzJLQTJMY2daam00bGVYSExGZWtEcUY1MzhINEpU?=
+ =?utf-8?B?eXQwTTRnZFMxckVETThsckxYbGZzY3UvRE16aWZmcmVvczFNczRpUkVZc2Jy?=
+ =?utf-8?B?amhoL3U4RkZsN3JkNzBPZjM0WnhwdTBjUld0dlZSdUlUalY2QXhRVUQ5NnAz?=
+ =?utf-8?B?Y2o0cjUxbEhmWjMrSldZNnZESmg1Nm9NeVF0MS8yaGc1ZFpvSUhTUjdnaGVj?=
+ =?utf-8?B?UW93QytCUUZZMTE5akhwN0wxNDBJbUNsTllzU0NyQjY0a3hTdTdIUk9RcDY3?=
+ =?utf-8?B?cDh0Q2FXQ0FudU5JWjNoTDB5K0o3SG1sdkV3a2R3R0VESmhNR1VtdVpBaFp5?=
+ =?utf-8?B?VStGU3RldHk1WWNjaGhaRnI5K2ljZi9qNWpENlpyY2pmaC84cENlU1hUTzNV?=
+ =?utf-8?B?bDZHU0x6VFFxSS94aXd2Sm04Vk8vUjBBRWdhUnFkRTltNG91QXNLRlduWW1p?=
+ =?utf-8?B?OFIyZ1BHS2pJV0gvaFJoSTY2UjNWVldoY3VBWEt1MGxOZUJ6YmxiZHI5ZlRM?=
+ =?utf-8?B?TW9jUTlVKzcwMW45S0dtN0MwdjJpYTQxNUNnd1VlQnZKMU12bStWSmMySCtw?=
+ =?utf-8?B?SEFnMVA5TEZtSXhKY0IzVVNiY3NoeGNqcGRJdmk1c3Y0MWxlNVRyK3dWbVRm?=
+ =?utf-8?B?Mm9lblpOdmY3ekZ6dXNIK0ZiazZQeGFCK0djQllRZ20yajZnZ2ZNaWYva29Z?=
+ =?utf-8?B?elFxdzkzY2h6UTZWSTZSSmZseGRMWlYrYXhGeitxV3NpQUJLNnY0TnBZSWJI?=
+ =?utf-8?B?UXQ2M0ZiUHNQUDlxZmxuNmc0YkJaUmV5Nk5RMUo1SzdhUHpPRDJLaExSNU5T?=
+ =?utf-8?B?MmJFTGxoYXU5bktqWjBjQXB5R3ZQSUEyTk9hUWlMRG0xYnhuNUlPdFhGTmVz?=
+ =?utf-8?B?MkZyTVk5MWhTcmZDT1hoeVFnSzA1NzVDK2ZYcmRYZC9URnhhUndtQWs1QjNQ?=
+ =?utf-8?Q?W+/xYeWr/h/i8vhYGlWbKVSsO9Ns=3D?=
+MIME-Version: 1.0
+
+------_=_NextPart_3eb5b92b-3aee-4901-a32e-9f3829922e18
+Content-Language: en-US
+Content-Type: multipart/alternative;
+	boundary="_000_DB9PR02MB6796EED44DD2A719F611142AC8239DB9PR02MB6796eurp_"
+
+--_000_DB9PR02MB6796EED44DD2A719F611142AC8239DB9PR02MB6796eurp_
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+I will send asap
+Thanks
+
+
+With best regards,
+
+
+Paul Ryan
+
+Business Development Manager
+
+Chicago
+
+
+
+Gebr=C3=BCder Weiss =E2=80=A2 Transport and Logistics
+
+
+
+Gebruder Weiss, Inc
+
+Transport and Logistics
+
+1020 N. Wood Dale Road
+
+Wood Dale, IL 60191
+
+
+T  +1.847.795.4300
+
+M +1.630.837 9558
+
+
+
+paul.ryan@gw-world.com<mailto:paul.ryan@gw-world.com>
+
+www.gw-world.com<https://eur02.safelinks.protection.outlook.com/?url=3Dhttp=
+%3A%2F%2Fwww.gw-world.com%2F&data=3D05%7C01%7Cpaul.ryan%40gw-world.com%7Cd4=
+370164b94d4c30753b08da7b0e0e58%7Cd430f0b8e30e4a8db5893f97a9617219%7C0%7C0%7=
+C637957597548572337%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2l=
+uMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=3DoU799woURXfersl=
+fyYdYHlq52la8n8dOpR7rfakBP30%3D&reserved=3D0>
+
+
+
+
+
+All our services are subject to the General Terms and Conditions available =
+at http://www.gw-world.com/locations/usa<https://eur02.safelinks.protection=
+.outlook.com/?url=3Dhttp%3A%2F%2Fwww.gw-world.com%2Flocations%2Fusa&data=3D=
+05%7C01%7Cpaul.ryan%40gw-world.com%7Cd4370164b94d4c30753b08da7b0e0e58%7Cd43=
+0f0b8e30e4a8db5893f97a9617219%7C0%7C0%7C637957597548572337%7CUnknown%7CTWFp=
+bGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%=
+7C3000%7C%7C%7C&sdata=3DqHfaZLDCpEROxNrkGg8jxLq%2FCkTPwAM7NZSSnBeLO40%3D&re=
+served=3D0>.
+
+[cid:image548758.png@FC6E728C.E2DBD090]
+For the sake of our environment: Please be aware of the fact that printing =
+this message consumes valuable resources.=E2=80=8B
+________________________________
+From: Administrator <tech@tmxintermodal.com>
+Sent: Tuesday, October 11, 2022 10:57:05 AM
+To: Paul Ryan pry460 <paul.ryan@gw-world.com>
+Subject: Assistance Please?
+
+
+Hi Paul,
+
+
+John Carreto asked me to reach out to you to see if you could provide a GW =
+contact from your LA branch. John and Matt, our VP of Sales, will be visiti=
+ng LA at the end of the month and they'd like to pay your LA office a visit=
+.
+
+
+Thanks in advance!
+
+Stacey Russell
+
+Sales Coordinator
+
+281-818-9979
+
+--
+Administrator
+
+Sent by TMX Intermodal <https://eur02.safelinks.protection.outlook.com/?url=
+=3Dhttp%3A%2F%2Ftmxintermodal.com%2F&data=3D05%7C01%7Cpaul.ryan%40gw-world.=
+com%7C345b17f88da046274d3208daaba1435c%7Cd430f0b8e30e4a8db5893f97a9617219%7=
+C0%7C0%7C638011007234119563%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJ=
+QIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=3DVk81CkI=
+fRyBN9zCXS6RBzjJB6zp2f6jxXSP0dknISxM%3D&reserved=3D0> using Odoo<https://eu=
+r02.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fwww.odoo.com%2F%3=
+Futm_source%3Ddb%26utm_medium%3Demail&data=3D05%7C01%7Cpaul.ryan%40gw-world=
+.com%7C345b17f88da046274d3208daaba1435c%7Cd430f0b8e30e4a8db5893f97a9617219%=
+7C0%7C0%7C638011007234119563%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLC=
+JQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=3DDUwHvv=
+RYJRpnpXbwvtcCh5znIjD6TMwd40mqMPrA9Hw%3D&reserved=3D0>.
+
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+
+--_000_DB9PR02MB6796EED44DD2A719F611142AC8239DB9PR02MB6796eurp_
+Content-Type: text/html;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></=
+head>
+<body>
+<div>
+<div>
+<div dir=3D"ltr">
+<div>I will send asap</div>
+<div dir=3D"ltr">Thanks&nbsp;</div>
+</div>
+</div>
+<div id=3D"ms-outlook-mobile-signature">
+<div><br>
+</div>
+<div dir=3D"ltr">
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<b><span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-ser=
+if;color:rgb(95, 95, 95);line-height:1.5">With best regards,</span></b></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<b><span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-ser=
+if;color:rgb(95, 95, 95);line-height:1.5"><br>
+</span></b></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<b><span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-ser=
+if;color:rgb(95, 95, 95);line-height:1.5">Paul Ryan</span></b></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-serif;=
+color:rgb(95, 95, 95);line-height:1.5">Business Development Manager</span><=
+/p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-serif;=
+color:rgb(95, 95, 95);line-height:1.5">Chicago&nbsp;<span>&nbsp;</span></sp=
+an></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-serif;=
+color:rgb(95, 95, 95);line-height:1.5">&nbsp;</span></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<b><span style=3D"font-size:10pt;font-family:Arial, sans-serif;color:rgb(95=
+, 95, 95);line-height:1.5">Gebr=C3=BCder Weiss =E2=80=A2 Transport and Logi=
+stics</span></b></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span style=3D"font-size:10pt;font-family:Arial, sans-serif;color:rgb(95, 9=
+5, 95);line-height:1.5">&nbsp;</span></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span style=3D"font-size:10pt;font-family:Arial, sans-serif;color:rgb(95, 9=
+5, 95);line-height:1.5">Gebruder Weiss, Inc</span></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-serif;=
+color:rgb(95, 95, 95);line-height:1.5">Transport and Logistics</span></p>
+<div style=3D"margin: 0px 0in; font-size: 11pt; font-family: Calibri, sans-=
+serif; caret-color: rgb(33, 33, 33);">
+<p style=3D"color:rgb(0, 0, 0);margin:0in;font-size:11pt;caret-color:rgb(33=
+, 33, 33)">
+<span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-serif;=
+color:rgb(95, 95, 95);line-height:1.5"><span dir=3D"ltr" style=3D"color:cur=
+rentcolor;text-decoration:underline">1020 N. Wood Dale Road</span></span></=
+p>
+<p style=3D"color:rgb(0, 0, 0);margin:0in 0in 12pt;font-size:11pt;caret-col=
+or:rgb(33, 33, 33)">
+<span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-serif;=
+color:rgb(95, 95, 95);line-height:1.5"><span dir=3D"ltr" style=3D"color:cur=
+rentcolor;text-decoration:underline">Wood Dale, IL 60191</span></span></p>
+<br>
+</div>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span style=3D"font-size:10pt;font-family:Arial, sans-serif;color:rgb(95, 9=
+5, 95);line-height:1.5">T&nbsp;<span>&nbsp;</span><span dir=3D"ltr" style=
+=3D"color:currentcolor;text-decoration:underline">+1.847.795.4300</span></s=
+pan></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span style=3D"font-size:10pt;font-family:Arial, sans-serif;color:rgb(95, 9=
+5, 95);line-height:1.5">M +1.630.837 9558</span></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span style=3D"font-size:10pt;font-family:Arial, sans-serif;color:rgb(95, 9=
+5, 95);line-height:1.5">&nbsp;</span></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span style=3D"font-size:10pt;font-family:Arial, sans-serif;color:rgb(95, 9=
+5, 95);line-height:1.5"><a href=3D"mailto:paul.ryan@gw-world.com" style=3D"=
+color:rgb(0, 120, 212);text-decoration:underline"><span style=3D"color:rgb(=
+95, 95, 95)">paul.ryan@gw-world.com</span></a></span></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span style=3D"font-size:10pt;font-family:Arial, sans-serif;color:rgb(95, 9=
+5, 95);line-height:1.5"><a href=3D"https://nam11.safelinks.protection.outlo=
+ok.com/?url=3Dhttp%3A%2F%2Fwww.gw-world.com%2F&amp;data=3D05%7C01%7Ccatchal=
+l%40tmxintermodal.com%7C59306c0e80d149fbfdf308daaba25bad%7Cea53da9730f747b6=
+b275c7aa732edda6%7C0%7C0%7C638011011100419139%7CUnknown%7CTWFpbGZsb3d8eyJWI=
+joiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%=
+7C&amp;sdata=3D%2BdPHofjOUJhHeJPQy5Fgt2zBwsTebRDU9%2FeCIKBCsfI%3D&amp;reser=
+ved=3D0" originalsrc=3D"http://www.gw-world.com/" shash=3D"V8i9N5M3uac+Qv+Y=
+7N1nTHXFYnTJjk2UvGUu5w5DAAraIB46Hfb5d/d6TAQF6I4iKFBUJ/CV7+lTVQKvWcgCaUjRfDv=
+oMVRjD1FZGglJNc2I9BrI6+sd9afGtr40bt/w+aAFv/JDnYVXskG7LDTwYmxI/LFjl1ydSiW0uE=
+dW4JU=3D" style=3D"color:rgb(0, 120, 212);text-decoration:underline"><span =
+style=3D"color:rgb(95, 95, 95)">www.gw-world.com</span></a></span></p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<br>
+</p>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span lang=3D"EN-US" style=3D"font-size:10pt;font-family:Arial, sans-serif;=
+color:rgb(237, 125, 49);line-height:1.5">&nbsp;</span></p>
+<br>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri, sans-serif;caret=
+-color:rgb(33, 33, 33)">
+<span lang=3D"EN-US" style=3D"font-size:8pt;font-family:Arial, sans-serif;c=
+olor:rgb(95, 95, 95);line-height:1.5">All our services are subject to the G=
+eneral Terms and Conditions available at<span>&nbsp;</span></span><span sty=
+le=3D"font-size:8pt;font-family:Arial, sans-serif;color:rgb(95, 95, 95);lin=
+e-height:1.5"><a href=3D"https://nam11.safelinks.protection.outlook.com/?ur=
+l=3Dhttp%3A%2F%2Fwww.gw-world.com%2Flocations%2Fusa&amp;data=3D05%7C01%7Cca=
+tchall%40tmxintermodal.com%7C59306c0e80d149fbfdf308daaba25bad%7Cea53da9730f=
+747b6b275c7aa732edda6%7C0%7C0%7C638011011100419139%7CUnknown%7CTWFpbGZsb3d8=
+eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7=
+C%7C%7C&amp;sdata=3DzPgWu0j7dFrKpfyjkhZYDewuCYqQmkLSwzbvEfu7QJw%3D&amp;rese=
+rved=3D0" originalsrc=3D"http://www.gw-world.com/locations/usa" shash=3D"X2=
+znd5e3zZBHBRa/R/C8TPezD7YZbNXEsHE8O6PCFDc+whI0T1rUB+A3gqWUA0dmefxAcqSbR1ZNk=
+6xXBZz4sDHcPMc+aPq5wJp1+IBQQlGlsR/ByL8pm98jvZW2uDi0wAnRo59GpqVqW5gtRrhTWeXh=
+7L5ZSmu9oKkHwZ6yNaM=3D" style=3D"color:rgb(0, 120, 212);text-decoration:und=
+erline"><span lang=3D"EN-US" style=3D"color:rgb(95, 95, 95)">http://www.gw-=
+world.com/locations/usa</span></a></span><span lang=3D"EN-US" style=3D"font=
+-size:8pt;font-family:Arial, sans-serif;color:rgb(95, 95, 95);line-height:1=
+.5">.</span></p>
+<br>
+</div>
+</div>
+</div>
+<div dir=3D"ltr" style=3D"mso-line-height-rule:exactly;-webkit-text-size-ad=
+just:100%;direction:ltr;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"width:100%=
+;line-height:normal;">
+<tbody>
+<tr style=3D"font-size:0;">
+<td align=3D"left" style=3D"vertical-align:top;"><img src=3D"cid:image54875=
+8.png@FC6E728C.E2DBD090" width=3D"20" height=3D"20" border=3D"0" alt=3D"" s=
+tyle=3D"width:20px;min-width:20px;max-width:20px;height:20px;min-height:20p=
+x;max-height:20px;font-size:0;"></td>
+</tr>
+<tr style=3D"font-size:0;">
+<td align=3D"left" style=3D"vertical-align:top;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"white-spac=
+e:normal;color:#7D7D7D;font-size:14.67px;font-family:Calibri,Arial,sans-ser=
+if;font-weight:400;font-style:normal;text-align:left;line-height:12px;">
+<tbody>
+<tr style=3D"font-size:10px;">
+<td style=3D"font-family:Arial;">For the sake of our environment: Please be=
+ aware of the fact that printing this message consumes valuable resources.<=
+span style=3D"font-family:remialcxesans;font-size:1px;color:#FFFFFF;line-he=
+ight:1px;">=E2=80=8B</span><br>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr style=3D"display:inline-block;width:98%" tabindex=3D"-1">
+<div id=3D"divRplyFwdMsg" dir=3D"ltr"><font face=3D"Calibri, sans-serif" st=
+yle=3D"font-size:11pt" color=3D"#000000"><b>From:</b> Administrator &lt;tec=
+h@tmxintermodal.com&gt;<br>
+<b>Sent:</b> Tuesday, October 11, 2022 10:57:05 AM<br>
+<b>To:</b> Paul Ryan pry460 &lt;paul.ryan@gw-world.com&gt;<br>
+<b>Subject:</b> Assistance Please?</font>
+<div>&nbsp;</div>
+</div>
+<div>
+<div>
+<div>
+<p style=3D"margin:0px; font-size:13px; font-family:&quot;Lucida Grande&quo=
+t;,Helvetica,Verdana,Arial,sans-serif">
+Hi Paul,</p>
+<p style=3D"margin:0px; font-size:13px; font-family:&quot;Lucida Grande&quo=
+t;,Helvetica,Verdana,Arial,sans-serif">
+<br>
+</p>
+<p style=3D"margin:0px; font-size:13px; font-family:&quot;Lucida Grande&quo=
+t;,Helvetica,Verdana,Arial,sans-serif">
+John Carreto asked me to reach out to you to see if you could provide a GW =
+contact from your LA branch. John and Matt, our VP of Sales, will be visiti=
+ng LA at the end of the month and they'd like to pay your LA office a visit=
+.&nbsp;</p>
+<p style=3D"margin:0px; font-size:13px; font-family:&quot;Lucida Grande&quo=
+t;,Helvetica,Verdana,Arial,sans-serif">
+<br>
+</p>
+<p style=3D"margin:0px; font-size:13px; font-family:&quot;Lucida Grande&quo=
+t;,Helvetica,Verdana,Arial,sans-serif">
+Thanks in advance!&nbsp;</p>
+<p style=3D"margin:0px; font-size:13px; font-family:&quot;Lucida Grande&quo=
+t;,Helvetica,Verdana,Arial,sans-serif">
+Stacey Russell</p>
+<p style=3D"margin:0px; font-size:13px; font-family:&quot;Lucida Grande&quo=
+t;,Helvetica,Verdana,Arial,sans-serif">
+Sales Coordinator</p>
+<p style=3D"margin:0px; font-size:13px; font-family:&quot;Lucida Grande&quo=
+t;,Helvetica,Verdana,Arial,sans-serif">
+281-818-9979</p>
+</div>
+<div style=3D"font-size:13px"><span data-o-mail-quote=3D"1">-- <br data-o-m=
+ail-quote=3D"1">
+Administrator</span></div>
+<p style=3D"color:#555555; margin-top:32px">Sent <span>by <a href=3D"https:=
+//nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Ftmxintermodal.=
+com%2F&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.com%7C59306c0e80d149fb=
+fdf308daaba25bad%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C6380110111004=
+19139%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6I=
+k1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DFdbfz8PNhddbEOzZoE8dUOPzg=
+V%2FqsM6Z%2FUhmW0RHuy0%3D&amp;reserved=3D0" originalsrc=3D"http://tmxinterm=
+odal.com/" shash=3D"hmYO1eMh+4f1plEfqQqGBCIfOYknwlTD5SkHBq0HrPkUt8Dv4+nzrqA=
+AT5xSKKEEpuDi4EQS9b75Uy9M+TN3qRyouDbfTDk2QJBMW1YdkaGJFxibQxspXvj4CXpVdF6MMA=
+lG5B9KDvuWsdROSwD+VopKP6fZhaZcOY7vKEGzfLs=3D" originalsrc=3D"http://tmxinte=
+rmodal.com/" shash=3D"m/n3Z4nO5hp4O8116+oa968kPDnqXMnYeSkVWVKAWfnn0n7q1PHt3=
+8ZQjMX8kNvH7aYeT7QWuyVD1XkDxy6X1WdXir24cGrsCbwTEcNQSXFlh/bdAznKBp/pxSViPxg7=
+gPCRBoIfN4e6SczfzHE0I6vxhk6rDzgicJG4pze7H2o=3D" style=3D"text-decoration:no=
+ne; color:#875A7B">
+<span>TMX Intermodal</span> </a></span>using <a target=3D"_blank" href=3D"h=
+ttps://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fwww.odoo=
+.com%2F%3Futm_source%3Ddb%26utm_medium%3Demail&amp;data=3D05%7C01%7Ccatchal=
+l%40tmxintermodal.com%7C59306c0e80d149fbfdf308daaba25bad%7Cea53da9730f747b6=
+b275c7aa732edda6%7C0%7C0%7C638011011100419139%7CUnknown%7CTWFpbGZsb3d8eyJWI=
+joiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%=
+7C&amp;sdata=3D8ycbXdrE2Fagt5%2FV9vnaQ3Oqb17LBiKCwPXTtQ4cAYw%3D&amp;reserve=
+d=3D0" originalsrc=3D"https://www.odoo.com/?utm_source=3Ddb&amp;utm_medium=
+=3Demail" shash=3D"mwT+D8l0MLNfUqFBvTZMHF9f2wVbworbzpr1z5koTKWy3btai0BOaW40=
+VoF2qcmtYSkeUS4zwbS2ghtofNcQFT+sX7/RYft7dOwF0Dez2l2fbdUmX39JrKa0LtHbBF035m5=
+fl3r6sZ2ViSDW/fT5gLfjO9fUfXXHHIY8CSGEXH0=3D" originalsrc=3D"https://www.odo=
+o.com/?utm_source=3Ddb&amp;utm_medium=3Demail" shash=3D"KT9r3qvWrjDUP/axUIx=
+ESmz/dhm8nUhTgM8VZX8mY5YvBzlPKtG7fwJ66lwwQzgIdE/YsA2KcAe8ujEc6Zq92ud5oz1mpd=
+hDrje7b31/O18zaTP9vSsivw83YHdcWtm7MoYET5NTDML46ySwNYSbEjQnJMUk4TgfH1XoTJChP=
+ik=3D" style=3D"text-decoration:none; color:#875A7B">
+Odoo</a>. </p>
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+--_000_DB9PR02MB6796EED44DD2A719F611142AC8239DB9PR02MB6796eurp_--
+
+------_=_NextPart_3eb5b92b-3aee-4901-a32e-9f3829922e18
+Content-Type: image/png;
+	name="image548758.png"
+Content-Transfer-Encoding: base64
+Content-ID: <image548758.png@FC6E728C.E2DBD090>
+Content-Description: image548758.png
+Content-Disposition: inline;
+	creation-date="Tue, 11 Oct 2022 16:05:00 +0000";
+	filename=image548758.png;
+	modification-date="Tue, 11 Oct 2022 16:05:00 +0000";
+	size=2499
+
+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
+
+------_=_NextPart_3eb5b92b-3aee-4901-a32e-9f3829922e18--

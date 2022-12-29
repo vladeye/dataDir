@@ -1,0 +1,427 @@
+Received: from CY4PR01MB2503.prod.exchangelabs.com (2603:10b6:903:6c::20) by
+ MW4PR01MB6212.prod.exchangelabs.com with HTTPS; Tue, 4 Oct 2022 17:00:55
+ +0000
+Received: from MW4PR04CA0108.namprd04.prod.outlook.com (2603:10b6:303:83::23)
+ by CY4PR01MB2503.prod.exchangelabs.com (2603:10b6:903:6c::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5676.15; Tue, 4 Oct 2022 17:00:52 +0000
+Received: from CO1NAM11FT019.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:303:83:cafe::ee) by MW4PR04CA0108.outlook.office365.com
+ (2603:10b6:303:83::23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5676.29 via Frontend
+ Transport; Tue, 4 Oct 2022 17:00:52 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.214.176)
+ smtp.mailfrom=xenonfs.com; dkim=pass (signature was verified)
+ header.d=xenonfs-com.20210112.gappssmtp.com;dmarc=bestguesspass action=none
+ header.from=xenonfs.com;compauth=pass reason=109
+Received-SPF: Pass (protection.outlook.com: domain of xenonfs.com designates
+ 209.85.214.176 as permitted sender) receiver=protection.outlook.com;
+ client-ip=209.85.214.176; helo=mail-pl1-f176.google.com; pr=C
+Received: from mail-pl1-f176.google.com (209.85.214.176) by
+ CO1NAM11FT019.mail.protection.outlook.com (10.13.175.57) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5709.10 via Frontend Transport; Tue, 4 Oct 2022 17:00:51 +0000
+Received: by mail-pl1-f176.google.com with SMTP id d11so13178960pll.8       
+ for <catchall@tmxintermodal.com>; Tue, 04 Oct 2022 10:00:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=xenonfs-com.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:date:message-id:subject:references:in-reply-to
+         :reply-to:to:from:from:to:cc:subject:date;
+        bh=osrueF+pq3H5Jp6G6nOSyJbkbpsQI736sOYaWVpybpo=;
+        b=2XaJRuzq7Io0/lQhbavMR33DgdluPl4duoKnSmqULJeGdwhXEoHR+qEMH3WHOOz0Rv
+         G6TUMAqN3FzZrXpmFhTRIRnVO/+PdvWi4GHP6xZ33rx1A++jixPP8suRCu6wIrdMR9cw
+         D8p4GLJRPL04yAnV+dYNxxi6FqMvWQrrZ7vnnUyCG/iIxI+znBqeDq7BMa/vJQO3Hgko
+         W5M1BhYzIdNOvfSDSZ5qHDAQAwMDzbEJ8puoQwLIM2+TfIdk1FU9Wihb/N/Pvnbq0Ri7
+         qxH3v/726lsk+12mcHGSkrhq7mvtPv/fmRz95auQMMDxjcJ8FZ7W0OFolREKOffdJ9Yz
+         Mvmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=mime-version:date:message-id:subject:references:in-reply-to
+         :reply-to:to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=osrueF+pq3H5Jp6G6nOSyJbkbpsQI736sOYaWVpybpo=;
+        b=JteWkkdJjYbvCDSZkfmUW4pGYIc1VrvLOuQk6eTSg8UQghoThF4NVvDMSlz3sSwQej
+         WOVj6zsOBcjCLXCdLxwHNFrynG6vQCCkf0gOk4ODBKP70cbkClYc+Q3Sog0nRM+F1S+S
+         JO1Upi8v2WHy/D5EdEXTPjqcYdeJchNUjg/1mmhvmLRjXX0DSM3MWLl0cCex11NIoIvV
+         jGK5X0ldqauwIkhnnLaLo/zssqbw1k28L9mxEKtSiRT2bz1hvAOCjMUwdVssoLJ5VZyJ
+         +aLflvgP4k2bEkdV95zA1eoTtpfmae9Ey5n0wp7mSrBjDCYMQfe7aEOePuUT/uuxX7Yp
+         X/BA==
+X-Gm-Message-State: ACrzQf1szddu8TXtcA5Ar39IvVtW2y00z3D0x3PlUuMuTy1JaYNDvc+7
+	Jz/JCo3mfIJ3tN9Cl8LozNVWw80H2dm3Ag==
+X-Google-Smtp-Source: =?utf-8?q?AMsMyM6twKYBQ66/nBwhh1ajmcP1FasdLV4ZVpYyU1oe?=
+ =?utf-8?q?zyOoeIy1MEbqUib/xuyLmzctDg9GpzmD9A=3D=3D?=
+X-Received: by 2002:a17:903:32ca:b0:178:29e4:15b6 with SMTP id
+ i10-20020a17090332ca00b0017829e415b6mr27674623plr.77.1664902850787;       
+ Tue, 04 Oct 2022 10:00:50 -0700 (PDT)
+Return-Path: stacy.lange@xenonfs.com
+Received: from out.frontapp.com (out-6.frontapp.com. [52.53.85.146])        by
+ smtp.gmail.com with ESMTPSA id
+ e7-20020aa798c7000000b00561f876c1aesm353233pfm.68.2022.10.04.10.00.49       
+ for <catchall@tmxintermodal.com>        (version=TLS1_3
+ cipher=TLS_AES_256_GCM_SHA384 bits=256/256);        Tue, 04 Oct 2022 10:00:49
+ -0700 (PDT)
+Content-Type: multipart/alternative;
+ boundary="----sinikael-?=_1-16649028494130.6825768814754947"
+X-Front-ID: cdd79db9f71a22017f9c2a6b0c5fc277@frontapp.com
+From: Stacy Lange <stacy.lange@xenonfs.com>
+To: "TMX Intermodal XENON F S, XENON FREIGHT SOLUTIONS, stacy.lange"
+ <catchall@tmxintermodal.com>
+Reply-To: stacy.lange@xenonfs.com
+In-Reply-To: 
+ <585761846448287.1664875576.231784105300903-openerp-16062-res.partner@ip-172-31-25-70>
+References: 
+ <585761846448287.1664875576.231784105300903-openerp-16062-res.partner@ip-172-31-25-70>
+ <cdd79db9f71a22017f9c2a6b0c5fc277@frontapp.com>
+Subject: Re: CONGRATULATIONS YOUR TMX CREDENTIALS ARE NOW ACTIVE!!
+Message-ID: <cdd79db9f71a22017f9c2a6b0c5fc277@frontapp.com>
+X-Mailer: Front (1.0; +https://frontapp.com;
+ +msgid=cdd79db9f71a22017f9c2a6b0c5fc277@frontapp.com)
+Date: Tue, 04 Oct 2022 17:00:49 +0000
+X-MS-Exchange-Organization-ExpirationStartTime: 04 Oct 2022 17:00:51.8093
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ f46622a8-a424-4ac2-a44d-08daa629fe62
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1NAM11FT019:EE_|CY4PR01MB2503:EE_
+X-MS-Exchange-Organization-AuthSource: 
+ CO1NAM11FT019.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: f46622a8-a424-4ac2-a44d-08daa629fe62
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjIwOS44NS4yMTQuMTc2O0NUUlk6VVM7?=
+ =?utf-8?b?TEFORzplbjtTQ0w6MTtTUlY6O0lQVjpOTEk7U0ZWOk5TUE07SDptYWlsLXBsMS1m?=
+ =?utf-8?q?176=2Egoogle=2Ecom=3BPTR=3Amail-pl1-f176=2Egoogle=2Ecom=3BCAT=3AN?=
+ =?utf-8?q?ONE=3BSFS=3A=2813230022=29=284636009=29=28451199015=29=2810861600?=
+ =?utf-8?b?NSkoMjIxODYwMDMpKDg0MzAwNDAwMDAxKSg4Njc2MDAyKSgzNDc1NjAwNCko?=
+ =?utf-8?b?MzM2MDEyKSg1ODgwMDQwMDAwNSkoMjYwMDUpKDk2NjAwNSkoOTY4NjAwMyko?=
+ =?utf-8?q?7696005=29=2824736004=29=2866574015=29=28956004=29=286916009=29?=
+ =?utf-8?q?=287066003=29=2886362001=29=287636003=29=287596003=29=28345070000?=
+ =?utf-8?b?MSkoMTY2MDAyKSgzNTYwMDUpKDQwMTQwNzAwMDAxKSgzNjc1NjAwMykoMTU5?=
+ =?utf-8?q?74865002=29=281096003=29=2883380400001=29=2844832011=29=285660300?=
+ =?utf-8?q?002=29=28141343001=29=2848373003=29=3BDIR=3AINB=3B?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Oct 2022 17:00:51.7625
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ f46622a8-a424-4ac2-a44d-08daa629fe62
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ CO1NAM11FT019.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR01MB2503
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.5375021
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5676.031
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?iso-8859-1?Q?IP6KpHX2eE6LmcuUzPpgGcXWT7EDpCKKsbQ59pZDKmRJ4VpyDOoQV2RONK?=
+ =?iso-8859-1?Q?TEDPkRnlWn/2YtERCzD7Udp29BjXlUJW0Wdm4kyioNReXzABbtHBB2dsFt?=
+ =?iso-8859-1?Q?fJG3KFodGCORj+PLQ6v1ej1JFbWMzAHdd5pYEJDkLdQeTB/gJtHWLsa1EC?=
+ =?iso-8859-1?Q?94U1dqE5dtA+3aNgvl+pq/MuHG0wpgDXvHfendbuhvlmXKx3xyt0i7z4jY?=
+ =?iso-8859-1?Q?GbH6f5OEz5s3JnUY/CG/oxQW0SVlogzBkwyUDnlzaVPfawmwUmtf+kpERk?=
+ =?iso-8859-1?Q?0KrkKSz14Axcf8hG4L1blNdKaO9iZlI1joDnoBsmduffeX4Gv1EECFTjI9?=
+ =?iso-8859-1?Q?XNiW3QTB49lqy7pmWiehyId7i+jt9uejvVoHekgBHF62F/daHShkujQBS0?=
+ =?iso-8859-1?Q?SCHZfImbBpGorT8rLnzKpQk2b3iWk5I5BWrhe0Dk+JolEfXNWLFq2uCCsn?=
+ =?iso-8859-1?Q?6xbytMfEPhmJhu/lBVWYOF0QDGT3Ijb7LS7gonPbk8Dl3nQSfvklY2c7Aa?=
+ =?iso-8859-1?Q?84DsmMnNc+Ubpnlbthaa9mptZdxMJMKr/PsUdnaEMhzSvD95hq6jKLAiX3?=
+ =?iso-8859-1?Q?iOtY21Kdn1aj1QJ11/TJs2IJENcjeWhD5vElVrYCZxmNXOJcfZ8T+VwFkF?=
+ =?iso-8859-1?Q?P/+qB6gZkzYbmI5TESSkKaUuk+F8mdMDDzK+B5wp4qqkJh/aTJua4AH4rc?=
+ =?iso-8859-1?Q?sHxPVXxx2WimBNwBjsVyZI4B/OWqOTTSo1tMT8ZaDIWl4SyIeNP12yXNUV?=
+ =?iso-8859-1?Q?bvYMCa1aannZiDLgrVDfeQJV7HNnqGuT5fy6BoFYmQjxy4E40fkv+qKWYc?=
+ =?iso-8859-1?Q?EXGiZZcVRhDHEYzv7kU8OsICRfOeyIQ2IbuJHbAPxn96Dw9iRYFKG+woXE?=
+ =?iso-8859-1?Q?06yzXpnjr0Co99iORW1jEkdEd28ysyuHi8hHl5Voqy5Is9v8iX6/gGXWZe?=
+ =?iso-8859-1?Q?JfMxY775qyt3TMwVfjkY3Snj96UUlNB1KFc1LMM7tTAIc3qqLPEG40949a?=
+ =?iso-8859-1?Q?f8iEniBqgmWQFKCnHuQxs52OUayfU3VAdj9h9r89GXE8zgX9vT7YdyUzLJ?=
+ =?iso-8859-1?Q?YnzYSrzVin4YshQF22jqFocQgTnZTRZZJ8TRlQbe6L0PT6sl/cR22rE04M?=
+ =?iso-8859-1?Q?1hiqT541okFSeyUEQCxnZKYphHeVS/62ccgYDt/XinVuZwXsv2WBHQ7FR/?=
+ =?iso-8859-1?Q?XET2LPzu3H9RTpmp9HTwn0Vyngx3EfeN2yIDxXNbMA9wFzShDOM0tU8W8K?=
+ =?iso-8859-1?Q?4oIS5gGMOcpwdOeprup2uQzJZxkVm6tTTabJtwP3Yq2O9D4a+Snc5T1+Ym?=
+ =?iso-8859-1?Q?3NTlL7XN+qAeAzpc5opHlBz/jILk5oKDNI4iJlr/U8GNbY/0Z9sL59y6S+?=
+ =?iso-8859-1?Q?LFP6APpLfxQyZLl/4A5SaAlJC+WtzJHOVfw35L1yCgWj1yfpUFLSAtMGLp?=
+ =?iso-8859-1?Q?VpJwaWuS1A95+MSBXEBMBPQm7rSJNoj9ZK3l0tGV3e/spwm+S/sMCX2h3L?=
+ =?iso-8859-1?Q?MngH7aH03eLy6/c9Ke2du+mggJuBdoyi6JT/OXXU4Wdi1p/WHcJeMD12dO?=
+ =?iso-8859-1?Q?Rf1n1vUtvPJqxjZ0ZctleVRVdMGUOL+NDvqlmJ+MjaXdZ3vdIMq9ExNVhc?=
+ =?iso-8859-1?Q?+duUmc7Losz3taopYFuJ8b6tDci5zuw0HmjlxAMpZy94uGd97Bdgk4X+WA?=
+ =?iso-8859-1?Q?+oIoJoieqlhw215gzJqGrMrn4oeHXxRvFzOviG0jowvs6Okt7f7cK9pylT?=
+ =?iso-8859-1?Q?8mR6a01dZBx1hGjt4oVdq1BFjHBxWMAW1cYsHT3yKn9VCoLVknBj2ZeUo4?=
+ =?iso-8859-1?Q?SXLdoe5NUEaTPzNSPEBuQskYLBNATAoveukXPqFDj4LocjKN00MYU45vI5?=
+ =?iso-8859-1?Q?5UOxxiWMiKtVeZZLxCLZGErDkCax+cJPKDKUNY1zLLJwIQi35VDTdNp/4H?=
+ =?iso-8859-1?Q?17dX3bmFfGPhNw8mA5GuHrmB0AgZpkBU7QdryO3zY+hJV1zLIkyi7+jqQ9?=
+ =?iso-8859-1?Q?dQRwoA?=
+MIME-Version: 1.0
+
+------sinikael-?=_1-16649028494130.6825768814754947
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hello
+
+Thanks for the login. We will give it a try. Do you have tariffs in a sprea=
+dsheet form? If yes, would you be able to share them with us so we can uplo=
+ad them in our system. We would recheck at time of booking, but it is helpf=
+ul to have the rates in our system to help serve as a baseline to our custo=
+mer rates.
+
+My best,
+Stacy
+
+
+Stacy Danziger Lange
+General Manager
+Office: 562-206-7237
+Direct: 562-206-7240
+Cell: 805-850-8512
+Email: stacy.lange@xenonfs.com<mailto:stacy.lange@xenonfs.com> |Website: ww=
+w.xenonfs.com<http://www.xenonfs.com/>
+
+
+ **As a reminder, Xenon's new Terms & Conditions will go into effect on Apr=
+il 1st, 2021. These will be applicable on any order booked on or after this=
+ date.** https://live.xenonfs.com/#RequestQuote
+
+
+
+
+
+On October 4, 2022 at 2:26 AM PDT xavierc@tmxintermodal.com<mailto:xavierc@=
+tmxintermodal.com> wrote:
+
+
+Congratulations !!!! You are set up in our system. Tomorrow morning, using =
+the credentials found below you have full access to our rates portal, track=
+ing system, and your documents per load.
+
+
+Just log into tmxintermodal.com<http://tmxintermodal.com/> and get started =
+!!!!
+
+
+
+ Please reach out if you have any questions.
+
+
+
+
+USERNAME:stacy.lange@xenonfs.com<mailto::stacy.lange@xenonfs.com>
+
+PASSWORD:1124664
+
+Sent by TMX Intermodal <http://tmxintermodal.com/> using Odoo<https://www.o=
+doo.com/?utm_source=3Ddb&utm_medium=3Demail>.
+
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=F3nico se origin=F3 fuera de TMX Intermodal. NO HAG=
+A CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al remitente=
+ y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, VSL DE=
+LAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIONS, WE=
+ ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY RETURN =
+BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEMU=
+RRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE U=
+NABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIVE=
+RIES. ***
+
+------sinikael-?=_1-16649028494130.6825768814754947
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+
+<!--[if (gte mso 9)|(IE)]><style type=3D"text/css">.main-style-380b94917028=
+6c2b3d83 { font-family: sans-serif; font-size: 11pt; /* inherit */ }</style=
+><![endif]-->
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+</head>
+<body>
+<div style=3D"/* inherit */" class=3D"main-style-380b949170286c2b3d83">
+<div>Hello</div>
+<div><br>
+</div>
+<div>Thanks for the login. We will give it a try. Do you have tariffs in a =
+spreadsheet form? If yes, would you be able to share them with us so we can=
+ upload them in our system. We would recheck at time of booking, but it is =
+helpful to have the rates in our
+ system to help serve as a baseline to our customer rates.&nbsp;</div>
+<br>
+<div class=3D"front-signature">
+<div>My best,</div>
+<div>Stacy</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><span style=3D"color: rgb(31, 73, 125);">Stacy Danziger Lange</span></=
+div>
+<div><span style=3D"color: rgb(31, 73, 125)"><span style=3D"font-family: ta=
+homa, sans-serif;">General Manager</span></span></div>
+<div><span style=3D"color: rgb(31, 73, 125); font-family: tahoma, sans-seri=
+f;">Office: 562-206-7237</span></div>
+<div><span style=3D"color: rgb(31, 73, 125)"><span style=3D"font-family: ta=
+homa, sans-serif;">Direct: 562-206-7240</span></span></div>
+<div><span style=3D"font-family: tahoma, sans-serif; color: rgb(31, 73, 125=
+);">Cell: 805-850-8512</span></div>
+<div><span style=3D"font-family: tahoma, sans-serif;"><span style=3D"color:=
+ rgb(31, 73, 125)">Email:&nbsp;</span><a href=3D"mailto:stacy.lange@xenonfs=
+.com" rel=3D"noopener noreferrer" target=3D"_blank"><span style=3D"color: r=
+gb(0, 0, 255)">stacy.lange@xenonfs.com</span></a><span style=3D"color: rgb(=
+31, 73, 125)">&nbsp;|Website:&nbsp;<a href=3D"http://www.xenonfs.com/" rel=
+=3D"noopener noreferrer" target=3D"_blank">www.xenonfs.com</a></span></span=
+></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>&nbsp;**As a reminder, Xenon's new Terms &amp; Conditions will go into=
+ effect on April 1st, 2021. These will be applicable on any order booked on=
+ or after this date.**&nbsp;<a rel=3D"noopener noreferrer" href=3D"https://=
+live.xenonfs.com/#RequestQuote" target=3D"_blank">https://live.xenonfs.com/=
+#RequestQuote</a></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+</div>
+<br>
+<blockquote type=3D"cite" class=3D"front-blockquote">On October 4, 2022 at =
+2:26 AM PDT
+<a href=3D"mailto:xavierc@tmxintermodal.com" target=3D"_blank" rel=3D"noope=
+ner noreferrer">
+xavierc@tmxintermodal.com</a> wrote:<br>
+<br>
+<div id=3D"fae_q43fkw52418is">
+<div>
+<div></div>
+<div class=3D"fa-ldzjt8 front-email-body">
+<div>
+<div>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); line-height:11.75pt" class=3D"fa-rlwd37">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; font-we=
+ight:inherit; font-size:inherit; line-height:inherit; font-family:&quot;Com=
+ic Sans MS&quot;, serif, EmojiFont; vertical-align:baseline; color:inherit"=
+ class=3D"faulyb29">Congratulations !!!! You are
+ set up in our system. Tomorrow morning, using the credentials found below =
+you have full access to our rates portal, tracking system, and your documen=
+ts per load.</span><span style=3D"margin:0px; padding:0px; border:1pt none =
+windowtext; vertical-align:baseline; color:inherit"></span><span style=3D"m=
+argin:0px; padding:0px; border:0px; vertical-align:baseline; color:inherit"=
+></span></p>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); line-height:11.75pt" class=3D"fa-rlwd37">
+<span style=3D"margin:0px; padding:0px; border:0px; vertical-align:baseline=
+; color:inherit"><br>
+</span></p>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); line-height:11.75pt" class=3D"fa-rlwd37">
+<span style=3D"margin:0px; padding:0px; border:0px; font-weight:inherit; fo=
+nt-size:14pt; line-height:normal; font-family:&quot;Comic Sans MS&quot;, Ch=
+alkboard, cursive; vertical-align:baseline; color:rgb(12, 100, 192)">Just l=
+og into
+<a rel=3D"noopener noreferrer" href=3D"http://tmxintermodal.com/" target=3D=
+"_blank">tmxintermodal.com</a> and get started !!!!</span></p>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); line-height:11.75pt">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; vertica=
+l-align:baseline; color:inherit">&nbsp;</span><span style=3D"margin:0px; pa=
+dding:0px; border:1pt none windowtext; vertical-align:baseline; color:inher=
+it"></span><span style=3D"margin:0px; padding:0px; border:0px; vertical-ali=
+gn:baseline; color:inherit"></span></p>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); line-height:11.75pt">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; font-we=
+ight:inherit; font-size:inherit; line-height:inherit; font-family:&quot;Com=
+ic Sans MS&quot;, serif, EmojiFont; vertical-align:baseline; color:inherit"=
+>&nbsp;Please reach out if you have any questions.</span><span style=3D"mar=
+gin:0px; padding:0px; border:1pt none windowtext; vertical-align:baseline; =
+color:inherit"></span><span style=3D"margin:0px; padding:0px; border:0px; v=
+ertical-align:baseline; color:inherit"></span></p>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); margin-bottom:8pt; line-height:15.6933px" class=3D"fa-rlw=
+d37">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; vertica=
+l-align:baseline; color:inherit"><br>
+</span></p>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); margin-bottom:8pt; line-height:15.6933px">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; vertica=
+l-align:baseline; color:inherit">&nbsp;</span><span style=3D"margin:0px; pa=
+dding:0px; border:0px; vertical-align:baseline; color:inherit"></span></p>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); margin-bottom:8pt; line-height:15.6933px" class=3D"fa-rlw=
+d37">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; font-we=
+ight:inherit; font-size:inherit; line-height:inherit; font-family:&quot;Com=
+ic Sans MS&quot;, serif, EmojiFont; vertical-align:baseline; color:inherit;=
+ background-color:yellow">USERNAME</span><span style=3D"margin:0px; padding=
+:0px; border:1pt none windowtext; font-weight:inherit; font-size:inherit; l=
+ine-height:inherit; font-family:&quot;Comic Sans MS&quot;, serif, EmojiFont=
+; vertical-align:baseline; color:inherit"><a rel=3D"noopener noreferrer" hr=
+ef=3D"mailto::stacy.lange@xenonfs.com" target=3D"_blank">:stacy.lange@xenon=
+fs.com</a><b style=3D"font-weight:bolder"></b></span><span style=3D"margin:=
+0px; padding:0px; border:0px; vertical-align:baseline; color:inherit"></spa=
+n></p>
+<p style=3D"margin:0px; font-family:Calibri, sans-serif; font-size:11pt; co=
+lor:rgb(0, 0, 0); margin-bottom:8pt; line-height:15.6933px" class=3D"fa-rlw=
+d37">
+<span style=3D"margin:0px; padding:0px; border:1pt none windowtext; font-we=
+ight:inherit; font-size:inherit; line-height:inherit; font-family:&quot;Com=
+ic Sans MS&quot;, serif, EmojiFont; vertical-align:baseline; color:inherit;=
+ background-color:yellow">PASSWORD</span><span style=3D"margin:0px; padding=
+:0px; border:1pt none windowtext; font-weight:inherit; font-size:inherit; l=
+ine-height:inherit; font-family:&quot;Comic Sans MS&quot;, serif, EmojiFont=
+; vertical-align:baseline; color:inherit">:1124664</span></p>
+</div>
+<p style=3D"color: #555555; margin-top:32px;">Sent <span>by <a rel=3D"noope=
+ner noreferrer" href=3D"http://tmxintermodal.com/" style=3D"text-decoration=
+:none; color: #875A7B;" target=3D"_blank">
+<span>TMX Intermodal</span> </a></span>using <a rel=3D"noopener noreferrer"=
+ style=3D"text-decoration:none; color: #875A7B;" href=3D"https://www.odoo.c=
+om/?utm_source=3Ddb&amp;utm_medium=3Demail" target=3D"_blank">
+Odoo</a>. </p>
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+</div>
+</div>
+</blockquote>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=F3nico se origin=F3 fuera de TMX Intermodal. NO HAG=
+A CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+------sinikael-?=_1-16649028494130.6825768814754947--

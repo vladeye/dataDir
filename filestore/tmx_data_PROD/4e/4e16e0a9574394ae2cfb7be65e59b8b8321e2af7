@@ -1,0 +1,1687 @@
+Received: from CY4PR01MB3240.prod.exchangelabs.com (2603:10b6:903:e9::12) by
+ BL0PR0102MB3412.prod.exchangelabs.com with HTTPS; Fri, 24 Jun 2022 07:29:23
+ +0000
+Received: from DM6PR07CA0076.namprd07.prod.outlook.com (2603:10b6:5:337::9) by
+ CY4PR01MB3240.prod.exchangelabs.com (2603:10b6:903:e9::12) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5353.19; Fri, 24 Jun 2022 07:29:18 +0000
+Received: from DM6NAM11FT045.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:5:337:cafe::58) by DM6PR07CA0076.outlook.office365.com
+ (2603:10b6:5:337::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5373.16 via Frontend
+ Transport; Fri, 24 Jun 2022 07:29:18 +0000
+Authentication-Results: spf=none (sender IP is 209.85.221.53)
+ smtp.mailfrom=pragtech.co.in; dkim=pass (signature was verified)
+ header.d=pragtech-co-in.20210112.gappssmtp.com;dmarc=none action=none
+ header.from=pragtech.co.in;compauth=pass reason=106
+Received-SPF: None (protection.outlook.com: pragtech.co.in does not designate
+ permitted sender hosts)
+Received: from mail-wr1-f53.google.com (209.85.221.53) by
+ DM6NAM11FT045.mail.protection.outlook.com (10.13.173.123) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5373.15 via Frontend Transport; Fri, 24 Jun 2022 07:29:18 +0000
+Received: by mail-wr1-f53.google.com with SMTP id e10so1890054wra.11
+        for <tech@tmxintermodal.com>; Fri, 24 Jun 2022 00:29:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pragtech-co-in.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=tromcr6rnh8717ZnPYhFmb5BWKN98Khq/qbSlGaGMwg=;
+        b=lhXQyjLZjs/FPfqAQU8BGXmXajn7orGKZJVfwx7C69ybUFLKOJq0aWj80WW3/9Ak8L
+         dYtNfpLhCkTEwNbJ5u1sNZP9M9DtnpDrTAceX5If17NVtJ4RjUWweoGTEwL8dwMoOoTc
+         E5vXXvc6hj5LiChjHgXDGeFUCFmC3mFG+JfBbwc0xVCcQ0CDhHA0bZazgpSzc7wo2syV
+         etrf4B/9kdqhBWgLixEFEmD41e3oIWKpe3pj3S6tWcCzy4x8dbntbUKAnh8QGStIvtGo
+         Fj1y5c2o0UBfe9UCUq+7CLVzyljTePTzjefZb6X+7TPm8Fu/rK5P4z+HUDnaGgPQH806
+         SBxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=tromcr6rnh8717ZnPYhFmb5BWKN98Khq/qbSlGaGMwg=;
+        b=gwnSxRU0Ff+a37NJwKdieoVb9MG61B5UxitKlKet9f4Trwd1K+fsqZMIsM5DMqZsme
+         nN1bkEPCCcndhEK5ENOqYLHxrZpqMDq4HqyHBqzETNMsH6O7yEhSkoLroUeDAwcpXWX9
+         Q8d646+qI31BFi0JT8E0unScpm1EfwmQck1mVTlY2IKQjt2564qPLBVFfcssHn/M7RyG
+         DyU9q6rkNOw8pOPhmtGYh8+liy1AoUxHGfWAHofXUHsf2pnHiS7V0pDjdhedvY7QGOyp
+         lf3DsMzRQVCNlu4aas44j7mdo79FsiikQ0P57UO9+X7fg0x5mpiN5h1I8G+sw9KL1cd+
+         DQQA==
+X-Gm-Message-State: AJIora/sfx1Li5EG/VYfBdzJ1ByRv5PB1LeFjHCgsgMwFe50TCure7yG
+	7S0QRzBE+XQYkzaAED32Ec7DuAFWgNUTZAlluUzZ+/CRc43I4A==
+X-Google-Smtp-Source: =?utf-8?q?AGRyM1u4fjHymCvaRBSTx7mcOIAv3qa/VbzETS95xQ/p?=
+ =?utf-8?q?VRl1HXaVbCpfoDime2ImPTVtYKLSVwcTWj0in82nhwEAPpE=3D?=
+X-Received: by 2002:a5d:5984:0:b0:21b:a858:3678 with SMTP id
+ n4-20020a5d5984000000b0021ba8583678mr6553523wri.293.1656055756847; Fri, 24
+ Jun 2022 00:29:16 -0700 (PDT)
+References: <BL0PR0102MB3412D019472ED495D08B867DC1B29@BL0PR0102MB3412.prod.exchangelabs.com>
+ <CALi85h49t1thaUML1vab3PeUTdAsnuJ+os8P-sk66qnBZOCOtQ@mail.gmail.com>
+ <BL0PR0102MB34126CCD9EF022B530C8AB70C1B59@BL0PR0102MB3412.prod.exchangelabs.com>
+ <CAOaSu0PoOKiv79zmnO4qGzxGo=_EM_23hWzDH1_7tQAPhGywQQ@mail.gmail.com>
+ <BL0PR0102MB341205F45332C486FA073AC5C1B59@BL0PR0102MB3412.prod.exchangelabs.com>
+ <CAOaSu0M7uxus_93x+3J9mqP7aBP8NdCKNFCzaWOXF1Ze94Oi+w@mail.gmail.com>
+In-Reply-To: <CAOaSu0M7uxus_93x+3J9mqP7aBP8NdCKNFCzaWOXF1Ze94Oi+w@mail.gmail.com>
+From: Parikshit Bapat <parikshit.bapat@pragtech.co.in>
+Date: Fri, 24 Jun 2022 12:59:00 +0530
+Message-ID: <CABhGdpnJ2dbkCyBSajYDchs6JysenKgZLpfzJKGsPrnCYVJKKw@mail.gmail.com>
+Subject: Re: Odoo-Quickbooks connection
+To: Faiza Shaikh <faiza.shaikh@pragtech.co.in>
+Cc: Tech Support <tech@tmxintermodal.com>
+Content-Type: multipart/alternative; boundary="0000000000001d8dda05e22c8727"
+Return-Path: parikshit.bapat@pragtech.co.in
+X-MS-Exchange-Organization-ExpirationStartTime: 24 Jun 2022 07:29:18.0774
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ 19a75d6a-129e-439b-eb1f-08da55b33f97
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource: 
+ DM6NAM11FT045.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 19a75d6a-129e-439b-eb1f-08da55b33f97
+X-MS-TrafficTypeDiagnostic: CY4PR01MB3240:EE_
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjIwOS44NS4yMjEuNTM7Q1RSWTpVUztM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOm1haWwtd3IxLWY1?=
+ =?utf-8?q?3=2Egoogle=2Ecom=3BPTR=3Amail-wr1-f53=2Egoogle=2Ecom=3BCAT=3ANONE?=
+ =?utf-8?q?=3BSFS=3A=2813230016=29=2884040400005=29=2842186006=29=2845080400?=
+ =?utf-8?q?002=29=288676002=29=2822186003=29=2858800400005=29=2840140700001?=
+ =?utf-8?q?=29=2816799955002=29=2815188155005=29=285660300002=29=28966005=29?=
+ =?utf-8?q?=289686003=29=28336012=29=2883380400001=29=286666004=29=286862004?=
+ =?utf-8?b?KSg4NjM2MjAwMSkoMTY2MDAyKSg0MzI2MDA4KSg2NjM2MDAyKSg3NjIzNjAwMyko?=
+ =?utf-8?q?356005=29=2853546011=29=2819627405001=29=287636003=29=287596003?=
+ =?utf-8?b?KSgyNjAwNSkoMzQ3NTYwMDQpKDY2NTc0MDE1KSgxNTk3NDg2NTAwMikoNDQ4?=
+ =?utf-8?q?32011=29=2833964004=29=283480700007=29=2830864003=29=2855446002?=
+ =?utf-8?b?KSgxMDk2MDAzKSg5OTc2MDIwMDAwMSkoNTU5MDAxKSg1NzkwMDQpO0RJUjpJTkI7?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jun 2022 07:29:18.0617
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ 19a75d6a-129e-439b-eb1f-08da55b33f97
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ DM6NAM11FT045.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR01MB3240
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:04.9427666
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5373.017
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506458)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?iso-8859-1?Q?e+LCZYTM1bymdHxopUSvFHvaC+A1v/cBp2r4pWqkP76/NwIReFA+9z1mD4?=
+ =?iso-8859-1?Q?RfecN8uShP8YJmqzPIYdCxOt9u1/LPVb5Kzb2nDTdTdTLIlso2lEuxz9qZ?=
+ =?iso-8859-1?Q?2+lim7bugqQ2+KlaXwlE3I0c6rvSJ8ec+07HuSBHJAcDlKqsdFC65Oa2ZG?=
+ =?iso-8859-1?Q?/P5f8JgKm5CRg5j2LT2Eue8fCFbZG0z0DlzC9FNafgOZ3t+j2V9VbYobCj?=
+ =?iso-8859-1?Q?Mp0Rw3d41cL2g5OrFeJ5VKFtKhWJab1L/9hESI4pticw5g7NsFCTFwxV+8?=
+ =?iso-8859-1?Q?jvW+gCQus/n0CvNuq8203LXEdw3dVI0kvEJczPYtMCf/v4U2Di+nkiyBB3?=
+ =?iso-8859-1?Q?/m+Y4SfR2/gpfGD3gHQSYCIsurEidN/2XyDU8ppw0j+0KPFcJIk/ZRgF1R?=
+ =?iso-8859-1?Q?Jswv4YrIik6PPd/CIzvBGIUAtrm4FvwKB5fY9f95NPgVHuV6TocxPjrWCk?=
+ =?iso-8859-1?Q?eWe4dNWacxXGNqJfCHQUP2YBVeByOfdpYfYCjUtrj7xFaFexxLnmTXBqde?=
+ =?iso-8859-1?Q?Tb3+wFOvLWJbivpcIuRM8jZq/i9sagIred6+8QdMRIT7eueEHWuaai/mfd?=
+ =?iso-8859-1?Q?pkr7qQc5rsc+/+yydVETd8whiA7HC4U7X/tJ4XdRnMnih/JQd1GMBAKLKh?=
+ =?iso-8859-1?Q?8wFqwm5PHJ5Q85yMYo33Fi0Jt2vcz+D8qdsROkMiWeHUFCDKyUIXqVDGfB?=
+ =?iso-8859-1?Q?uXr74kWKa6hFjCbB4tQdAj4Jormm2+FXrY2016iYPJb0Gl2ms/7MmUnkGN?=
+ =?iso-8859-1?Q?jLddqj5+3+i1RV78VQakcL8Q/ypq2dlAapIMFJZ7ixCYAh7kS9j9FmHa10?=
+ =?iso-8859-1?Q?ikG4q63ik2eBwTttgICQUuGR2SNsNoIjbOgxGL6VjIzDpQvAtLa+ZKTgnV?=
+ =?iso-8859-1?Q?fvTvDmeynEesOACPXyRAVsD1h0ORnHzH6KYHRyms2nrQRZvUTWsgL68cMw?=
+ =?iso-8859-1?Q?J2PwGbR5bxJq2FvgTzKc9Jalk+1hguilATVZ7mdtWb3XrTZsEvKcmPDeJ9?=
+ =?iso-8859-1?Q?rbpkqxXqr7cQbK46gLSNuGwuJvK1lzTqKextQAWbhn0MdJxT1WUk8CR6jK?=
+ =?iso-8859-1?Q?jqcBKx1X8m3v4j1BKJ6S2IDOJUTJBo5+BcRzduG0GJhhJJZpEdmUQ1GRVb?=
+ =?iso-8859-1?Q?aN176wLB1FLIH8x8YoucL6v7tDisK1oG4pe37JOTLFinpNXyIli5Y6d3gi?=
+ =?iso-8859-1?Q?u4DKm5Vsph1qeHOpnCZxoT3lA4VJ2e6sXnVtk+f99gLzx3OKuzxXuV/7S3?=
+ =?iso-8859-1?Q?rtDjhqbjMo93AldSkEDaYt5+W1rXZLTCpgpu3ubyLdwAszaQQEFnhP1AMM?=
+ =?iso-8859-1?Q?sv4Q0tl59KO+8Y5wWsZkyZA699j+DFuYLD6CVqmGk0g6ACaMdN6w9UI2zb?=
+ =?iso-8859-1?Q?GXjiOuoH6pZgb8GbwmrIlAdttFyTop5EnBF/ntgMU+JXl3kDFAwwOpdhZ0?=
+ =?iso-8859-1?Q?qKIKZmqsDChT/RdRADHTCcIKAn5SSL6K192ZmwburrUsP/pWy2UnnLlgXE?=
+ =?iso-8859-1?Q?mE4QJUYKVl2iUq1AD4j2pZsya3I2qcMXKggg7KPMTFUr9FFoleimtlMIji?=
+ =?iso-8859-1?Q?I+FsMWSunlXasBGh67S9OAqD5MUDq2YnBxipav6849aFU8/l4/jaqxCbXE?=
+ =?iso-8859-1?Q?9RGJCrO1KRs3Ew4YuqHgFtP2Xi4VMni07kyufE3MlnM6QzVs/FNzQXMwZU?=
+ =?iso-8859-1?Q?7aiJfmruHuCD6leRYHP5T5RQYfAPrnF+CNsXLIwYJv4Oo+7fb5vK/N2O0r?=
+ =?iso-8859-1?Q?xUjnhxNuadDpfNDuS2u9JL7o/Tao1sWbdfTlsMUbn7BZGw6o+HUC3B1CnC?=
+ =?iso-8859-1?Q?dSChM00NDrBb9lsMM/uYiTWK6tC/cN985BLhvPLxABXRrHcAYJgRSSHyFV?=
+ =?iso-8859-1?Q?Ekx85QmcCpXehfZDHvxgr+QFQT2rapX+HrI1jNCimP9HuDF2jhh5fAeDYv?=
+ =?iso-8859-1?Q?L3TeQVktSoSxdVF2mBu7pw=3D=3D?=
+MIME-Version: 1.0
+
+--0000000000001d8dda05e22c8727
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello
+
+Hope you are doing well. How can I help you?
+
+For the QBO connector we have following prerequisites
+
+1) Odoo must be accessible on https protocol
+2) We need to check the Account codes are enabled in QBO and it is set for =
+all the accounts.
+
+Please find below my availability for the call. You may kindly book the slo=
+t as per your convenience.
+https://calendly.com/parikshit-bapat/30min
+
+
+
+
+
+
+On Fri, Jun 24, 2022 at 12:21 PM Faiza Shaikh <faiza.shaikh@pragtech.co.in<=
+mailto:faiza.shaikh@pragtech.co.in>> wrote:
+Hello,
+
+Thank you for sharing the information.
+
+We are happy to help you with the solution for the query.
+
+We have our expert @Parikshit Bapat<mailto:parikshit.bapat@pragtech.co.in> =
+who will be helping you further.
+
+Appreciate your patience.
+
+Thanks & Regards,
+[http://pragtech.co.in/images/email_signatures/faiza.png]
+[http://pragtech.co.in/images/email_signatures/Pragtech_logo.png]<http://pr=
+agtech.co.in/>
+
+Faiza Shaikh - Customer Experience Specialist
+
+Pragmatic Techsoft Pvt. Ltd.
+faiza.shaikh@pragtech.co.in<mailto:faiza.shaikh@pragtech.co.in> | www.pragt=
+ech.co.in<http://www.pragtech.co.in>
+________________________________
+
+[http://pragtech.co.in/images/email_signatures/icons/tel_sq.png] Tel :-   [=
+http://pragtech.co.in/images/email_signatures/icons/india_flag.png]  +91 20=
+ 41201035       [http://pragtech.co.in/images/email_signatures/icons/usa_fl=
+ag.png]  +1 713 701 5957       [http://pragtech.co.in/images/email_signatur=
+es/icons/uk_flag.png]  +44 191 308 5117      [http://pragtech.co.in/images/=
+email_signatures/icons/skp_sq.png]  operations.pragtech      [http://pragte=
+ch.co.in/images/email_signatures/icons/hangout_sq.png]  sales@pragtech.co.i=
+n<mailto:sales@pragtech.co.in>
+
+Address :- Office no-15, SunShree Woods Commercial Complex, NIBM Road, Pune=
+-411048
+
+[http://pragtech.co.in/images/email_signatures/icons/ytube_sq.png]<http://w=
+ww.youtube.com/pragmaticvideos>  [http://pragtech.co.in/images/email_signat=
+ures/icons/blog_sq.png] <http://pragtechblog.blogspot.in/>   [http://pragte=
+ch.co.in/images/email_signatures/icons/lin_sq.png] <http://www.linkedin.com=
+/company/pragmatic-technology-solutions>   [http://pragtech.co.in/images/em=
+ail_signatures/icons/fb_sq.png] <http://www.facebook.com/pragmatic.co.in>  =
+ [http://pragtech.co.in/images/email_signatures/icons/gplus_sq.png] <https:=
+//plus.google.com/103969948663916837000/posts>   [http://pragtech.co.in/ima=
+ges/email_signatures/icons/slideshare_sq.png] <http://www.slideshare.net/pr=
+agmatic123/presentations>   [http://pragtech.co.in/images/email_signatures/=
+icons/tw_sq.png] <https://twitter.com/Pragmatic_Tech>   [http://pragtech.co=
+.in/images/email_signatures/icons/pinterest.png] <https://pinterest.com/Pra=
+gtech/>
+
+
+On Thu, Jun 23, 2022 at 6:18 PM Tech Support <tech@tmxintermodal.com<mailto=
+:tech@tmxintermodal.com>> wrote:
+Hi.
+At your request, the information is as follows
+
+SO : SO2022/2068378<https://www.odoo.com/ar/my/orders/2068544?access_token=
+=3D27d81651-b395-4a93-8585-53a6e6926484>
+
+DATE : Jun 20, 2022   12:29:44
+
+
+ Regards,
+
+We have online tracking, please click on the link below
+
+Track your CONTAINER<http://onlineservices.tmxintermodal.com/menu_container=
+.php>
+
+________________________________
+From: Faiza Shaikh <faiza.shaikh@pragtech.co.in<mailto:faiza.shaikh@pragtec=
+h.co.in>>
+Sent: Thursday, June 23, 2022 12:49 AM
+To: Tech Support <tech@tmxintermodal.com<mailto:tech@tmxintermodal.com>>
+Subject: Re: Odoo-Quickbooks connection
+
+Hello,
+
+Thank you for choosing Pragmatic.
+
+We are happy to help you with the issues faced in the module, be rest assur=
+ed about the same.
+
+To help you get in touch with an expert, I would request you to kindly prov=
+ide the SO number and the date of purchase.
+
+Awaiting your response, to help you soon.
+
+Thanks & Regards,
+[http://pragtech.co.in/images/email_signatures/faiza.png]
+[http://pragtech.co.in/images/email_signatures/Pragtech_logo.png]<https://n=
+am11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fpragtech.co.in%2F=
+&data=3D05%7C01%7Ctech%40tmxintermodal.com%7C75e6965caedb4c8b7c5a08da54d3d7=
+69%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637915567531062830%7CUnknow=
+n%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI=
+6Mn0%3D%7C2000%7C%7C%7C&sdata=3DSUmPRYmgBngKflnJ3V2egFY9nWyexkp0uewnEukM0rQ=
+%3D&reserved=3D0>
+
+Faiza Shaikh - Customer Experience Specialist
+
+Pragmatic Techsoft Pvt. Ltd.
+faiza.shaikh@pragtech.co.in<mailto:faiza.shaikh@pragtech.co.in> | www.pragt=
+ech.co.in<https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%=
+2Fwww.pragtech.co.in%2F&data=3D05%7C01%7Ctech%40tmxintermodal.com%7C75e6965=
+caedb4c8b7c5a08da54d3d769%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C6379=
+15567531062830%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIi=
+LCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C2000%7C%7C%7C&sdata=3DWwJkVoh939srWtRd68jg=
+FAw5yBoaNFr44fBypB%2FaCb0%3D&reserved=3D0>
+________________________________
+
+[http://pragtech.co.in/images/email_signatures/icons/tel_sq.png] Tel :-   [=
+http://pragtech.co.in/images/email_signatures/icons/india_flag.png]  +91 20=
+ 41201035       [http://pragtech.co.in/images/email_signatures/icons/usa_fl=
+ag.png]  +1 713 701 5957       [http://pragtech.co.in/images/email_signatur=
+es/icons/uk_flag.png]  +44 191 308 5117      [http://pragtech.co.in/images/=
+email_signatures/icons/skp_sq.png]  operations.pragtech      [http://pragte=
+ch.co.in/images/email_signatures/icons/hangout_sq.png]  sales@pragtech.co.i=
+n<mailto:sales@pragtech.co.in>
+
+Address :- Office no-15, SunShree Woods Commercial Complex, NIBM Road, Pune=
+-411048
+
+[http://pragtech.co.in/images/email_signatures/icons/ytube_sq.png]<https://=
+nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.youtube.com%=
+2Fpragmaticvideos&data=3D05%7C01%7Ctech%40tmxintermodal.com%7C75e6965caedb4=
+c8b7c5a08da54d3d769%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C6379155675=
+31062830%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTi=
+I6Ik1haWwiLCJXVCI6Mn0%3D%7C2000%7C%7C%7C&sdata=3DVRxhMjPupfFSm7XAEm%2BcSSG0=
+iPTfBwBheApxUJz0GlA%3D&reserved=3D0>  [http://pragtech.co.in/images/email_s=
+ignatures/icons/blog_sq.png] <https://nam11.safelinks.protection.outlook.co=
+m/?url=3Dhttp%3A%2F%2Fpragtechblog.blogspot.in%2F&data=3D05%7C01%7Ctech%40t=
+mxintermodal.com%7C75e6965caedb4c8b7c5a08da54d3d769%7Cea53da9730f747b6b275c=
+7aa732edda6%7C0%7C0%7C637915567531062830%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC=
+4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C2000%7C%7C%7C&sd=
+ata=3DwJHpLdgXfDbhNskdJCn5gEL448rmZqyeiEzj7FJ1Z%2BE%3D&reserved=3D0>   [htt=
+p://pragtech.co.in/images/email_signatures/icons/lin_sq.png] <https://nam11=
+.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.linkedin.com%2Fco=
+mpany%2Fpragmatic-technology-solutions&data=3D05%7C01%7Ctech%40tmxintermoda=
+l.com%7C75e6965caedb4c8b7c5a08da54d3d769%7Cea53da9730f747b6b275c7aa732edda6=
+%7C0%7C0%7C637915567531062830%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiL=
+CJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C2000%7C%7C%7C&sdata=3DbRocT=
+DfFjx8rWWvILbTz21FynWrXgj6CesmhYUY4SLw%3D&reserved=3D0>   [http://pragtech.=
+co.in/images/email_signatures/icons/fb_sq.png] <https://nam11.safelinks.pro=
+tection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.facebook.com%2Fpragmatic.co.in&=
+data=3D05%7C01%7Ctech%40tmxintermodal.com%7C75e6965caedb4c8b7c5a08da54d3d76=
+9%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637915567531062830%7CUnknown=
+%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6=
+Mn0%3D%7C2000%7C%7C%7C&sdata=3DXV6h%2BHi%2FGDDDM3Wfm%2FMzDvs2nRpVwRFMoa76EB=
+iSVTQ%3D&reserved=3D0>   [http://pragtech.co.in/images/email_signatures/ico=
+ns/gplus_sq.png] <https://nam11.safelinks.protection.outlook.com/?url=3Dhtt=
+ps%3A%2F%2Fplus.google.com%2F103969948663916837000%2Fposts&data=3D05%7C01%7=
+Ctech%40tmxintermodal.com%7C75e6965caedb4c8b7c5a08da54d3d769%7Cea53da9730f7=
+47b6b275c7aa732edda6%7C0%7C0%7C637915567531062830%7CUnknown%7CTWFpbGZsb3d8e=
+yJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C2000%7C=
+%7C%7C&sdata=3D5hupeWYvbmKBLmDmj%2Bgr%2BF83kqVJUg8qJ1d9mpUJ5qQ%3D&reserved=
+=3D0>   [http://pragtech.co.in/images/email_signatures/icons/slideshare_sq.=
+png] <https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fww=
+w.slideshare.net%2Fpragmatic123%2Fpresentations&data=3D05%7C01%7Ctech%40tmx=
+intermodal.com%7C75e6965caedb4c8b7c5a08da54d3d769%7Cea53da9730f747b6b275c7a=
+a732edda6%7C0%7C0%7C637915567531062830%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4w=
+LjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C2000%7C%7C%7C&sdat=
+a=3D6pjkkFvBCYSCSEnZwWiHYVaxeHLY77Nx0LrRfWrj7Rw%3D&reserved=3D0>   [http://=
+pragtech.co.in/images/email_signatures/icons/tw_sq.png] <https://nam11.safe=
+links.protection.outlook.com/?url=3Dhttps%3A%2F%2Ftwitter.com%2FPragmatic_T=
+ech&data=3D05%7C01%7Ctech%40tmxintermodal.com%7C75e6965caedb4c8b7c5a08da54d=
+3d769%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637915567531062830%7CUnk=
+nown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJX=
+VCI6Mn0%3D%7C2000%7C%7C%7C&sdata=3DNwFjHOynNxpOPdPmHQ0PbG5T1V3rLMH4WZr0v%2F=
+2LZh0%3D&reserved=3D0>   [http://pragtech.co.in/images/email_signatures/ico=
+ns/pinterest.png] <https://nam11.safelinks.protection.outlook.com/?url=3Dht=
+tps%3A%2F%2Fpinterest.com%2FPragtech%2F&data=3D05%7C01%7Ctech%40tmxintermod=
+al.com%7C75e6965caedb4c8b7c5a08da54d3d769%7Cea53da9730f747b6b275c7aa732edda=
+6%7C0%7C0%7C637915567531062830%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAi=
+LCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C2000%7C%7C%7C&sdata=3DCRsk=
+yE%2FcmhrXe1E3Ub9a%2FjU09qypqJyAcTMmjNEd1YU%3D&reserved=3D0>
+
+
+On Thu, Jun 23, 2022 at 8:21 AM Tech Support <tech@tmxintermodal.com<mailto=
+:tech@tmxintermodal.com>> wrote:
+Hello Faiza,
+
+Can we connect using zoom, anydesk or teamviewer?
+What are the pre-requisites to have ready before first time set-up?
+
+Thanks,
+Tech
+
+
+
+We have online tracking, please click on the link below
+
+Track your CONTAINER<https://nam11.safelinks.protection.outlook.com/?url=3D=
+http%3A%2F%2Fonlineservices.tmxintermodal.com%2Fmenu_container.php&data=3D0=
+5%7C01%7Ctech%40tmxintermodal.com%7C75e6965caedb4c8b7c5a08da54d3d769%7Cea53=
+da9730f747b6b275c7aa732edda6%7C0%7C0%7C637915567531062830%7CUnknown%7CTWFpb=
+GZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7=
+C2000%7C%7C%7C&sdata=3D9oCBiW%2BlhtXtpAEpOimU8rhvAaxModQoPgsqCsBf3uI%3D&res=
+erved=3D0>
+
+________________________________
+From: Pragmatic Support <support@pragtech.co.in<mailto:support@pragtech.co.=
+in>>
+Sent: Wednesday, June 22, 2022 11:56 AM
+To: Tech Support <tech@tmxintermodal.com<mailto:tech@tmxintermodal.com>>
+Cc: Faiza Shaikh <faiza.shaikh@pragtech.co.in<mailto:faiza.shaikh@pragtech.=
+co.in>>; Pragmatic HelpdeskSupport <helpdesk@pragtech.co.in<mailto:helpdesk=
+@pragtech.co.in>>
+Subject: Re: Odoo-Quickbooks connection
+
+Faiza kindly help.
+
+On Wed, 22 Jun 2022, 20:02 Tech Support, <tech@tmxintermodal.com<mailto:tec=
+h@tmxintermodal.com>> wrote:
+
+Hello,
+
+We recently bought this App from you on the Odoo app store:
+
+[X]
+
+Can you help us with first time set-up?
+
+We have ready the Client and Secret Ids from Quickbooks (intuit developer).
+
+Thank you,
+
+
+
+
+
+We have online tracking, please click on the link below
+
+Track your CONTAINER<https://nam11.safelinks.protection.outlook.com/?url=3D=
+http%3A%2F%2Fonlineservices.tmxintermodal.com%2Fmenu_container.php&data=3D0=
+5%7C01%7Ctech%40tmxintermodal.com%7C75e6965caedb4c8b7c5a08da54d3d769%7Cea53=
+da9730f747b6b275c7aa732edda6%7C0%7C0%7C637915567531062830%7CUnknown%7CTWFpb=
+GZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7=
+C2000%7C%7C%7C&sdata=3D9oCBiW%2BlhtXtpAEpOimU8rhvAaxModQoPgsqCsBf3uI%3D&res=
+erved=3D0>
+
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+
+
+
+--
+
+[http://pragtech.co.in/images/email_signatures/parikshit_sir.png]
+[http://pragtech.co.in/images/email_signatures/Pragtech_logo.png]<http://pr=
+agtech.co.in>
+
+Parikshit Bapat - Project Manager
+
+Pragmatic Techsoft Pvt. Ltd.
+parikshit.bapat@pragtech.co.in <mailto:parikshit.bapat@pragtech.co.in> | ww=
+w.pragtech.co.in<http://pragtech.co.in>
+________________________________
+
+[http://pragtech.co.in/images/email_signatures/icons/tel_sq.png] Tel :-   [=
+http://pragtech.co.in/images/email_signatures/icons/india_flag.png]  +91 20=
+ 41201035       [http://pragtech.co.in/images/email_signatures/icons/usa_fl=
+ag.png]  +1 619 488 2759       [http://pragtech.co.in/images/email_signatur=
+es/icons/france_flag.png]  +33 977 218 101      [http://pragtech.co.in/imag=
+es/email_signatures/icons/skp_sq.png]  operations.pragtech<https://login.sk=
+ype.com/login?message=3Dsignin_continue&return_url=3Dhttps%3A%2F%2Fsecure.s=
+kype.com%2Fportal%2Foverview>      [http://pragtech.co.in/images/email_sign=
+atures/icons/hangout_sq.png]  sales@pragtech.co.in<mailto:sales@pragtech.co=
+.in>
+
+Address :- Office no-15, SunShree Woods Commercial Complex, NIBM Road, Pune=
+-411048
+
+[http://pragtech.co.in/images/email_signatures/icons/ytube_sq.png]<http://w=
+ww.youtube.com/pragmaticvideos>  [http://pragtech.co.in/images/email_signat=
+ures/icons/blog_sq.png] <http://pragtechblog.blogspot.in/>   [http://pragte=
+ch.co.in/images/email_signatures/icons/lin_sq.png] <http://www.linkedin.com=
+/company/pragmatic-technology-solutions>   [http://pragtech.co.in/images/em=
+ail_signatures/icons/fb_sq.png] <http://www.facebook.com/pragmatic.co.in>  =
+ [http://pragtech.co.in/images/email_signatures/icons/gplus_sq.png] <https:=
+//plus.google.com/103969948663916837000/posts>   [http://pragtech.co.in/ima=
+ges/email_signatures/icons/slideshare_sq.png] <http://www.slideshare.net/pr=
+agmatic123/presentations>   [http://pragtech.co.in/images/email_signatures/=
+icons/tw_sq.png] <https://twitter.com/Pragmatic_Tech>   [http://pragtech.co=
+.in/images/email_signatures/icons/pinterest.png] <https://pinterest.com/Pra=
+gtech/>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+
+--0000000000001d8dda05e22c8727
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></=
+head>
+<body>
+<div dir=3D"ltr">
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif">Hello=
+&nbsp;</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif">Hope =
+you are doing well. How can&nbsp;I help you?</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif">For t=
+he QBO connector we have following prerequisites<br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><b>1)=
+ </b>Odoo must be accessible on https protocol&nbsp;</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><b>2)=
+ </b>We need to check the Account codes are enabled in QBO and it is set fo=
+r all the accounts.&nbsp;&nbsp;</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif">Pleas=
+e find below my availability for the call. You may kindly book the slot as =
+per your convenience.&nbsp;</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><a hr=
+ef=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fc=
+alendly.com%2Fparikshit-bapat%2F30min&amp;data=3D05%7C01%7Ctech%40tmxinterm=
+odal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732ed=
+da6%7C0%7C0%7C637916525632388290%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMD=
+AiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=
+=3DYhhHlLNJC2pgHAGjLcLUrF54R%2F%2BQDVUwMbmFnqbvxJE%3D&amp;reserved=3D0" ori=
+ginalsrc=3D"https://calendly.com/parikshit-bapat/30min" shash=3D"aA520XZtAg=
+lgEgfdno83T9IUMhJ+hIIXe0CcrR5+I6k7vW5O0uHPcelhx1f2B428g7Un/On3QNqe8kU/h9hmX=
+vCfZyv8EhsIfsbsGty1kzt2vRqPTowfwJXgVmnBa1ZAOZZSX3ur+j0UzhiK8gB7Bqf5CFSB4De3=
+M1bhKCvV324=3D" target=3D"_blank">https://calendly.com/parikshit-bapat/30mi=
+n</a><br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif">&nbsp=
+;</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><br>
+</div>
+<div class=3D"gmail_default" style=3D"font-family:verdana,sans-serif"><br>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jun 24, 2022 at 12:21 PM Faiz=
+a Shaikh &lt;<a href=3D"mailto:faiza.shaikh@pragtech.co.in" target=3D"_blan=
+k">faiza.shaikh@pragtech.co.in</a>&gt; wrote:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div dir=3D"ltr">Hello,
+<div><br>
+</div>
+<div>Thank you for sharing the&nbsp;information.</div>
+<div><br>
+</div>
+<div>We are happy to help you with the solution for the query.</div>
+<div><br>
+</div>
+<div>We have our expert&nbsp;<a class=3D"gmail_plusreply" id=3D"m_-62345690=
+22422250895gmail-m_8103898166750091031plusReplyChip-0" href=3D"mailto:parik=
+shit.bapat@pragtech.co.in" target=3D"_blank">@Parikshit Bapat</a>&nbsp;who =
+will be helping you further.</div>
+<div><br>
+</div>
+<div>Appreciate your patience.</div>
+<div><br>
+</div>
+<div>Thanks &amp; Regards,<br clear=3D"all">
+<div>
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<table border=3D"0" width=3D"1024" cellpadding=3D"5" cellspacing=3D"0" styl=
+e=3D"color:rgb(0,0,0);font-family:&quot;Times New Roman&quot;;font-size:med=
+ium;border:1px solid rgb(208,237,209);background:url(&quot;http://pragtech.=
+co.in/images/email_signatures/signature_bg.jpg&quot;) 0% 0%/100% no-repeat"=
+>
+<tbody>
+<tr>
+<td width=3D"16%"><img src=3D"http://pragtech.co.in/images/email_signatures=
+/faiza.png" alt=3D"" width=3D"150"></td>
+<td width=3D"84%">
+<div style=3D"float:right;height:50px;margin-right:5px"><a href=3D"https://=
+nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fpragtech.co.in%2=
+F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08da5=
+5b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632388290%7CU=
+nknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLC=
+JXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3Dis7ct7Gd1KH549Ew82H4IyUOesajaOv%2F=
+LRInduv9Css%3D&amp;reserved=3D0" originalsrc=3D"http://pragtech.co.in/" sha=
+sh=3D"gA11NPQBxGNJ7Z6Jud8IixRZd8d5nLo/CuxBfeTOdGzedx+j+hZEDuuVB+GFUK+HlUVcV=
+F+QKfpMRgxq7dEOxEKdi7IA4554sCnHvjZ1MfaaYn+t3bSRntoxLakaw2CeSDe3nZF14KCeiuZ9=
++6AY8dPioRz3A/yxef+JsH8ZOmE=3D" target=3D"_blank"><img src=3D"http://pragte=
+ch.co.in/images/email_signatures/Pragtech_logo.png" alt=3D"" width=3D"180">=
+</a></div>
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:16px;f=
+ont-weight:bold;margin-top:5px">
+<span style=3D"color:rgb(68,181,73)">Faiza&nbsp;</span><span style=3D"color=
+:rgb(68,181,73)">Shaikh</span>&nbsp;- Customer Experience Specialist</p>
+<span style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11p=
+x;font-weight:bold;color:rgb(68,181,73);margin-top:0px">Pragmatic Techsoft =
+Pvt. Ltd.</span><br>
+<span style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11p=
+x;font-weight:bold"><a href=3D"mailto:faiza.shaikh@pragtech.co.in" target=
+=3D"_blank">faiza.shaikh@pragtech.co.in</a>&nbsp;|&nbsp;<a href=3D"https://=
+nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.pragtech.co.=
+in%2F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f0=
+8da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632388290=
+%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haW=
+wiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DySYspdKpZRilIoCXIh1ZJ4ip1RnZ0T=
+vIsvN0ihVW5uw%3D&amp;reserved=3D0" originalsrc=3D"http://www.pragtech.co.in=
+/" shash=3D"Z0VV2mHwQEIuWUjyRYFS55TsUrnPxFcLlWu3mFW3wdwokv6emLEooKlz8OFYaPc=
+LrKip9YoxKFix91qr6gZpMX68mNRybx1Arv3iLNHuTBLDIirsjIU6euHuMX8/kURwYUboIAz38s=
+BT0S/bluiBpFf33ioyYH1LbdabU8ze1Yg=3D" target=3D"_blank">www.pragtech.co.in<=
+/a></span>
+<hr style=3D"color:rgb(68,181,73);width:848.484px">
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px">=
+<span style=3D"font-weight:bold"><img src=3D"http://pragtech.co.in/images/e=
+mail_signatures/icons/tel_sq.png" alt=3D"" width=3D"20">&nbsp;<span style=
+=3D"vertical-align:super">Tel :-</span>&nbsp;&nbsp;&nbsp;<img src=3D"http:/=
+/pragtech.co.in/images/email_signatures/icons/india_flag.png" alt=3D"" widt=
+h=3D"20">&nbsp;</span><span style=3D"vertical-align:super">+91
+ 20 41201035 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=3D"font=
+-weight:bold"><img src=3D"http://pragtech.co.in/images/email_signatures/ico=
+ns/usa_flag.png" alt=3D"" width=3D"20"></span>&nbsp;<span style=3D"vertical=
+-align:super">+1 713 701 5957 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<s=
+pan style=3D"font-weight:bold"><img src=3D"http://pragtech.co.in/images/ema=
+il_signatures/icons/uk_flag.png" alt=3D"" width=3D"20"></span>&nbsp;<span s=
+tyle=3D"vertical-align:super">+44
+ 191 308 5117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src=3D"http://=
+pragtech.co.in/images/email_signatures/icons/skp_sq.png" alt=3D"" width=3D"=
+22">&nbsp;<span style=3D"vertical-align:super">operations.pragtech</span>&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src=3D"http://pragtech.co.in/images/=
+email_signatures/icons/hangout_sq.png" alt=3D"" width=3D"22">&nbsp;<span st=
+yle=3D"vertical-align:super"><a href=3D"mailto:sales@pragtech.co.in" target=
+=3D"_blank">sales@pragtech.co.in</a></span>&nbsp;</p>
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px">=
+<span style=3D"font-weight:bold">Address :-</span>&nbsp;Office no-15, SunSh=
+ree Woods Commercial Complex, NIBM Road, Pune-411048</p>
+<div style=3D"margin-top:0px"><a title=3D"Youtube" href=3D"https://nam11.sa=
+felinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.youtube.com%2Fpragma=
+ticvideos&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439be=
+b1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C63791652563238=
+8290%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik=
+1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DzeHRMU%2Fmj2lBxrD63J7QSyV6=
+WzwdP8t0ZpAGz4xLAWg%3D&amp;reserved=3D0" originalsrc=3D"http://www.youtube.=
+com/pragmaticvideos" shash=3D"jEV6FRBARVs+TC/gaCl81BwDJPT2KX72Wmu6j5lTdVaqe=
+zvNudRNYgAUQIq6MSZxZkasWDrQ/KKia132ONyrVLNXvMAPJodSitkFOG/dGyrh7F/TQEB3Pky9=
+rXyCUSZVwoI3R5CLH4daz3CofuUDkbrNxtAzwLvsfLXuSsBsK6g=3D" target=3D"_blank"><=
+img src=3D"http://pragtech.co.in/images/email_signatures/icons/ytube_sq.png=
+" alt=3D"" width=3D"24" border=3D"0"></a>&nbsp;&nbsp;<a title=3D"Pragmatic =
+Blog" href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A=
+%2F%2Fpragtechblog.blogspot.in%2F&amp;data=3D05%7C01%7Ctech%40tmxintermodal=
+.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%=
+7C0%7C0%7C637916525632388290%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLC=
+JQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DLX=
+z9tVQGT5ghQv4qypROjbU%2B89XocAA4RwLOXsSD9a4%3D&amp;reserved=3D0" originalsr=
+c=3D"http://pragtechblog.blogspot.in/" shash=3D"OaWJ5F4XsTO66E8RKlEnEe9/9A/=
+g10kjwGDfpe0PVyh25cdKjAkHLzg7vKvkI2//395ncBlSQTeqXSjesaSzoqVB42gh3GDGy5VXb1=
+bBuLHKzk95dSYLR6xKrAayxnOWL/HOq0PO/idjU61HnN89ug90RgTNrc4nfvV+AXAirb0=3D" t=
+arget=3D"_blank"><img src=3D"http://pragtech.co.in/images/email_signatures/=
+icons/blog_sq.png" alt=3D"" width=3D"24"></a>&nbsp;&nbsp;<a title=3D"Connec=
+t with our network" href=3D"https://nam11.safelinks.protection.outlook.com/=
+?url=3Dhttp%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fpragmatic-technology-solut=
+ions&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08=
+da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632388290%=
+7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWw=
+iLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DP5tEp5Hy0KpKK54i1sbZs381QqhpwhM=
+LwB6iYuF%2Bm0c%3D&amp;reserved=3D0" originalsrc=3D"http://www.linkedin.com/=
+company/pragmatic-technology-solutions" shash=3D"ttBY/P5ZlqN38Gb9RTU2twQOb+=
+o/KnsonMbfwanij6ueOLixkpIvLZEFATlhyxt2lUuTnYXkPK5mOMFE7CZL2qrWGhkQki6t63PE2=
+EekdGB/KctlKsBZxXaIBNTcyAW1IzozIIwSD7ZuUCw/cfaNUzCmpR8Gerlqkf59GnPgLaw=3D" =
+target=3D"_blank"><img src=3D"http://pragtech.co.in/images/email_signatures=
+/icons/lin_sq.png" alt=3D"" width=3D"24"></a>&nbsp;&nbsp;<a title=3D"Join u=
+s on Facebook" href=3D"https://nam11.safelinks.protection.outlook.com/?url=
+=3Dhttp%3A%2F%2Fwww.facebook.com%2Fpragmatic.co.in&amp;data=3D05%7C01%7Ctec=
+h%40tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6=
+b275c7aa732edda6%7C0%7C0%7C637916525632388290%7CUnknown%7CTWFpbGZsb3d8eyJWI=
+joiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%=
+7C&amp;sdata=3DmKLfCBh5AuXCHNwslfTIKByTkLhI1ahvbajS%2Bzzmbxw%3D&amp;reserve=
+d=3D0" originalsrc=3D"http://www.facebook.com/pragmatic.co.in" shash=3D"tVp=
+CgLcN/nWSalVGcMV3GpZUkxUGJK75CbBuZjm9IEXD8e+UYG93kaK1V0gOXwP05bXMa0u7RPn9Y6=
+ulQCTKzA/hzJzTYuyV/mkC4ZGF4QwW4fAOYDdIG7j/D1ny7C6htUSQpM15xSWY2a7fmvKhRPZLe=
+QqkHFkoYXvN0bN/zxo=3D" target=3D"_blank"><img src=3D"http://pragtech.co.in/=
+images/email_signatures/icons/fb_sq.png" alt=3D"" width=3D"24"></a>&nbsp;&n=
+bsp;<a title=3D"Google Plus" href=3D"https://nam11.safelinks.protection.out=
+look.com/?url=3Dhttps%3A%2F%2Fplus.google.com%2F103969948663916837000%2Fpos=
+ts&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08da=
+55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632388290%7C=
+Unknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiL=
+CJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3Doyffv4wDcPZ%2FHKOkpTEhitHYjCC5XXd=
+VIN4PYXUUNFA%3D&amp;reserved=3D0" originalsrc=3D"https://plus.google.com/10=
+3969948663916837000/posts" shash=3D"Jh9zVdcpRz2ytlqi1V9f9BfRgfrR/NpBotCUamb=
+GfremaLcSBtEGYpKJXxLpnuSSJpTBP9sRfFqCegzyKSR04Y4Rv6G9UQTY7YGG6wa/RP9jGrIqYR=
+gg6cEBuzJh28DjwyRbugjJfZ8oT4G2LMUMFhlKjVHlt6YS+O405gLuENk=3D" target=3D"_bl=
+ank"><img src=3D"http://pragtech.co.in/images/email_signatures/icons/gplus_=
+sq.png" alt=3D"" width=3D"24"></a>&nbsp;&nbsp;<a title=3D"Slideshare" href=
+=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.=
+slideshare.net%2Fpragmatic123%2Fpresentations&amp;data=3D05%7C01%7Ctech%40t=
+mxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275c=
+7aa732edda6%7C0%7C0%7C637916525632388290%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC=
+4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&am=
+p;sdata=3DmMVE1I62ahNHIWgyRpWf4kZq84lRzDO5OXwCy1sqxMM%3D&amp;reserved=3D0" =
+originalsrc=3D"http://www.slideshare.net/pragmatic123/presentations" shash=
+=3D"DOAa8YglWkxwr6Ltg0hprz1F+nYN1KpQ+CO3MS80ayjlZA4q2XmocHgCKPi//wvIHrJNMxI=
+Z/2Zf8sr6DrxpOmqgm+DMIPS6ce41CQYJxCHZc/a2qqapqlHY6LAnHBYxTzIV2wzOlwH7/RLYF7=
+uoCy4j14TbXMehNij9+kOTjAw=3D" target=3D"_blank"><img src=3D"http://pragtech=
+.co.in/images/email_signatures/icons/slideshare_sq.png" alt=3D"" width=3D"2=
+4"></a>&nbsp;&nbsp;<a title=3D"Follow us on Twitter" href=3D"https://nam11.=
+safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Ftwitter.com%2FPragmat=
+ic_Tech&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1=
+f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C6379165256323882=
+90%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1h=
+aWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3Dgi5mv8tRyfxRspvzgP%2FZe8o1cU=
+uOUI8PaXgGjHm3G1I%3D&amp;reserved=3D0" originalsrc=3D"https://twitter.com/P=
+ragmatic_Tech" shash=3D"b5kmS/tBK5yXe5NZg2b4iTNDZ5+emcOgwB47LeI9dce8ojW1wdd=
+nUq8e7Gfa7CsjHrHq9hM2cyUoo318O5NQlb4z2maEAaiMr/THLKe5qk/9ysTeOoPe9vl/WNGTc6=
+/wWU+wcOmfH+iwMxdRrLHn2RlonreFJAMKSGhrmxWixzQ=3D" target=3D"_blank"><img sr=
+c=3D"http://pragtech.co.in/images/email_signatures/icons/tw_sq.png" alt=3D"=
+" width=3D"24"></a>&nbsp;&nbsp;<a title=3D"Pinterest" href=3D"https://nam11=
+.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fpinterest.com%2FPrag=
+tech%2F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1=
+f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C6379165256323882=
+90%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1h=
+aWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DGSxSKkXaUSQWEzJpR6o32Y25RPxk=
+39vHxHOuYCKajTw%3D&amp;reserved=3D0" originalsrc=3D"https://pinterest.com/P=
+ragtech/" shash=3D"s3naB6wSZ8VS8ngQvcHP+fsz3oDAMIhNQ+GQJRPmXWxq9vOn8U+dw+Y1=
+meAUioSpVqK/0X2ylXQOHTVAAaN5yZnkm75KITxhx/slHTqe+4pUWjiIxtvt0XMZFvD0uhdSl3Z=
+7p7KWhAM5SgY3I5C78PJTEEE3Cyb+dm9vViOdtec=3D" target=3D"_blank"><img src=3D"=
+http://pragtech.co.in/images/email_signatures/icons/pinterest.png" alt=3D""=
+ width=3D"24"></a>&nbsp;</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, Jun 23, 2022 at 6:18 PM Tech =
+Support &lt;<a href=3D"mailto:tech@tmxintermodal.com" target=3D"_blank">tec=
+h@tmxintermodal.com</a>&gt; wrote:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+Hi.</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span lang=3D"en"><span><span>At your request, the information is as follow=
+s</span></span></span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+SO :&nbsp;<a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3D=
+https%3A%2F%2Fwww.odoo.com%2Far%2Fmy%2Forders%2F2068544%3Faccess_token%3D27=
+d81651-b395-4a93-8585-53a6e6926484&amp;data=3D05%7C01%7Ctech%40tmxintermoda=
+l.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6=
+%7C0%7C0%7C637916525632388290%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiL=
+CJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3Dk=
+nZP1hGXWcF%2FinsyL907hkaVSNxZDbNqAXtc8xIk8DY%3D&amp;reserved=3D0" originals=
+rc=3D"https://www.odoo.com/ar/my/orders/2068544?access_token=3D27d81651-b39=
+5-4a93-8585-53a6e6926484" shash=3D"Mjd+NXc/KMa73Kbz1GiSFAGO1zbi+LA/d4er+vhF=
+yhe6mPybXi5PJrmlUfeMRspHS6gycymJ1sR50clAcIH5SqP9+45RxtrB6uHYjRGlnm8NUf5Jsmf=
+x5Svf0ulSzFruhzTZH1/lR9u41SHnYKPMYQeC2qfR/Cs4PWckAkyZ3pw=3D" style=3D"box-s=
+izing:border-box;color:rgb(1,126,132);background-color:rgb(255,255,255);fon=
+t-weight:600;font-family:Inter,&quot;Odoo Unicode Support Noto&quot;,sans-s=
+erif;font-size:15px;text-align:right" id=3D"m_-6234569022422250895gmail-m_8=
+103898166750091031gmail-m_-291218274225187844LPlnk190406" target=3D"_blank"=
+><font style=3D"box-sizing:border-box"><font style=3D"box-sizing:border-box=
+">SO2022/2068378</font></font></a><br>
+</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"box-sizing:border-box;color:rgb(33,37,41);font-family:Inter,=
+&quot;Odoo Unicode Support Noto&quot;,sans-serif;font-size:15px;text-align:=
+left;background-color:rgb(255,255,255)"><font style=3D"box-sizing:border-bo=
+x"><font style=3D"box-sizing:border-box">DATE :
+ Jun 20, 2022<span>&nbsp;</span></font></font></span><span style=3D"color:r=
+gb(33,37,41);font-family:Inter,&quot;Odoo Unicode Support Noto&quot;,sans-s=
+erif;font-size:15px;text-align:left;background-color:rgb(255,255,255);displ=
+ay:inline">&nbsp;<span>&nbsp;</span></span><span style=3D"box-sizing:border=
+-box;color:rgb(33,37,41);font-family:Inter,&quot;Odoo Unicode Support Noto&=
+quot;,sans-serif;font-size:15px;text-align:left;background-color:rgb(255,25=
+5,255);display:inline"><font style=3D"box-sizing:border-box"><font style=3D=
+"box-sizing:border-box">12:29:44</font></font></span><br>
+</div>
+<div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<br>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844Signature">
+<div>
+<div></div>
+<div></div>
+<div></div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt;color=
+:rgb(0,0,0);font-family:Calibri,Helvetica,sans-serif">
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt;color=
+:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-serif,EmojiFont,&quot;=
+Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Seg=
+oe UI Symbol&quot;,&quot;Android Emoji&quot;,EmojiSymbols">
+<p style=3D"margin-top:0px;margin-bottom:0px"></p>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt;color=
+:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-serif,EmojiFont,&quot;=
+Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Seg=
+oe UI Symbol&quot;,&quot;Android Emoji&quot;,EmojiSymbols">
+<br>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844divtagdefaultwrapper" dir=3D"ltr" style=3D"font-size:12pt;color=
+:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-serif,EmojiFont,&quot;=
+Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Seg=
+oe UI Symbol&quot;,&quot;Android Emoji&quot;,EmojiSymbols">
+<table align=3D"center" style=3D"font-family:&quot;Times New Roman&quot;;fo=
+nt-size:medium;text-align:center;box-sizing:border-box;width:1677.05px;heig=
+ht:25.7422px">
+<tbody>
+<tr>
+<td align=3D"left" style=3D"box-sizing:border-box;width:1674.55px;height:23=
+.2422px"><span style=3D"color:rgb(32,31,30);font-size:15px;text-align:start=
+;background-color:rgb(255,255,255);display:inline">&nbsp;Regards,</span><br=
+>
+</td>
+</tr>
+</tbody>
+</table>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri,sans-serif;backgr=
+ound:white">
+<span style=3D"font-size:10pt;color:black">We have online tracking, please =
+click on the&nbsp;link&nbsp;below&nbsp;</span></p>
+<div align=3D"center">
+<table width=3D"100%" style=3D"width:100%">
+<tbody>
+<tr>
+<td style=3D"padding:0.75pt">
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri,sans-serif"><a hr=
+ef=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fon=
+lineservices.tmxintermodal.com%2Fmenu_container.php&amp;data=3D05%7C01%7Cte=
+ch%40tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b=
+6b275c7aa732edda6%7C0%7C0%7C637916525632388290%7CUnknown%7CTWFpbGZsb3d8eyJW=
+IjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C=
+%7C&amp;sdata=3DxHMk4JEAVCQuUEhurz9SFRrAGGkQVkn22rMEBNKijp8%3D&amp;reserved=
+=3D0" originalsrc=3D"http://onlineservices.tmxintermodal.com/menu_container=
+.php" shash=3D"ohWXE+UUFwAPvopTR+yQq7oIpE0AzXSFKofA1aisiPkcLjizx0JWzyH5KsVX=
+Pw7QwWAdvPavkqZ/V6zNLOD0aLTw+Ix7AFfbqINbhKeMnR9jo7ZEMXnanUyfTrzbDHFf5cMc21X=
+S6JHyDiS6H8dVLBs37eEMclZQ2/j2BII/pyI=3D" target=3D"_blank"><span style=3D"f=
+ont-size:10pt;font-family:&quot;Times New Roman&quot;,serif;color:blue;bord=
+er:1pt none windowtext;padding:0in">Track
+ your CONTAINER</span></a><span style=3D"font-size:10pt;font-family:&quot;T=
+imes New Roman&quot;,serif">&nbsp;</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844appendonsend">
+</div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844divRplyFwdMsg" dir=3D"ltr">
+<font face=3D"Calibri, sans-serif" style=3D"font-size:11pt" color=3D"#00000=
+0"><b>From:</b> Faiza Shaikh &lt;<a href=3D"mailto:faiza.shaikh@pragtech.co=
+.in" target=3D"_blank">faiza.shaikh@pragtech.co.in</a>&gt;<br>
+<b>Sent:</b> Thursday, June 23, 2022 12:49 AM<br>
+<b>To:</b> Tech Support &lt;<a href=3D"mailto:tech@tmxintermodal.com" targe=
+t=3D"_blank">tech@tmxintermodal.com</a>&gt;<br>
+<b>Subject:</b> Re: Odoo-Quickbooks connection</font>
+<div>&nbsp;</div>
+</div>
+<div>
+<div dir=3D"ltr">Hello,
+<div><br>
+</div>
+<div>Thank you for choosing Pragmatic.</div>
+<div><br>
+</div>
+<div>We are happy to help you with the issues faced in the module, be rest =
+assured about the same.</div>
+<div><br>
+</div>
+<div>To help you get in touch with an expert, I would request you to kindly=
+ provide the SO number and the date of purchase.</div>
+<div><br>
+</div>
+<div>Awaiting your response, to help you soon.</div>
+<div><br>
+</div>
+<div>Thanks &amp;&nbsp;Regards,<br clear=3D"all">
+<div>
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<table border=3D"0" width=3D"1024" cellpadding=3D"5" cellspacing=3D"0" styl=
+e=3D"color:rgb(0,0,0);font-family:&quot;Times New Roman&quot;;font-size:med=
+ium;border:1px solid rgb(208,237,209);background:url(&quot;http://pragtech.=
+co.in/images/email_signatures/signature_bg.jpg&quot;) 0% 0%/100% no-repeat"=
+>
+<tbody>
+<tr>
+<td width=3D"16%"><img alt=3D"" width=3D"150" src=3D"http://pragtech.co.in/=
+images/email_signatures/faiza.png"></td>
+<td width=3D"84%">
+<div style=3D"float:right;height:50px;margin-right:5px"><a href=3D"https://=
+nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fpragtech.co.in%2=
+F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08da5=
+5b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632388290%7CU=
+nknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLC=
+JXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3Dis7ct7Gd1KH549Ew82H4IyUOesajaOv%2F=
+LRInduv9Css%3D&amp;reserved=3D0" originalsrc=3D"http://pragtech.co.in/" sha=
+sh=3D"gA11NPQBxGNJ7Z6Jud8IixRZd8d5nLo/CuxBfeTOdGzedx+j+hZEDuuVB+GFUK+HlUVcV=
+F+QKfpMRgxq7dEOxEKdi7IA4554sCnHvjZ1MfaaYn+t3bSRntoxLakaw2CeSDe3nZF14KCeiuZ9=
++6AY8dPioRz3A/yxef+JsH8ZOmE=3D" target=3D"_blank"><img alt=3D"" width=3D"18=
+0" src=3D"http://pragtech.co.in/images/email_signatures/Pragtech_logo.png">=
+</a></div>
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:16px;f=
+ont-weight:bold;margin-top:5px">
+<span style=3D"color:rgb(68,181,73)">Faiza&nbsp;</span><span style=3D"color=
+:rgb(68,181,73)">Shaikh</span>&nbsp;- Customer Experience Specialist</p>
+<span style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11p=
+x;font-weight:bold;color:rgb(68,181,73);margin-top:0px">Pragmatic Techsoft =
+Pvt. Ltd.</span><br>
+<span style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11p=
+x;font-weight:bold"><a href=3D"mailto:faiza.shaikh@pragtech.co.in" target=
+=3D"_blank">faiza.shaikh@pragtech.co.in</a>&nbsp;|&nbsp;<a href=3D"https://=
+nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.pragtech.co.=
+in%2F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f0=
+8da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632388290=
+%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haW=
+wiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DySYspdKpZRilIoCXIh1ZJ4ip1RnZ0T=
+vIsvN0ihVW5uw%3D&amp;reserved=3D0" originalsrc=3D"http://www.pragtech.co.in=
+/" shash=3D"Z0VV2mHwQEIuWUjyRYFS55TsUrnPxFcLlWu3mFW3wdwokv6emLEooKlz8OFYaPc=
+LrKip9YoxKFix91qr6gZpMX68mNRybx1Arv3iLNHuTBLDIirsjIU6euHuMX8/kURwYUboIAz38s=
+BT0S/bluiBpFf33ioyYH1LbdabU8ze1Yg=3D" target=3D"_blank">www.pragtech.co.in<=
+/a></span>
+<hr style=3D"color:rgb(68,181,73);width:848.484px">
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px">=
+<span style=3D"font-weight:bold"><img alt=3D"" width=3D"20" src=3D"http://p=
+ragtech.co.in/images/email_signatures/icons/tel_sq.png">&nbsp;<span style=
+=3D"vertical-align:super">Tel :-</span>&nbsp;&nbsp;&nbsp;<img alt=3D"" widt=
+h=3D"20" src=3D"http://pragtech.co.in/images/email_signatures/icons/india_f=
+lag.png">&nbsp;</span><span style=3D"vertical-align:super">+91
+ 20 41201035 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=3D"font=
+-weight:bold"><img alt=3D"" width=3D"20" src=3D"http://pragtech.co.in/image=
+s/email_signatures/icons/usa_flag.png"></span>&nbsp;<span style=3D"vertical=
+-align:super">+1 713 701 5957 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;<s=
+pan style=3D"font-weight:bold"><img alt=3D"" width=3D"20" src=3D"http://pra=
+gtech.co.in/images/email_signatures/icons/uk_flag.png"></span>&nbsp;<span s=
+tyle=3D"vertical-align:super">+44
+ 191 308 5117</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt=3D"" width=
+=3D"22" src=3D"http://pragtech.co.in/images/email_signatures/icons/skp_sq.p=
+ng">&nbsp;<span style=3D"vertical-align:super">operations.pragtech</span>&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img alt=3D"" width=3D"22" src=3D"http://=
+pragtech.co.in/images/email_signatures/icons/hangout_sq.png">&nbsp;<span st=
+yle=3D"vertical-align:super"><a href=3D"mailto:sales@pragtech.co.in" target=
+=3D"_blank">sales@pragtech.co.in</a></span>&nbsp;</p>
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px">=
+<span style=3D"font-weight:bold">Address :-</span>&nbsp;Office no-15, SunSh=
+ree Woods Commercial Complex, NIBM Road, Pune-411048</p>
+<div style=3D"margin-top:0px"><a title=3D"Youtube" href=3D"https://nam11.sa=
+felinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.youtube.com%2Fpragma=
+ticvideos&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439be=
+b1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C63791652563238=
+8290%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik=
+1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DzeHRMU%2Fmj2lBxrD63J7QSyV6=
+WzwdP8t0ZpAGz4xLAWg%3D&amp;reserved=3D0" originalsrc=3D"http://www.youtube.=
+com/pragmaticvideos" shash=3D"jEV6FRBARVs+TC/gaCl81BwDJPT2KX72Wmu6j5lTdVaqe=
+zvNudRNYgAUQIq6MSZxZkasWDrQ/KKia132ONyrVLNXvMAPJodSitkFOG/dGyrh7F/TQEB3Pky9=
+rXyCUSZVwoI3R5CLH4daz3CofuUDkbrNxtAzwLvsfLXuSsBsK6g=3D" target=3D"_blank"><=
+img alt=3D"" width=3D"24" border=3D"0" src=3D"http://pragtech.co.in/images/=
+email_signatures/icons/ytube_sq.png"></a>&nbsp;&nbsp;<a title=3D"Pragmatic =
+Blog" href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A=
+%2F%2Fpragtechblog.blogspot.in%2F&amp;data=3D05%7C01%7Ctech%40tmxintermodal=
+.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%=
+7C0%7C0%7C637916525632388290%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLC=
+JQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DLX=
+z9tVQGT5ghQv4qypROjbU%2B89XocAA4RwLOXsSD9a4%3D&amp;reserved=3D0" originalsr=
+c=3D"http://pragtechblog.blogspot.in/" shash=3D"OaWJ5F4XsTO66E8RKlEnEe9/9A/=
+g10kjwGDfpe0PVyh25cdKjAkHLzg7vKvkI2//395ncBlSQTeqXSjesaSzoqVB42gh3GDGy5VXb1=
+bBuLHKzk95dSYLR6xKrAayxnOWL/HOq0PO/idjU61HnN89ug90RgTNrc4nfvV+AXAirb0=3D" t=
+arget=3D"_blank"><img alt=3D"" width=3D"24" src=3D"http://pragtech.co.in/im=
+ages/email_signatures/icons/blog_sq.png"></a>&nbsp;&nbsp;<a title=3D"Connec=
+t with our network" href=3D"https://nam11.safelinks.protection.outlook.com/=
+?url=3Dhttp%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fpragmatic-technology-solut=
+ions&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08=
+da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632544528%=
+7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWw=
+iLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DMG39VvZA%2BfzpRxpeRtMcYmYKTHpHJ=
+emYtwAwmoFRe2A%3D&amp;reserved=3D0" originalsrc=3D"http://www.linkedin.com/=
+company/pragmatic-technology-solutions" shash=3D"BTKDf5D4l3QMH/bmxedM/heYmW=
+CAOZdtJ6GtptLEfE/6B5WxfKNQk5z0HFbZkeqXti+bWpc36rTSOV6SEER/1G8uSQlf5ZCOpZusZ=
+2Aau4YvD7EoT/fh9ciHhMIc8B0+URxLYQ5eJUYijiiyVsWqbJCsN0A5LPBoW5K+mD4OFa8=3D" =
+target=3D"_blank"><img alt=3D"" width=3D"24" src=3D"http://pragtech.co.in/i=
+mages/email_signatures/icons/lin_sq.png"></a>&nbsp;&nbsp;<a title=3D"Join u=
+s on Facebook" href=3D"https://nam11.safelinks.protection.outlook.com/?url=
+=3Dhttp%3A%2F%2Fwww.facebook.com%2Fpragmatic.co.in&amp;data=3D05%7C01%7Ctec=
+h%40tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6=
+b275c7aa732edda6%7C0%7C0%7C637916525632544528%7CUnknown%7CTWFpbGZsb3d8eyJWI=
+joiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%=
+7C&amp;sdata=3Dc0PwvT9JZuB7dts%2Fb4VOIRa2UEj5sKsJD055dKgIo9I%3D&amp;reserve=
+d=3D0" originalsrc=3D"http://www.facebook.com/pragmatic.co.in" shash=3D"rii=
+HOmig10OTHTe3NpNQN1fNIH6wEyBCrmhy74L3ZuOdgDcCIK8IMcp85FdJlwEZz+Ti3e1+zA79uP=
+Wfjc8F0qcPwm24qopl4FBLbImVv0PW5g3bQTokEFkZu1Vkd+GemSaNLtekjsG8zStXxWWBwugZM=
+EHfw1a+xOysP31rjfg=3D" target=3D"_blank"><img alt=3D"" width=3D"24" src=3D"=
+http://pragtech.co.in/images/email_signatures/icons/fb_sq.png"></a>&nbsp;&n=
+bsp;<a title=3D"Google Plus" href=3D"https://nam11.safelinks.protection.out=
+look.com/?url=3Dhttps%3A%2F%2Fplus.google.com%2F103969948663916837000%2Fpos=
+ts&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08da=
+55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632544528%7C=
+Unknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiL=
+CJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DRzecRvvgFhcIIo%2B5e%2FSY5YZSybdfy=
+dshByBA6eJZ3jE%3D&amp;reserved=3D0" originalsrc=3D"https://plus.google.com/=
+103969948663916837000/posts" shash=3D"LnIuCt1K8cT1qyhHIGiCVAmaflxF/K/9NzShH=
+MNIHHyxPuHUgtDG9veaqw9EPpDJg7IpqbM1xYFt+SZ/XY8l7IyBy/hLVFA/iLyMkEA/w7p9RMP1=
+Hgv6lXg5TOrcPOXSMOgGk1rIZYffwMvzkeLLBRrvt1Gks0viXMu7km0pCS8=3D" target=3D"_=
+blank"><img alt=3D"" width=3D"24" src=3D"http://pragtech.co.in/images/email=
+_signatures/icons/gplus_sq.png"></a>&nbsp;&nbsp;<a title=3D"Slideshare" hre=
+f=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww=
+.slideshare.net%2Fpragmatic123%2Fpresentations&amp;data=3D05%7C01%7Ctech%40=
+tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275=
+c7aa732edda6%7C0%7C0%7C637916525632544528%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiM=
+C4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&a=
+mp;sdata=3DzsFmUZ7Dp3tnYknxpCC8zUCNDxoEFcu7lySfIMiLgak%3D&amp;reserved=3D0"=
+ originalsrc=3D"http://www.slideshare.net/pragmatic123/presentations" shash=
+=3D"M6kzINRTjZ5UBGCXQKjIVCjJSZd4rcOtkLlYWa8QdzAhIUFYk4iwoDKGwpddjcm4DfnXaLJ=
+UmdkXJs/gh4QHjAE/+4G07+miY6MP3IMh2ziSivxLe8YqAwbLSIHJ9hPZQ2Y5SZNBAmHanvFc4i=
+YVo74PS+WTtsm+JusyVwthzDg=3D" target=3D"_blank"><img alt=3D"" width=3D"24" =
+src=3D"http://pragtech.co.in/images/email_signatures/icons/slideshare_sq.pn=
+g"></a>&nbsp;&nbsp;<a title=3D"Follow us on Twitter" href=3D"https://nam11.=
+safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Ftwitter.com%2FPragmat=
+ic_Tech&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1=
+f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C6379165256325445=
+28%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1h=
+aWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DIqb9t8RUwboc%2FSnb%2FhCR7izW=
+%2F9OTBTkOI6UFlbm8adk%3D&amp;reserved=3D0" originalsrc=3D"https://twitter.c=
+om/Pragmatic_Tech" shash=3D"KzY3DCYzdUKpViqFyhKwQWHVnETgt+BtZkkeNGeBqCAo1aL=
+wMAlUIPwIVGH/6Hb7F/2qNfleCD3Agit/C2nGjxiiQuvkURUxrPypmvA5kz7Gb/tu34/n/RgoJY=
+bQFvvjPmUwzpmIXWx/JoJyqdb4iI+xRACdxYBr2Ta5HVkbrPI=3D" target=3D"_blank"><im=
+g alt=3D"" width=3D"24" src=3D"http://pragtech.co.in/images/email_signature=
+s/icons/tw_sq.png"></a>&nbsp;&nbsp;<a title=3D"Pinterest" href=3D"https://n=
+am11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fpinterest.com%2F=
+Pragtech%2F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439=
+beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632=
+544528%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6=
+Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DIwu9lRlaji87Sc3mgYAeewaY=
+pjCD3h47zQ6vUA4Sswo%3D&amp;reserved=3D0" originalsrc=3D"https://pinterest.c=
+om/Pragtech/" shash=3D"Obb5d9Xh0SOiA0ZmDlmvPF9Xo/gEGUMHB8SawlHd10wNsaBELlXa=
+3WaBV6koTr9FO/A86sJh921JBtmELrDiW1FwfIyEQsfGUvn6JgI7HqAvbGioSHvV9eZhMfV7pB1=
+L905vRpKzzs5bL/TMxEwbtSa1xSoYz7pgA5vBlWdUls8=3D" target=3D"_blank"><img alt=
+=3D"" width=3D"24" src=3D"http://pragtech.co.in/images/email_signatures/ico=
+ns/pinterest.png"></a>&nbsp;</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<br>
+</div>
+<div></div>
+</div>
+<br>
+<div>
+<div dir=3D"ltr">On Thu, Jun 23, 2022 at 8:21 AM Tech Support &lt;<a href=
+=3D"mailto:tech@tmxintermodal.com" target=3D"_blank">tech@tmxintermodal.com=
+</a>&gt; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+Hello Faiza,</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+Can we connect using zoom, anydesk or teamviewer?</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+What are the pre-requisites to have ready before first time set-up?</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<br>
+</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+Thanks,
+<div>Tech</div>
+</div>
+<div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<br>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813Signature">
+<div>
+<div></div>
+<div></div>
+<div></div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813divtagdefaultwrapper" dir=3D"ltr"=
+ style=3D"font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Helvetica,san=
+s-serif">
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813divtagdefaultwrapper" dir=3D"ltr"=
+ style=3D"font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Arial,Helveti=
+ca,sans-serif,EmojiFont,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&=
+quot;,NotoColorEmoji,&quot;Segoe UI Symbol&quot;,&quot;Android Emoji&quot;,=
+EmojiSymbols">
+<p style=3D"margin-top:0px;margin-bottom:0px"></p>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813divtagdefaultwrapper" dir=3D"ltr"=
+ style=3D"font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Arial,Helveti=
+ca,sans-serif,EmojiFont,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&=
+quot;,NotoColorEmoji,&quot;Segoe UI Symbol&quot;,&quot;Android Emoji&quot;,=
+EmojiSymbols">
+<br>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813divtagdefaultwrapper" dir=3D"ltr"=
+ style=3D"font-size:12pt;color:rgb(0,0,0);font-family:Calibri,Arial,Helveti=
+ca,sans-serif,EmojiFont,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&=
+quot;,NotoColorEmoji,&quot;Segoe UI Symbol&quot;,&quot;Android Emoji&quot;,=
+EmojiSymbols">
+<table align=3D"center" width=3D"100%" style=3D"font-family:&quot;Times New=
+ Roman&quot;;font-size:medium;text-align:center">
+<tbody>
+<tr>
+<td align=3D"left"></td>
+</tr>
+</tbody>
+</table>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri,sans-serif;backgr=
+ound:white">
+<span style=3D"font-size:10pt;color:black">We have online tracking, please =
+click on the&nbsp;link&nbsp;below&nbsp;</span></p>
+<div align=3D"center">
+<table width=3D"100%" style=3D"width:100%">
+<tbody>
+<tr>
+<td style=3D"padding:0.75pt">
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri,sans-serif"><a hr=
+ef=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fon=
+lineservices.tmxintermodal.com%2Fmenu_container.php&amp;data=3D05%7C01%7Cte=
+ch%40tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b=
+6b275c7aa732edda6%7C0%7C0%7C637916525632544528%7CUnknown%7CTWFpbGZsb3d8eyJW=
+IjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C=
+%7C&amp;sdata=3Dr2HkWLvpecFv81h4m1ZfHbrTj4H7%2FGmA36S1R1ACznk%3D&amp;reserv=
+ed=3D0" originalsrc=3D"http://onlineservices.tmxintermodal.com/menu_contain=
+er.php" shash=3D"ErkRhYCwovw8QXN2L/aaIzaLNTS0eqPiDpuzjKB9T1LIXkOd4h/sI6fzO1=
+pphZrl++O+LDZ4cucFQ1aSFOKncZfamoWksHP/h44PGX/UCe2KDQkmSLzgP6CMCSm3/+3cPGGID=
+yxGhl+ZKv2ch/37IUP6ZC4KydJxE7ZxS6cmqZo=3D" target=3D"_blank"><span style=3D=
+"font-size:10pt;font-family:&quot;Times New Roman&quot;,serif;color:blue;bo=
+rder:1pt none windowtext;padding:0in">Track
+ your CONTAINER</span></a><span style=3D"font-size:10pt;font-family:&quot;T=
+imes New Roman&quot;,serif">&nbsp;</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813appendonsend">
+</div>
+<hr style=3D"display:inline-block;width:98%">
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813divRplyFwdMsg" dir=3D"ltr">
+<font face=3D"Calibri, sans-serif" color=3D"#000000" style=3D"font-size:11p=
+t"><b>From:</b> Pragmatic Support &lt;<a href=3D"mailto:support@pragtech.co=
+.in" target=3D"_blank">support@pragtech.co.in</a>&gt;<br>
+<b>Sent:</b> Wednesday, June 22, 2022 11:56 AM<br>
+<b>To:</b> Tech Support &lt;<a href=3D"mailto:tech@tmxintermodal.com" targe=
+t=3D"_blank">tech@tmxintermodal.com</a>&gt;<br>
+<b>Cc:</b> Faiza Shaikh &lt;<a href=3D"mailto:faiza.shaikh@pragtech.co.in" =
+target=3D"_blank">faiza.shaikh@pragtech.co.in</a>&gt;; Pragmatic HelpdeskSu=
+pport &lt;<a href=3D"mailto:helpdesk@pragtech.co.in" target=3D"_blank">help=
+desk@pragtech.co.in</a>&gt;<br>
+<b>Subject:</b> Re: Odoo-Quickbooks connection</font>
+<div>&nbsp;</div>
+</div>
+<div>
+<div dir=3D"auto">Faiza kindly help.</div>
+<br>
+<div>
+<div dir=3D"ltr">On Wed, 22 Jun 2022, 20:02 Tech Support, &lt;<a href=3D"ma=
+ilto:tech@tmxintermodal.com" target=3D"_blank">tech@tmxintermodal.com</a>&g=
+t; wrote:<br>
+</div>
+<blockquote style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<br>
+</div>
+<div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+Hello,</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><br>
+</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt">We recently bought this App from you on the Odoo app st=
+ore:</span><br>
+</div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><br>
+</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><img width=3D"326" height=3D"82" size=3D"26040" style=
+=3D"width:326.633px;height:82px;max-width:initial"><br>
+</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><br>
+</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt">Can you help us with first time set-up?</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><br>
+</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt">We have ready the Client and Secret Ids from Quickbooks=
+ (intuit developer).</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><br>
+</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt">Thank you,</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><br>
+</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><br>
+</span></div>
+<div style=3D"font-family:Calibri,Arial,Helvetica,sans-serif;font-size:12pt=
+;color:rgb(0,0,0)">
+<span style=3D"color:rgb(0,0,0);font-family:Calibri,Arial,Helvetica,sans-se=
+rif;font-size:12pt"><br>
+</span></div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813x_m_-4876679719672662546Signature=
+">
+<div>
+<div></div>
+<div></div>
+<div></div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813x_m_-4876679719672662546divtagdef=
+aultwrapper" dir=3D"ltr" style=3D"font-size:12pt;color:rgb(0,0,0);font-fami=
+ly:Calibri,Helvetica,sans-serif">
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813x_m_-4876679719672662546divtagdef=
+aultwrapper" dir=3D"ltr" style=3D"font-size:12pt;color:rgb(0,0,0);font-fami=
+ly:Calibri,Arial,Helvetica,sans-serif,EmojiFont,&quot;Apple Color Emoji&quo=
+t;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Segoe UI Symbol&quot;,&q=
+uot;Android Emoji&quot;,EmojiSymbols">
+<p style=3D"margin-top:0px;margin-bottom:0px"></p>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813x_m_-4876679719672662546divtagdef=
+aultwrapper" dir=3D"ltr" style=3D"font-size:12pt;color:rgb(0,0,0);font-fami=
+ly:Calibri,Arial,Helvetica,sans-serif,EmojiFont,&quot;Apple Color Emoji&quo=
+t;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Segoe UI Symbol&quot;,&q=
+uot;Android Emoji&quot;,EmojiSymbols">
+<br>
+</div>
+<div id=3D"m_-6234569022422250895gmail-m_8103898166750091031gmail-m_-291218=
+274225187844x_gmail-m_-8741763666546956813x_m_-4876679719672662546divtagdef=
+aultwrapper" dir=3D"ltr" style=3D"font-size:12pt;color:rgb(0,0,0);font-fami=
+ly:Calibri,Arial,Helvetica,sans-serif,EmojiFont,&quot;Apple Color Emoji&quo=
+t;,&quot;Segoe UI Emoji&quot;,NotoColorEmoji,&quot;Segoe UI Symbol&quot;,&q=
+uot;Android Emoji&quot;,EmojiSymbols">
+<table align=3D"center" width=3D"100%" style=3D"font-family:&quot;Times New=
+ Roman&quot;;font-size:medium;text-align:center">
+<tbody>
+<tr>
+<td align=3D"left"></td>
+</tr>
+</tbody>
+</table>
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri,sans-serif;backgr=
+ound:white">
+<span style=3D"font-size:10pt;color:black">We have online tracking, please =
+click on the&nbsp;link&nbsp;below&nbsp;</span></p>
+<div align=3D"center">
+<table width=3D"100%" style=3D"width:100%">
+<tbody>
+<tr>
+<td style=3D"padding:0.75pt">
+<p style=3D"margin:0in;font-size:11pt;font-family:Calibri,sans-serif"><a hr=
+ef=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fon=
+lineservices.tmxintermodal.com%2Fmenu_container.php&amp;data=3D05%7C01%7Cte=
+ch%40tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b=
+6b275c7aa732edda6%7C0%7C0%7C637916525632544528%7CUnknown%7CTWFpbGZsb3d8eyJW=
+IjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C=
+%7C&amp;sdata=3Dr2HkWLvpecFv81h4m1ZfHbrTj4H7%2FGmA36S1R1ACznk%3D&amp;reserv=
+ed=3D0" originalsrc=3D"http://onlineservices.tmxintermodal.com/menu_contain=
+er.php" shash=3D"ErkRhYCwovw8QXN2L/aaIzaLNTS0eqPiDpuzjKB9T1LIXkOd4h/sI6fzO1=
+pphZrl++O+LDZ4cucFQ1aSFOKncZfamoWksHP/h44PGX/UCe2KDQkmSLzgP6CMCSm3/+3cPGGID=
+yxGhl+ZKv2ch/37IUP6ZC4KydJxE7ZxS6cmqZo=3D" rel=3D"noreferrer" target=3D"_bl=
+ank"><span style=3D"font-size:10pt;font-family:&quot;Times New Roman&quot;,=
+serif;color:blue;border:1pt none windowtext;padding:0in">Track
+ your CONTAINER</span></a><span style=3D"font-size:10pt;font-family:&quot;T=
+imes New Roman&quot;,serif">&nbsp;</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+</blockquote>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+</blockquote>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+</blockquote>
+</div>
+<img src=3D"https://t.sidekickopen84.com/s3t/o/5/f18dQhb0S7n28cp9hyVvXfQZ59=
+hl0VW7_jsyP5JR-jdN22J7zHs1mpvMvLTlXVmQyZf8T7G8x02?si=3D8000000021983129&amp=
+;pi=3Dd3647014-88b0-446d-bd6f-2a056405ac82" alt=3D"" style=3D"display:none"=
+ height=3D"1" width=3D"1">
+<div></div>
+</div>
+</blockquote>
+</div>
+<br clear=3D"all">
+<div><br>
+</div>
+-- <br>
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div>
+<div dir=3D"ltr">
+<div>
+<div dir=3D"ltr">
+<div>
+<div dir=3D"ltr"><br>
+<div>
+<table style=3D"color:rgb(0,0,0);font-family:&quot;Times New Roman&quot;;fo=
+nt-size:medium;font-style:normal;font-variant:normal;font-weight:normal;let=
+ter-spacing:normal;line-height:normal;text-align:start;text-indent:0px;text=
+-transform:none;white-space:normal;word-spacing:0px;border:1px solid rgb(20=
+8,237,209);background:url(&quot;http://pragtech.co.in/images/email_signatur=
+es/signature_bg.jpg&quot;) 0% 0% no-repeat scroll rgba(0,0,0,0)" width=3D"1=
+024" cellspacing=3D"0" cellpadding=3D"5" border=3D"0">
+<tbody>
+<tr>
+<td width=3D"16%"><img src=3D"http://pragtech.co.in/images/email_signatures=
+/parikshit_sir.png" alt=3D"" width=3D"150"></td>
+<td width=3D"84%">
+<div>
+<div style=3D"float:right;height:50px;margin-right:5px"><a href=3D"https://=
+nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fpragtech.co.in%2=
+F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08da5=
+5b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632544528%7CU=
+nknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLC=
+JXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DUEq8ZFjuPQd7HOKOGvT8MB2EyassrHJ9NG=
+29jzXs1n8%3D&amp;reserved=3D0" originalsrc=3D"http://pragtech.co.in/" shash=
+=3D"wojBbiATiYo4GLrUNhAvy48mfDAfMoILJMkY1+gXPv3XXdqJe86oeBdT4kT0u+hggBOVjpK=
+9/bINksprNqWREmQLyhNaJSCzsZKKvnypk9/0Luneektb80PdgB4OMH8BnCiGlFQFTMs7l7y2Bx=
+b7bDoVj0hgWbBdQC+LmKzjkTM=3D" target=3D"_blank"><img src=3D"http://pragtech=
+.co.in/images/email_signatures/Pragtech_logo.png" alt=3D"" width=3D"180"></=
+a></div>
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:16px;f=
+ont-weight:bold;margin-top:5px">
+<span style=3D"color:rgb(68,181,73)">Parikshit</span><span>&nbsp;</span><sp=
+an style=3D"color:rgb(68,181,73)">Bapat</span><span>&nbsp;</span>- Project =
+Manager<br>
+</p>
+<span style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11p=
+x;font-weight:bold;color:rgb(68,181,73);margin-top:0px">Pragmatic Techsoft =
+Pvt. Ltd.</span><span>&nbsp;</span><br>
+<span style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11p=
+x;font-weight:bold"><a href=3D"mailto:parikshit.bapat@pragtech.co.in" style=
+=3D"text-decoration:none;color:rgb(0,0,0)" target=3D"_blank">parikshit.bapa=
+t@pragtech.co.in<span>&nbsp;</span></a>|<span>&nbsp;</span><a href=3D"https=
+://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fpragtech.co.i=
+n%2F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08=
+da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632544528%=
+7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWw=
+iLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DUEq8ZFjuPQd7HOKOGvT8MB2EyassrHJ=
+9NG29jzXs1n8%3D&amp;reserved=3D0" originalsrc=3D"http://pragtech.co.in/" sh=
+ash=3D"wojBbiATiYo4GLrUNhAvy48mfDAfMoILJMkY1+gXPv3XXdqJe86oeBdT4kT0u+hggBOV=
+jpK9/bINksprNqWREmQLyhNaJSCzsZKKvnypk9/0Luneektb80PdgB4OMH8BnCiGlFQFTMs7l7y=
+2Bxb7bDoVj0hgWbBdQC+LmKzjkTM=3D" style=3D"text-decoration:none;color:rgb(0,=
+0,0)" target=3D"_blank">www.pragtech.co.in</a></span>
+<hr style=3D"color:rgb(68,181,73);width:848px">
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px">=
+<span style=3D"font-weight:bold"><img src=3D"http://pragtech.co.in/images/e=
+mail_signatures/icons/tel_sq.png" alt=3D"" width=3D"20"><span>&nbsp;</span>=
+<span style=3D"vertical-align:super">Tel :-</span>&nbsp;&nbsp;<span>&nbsp;<=
+/span><img src=3D"http://pragtech.co.in/images/email_signatures/icons/india=
+_flag.png" alt=3D"" width=3D"20"><span>&nbsp;</span></span><span style=3D"v=
+ertical-align:super">+91
+ 20 41201035 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;</span></span><span =
+style=3D"font-weight:bold"><img src=3D"http://pragtech.co.in/images/email_s=
+ignatures/icons/usa_flag.png" alt=3D"" width=3D"20"></span><span>&nbsp;</sp=
+an><span style=3D"vertical-align:super">+1 619 488 2759 &nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;</span><span>&nbsp;</span><span style=3D"font-weight:bold"><img =
+src=3D"http://pragtech.co.in/images/email_signatures/icons/france_flag.png"=
+ alt=3D"" width=3D"20"></span><span>&nbsp;</span><span style=3D"vertical-al=
+ign:super">+33
+ 977 218 101</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;</span><a titl=
+e=3D"Skype" href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dh=
+ttps%3A%2F%2Flogin.skype.com%2Flogin%3Fmessage%3Dsignin_continue%26return_u=
+rl%3Dhttps%253A%252F%252Fsecure.skype.com%252Fportal%252Foverview&amp;data=
+=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7C=
+ea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632544528%7CUnknown%7CT=
+WFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%=
+3D%7C3000%7C%7C%7C&amp;sdata=3DMHyQlIFadFvdZ77zFqcgMUJbf67D548Q2im5k13nm%2F=
+A%3D&amp;reserved=3D0" originalsrc=3D"https://login.skype.com/login?message=
+=3Dsignin_continue&amp;return_url=3Dhttps%3A%2F%2Fsecure.skype.com%2Fportal=
+%2Foverview" shash=3D"Fu++gLcRhp7hqPRIKhw1yCkneBiPhjkKeuLV6ujmnxVvmgtYmEQQe=
+lgHxAvWKUt2zeKfN4kqZqMgLUX45GNFbGtP/OEaxUczmyXMY5bHPPj5fOFCjFuM/CZQS1M/ETFG=
+rco0YM6icTdperPxVga2/kJI/ff6Nny7HizptYmDIPM=3D" style=3D"text-decoration:no=
+ne;color:rgb(0,0,0)" target=3D"_blank"><img src=3D"http://pragtech.co.in/im=
+ages/email_signatures/icons/skp_sq.png" alt=3D"" width=3D"22"><span>&nbsp;<=
+/span><span style=3D"vertical-align:super;text-decoration:none;color:rgb(0,=
+0,0);font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px">operati=
+ons.pragtech</span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;</span><a =
+title=3D"Hangout" href=3D"mailto:sales@pragtech.co.in" style=3D"text-decora=
+tion:none;color:rgb(0,0,0)" target=3D"_blank"><img src=3D"http://pragtech.c=
+o.in/images/email_signatures/icons/hangout_sq.png" alt=3D"" width=3D"22"><s=
+pan>&nbsp;</span><span style=3D"vertical-align:super;text-decoration:none;c=
+olor:rgb(0,0,0);font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11=
+px">sales@pragtech.co.in</span></a>&nbsp;</p>
+<p style=3D"font-family:Verdana,Arial,Helvetica,sans-serif;font-size:11px">=
+<span style=3D"font-weight:bold">Address :-</span><span>&nbsp;</span>Office=
+ no-15, SunShree Woods Commercial Complex, NIBM Road, Pune-411048</p>
+<div style=3D"margin-top:0px"><a title=3D"Youtube" href=3D"https://nam11.sa=
+felinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.youtube.com%2Fpragma=
+ticvideos&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439be=
+b1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C63791652563254=
+4528%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik=
+1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3D1FYcc0M5OZOhGDftlk4ECyMVCh=
+svvQK3B%2FdJ3TeWk%2BE%3D&amp;reserved=3D0" originalsrc=3D"http://www.youtub=
+e.com/pragmaticvideos" shash=3D"ie8/VBHrEW9gCXZ9f/JJ7qiGpKuyH2kDm3UabfA2dNl=
+aiMnZPz2LyOlH3k6tRCTN9/DrlSIeXsV08TLB18o+WVJs9wSubmxRXBbmzXFjD/N/fWPXjJ0X9I=
+vIvS5HeyHWn7IT3eCtgP30pJLiWgvj1p9E9IUyODqeqpkimrXwy8k=3D" target=3D"_blank"=
+><img src=3D"http://pragtech.co.in/images/email_signatures/icons/ytube_sq.p=
+ng" alt=3D"" width=3D"24" border=3D"0"></a>&nbsp;<span>&nbsp;</span><a titl=
+e=3D"Pragmatic Blog" href=3D"https://nam11.safelinks.protection.outlook.com=
+/?url=3Dhttp%3A%2F%2Fpragtechblog.blogspot.in%2F&amp;data=3D05%7C01%7Ctech%=
+40tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b2=
+75c7aa732edda6%7C0%7C0%7C637916525632700786%7CUnknown%7CTWFpbGZsb3d8eyJWIjo=
+iMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C=
+&amp;sdata=3D3uZ1TBAzl%2FgUDL3HYuRCZFJ7AlX4UKWTxgzfuvChm8w%3D&amp;reserved=
+=3D0" originalsrc=3D"http://pragtechblog.blogspot.in/" shash=3D"UrcdjH1v0M9=
+xEDmTCb6hWX/PUz2IjOGM19KUOLZPJ2XWGkZV+ezrOXxNid4J6sv5nQiZJkJTEOAEFSrvkk8cca=
+XzbDfY6Ua4J/CXjlywL4p4FOynOBGKQ1ItIDeuwMjkYpBttiZIPKVT8mlb4T6/ccPdbPNzv+uXm=
+dNUCx64zQA=3D" target=3D"_blank"><img src=3D"http://pragtech.co.in/images/e=
+mail_signatures/icons/blog_sq.png" alt=3D"" width=3D"24"></a>&nbsp;<span>&n=
+bsp;</span><a title=3D"Connect with our network" href=3D"https://nam11.safe=
+links.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.linkedin.com%2Fcompany=
+%2Fpragmatic-technology-solutions&amp;data=3D05%7C01%7Ctech%40tmxintermodal=
+.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%=
+7C0%7C0%7C637916525632700786%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLC=
+JQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3D%2=
+FmupVs7zwOT5Yzzx7Py2HWrUvi5KmMF8vieHCl4ZKlc%3D&amp;reserved=3D0" originalsr=
+c=3D"http://www.linkedin.com/company/pragmatic-technology-solutions" shash=
+=3D"vWj2bOpJYoBElbOxiPxU3dstKBxR7qAovZN3Bx7xAlf97HC9rBQfBquJT5K/t40OuYudzwV=
+/nmuNlgJNnyCJmOvfqbbkCiQGOeIWshzzk5ptWah0VL3xoR1bpat2EEdLn+owkOAeTf0W/WrQAw=
+Cu0yIgreDJxf6cx3S+NeMaiS0=3D" target=3D"_blank"><img src=3D"http://pragtech=
+.co.in/images/email_signatures/icons/lin_sq.png" alt=3D"" width=3D"24"></a>=
+&nbsp;<span>&nbsp;</span><a title=3D"Join us on Facebook" href=3D"https://n=
+am11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.facebook.com%=
+2Fpragmatic.co.in&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a1=
+29e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916=
+525632700786%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLC=
+JBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3D9%2B5PSefocsI3qyun=
+zovDSOGBsOF%2B2kZG6bCcyE0Uj%2Fo%3D&amp;reserved=3D0" originalsrc=3D"http://=
+www.facebook.com/pragmatic.co.in" shash=3D"PVF86+duX8DTeNeJI1aiqM+hDUy3zBt+=
+FrfOetPNB/DIriDloDrMfK8lLL4R4Ewj75DDkAyvAHYpzfnp+5L9dFX34FhlJZSkns/Msn7zpLE=
+xqYvNQSORrk8pOvxuC9nYsxJz5OmlqTon5ip18s5CEuzqNSxiKjwdNyNmfQQPjPA=3D" target=
+=3D"_blank"><img src=3D"http://pragtech.co.in/images/email_signatures/icons=
+/fb_sq.png" alt=3D"" width=3D"24"></a>&nbsp;<span>&nbsp;</span><a title=3D"=
+Google Plus" href=3D"https://nam11.safelinks.protection.outlook.com/?url=3D=
+https%3A%2F%2Fplus.google.com%2F103969948663916837000%2Fposts&amp;data=3D05=
+%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53d=
+a9730f747b6b275c7aa732edda6%7C0%7C0%7C637916525632700786%7CUnknown%7CTWFpbG=
+Zsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C=
+3000%7C%7C%7C&amp;sdata=3D53mlcOUoDxG7aMqPyBr13k2etThsXJt502C9K7PJy2s%3D&am=
+p;reserved=3D0" originalsrc=3D"https://plus.google.com/10396994866391683700=
+0/posts" shash=3D"kC4TywBdv6r82VKMIZDzMPNIj+lQaV0ssKX9NkE+KS5nVuHdHhyM3BozU=
+OnxSx5uTu49TiKhAS6vGVXpBr8dtWscoEGEENcARRx04tYi/vfbAiPA9A/2NS+QXqmYHsIW82YT=
+BF5qNua89ITWvj91VXHUuzXc8PBJzXRj255xWzQ=3D" target=3D"_blank"><img src=3D"h=
+ttp://pragtech.co.in/images/email_signatures/icons/gplus_sq.png" alt=3D"" w=
+idth=3D"24"></a>&nbsp;<span>&nbsp;</span><a title=3D"Slideshare" href=3D"ht=
+tps://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F%2Fwww.slides=
+hare.net%2Fpragmatic123%2Fpresentations&amp;data=3D05%7C01%7Ctech%40tmxinte=
+rmodal.com%7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732=
+edda6%7C0%7C0%7C637916525632700786%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAw=
+MDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdat=
+a=3DLF5aQa6VUQCHG1T6d1Ym7QG%2FcyXzJoe%2FK5LSUjax9Lw%3D&amp;reserved=3D0" or=
+iginalsrc=3D"http://www.slideshare.net/pragmatic123/presentations" shash=3D=
+"LOlA3eY+2xShDOMFX8r7o3UTJUmxlz9djKp6M1MwkIOhTpGLIS6J/QJZLEkxbgKVPI0SQsj1Y5=
+EnND3Pim0YXDkYtUSATSr61U464ldxHh+PeoP13NHHqNIg58cgqGX1qPN6fK8i8wsEaDm/0mjXx=
+3xTGUG6JrapkneY1EzDpAA=3D" target=3D"_blank"><img src=3D"http://pragtech.co=
+.in/images/email_signatures/icons/slideshare_sq.png" alt=3D"" width=3D"24">=
+</a>&nbsp;<span>&nbsp;</span><a title=3D"Follow us on Twitter" href=3D"http=
+s://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2Ftwitter.com=
+%2FPragmatic_Tech&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%7C19a75d6a1=
+29e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637916=
+525632700786%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLC=
+JBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DKSQWT0PiN42Scjlt3e=
+e6KoVhApSE8xhUXQmnymc8jqc%3D&amp;reserved=3D0" originalsrc=3D"https://twitt=
+er.com/Pragmatic_Tech" shash=3D"VcthgTP77QjO91Wmz/gHNdD74Hurk35kyYg0kPukdCO=
+zzXm/GSmlrDWB/Y3otOkTrz6QIKO4OY5W5FRjOb8SqZN0kq+qaA5Vk6UrPeXJRj1NxvY4DsUmV8=
++A4qFjJRHStFK57/qz0qAoy4h/CVPFLrvcpamwJBmoCLea/iFzNAw=3D" target=3D"_blank"=
+><img src=3D"http://pragtech.co.in/images/email_signatures/icons/tw_sq.png"=
+ alt=3D"" width=3D"24"></a>&nbsp;<span>&nbsp;</span><a title=3D"Pinterest" =
+href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttps%3A%2F%2=
+Fpinterest.com%2FPragtech%2F&amp;data=3D05%7C01%7Ctech%40tmxintermodal.com%=
+7C19a75d6a129e439beb1f08da55b33f97%7Cea53da9730f747b6b275c7aa732edda6%7C0%7=
+C0%7C637916525632700786%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo=
+iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3Dt%2Fyv4=
+70j31b8Fd2sGEd1sKKhMOwzfbiFHHWmDK4j85s%3D&amp;reserved=3D0" originalsrc=3D"=
+https://pinterest.com/Pragtech/" shash=3D"RBeVY4NoSkXYOA0VAuSOtykJucWtpBwop=
+knkN3YN2s0lz8wCeYlVyr9YiFihUL46RZNASDuY1AF9Uy/N4rrr4Pk1p+ToSGqnh1u075Vo3WGU=
+pvL0Yn5g/1t0+zTmCysS1ng0tYi/vdp6nPpqNvv637cfUY8new34MBo15QUaPfo=3D" target=
+=3D"_blank"><img src=3D"http://pragtech.co.in/images/email_signatures/icons=
+/pinterest.png" alt=3D"" width=3D"24"></a>&nbsp;</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+--0000000000001d8dda05e22c8727--

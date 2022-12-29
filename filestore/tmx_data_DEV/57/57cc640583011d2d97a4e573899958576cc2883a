@@ -1,0 +1,212 @@
+Received: from CY4PR0101MB2888.prod.exchangelabs.com (2603:10b6:910:46::10) by
+ MW4PR01MB6212.prod.exchangelabs.com with HTTPS; Tue, 13 Sep 2022 22:32:25
+ +0000
+Received: from BN9P220CA0017.NAMP220.PROD.OUTLOOK.COM (2603:10b6:408:13e::22)
+ by CY4PR0101MB2888.prod.exchangelabs.com (2603:10b6:910:46::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22; Tue, 13 Sep
+ 2022 22:32:22 +0000
+Received: from BN8NAM11FT073.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:13e:cafe::5b) by BN9P220CA0017.outlook.office365.com
+ (2603:10b6:408:13e::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22 via Frontend
+ Transport; Tue, 13 Sep 2022 22:32:21 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.218.46)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 209.85.218.46 as permitted sender) receiver=protection.outlook.com;
+ client-ip=209.85.218.46; helo=mail-ej1-f46.google.com; pr=C
+Received: from mail-ej1-f46.google.com (209.85.218.46) by
+ BN8NAM11FT073.mail.protection.outlook.com (10.13.177.231) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.12 via Frontend Transport; Tue, 13 Sep 2022 22:32:21 +0000
+Received: by mail-ej1-f46.google.com with SMTP id dv25so30648510ejb.12       
+ for <catchall@tmxintermodal.com>; Tue, 13 Sep 2022 15:32:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date;
+        bh=n10+HcGY/p86mCTtbjqGLg4OB92IJkIjE/dCFxcXsg4=;
+        b=dS5ibnhX1PlTrokd10ihAto8nD49gnMy5wtamm86DUNXjxNjGSsI7/FUis3JqcXlcF
+         yBMWF347UAYFauCWJQDgw+A9U0nQSfuIwY1qSO4QHbHQfD+mI7cxGMiklTRI2cLTqvhg
+         uZ3htzi9J+cHCnfEQOK4p72MZJC25iuxDXMUtDnfuFx6vAuw1KBlwjxq+dWGD+T85pTY
+         2c3gJckeyveyxbWACkwNFPDGzHC9YLjHkvbk3xMfHmgvUJoss8BBKn9KbkqNtuL8ksRV
+         3mHuTwo1QVaExEFEN7Gt8DH7fZk8+QyQCY4iaUkHAMdhwfKPx4bjsCBcUCDgr+aGaCWk
+         dBeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=n10+HcGY/p86mCTtbjqGLg4OB92IJkIjE/dCFxcXsg4=;
+        b=4nrWCed9i3R+ZYMYIexjX7M15ew/11vHaCyhdIAkTeYalhi+mnLBmRXb0SQvwq1tVU
+         vNR2Uqrc4CXHdxJ3yM+C8sLQbm1oXd388WjqocpNqeAwqz8QY40XaGjZ9YdkNsreM+g8
+         dE8cNu3gs3pSC0ni6By41pwnBv7EnNyBpL/KfarA5j24uaYUS6JrtLChA/JmjXkSCj3C
+         mw5uT0JLWRgbdUlkhN3gT8ajyWAQy4mc2ExCIqHwbZ3wqA6/WyVsJ5Bo5veEXe6yZN86
+         uahw0bYxOt1OjiiA6oRQirL9HFIysKoWeC7Dm1YYa03fTcOrHPlzYVBz6kVs4EjHnus+
+         F7zA==
+X-Gm-Message-State: ACgBeo1uFevE6lKn421+1o0Rcl1KtTFZGAJkyd5Wwxj2UjCX3/oEFiq1
+	Bxd0890B8a6KMXIgeLEYeHncVFRm/rDoJyZyM2yYjrja
+X-Google-Smtp-Source: =?utf-8?q?AA6agR7Uj5sT2a92qrh/jLW1q2SvWFRR6s2KFZdYuvbw?=
+ =?utf-8?q?9XJxsoOAPWgge4/djSV4BTX/ZDvoNuosD3YwuRJZo+SIuJ0=3D?=
+X-Received: by 2002:a17:906:d54e:b0:73d:dcb2:39ac with SMTP id
+ cr14-20020a170906d54e00b0073ddcb239acmr23559636ejc.520.1663108340296; Tue, 13
+ Sep 2022 15:32:20 -0700 (PDT)
+References: <381380963613610.1663107260.218425750732422-openerp-7417-res.partner@ip-172-31-25-70>
+ <CABeOyVVG-BknVVFGRNqowsFByvccnyK3hBAxcpK719XUBsNNhg@mail.gmail.com> <CABeOyVXgaZi_o-NfDvH54HHZkucKKkw4uyfLzBy_DaT0LDxqWA@mail.gmail.com>
+In-Reply-To: <CABeOyVXgaZi_o-NfDvH54HHZkucKKkw4uyfLzBy_DaT0LDxqWA@mail.gmail.com>
+From: Samantha Ramirez <samantha.daenerys.r.t@gmail.com>
+Date: Tue, 13 Sep 2022 18:32:07 -0400
+Message-ID: <CABeOyVVCohA0uQ2tX=LoHdO=TrCJVTVZmy-VX9ciWAY9w_o08Q@mail.gmail.com>
+Subject: Re: Samantha_IT
+To: TMX Intermodal Samantha_IT <catchall@tmxintermodal.com>
+Content-Type: multipart/alternative; boundary="000000000000d8bb4805e89695ba"
+Return-Path: samantha.daenerys.r.t@gmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 13 Sep 2022 22:32:21.6989
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ 141c3107-99af-478f-9279-08da95d7d304
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT073:EE_|CY4PR0101MB2888:EE_
+X-MS-Exchange-Organization-AuthSource: 
+ BN8NAM11FT073.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 141c3107-99af-478f-9279-08da95d7d304
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjIwOS44NS4yMTguNDY7Q1RSWTpVUztM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOm1haWwtZWoxLWY0?=
+ =?utf-8?q?6=2Egoogle=2Ecom=3BPTR=3Amail-ej1-f46=2Egoogle=2Ecom=3BCAT=3ANONE?=
+ =?utf-8?q?=3BSFS=3A=2813230022=29=284636009=29=2884050400002=29=28451199015?=
+ =?utf-8?b?KSg3NjQ4MjAwNikoMzM2MDEyKSg3MzM5MjAwMykoODIyMDIwMDMpKDM0NzU2?=
+ =?utf-8?b?MDA0KSg3NjM2MDAzKSg3NTk2MDAzKSg4Njc2MDAyKSg0MjE4NjAwNikoNTU0?=
+ =?utf-8?q?46002=29=2883380400001=29=2833964004=29=28356005=29=286916009=29?=
+ =?utf-8?b?KDU2NjAzMDAwMDIpKDY2NjYwMDQpKDEwOTYwMDMpKDcxMTYwMDMpKDI2MDA1KSg4?=
+ =?utf-8?q?6362001=29=3BDIR=3AINB=3B?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2022 22:32:21.6521
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ 141c3107-99af-478f-9279-08da95d7d304
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ BN8NAM11FT073.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR0101MB2888
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.3557072
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5612.022
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?utf-8?B?a3FIVnh3RkJES0JKZXNCQVIvdHdoWGtPRzhjeGNaY1M3cFZkQ0JuTWF2UUxa?=
+ =?utf-8?B?YTVYZnJyVU5Xc1V6anBZRDNOQzBkR1pXUXlwUGFCcWgrNkI3RXJMRlppajhP?=
+ =?utf-8?B?dkxtbVJGWnFGWGR2eE41cVVScTVNRkdOZU5pV1RVeDlQQm9PUG5mL2MzV3Zx?=
+ =?utf-8?B?VStJTzlTbWZRTTNhSHZ1dUNGMG1WZ045MDZhaGdKblZoV2xzVUFXK3MxVytt?=
+ =?utf-8?B?MWxYWGI3MkpoRmFTcGs4R3NJeitUNnB6dmhSZlYwU0wyd3ROY1FyU3B2MTNW?=
+ =?utf-8?B?MExFNStka1pGOHQ5QThucldVeFVLbzVacXJuUWNDVTUyVnJGTi9nUk1yQkVp?=
+ =?utf-8?B?SCtibmttY0E4NDBDUWxyQmRpZlBqYlkrb2EyV3pJY1RzRzBGY0ovcU1SWkZ0?=
+ =?utf-8?B?S1gwaFZ1cytMZy9SK05kSnZVb1d0SzNFbi9hMW5lMzU0RHIrM3N2eDd3S0xR?=
+ =?utf-8?B?S2doQys3eXlCL3dUN0JKZ3hyN3h1bDVBZ0hXWWMyNGJ5a0s1VEc2UzFoWWNP?=
+ =?utf-8?B?QlgzeWZxRk5EYWswQzY3WkE0Y0hrTUlaTE9OT1Q3YmxvQWhzZmMvQU9HTDZn?=
+ =?utf-8?B?aWlGMWp2bm51SXRBS0dGdktPS1dNMjJVVGVtSXlpajNMWW1FdzNseU5RaDNE?=
+ =?utf-8?B?OWtlSkd4MWVDc2J3OVpKOGpKU1hYTjQwVHdadi9DUHdodDRrSjY0b3VLWVN0?=
+ =?utf-8?B?eTBGUFlXb0FTenB1Kzl3R25oY2w1ZVFTQXlpbnhITXR0TWEvcjdrNzZoKy9t?=
+ =?utf-8?B?WDJFcWtOekxyTWZBTzZCTmdyaGg1N0xydUpNc1dnVEJ3NGhVUldRdmUwOTNW?=
+ =?utf-8?B?eUhYLy9CbjMzVW4xZDlLS0NNMC9JZm8zVjFlK0QrL200c2RqY1RXRXhqcTFq?=
+ =?utf-8?B?dUk2Q0FvZ1lBamFrM1VVK1plSk1CNTJqNE8va1NScHhEWGhVaDUyQ2F1cVlW?=
+ =?utf-8?B?RFp5T1JRRjZaRGtKMlpKYmt2QTF5dHVBZkN4VzlIeGZudVVjZVZ1dTRoZHdy?=
+ =?utf-8?B?UFhJUUFhcVRuVFZoRlVUTjFaNmlpTXFzeWl0S3dqdkpWYzRyMUVEMmxtU0ds?=
+ =?utf-8?B?djgzVmRja0V0SUQvOUlUOUNRbER2VmJzakNqa2FlZnBDSEE4cHA5WS9oRnAr?=
+ =?utf-8?B?ZG9Ram5YWnlEVW1YUUI3dk9KQjVpY1l0bXhCaXFDY2N5dmJnZHFNQWwwQ245?=
+ =?utf-8?B?T0hmZG5qUUx3bUxJL21OL2ZNSW9jWWpWQitvQUFJd0grVzBaWW5reTVXWEpz?=
+ =?utf-8?B?NGZkMnZsN1l2NFdwZlJLRmFGMVdRZHdRbU9rLzZUdkVEeVczbzF3TFRsY1lB?=
+ =?utf-8?B?bEJmbVhUYWh2azJxZWVXYW95bkJtV3I5ZDU1YmlRSG5ZYkdPNnRRM0ltcWdl?=
+ =?utf-8?B?NlArUE1yQUp3K0V5aTdzdSttQ3RkcWFEVjRmVjVqZE5QRUZHNjFDVDU1ZWpw?=
+ =?utf-8?B?QXdLZ2pETDVYbUp4Uk50dWtGS05EbzU1cXg1c3dKZFozWVVVRytqMFNaTDdq?=
+ =?utf-8?B?ekE0d05QeG56cU9OVHlZY3AyTU02UjExUUpJYWFhWEVJb0VDQ2VyempJWTc1?=
+ =?utf-8?B?S1BId3RScHhuLzdSTksyZEllTSszTUkzYi8yc3NCZDNhUkc4SFJRc3RlUG0w?=
+ =?utf-8?B?aTJMTk51WXNyTDBHQmVUeGxWdUJ4QWtTdFJtUFNmcSt5UVNJMkxxazY5Y04y?=
+ =?utf-8?B?TldaYkJOOVRYTWNiY1hkUUtoNDZnd2Iwb3FRNGl0b285ajc4V0o2SGxZdllU?=
+ =?utf-8?B?TFlpeldqMWJBbUV6L09NTXZ4aDZUU0RJWksyaXFLV2VoQnNhOFdzZE81b2VD?=
+ =?utf-8?B?eVJ2aUtmK2VGZ3MyM0x4WDRWUkYycXloVXVTNmRCRFJZT3pEUVNTMEpFUi9Z?=
+ =?utf-8?B?ZDM2L3hPWXV1MXdFby9hMTRMT08xVmo2NUdkalVQMkZtckJ4N05wcW9lYVE2?=
+ =?utf-8?B?K2k0QldLUDBvM0F2Y1ZaM0ZWWVZxdklmTGF0cUt1cjY1azN3U1ozclRHQS9V?=
+ =?utf-8?B?dDVaSjRRYk9xZUNhbGxaNnczR1o1UFh2YXY1TjRNcXVwQ1RiZFFxRldVS1RP?=
+ =?utf-8?B?UFcyS3RRaEJETVA1R2UyM3VLOEdSbE1ZYi9GZ1FiaENqQWt5YTZ6ZzZxM0Iw?=
+ =?utf-8?B?UlZnNFU2Mk1wN2hBajYrTU1Wam83WTAwSFI2WW5sbTZLNG1yS1d3ODNRMHZm?=
+ =?utf-8?B?bUlTaVhTS1FyTFFHV3ZwUUpBa1B2VDFTbFRsV29pVFh3RFNmUWt5NUVEYXZJ?=
+ =?utf-8?B?YUhDUHhteHVWbGZ0cDV4TEFvSDAwTHo2dVl0ejk1aDM3SE5GOHhRKzh3cTdh?=
+ =?utf-8?B?U1F1MXRtWG9iaXRiZElxWG5jY0RHRmxZVVdadnJVancvY3ZBaWliUTFXSXFx?=
+ =?utf-8?B?RnJVcXhJZFFQVDg0STJFY3FCL2FzVWF4T1FYbDNZK1ZFbzBKZHJaM0ZteU9U?=
+ =?utf-8?B?cjhReU96emNzUStUbnc9PQ==?=
+MIME-Version: 1.0
+
+--000000000000d8bb4805e89695ba
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+answer 3 to number 40
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+
+--000000000000d8bb4805e89695ba
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+</head>
+<body>
+<div dir=3D"ltr">
+<div>answer 3 to number 40</div>
+<div class=3D"gmail_quote">
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div class=3D"gmail_quote">
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">
+<div class=3D"gmail_quote">
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+</blockquote>
+</div>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+--000000000000d8bb4805e89695ba--

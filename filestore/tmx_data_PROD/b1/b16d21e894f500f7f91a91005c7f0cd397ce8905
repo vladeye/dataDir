@@ -1,0 +1,567 @@
+Received: from CH2PR01MB5640.prod.exchangelabs.com (2603:10b6:610:22::18) by
+ MW4PR01MB6212.prod.exchangelabs.com with HTTPS; Wed, 14 Sep 2022 18:11:19
+ +0000
+Received: from BN8PR03CA0025.namprd03.prod.outlook.com (2603:10b6:408:94::38)
+ by CH2PR01MB5640.prod.exchangelabs.com (2603:10b6:610:22::18) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5612.22; Wed, 14 Sep 2022 18:11:17 +0000
+Received: from BN8NAM11FT034.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:94:cafe::3e) by BN8PR03CA0025.outlook.office365.com
+ (2603:10b6:408:94::38) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5632.15 via Frontend
+ Transport; Wed, 14 Sep 2022 18:11:16 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.208.41)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 209.85.208.41 as permitted sender) receiver=protection.outlook.com;
+ client-ip=209.85.208.41; helo=mail-ed1-f41.google.com; pr=C
+Received: from mail-ed1-f41.google.com (209.85.208.41) by
+ BN8NAM11FT034.mail.protection.outlook.com (10.13.176.139) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.12 via Frontend Transport; Wed, 14 Sep 2022 18:11:16 +0000
+Received: by mail-ed1-f41.google.com with SMTP id e17so23530923edc.5       
+ for <catchall@tmxintermodal.com>; Wed, 14 Sep 2022 11:11:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date;
+        bh=g26tg5E3dwaWHUe0kNTcvMKDz2koyLJfvgHV7uZSNuY=;
+        b=WNG+O4sLOWZVd6IF6T8LiX8KyqrQIntQM+toUMfxodXK/KIg70L2E3meofKNpb9PrK
+         N8c/BZ7zu4M225Bx8V5vFMyQphGoMCtElrgNHxd38r5RH5s925MN2jucnre/Psg88mm2
+         QIFT6fYRD8+n78TIqDtMM5fAx/mK0ytLoYfZ8z7ffAfEhATpyXXidc1d55J7fO0mGS5w
+         +XrTzA5nBTDDYw2YnuJm6S6JIANuQhyWFnGD7HlyY5HeLIxnq9eW4G2cySnd/uxa1xwN
+         KwThTL0IqYe4aXVO+9A1kO255UmoV1dxrbYWeOG7BttxB1T7r+UDgGynfb57rDiv6IIG
+         MmEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=g26tg5E3dwaWHUe0kNTcvMKDz2koyLJfvgHV7uZSNuY=;
+        b=KgYCsltr/tTy0NUP3qi2bbvws7UBGkwzG106bxkfPPylmLOBNzr4c98uXDE8T3kaxc
+         4fXvXj6TMZa1JCKXzJgnKRhApfydGrHs0as9JPhcddQTg6ijyb4GFkwUphQfs4DRyamv
+         INPNQwl2BhuvRcRmux5YOFrEXCAMz03wjPGnAGk7YosI+Q7M/hs/qDh+a8cp4nlL0biY
+         expvdoSePQ7oCpdwlAOq5gH7tsPQ8weSmBpUoEjSyaLZaXmaKoC2xItVJuZmk/y6jVeJ
+         UlIk1zS/18OVWAF9c7QtjcHH53t0iHExFWKWGyaFoiLGg8WmleAHDUQt4WEMidFPmQy1
+         2wlg==
+X-Gm-Message-State: ACgBeo22/Ehm1XqpNwkO3awZ6lCnIDoqZ1I6H0zcJTf39M0HvhGU1I06
+	MO4+myDSHtQ1UEzhUXr7K2P3OlzJm64PG7LXI6la1X4H
+X-Google-Smtp-Source: =?utf-8?q?AA6agR5dMA7tS2GOgcDNvR9LK0qHEv9eJIYtFHTQRNJX?=
+ =?utf-8?q?KxvkNZkmqPMuOM290/GrjIp1tbD/oOTpa5DLztqbxVKci80=3D?=
+X-Received: by 2002:a05:6402:b85:b0:44e:dad7:3e24 with SMTP id
+ cf5-20020a0564020b8500b0044edad73e24mr32411457edb.264.1663179076167; Wed, 14
+ Sep 2022 11:11:16 -0700 (PDT)
+References: <940915314291140.1663178918.804718255996704-openerp-7417-res.partner@ip-172-31-25-70>
+ <CABeOyVXavOBD36aJOTSuK62uT09tcdn6PdhsygNTJxT4m+YaGg@mail.gmail.com>
+ <CABeOyVVaaTwn5OQ4e7h-Z+wBwJ1We44YXP310OHaAUQwpV4rug@mail.gmail.com>
+ <CABeOyVUC-EiVQTZa56b+4ZLDUDh38FuADC+_M-rQRZrRc66jNw@mail.gmail.com>
+ <CABeOyVUhRS62rmXopxMuQGoiD3rOHPSPaF3-_1kKGCHoF2QYKw@mail.gmail.com>
+ <CABeOyVUV78MRhfehgAYOXLZK8iSJqavMCWQY80La85LBu=1y9Q@mail.gmail.com>
+ <CABeOyVVOU3vv2tdGxfP8qMCdtKODGgV4JSbeqPgq0a-0KQyy7A@mail.gmail.com>
+ <CABeOyVVsmx1qGJptbouByOJnHRFRyWZA4FZMr_dCAAJQwrjAAQ@mail.gmail.com>
+ <CABeOyVWB4=-0T=Dzv_ARxxo9e9JP+yL7Mgqg90Jo_gSvX4tt2Q@mail.gmail.com>
+ <CABeOyVUMUTcknwenov5DQiqWM-QwWsCqRktH3Ab8a1qhYdbtHg@mail.gmail.com>
+ <CABeOyVXYixNNjsFo=hE8B_BPZ_4HfNn_MdU6E6dTdYjjjXNiOQ@mail.gmail.com>
+ <CABeOyVUWEEkMojfOG3xyA0o6ntsOTEsnXCxPkQ5mDnvZ9si9Og@mail.gmail.com>
+ <CABeOyVX+KmNjJV6GVKbUSJFCriBPtqBs8TcX-zGsheXYhKdFBQ@mail.gmail.com>
+ <CABeOyVVSf6b3BncrN6DQ5Bb+dV7Or8bu75y5nR8R5d1ewKeOPg@mail.gmail.com>
+ <CABeOyVX+7qvJxB74QveJdDT-oERS7AcvnYg4ReWv=kaxAHOjnQ@mail.gmail.com>
+ <CABeOyVXqsAwOwNibQ4Wyuv3G2htP0zFaq578nywrmUz7huQeBA@mail.gmail.com> <CABeOyVUdQbmUcsWBY6=fJ6inKE0O50JnZqSBeeBGdrvv9qFv9w@mail.gmail.com>
+In-Reply-To: <CABeOyVUdQbmUcsWBY6=fJ6inKE0O50JnZqSBeeBGdrvv9qFv9w@mail.gmail.com>
+From: Samantha Ramirez <samantha.daenerys.r.t@gmail.com>
+Date: Wed, 14 Sep 2022 14:11:03 -0400
+Message-ID: <CABeOyVUGWQLFC-EyouBwiS0yJux3XX_r_r69f6u=YUWNyx4CqA@mail.gmail.com>
+Subject: Re: Samantha_IT
+To: TMX Intermodal Samantha_IT <catchall@tmxintermodal.com>
+Content-Type: multipart/alternative; boundary="0000000000000869db05e8a70e8f"
+Return-Path: samantha.daenerys.r.t@gmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 14 Sep 2022 18:11:16.8181
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ 659bb444-2aec-4954-d283-08da967c846c
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT034:EE_|CH2PR01MB5640:EE_
+X-MS-Exchange-Organization-AuthSource: 
+ BN8NAM11FT034.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 659bb444-2aec-4954-d283-08da967c846c
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjIwOS44NS4yMDguNDE7Q1RSWTpVUztM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOm1haWwtZWQxLWY0?=
+ =?utf-8?q?1=2Egoogle=2Ecom=3BPTR=3Amail-ed1-f41=2Egoogle=2Ecom=3BCAT=3ANONE?=
+ =?utf-8?b?O1NGUzooMTMyMzAwMjIpKDQ2MzYwMDkpKDQ1MTE5OTAxNSkoNzY0ODIwMDYpKDg2?=
+ =?utf-8?b?NzYwMDIpKDEwOTYwMDMpKDU1NDQ2MDAyKSgxNjYwMDIpKDM0NzU2MDA0KSg3?=
+ =?utf-8?q?066003=29=286666004=29=2873392003=29=2886362001=29=287596003=29?=
+ =?utf-8?q?=2842186006=29=2883380400001=29=2826005=29=2882202003=29=28691600?=
+ =?utf-8?b?OSkoNTY2MDMwMDAwMikoMzU2MDA1KSgzMzYwMTIpKDc2MzYwMDMpKDE1ODQz?=
+ =?utf-8?q?345004=29=287116003=29=2833964004=29=2815877035004=29=3BDIR=3AINB?=
+ =?utf-8?q?=3B?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2022 18:11:16.8181
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ 659bb444-2aec-4954-d283-08da967c846c
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ BN8NAM11FT034.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR01MB5640
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.3606014
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5612.023
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?iso-8859-1?Q?VE7mJe+gT0BcXXVzz8T0cnMpexhreupIjO98Ff7N7ZnFG3zWiHTGoqpdj+?=
+ =?iso-8859-1?Q?dDt1zfEYY9y9vE1SyeGaB22d3Q1E6EgfSX+nDNFGkIg409g2blfKiFgbA4?=
+ =?iso-8859-1?Q?WkwgVsnkpd0DSCOvVZsBT3nmqbX8X8xjYrNFjSYiykG/279BT5YLcm1SM2?=
+ =?iso-8859-1?Q?LeVtdtI797wKiFSIXpWF35zgj3VXU7FbqCQSYBJufaoCzTwE9yFjWKfFxZ?=
+ =?iso-8859-1?Q?urjfWpJZwmUTNDQOTt9A84bzRhApRQdhVdpcPEW4OjAAzWzw2WXzJrINAS?=
+ =?iso-8859-1?Q?o+ug1pJr6YeLguRGA4oVFrcxIyeSTDIRug+/+FBnBB7hB85Hro0pl2c1AL?=
+ =?iso-8859-1?Q?RtJi4it35+JAd+/3dBtxX/Lv8STER8Ztav0lmI/MPYzSW33LfU2y/dB+Qo?=
+ =?iso-8859-1?Q?00+RDnCycm0s5WzzRXrvOhecMr/fiyh9s05jF1+uqgGC5Ao1JW1YGnohfu?=
+ =?iso-8859-1?Q?6V7RstsrvRYHbF6GaJjlDtV0U26nNdusdTd81eKNDkBtqNk+OfZTpscdPw?=
+ =?iso-8859-1?Q?lc8g32Mq4IZA9CIGKwhGRuV4TU8MHvq0qircGu2N8ByfHPs5QVp6bxni4d?=
+ =?iso-8859-1?Q?qet0ygEFMGJAKSVTUcPX3lqkMwyM+1Br4surosX0jV/pb1U/KqM51y5pum?=
+ =?iso-8859-1?Q?YxXhbISkshM45tXxOfp058zL5B835HVWutf5wlnt6SvahPhkX5lpRo4qdi?=
+ =?iso-8859-1?Q?INnNb3X5Mai0HgN8jc6SzxHQx/mxgmXcBgtRAZulkWU0o5vR/B4+pMlsGy?=
+ =?iso-8859-1?Q?GEBU1kTtc9+51Qlxszgk7IpgQU3RV0mC5UmxhGkMkzmN6Z6cw3NyzMYG9U?=
+ =?iso-8859-1?Q?HypJShFpSK66mb/DVMazR5OFAL98e9YDPdMOR5uhkfQAUogT72NMHG2/Ep?=
+ =?iso-8859-1?Q?NHgW/bTs4ChHMcV46ZVdIyGuBqPG8xHiwjmG6GWCL9Ti30E5VrrEuocKY7?=
+ =?iso-8859-1?Q?+dojwoR3eME67qYYvsj3LAlfYOq+LshBZxNOJLiKAnY8ejTtMJiUTObBYB?=
+ =?iso-8859-1?Q?fgJLq4/DirVKPpAGMk7mkrNj/76phLxwcuei4pfbUJGReMfD0YKpmk19wP?=
+ =?iso-8859-1?Q?yBZAGCbG2q68t7GBYgV85GlT7mz3aO3zweOzAfsNq2xlwCCDetiKQGztCd?=
+ =?iso-8859-1?Q?NU3a/vJZ/r5PtPw2C//Be9pEjOEMhh8yYYPhXvucr7RVmrY6/BlCIH3+L5?=
+ =?iso-8859-1?Q?GUPUsgPlVfY1OgEtww5b/TgNiyWAqlfNYdXPkhIsA8nW35LgWfOQsDWzYY?=
+ =?iso-8859-1?Q?zI63Mc3fhZmRubsSGX/7kBKQubzo03UqRYQnVHscTt8sWuzpO6Xq1bNs+c?=
+ =?iso-8859-1?Q?Oi8xRZ1JAEEhwExmHkaZIwM6nNpp5vEOPcgPB1tZQB7mNF4y/yzy2vIcYl?=
+ =?iso-8859-1?Q?1dYDBrbv3nBh9eeCLftx2D/u25wFDkLbK9qMkUo5YILWfq1ODKtNyIR+8g?=
+ =?iso-8859-1?Q?QlAalxAbObPTqJ5np9/vqwysO2qTZk8vRCVtys5AjZF6Ix6theWM6NUiJ9?=
+ =?iso-8859-1?Q?LtJJIQcu0OoJzSCdkE/WRJ0I1N5vteAJBiWhU6Dp9pxLrkYFj39krxv2IM?=
+ =?iso-8859-1?Q?RJ/3H7SAYVaoZ/dgP3Vxd19SXYOaA46bzYKnlsSouO597fa8vJ58me9TL8?=
+ =?iso-8859-1?Q?1EzzxgAfqFtWr1Fne3WZdJbVm+eArfH6fuc6yk1mLZwUsHT56o3TaJYcEi?=
+ =?iso-8859-1?Q?e62IIPnxg/9L6+fa97bCJsluUdhAV+iA0ZBerjH11AebT/+mie1RuhTuDT?=
+ =?iso-8859-1?Q?qsbv5z3DjlGf40gscwQ+fdK2rMGUY+yI/KkIIJI+Kk+PRcWIK6KJLhLbsh?=
+ =?iso-8859-1?Q?fR4J3ydEKZLjhOmPcLZn1aF3w3kWpKP1JdO8Q3L3PWL/fLkbNHqY2nClzK?=
+ =?iso-8859-1?Q?1gHh/1QLx1TsJJl6YPBmMu/Ac6aqF4BQ3oWENClPvR1bMoiCQ1I2fq3H27?=
+ =?iso-8859-1?Q?Mvs1KDtnesWNRMcFs3zXmcMTljK3s3i5tt/ex/v3sRs=3D?=
+MIME-Version: 1.0
+
+--0000000000000869db05e8a70e8f
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+16
+
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+15
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+14
+
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+13
+
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+12
+
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+11
+
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+10
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+9
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+8
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+7
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+6
+
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:10, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+5
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:09, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+4
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:09, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+3
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:09, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+2
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:09, Samantha Ramirez (samantha.daenery=
+s.r.t@gmail.com<mailto:samantha.daenerys.r.t@gmail.com>) escribi=C3=B3:
+1
+
+El mi=C3=A9, 14 sept 2022 a la(s) 14:08, Administrator (tech@tmxintermodal.=
+com<mailto:tech@tmxintermodal.com>) escribi=C3=B3:
+
+NUMBER 68
+
+--
+Administrator
+
+Sent by TMX Intermodal <http://tmxintermodal.com> using Odoo<https://www.od=
+oo.com?utm_source=3Ddb&utm_medium=3Demail>.
+
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+
+--0000000000000869db05e8a70e8f
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></=
+head>
+<body>
+<div dir=3D"ltr">16
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com">sa=
+mantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">15&nbsp;
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr"><br>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">14
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">13
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">12
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">11
+<div><br>
+</div>
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">10&nbsp;
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">9
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">8
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">7
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">6
+<div><br>
+</div>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+10, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">5</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+09, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">4</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+09, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">3</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+09, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">2</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+09, Samantha Ramirez (<a href=3D"mailto:samantha.daenerys.r.t@gmail.com" ta=
+rget=3D"_blank">samantha.daenerys.r.t@gmail.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div dir=3D"ltr">1</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9, 14 sept 2022 a la(s) 14:=
+08, Administrator (<a href=3D"mailto:tech@tmxintermodal.com" target=3D"_bla=
+nk">tech@tmxintermodal.com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div>
+<div>
+<div>
+<p>NUMBER 68</p>
+</div>
+<div style=3D"font-size:13px"><span>-- <br>
+Administrator</span></div>
+<p style=3D"color:rgb(85,85,85);margin-top:32px">Sent <span>by <a style=3D"=
+text-decoration:none;color:rgb(135,90,123)" href=3D"https://nam11.safelinks=
+.protection.outlook.com/?url=3Dhttp%3A%2F%2Ftmxintermodal.com%2F&amp;data=
+=3D05%7C01%7Ccatchall%40tmxintermodal.com%7C659bb4442aec4954d28308da967c846=
+c%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637987758792880673%7CUnknown=
+%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6=
+Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3D4VsnzPgzr7E8mK4tMfSgRtcNqpdoWxXbgbhv0xpP=
+P%2F0%3D&amp;reserved=3D0" originalsrc=3D"http://tmxintermodal.com/" shash=
+=3D"mminkVrys9IEOjPE2OKEI7uwpBu38G4B/00wfjsceH4/2+zFJ3OgJH6mk0znW50X8Wmo7Jk=
+nRK02SAy3cuqgyXXomfuCcZDfMx0uW/t69QBGUMxvAhe+iHswtlSzobYWStVm46w1JkN2CSk12L=
+4X3QWliEi8J/LM7D/ZkN2+TOY=3D" target=3D"_blank">
+<span>TMX Intermodal</span> </a></span>using <a href=3D"https://nam11.safel=
+inks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fwww.odoo.com%2F%3Futm_sour=
+ce%3Ddb%26utm_medium%3Demail&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.=
+com%7C659bb4442aec4954d28308da967c846c%7Cea53da9730f747b6b275c7aa732edda6%7=
+C0%7C0%7C637987758792880673%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJ=
+QIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DIS3=
+ucSy0dO39iLS8UE6usBtA8tO6QX6p%2Beyya3aTlz0%3D&amp;reserved=3D0" originalsrc=
+=3D"https://www.odoo.com/?utm_source=3Ddb&amp;utm_medium=3Demail" shash=3D"=
+Y2PD0Xg7+U+aonItrBE9uA6fspjVqgygtH603xXTSLBAQ6lFoHvtsKtMyrTvvFL57RUZknO5a0F=
+QJtmYrjsGRH+Lfp797KpfMiJk5NuEVb8rZuKpq0PRuzXUVozPg6l9TxM9jzIWAkPi5pHIUnhtWt=
+zNnYPobIdSyHOT1kIfID8=3D" style=3D"text-decoration:none;color:rgb(135,90,12=
+3)" target=3D"_blank">
+Odoo</a>. </p>
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+</blockquote>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+--0000000000000869db05e8a70e8f--

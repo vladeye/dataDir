@@ -1,0 +1,484 @@
+Received: from BYAPR01MB5126.prod.exchangelabs.com (2603:10b6:a03:7b::30) by
+ MW4PR01MB6212.prod.exchangelabs.com with HTTPS; Mon, 26 Sep 2022 21:08:35
+ +0000
+Received: from MW4PR04CA0058.namprd04.prod.outlook.com (2603:10b6:303:6a::33)
+ by BYAPR01MB5126.prod.exchangelabs.com (2603:10b6:a03:7b::30) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5654.24; Mon, 26 Sep 2022 21:08:32 +0000
+Received: from CO1NAM11FT043.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:303:6a:cafe::c2) by MW4PR04CA0058.outlook.office365.com
+ (2603:10b6:303:6a::33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.25 via Frontend
+ Transport; Mon, 26 Sep 2022 21:08:32 +0000
+Authentication-Results: spf=none (sender IP is 209.85.166.42)
+ smtp.mailfrom=universallogistics.net; dkim=pass (signature was verified)
+ header.d=universallogistics-net.20210112.gappssmtp.com;dmarc=none action=none
+ header.from=universallogistics.net;compauth=pass reason=106
+Received-SPF: None (protection.outlook.com: universallogistics.net does not
+ designate permitted sender hosts)
+Received: from mail-io1-f42.google.com (209.85.166.42) by
+ CO1NAM11FT043.mail.protection.outlook.com (10.13.174.193) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5654.14 via Frontend Transport; Mon, 26 Sep 2022 21:08:32 +0000
+Received: by mail-io1-f42.google.com with SMTP id e205so6315191iof.1       
+ for <catchall@tmxintermodal.com>; Mon, 26 Sep 2022 14:08:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=universallogistics-net.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=X8TOPnwqDE8rCC7UfCedDt57ncQf5aPw9zRpOwaZSRI=;
+        b=RnX8ANIBnc+k5elcOzq9NwFQ62K62QUm9zkUFtr8qzKklERNA6YOYMyaJU+ZtWQuVE
+         a17162dNglb3iESbWvJl4/Iu05KTMETGw6BQDepk20vxcgaSZPMozEUgjUpj27Bm4mtG
+         5IafP27VfkpH6hu2wQJgYjyzJIZ78WPG7DcPOMFAl7dkfQDBUExTqjiwdoiTnOiSe8Bt
+         gQ3Puj0nKvklv6TjYTrgUHqdFhq8n9uED/UxZaPBndNqqSjOJTG/+QpEL/R3RIQdAwgg
+         iikNApJ7VZp10+SwMM2MvRtmN7GN5qBZavtsxTPK4cXaWi6z0OgQZAS+zyVIoIt7Ta1Z
+         j5dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=X8TOPnwqDE8rCC7UfCedDt57ncQf5aPw9zRpOwaZSRI=;
+        b=UiYgYcvD+eh4zqoS8u+w0vD57wxxos5IYhhINc5oTRfAYnaMWTOzhk2u24SrLmsXlP
+         bJEdOkPhdsPsEUrC10ZgT0LSqtdSosThupDIBIP9XW64jlFnYvYh9FDSVO7QmwvV3ymf
+         KszyOpmL0qqwMyfVVu8hNGrWoQpJ4yyv7Qp9LHRgyBIUfH9ysJfD6b4uIi0nOyIsQLKw
+         mvy4pnBlck4WFM0dv0fojW5gknZpcpjnv51hIT1z3zYbkFvq03lsJZpKWDxJrHX7T/gn
+         O43EsqjLsifutgJz0MhxsWtESHjCpnxj5de6axZc3zwEaw2I+cESe552wSg7db/lDDr3
+         iP/Q==
+X-Gm-Message-State: ACrzQf37ht8o6MiLuCQX7Bw1uJsp3/qo3Lvl9y8je1+xwdx+xwlsAazi
+	j4UEa2xmHlnYIdpwDUMM80vNR/Lw5iLXfNCOhOnX+8b3Ks0=
+X-Google-Smtp-Source: =?utf-8?q?AMsMyM5CH26NSPep+tSRQnawJHRSbxmUaYOzEEEjhX/w?=
+ =?utf-8?q?j/bZ02NRpPFMcNuaZdBrffHtvReWtV2IRU9hajpBTOs74Hk=3D?=
+X-Received: by 2002:a6b:ba46:0:b0:6a1:e2b2:c320 with SMTP id
+ k67-20020a6bba46000000b006a1e2b2c320mr10418384iof.15.1664226510869; Mon, 26
+ Sep 2022 14:08:30 -0700 (PDT)
+References: <078057819297513.1664183624.198590993881226-openerp-15586-res.partner@ip-172-31-25-70>
+In-Reply-To: <078057819297513.1664183624.198590993881226-openerp-15586-res.partner@ip-172-31-25-70>
+From: Cedric Chan <cedric@universallogistics.net>
+Date: Mon, 26 Sep 2022 17:07:56 -0400
+Message-ID: <CANOt6fscrw53D9LrMbXaecSXiEqbm+-kGuj26xde7_tnRCT+vA@mail.gmail.com>
+Subject: Re: CONGRATULATIONS YOUR TMX CREDENTIALS ARE NOW ACTIVE!!
+To: "TMX Intermodal Universal Logistics, Inc, universal"
+ <catchall@tmxintermodal.com>
+Cc: universal <universal@universallogistics.net>
+Content-Type: multipart/alternative; boundary="00000000000001ae0c05e99aeeca"
+Return-Path: cedric@universallogistics.net
+X-MS-Exchange-Organization-ExpirationStartTime: 26 Sep 2022 21:08:32.4517
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ da47c144-2f27-400e-b6e5-08daa00344b6
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1NAM11FT043:EE_|BYAPR01MB5126:EE_
+X-MS-Exchange-Organization-AuthSource: 
+ CO1NAM11FT043.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: da47c144-2f27-400e-b6e5-08daa00344b6
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjIwOS44NS4xNjYuNDI7Q1RSWTpVUztM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOm1haWwtaW8xLWY0?=
+ =?utf-8?q?2=2Egoogle=2Ecom=3BPTR=3Amail-io1-f42=2Egoogle=2Ecom=3BCAT=3ANONE?=
+ =?utf-8?b?O1NGUzooMTMyMzAwMjIpKDQ2MzYwMDkpKDQ1MTE5OTAxNSkoNjY1NzQwMTUpKDY2?=
+ =?utf-8?b?NjYwMDQpKDMzOTY0MDA0KSgyNjAwNSkoOTY4NjAwMykoMTA3ODg2MDAzKSg1?=
+ =?utf-8?q?3546011=29=28336012=29=2884300400001=29=2883380400001=29=28221860?=
+ =?utf-8?q?03=29=285660300002=29=281096003=29=2815843345004=29=2842186006=29?=
+ =?utf-8?q?=28966005=29=2834756004=29=2858800400005=29=288676002=29=28706600?=
+ =?utf-8?b?MykoNDMyNjAwOCkoNjkxNjAwOSkoMTgwNzQwMDQpKDE2NjAwMikoNzYzNjAwMyko?=
+ =?utf-8?q?7596003=29=28356005=29=2886362001=29=2855446002=29=2840140700001?=
+ =?utf-8?q?=29=28141343001=29=2848373003=29=3BDIR=3AINB=3B?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2022 21:08:32.4205
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ da47c144-2f27-400e-b6e5-08daa00344b6
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ CO1NAM11FT043.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR01MB5126
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.0962930
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5654.019
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?iso-8859-1?Q?/K7hnwMZZhebbH/uaGkr4NKsmRdJxQbcFNXfH0SFrRxr/7bBZ4XYmKyyg2?=
+ =?iso-8859-1?Q?SxtsV05hrsmb3BfFvJBjjC2MX7uw7xiQkU/Vk5qGXIHkiXs8kLbEbxBDPV?=
+ =?iso-8859-1?Q?LYlqH1c5wjCcOcwnY+nvvgyjQCAyRfmUjiM5UhJuWJSD8AQgEXmqC3I+xu?=
+ =?iso-8859-1?Q?ey85C9/K0/iwnxfX1TUnYMni6S6ei+rFPSbjt1Lp/hzD0SoysOqGAod/Nb?=
+ =?iso-8859-1?Q?J8eqgFpY5nXd6Zk58mxc7PYcPXM0roILBOj00gibmKwbxUzE4troN/Il7B?=
+ =?iso-8859-1?Q?4+qIqZV/oGbBHY7wFzi+kdFvEeBZJZzZczzs32IPU2YR5ESIPQYf6IvDLC?=
+ =?iso-8859-1?Q?voaBv5tBBPNs/8WbcMOTh65ZoZVXB0i711brzg4RKbR8AZ/VDeW352W02G?=
+ =?iso-8859-1?Q?Q+7tutoiLrLpOnSwFibKEYDCzKcKlSK9yyliGizWgD7elULFbyCWd5DKkC?=
+ =?iso-8859-1?Q?f9+GKdkBS6PnVgI+4JF4MjT/D2CklOasVDjYL2iJwxICIiDpIMAKEGizC5?=
+ =?iso-8859-1?Q?jTuyEemcLtv3PiQOTDrFkzHdOEjvOETNo9zVmSLC2bngbW+UeFLeI9rdI5?=
+ =?iso-8859-1?Q?4/IxknaEWmylaXRdiqjxOnMKpz4Cip2LEfywAe+RNTNzDwWYuZwqir+rsT?=
+ =?iso-8859-1?Q?E0o0d3YRimw+B/MUr2DIO3WZrqDb8V4gyCrRUxJOhN+MuEgfFWPa1qhd8H?=
+ =?iso-8859-1?Q?ADFROiYiKFnPmw+tx5zINRaEE19kNjxfUnxhJioOXG9RH3v62LYzeks0ND?=
+ =?iso-8859-1?Q?xgb3qRokbCtCnRQ92NWfmlpuDdGVbivLv902Q3RQ6/Dw+hVP9OZtgan5Ng?=
+ =?iso-8859-1?Q?/k33M7tszGW6OVSw6QUghyfmYm27yDBhXpeEeVFlMYH+VEeGSLpuBmRCb3?=
+ =?iso-8859-1?Q?uV34xBfGrOEYROjZLpPE3mzOnJorraqSsOXyjxYKlIYH6b7t0cHFLlpzu2?=
+ =?iso-8859-1?Q?TtDoXSUyinl7VDMN4q8umwZhwPqBwIG7cgfJCo/VwIk2zFg1ztsQeNz7JD?=
+ =?iso-8859-1?Q?28/CYnzffQwzJzr/wnIeOBguFjO3EPjRUn6Y8ck467xiYwQs1LLaNlF3pK?=
+ =?iso-8859-1?Q?mIJW9j3phDabVYQUchrbmvk3piNAUWQTSGrllrE/nOg3BDoCsxy5H845VI?=
+ =?iso-8859-1?Q?Uhb8lO1MSmRPbQARQrZ2If4C4K9kg5Mwm06dRVKMf2UkTV/+Iy/DshdULV?=
+ =?iso-8859-1?Q?UIPqyF/7Mr1iH+KqIj9UQVEkMds5bsT56ONDgwp1o5Alp8yZ+rRxob3nWy?=
+ =?iso-8859-1?Q?vff4uIY84ltubvL84XQtGimwTS2RQEcz3BpqyEThIZlC1C5mepNOX49XGV?=
+ =?iso-8859-1?Q?XX92c9yh9pfrxAkxUliTLLe1f1FAWWLJIU97afilzF10yHXelzJnMmOnE/?=
+ =?iso-8859-1?Q?I1AnStIiSi3I+QOyZd7SCTp6BYxnNImoxFSPTL3nkpkMeHuX3pJeMMqMdt?=
+ =?iso-8859-1?Q?5WeWNZArUY3SaEM4EbWJE/aEAsZlh1s202uZvnqFnSvWLcu6VURKYubZdr?=
+ =?iso-8859-1?Q?oiCfbZsiPOEtXdtb6QC5lJDggEY3L1/AYSCEGfwShY2H+GDzJgNVVrmk+p?=
+ =?iso-8859-1?Q?wEq/rjiChN67WNlCEl/0QHuR+bp1iGVCymUexbvW59Z7fhtju+qI/e9UAL?=
+ =?iso-8859-1?Q?DhDf36w2Bf3WL5EjfIQzR7aWJj33yb2M0sX+h+AIDXv/z6ZAVhi22hvAwJ?=
+ =?iso-8859-1?Q?eEXA7r3TzXZTLZVZ7JFN2Fs9/CHls0un5mdfLuIdgwwFNNmYP4hActFnxM?=
+ =?iso-8859-1?Q?e0wKTRHbMRFsRbyuYRXjuT897T4p/RFjpmcSresuyxjT34XGCS6opVxJ7Z?=
+ =?iso-8859-1?Q?q7j7xwWt8VOXYThDXZYVBNtaSRZS8C+5XXGniKe2JzWTwEClt8PEZap+bA?=
+ =?iso-8859-1?Q?wOcNSGq9UW+jlp0ZemZAdUVC41YNc7McIqsXU5PUo1ByJonDV8dTjMSsnd?=
+MIME-Version: 1.0
+
+--00000000000001ae0c05e99aeeca
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thank you
+
+Best regards,
+
+Cedric Chan
+
+Universal Logistics Inc.
+NVOCC#18014NF
+5 Northern Blvd. Suite 201
+Great Neck, NY 11021
+
+TEAM EMAIL: UNIVERSAL@UNIVERSALLOGISTICS.NET<mailto:UNIVERSAL@UNIVERSALLOGI=
+STCS.NET>
+718-949-9218 tel.
+718.723.4937 Updated fax.
+
+
+
+The information contained in this e-mail message, and any attachment theret=
+o, is confidential and may not be disclosed without our express permission.=
+ If you are not the intended recipient or an employee or agent responsible =
+for delivering this message to the intended recipient, you are hereby notif=
+ied that you have received this message in error and that any review, disse=
+mination, distribution or copying of this message, or any attachment theret=
+o, in whole or in part, is strictly prohibited. If you have received this m=
+essage in error, please immediately notify us by telephone, fax or e-mail a=
+nd delete the message and all of its attachments. Thank you. Every effort i=
+s made to keep our network free from viruses. You should, however, review t=
+his e-mail message, as well as any attachment thereto, for viruses. We take=
+ no responsibility and have no liability for any computer virus which may b=
+e transferred via this e-mail message.
+
+
+
+On Mon, Sep 26, 2022 at 5:13 AM Contacts <xavierc@tmxintermodal.com<mailto:=
+xavierc@tmxintermodal.com>> wrote:
+
+Congratulations !!!! You are set up in our system. Tomorrow morning, using =
+the credentials found below you have full access to our rates portal, track=
+ing system, and your documents per load.
+
+
+Just log into tmxintermodal.com<http://tmxintermodal.com> and get started !=
+!!!
+
+
+
+ Please reach out if you have any questions.
+
+
+
+
+USERNAME:universal@universallogistics.net<mailto:universal@universallogisti=
+cs.net>
+
+PASSWORD:1117680
+
+Sent by TMX Intermodal <http://tmxintermodal.com> using Odoo<https://www.od=
+oo.com?utm_source=3Ddb&utm_medium=3Demail>.
+
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+
+--
+You received this message because you are subscribed to the Google Groups "=
+UNIVERSAL" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to universal+unsubscribe@universallogistics.net<mailto:universal+unsub=
+scribe@universallogistics.net>.
+To view this discussion on the web visit https://groups.google.com/a/univer=
+sallogistics.net/d/msgid/universal/078057819297513.1664183624.1985909938812=
+26-openerp-15586-res.partner%40ip-172-31-25-70<https://groups.google.com/a/=
+universallogistics.net/d/msgid/universal/078057819297513.1664183624.1985909=
+93881226-openerp-15586-res.partner%40ip-172-31-25-70?utm_medium=3Demail&utm=
+_source=3Dfooter>.
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+
+--00000000000001ae0c05e99aeeca
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></=
+head>
+<body>
+<div dir=3D"ltr">Thank you<br clear=3D"all">
+<div>
+<div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signatur=
+e">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<div dir=3D"ltr">
+<p><span style=3D"font-size:10pt;color:rgb(64,64,64)">Best regards<b>,<u></=
+u><u></u></b></span></p>
+<p><b style=3D"font-size:12.8px"><span style=3D"font-size:10pt;color:rgb(64=
+,64,64)"><i>Cedric Chan</i></span></b><b style=3D"font-size:12.8px"><span s=
+tyle=3D"font-size:10pt;color:rgb(64,64,64)"><i>&nbsp;
+</i>&nbsp;</span></b></p>
+<p><b><span style=3D"font-size:10pt;color:rgb(64,64,64)"><u></u><u></u></sp=
+an></b></p>
+<b><font color=3D"#0000ff">Universal Logistics Inc.</font></b></div>
+<div dir=3D"ltr">NVOCC#18014NF</div>
+<div dir=3D"ltr"><b><span style=3D"font-size:10pt;font-family:Verdana,sans-=
+serif;color:red">5 Northern Blvd. Suite 201</span></b></div>
+<div dir=3D"ltr"><b><span style=3D"font-size:10pt;font-family:Verdana,sans-=
+serif;color:red">Great Neck, NY 11021</span></b></div>
+<div dir=3D"ltr"><b><span style=3D"font-size:10pt;font-family:Verdana,sans-=
+serif;color:red"><br>
+</span></b></div>
+<div><span style=3D"font-size:10pt"><font color=3D"#000000" face=3D"arial, =
+sans-serif"><b>TEAM EMAIL:
+<a href=3D"mailto:UNIVERSAL@UNIVERSALLOGISTCS.NET" target=3D"_blank">UNIVER=
+SAL@UNIVERSALLOGISTICS.NET</a></b></font></span></div>
+<div dir=3D"ltr"><b>718-949-9218 tel.</b></div>
+<div dir=3D"ltr"><b>718.723.4937</b>&nbsp;<b>Updated fax.</b>
+<p><span style=3D"font-size:8pt;color:rgb(31,73,125)"><u></u>&nbsp;<u></u><=
+/span></p>
+<p><span style=3D"font-size:6pt;color:rgb(31,73,125);font-family:&quot;Cour=
+ier New&quot;">The information contained in this e-mail message, and any at=
+tachment thereto, is confidential and may not be disclosed without our expr=
+ess permission. If you are not the intended
+ recipient or an employee or agent responsible for delivering this message =
+to the intended recipient, you are hereby notified that you have received t=
+his message in error and that any review, dissemination, distribution or co=
+pying of this message, or any attachment
+ thereto, in whole or in part, is strictly prohibited. If you have received=
+ this message in error, please immediately notify us by telephone, fax or e=
+-mail and delete the message and all of its attachments. Thank you. Every e=
+ffort is made to keep our network
+ free from viruses. You should, however, review this e-mail message, as wel=
+l as any attachment thereto, for viruses. We take no responsibility and hav=
+e no liability for any computer virus which may be transferred via this e-m=
+ail message.<br>
+<br>
+</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Sep 26, 2022 at 5:13 AM Conta=
+cts &lt;<a href=3D"mailto:xavierc@tmxintermodal.com">xavierc@tmxintermodal.=
+com</a>&gt; wrote:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div>
+<div>
+<div>
+<p style=3D"margin:0px;font-family:Calibri,sans-serif;font-size:11pt;color:=
+rgb(0,0,0);line-height:11.75pt">
+<span style=3D"margin:0px;padding:0px;border:1pt none windowtext;font-weigh=
+t:inherit;font-size:inherit;line-height:inherit;font-family:&quot;Comic San=
+s MS&quot;,serif,EmojiFont;vertical-align:baseline;color:inherit">Congratul=
+ations !!!! You are set up in our system. Tomorrow
+ morning, using the credentials found below you have full access to our rat=
+es portal, tracking system, and your documents per load.</span><span style=
+=3D"margin:0px;padding:0px;border:1pt none windowtext;vertical-align:baseli=
+ne;color:inherit"></span><span style=3D"margin:0px;padding:0px;border:0px;v=
+ertical-align:baseline;color:inherit"></span></p>
+<p style=3D"margin:0px;font-family:Calibri,sans-serif;font-size:11pt;color:=
+rgb(0,0,0);line-height:11.75pt">
+<span style=3D"margin:0px;padding:0px;border:0px;vertical-align:baseline;co=
+lor:inherit"><br>
+</span></p>
+<p style=3D"margin:0px;font-family:Calibri,sans-serif;font-size:11pt;color:=
+rgb(0,0,0);line-height:11.75pt">
+<span style=3D"margin:0px;padding:0px;border:0px;font-weight:inherit;font-s=
+ize:14pt;line-height:normal;font-family:&quot;Comic Sans MS&quot;,Chalkboar=
+d,cursive;vertical-align:baseline;color:rgb(12,100,192)">Just log into
+<a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F=
+%2Ftmxintermodal.com%2F&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.com%7=
+Cda47c1442f27400eb6e508daa00344b6%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C=
+0%7C637998233171905198%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoi=
+V2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DtHXbg7qa=
+bJ%2FTn31%2BhxqRXA13uUHz7dwCEXhKlIYFu1I%3D&amp;reserved=3D0" originalsrc=3D=
+"http://tmxintermodal.com/" shash=3D"AClHtcn4b2UhAJTF19OWKjea5uoV5Ja377evc9=
+hcCpoPsPv2CHSYl3iPLqWABsenyn1TKl465ObpDHqmC3tWNork/BQT8eUa3VmRBhF2xFc0ZwWSe=
+nMvX9I7yvNT93Xa+u8Gjz6f/94IaVvfqHgy0G52VYYQ/FSNjjGOjdn1jJo=3D" target=3D"_b=
+lank">tmxintermodal.com</a> and get started !!!!</span></p>
+<p style=3D"margin:0px;font-family:Calibri,sans-serif;font-size:11pt;color:=
+rgb(0,0,0);line-height:11.75pt">
+<span style=3D"margin:0px;padding:0px;border:1pt none windowtext;vertical-a=
+lign:baseline;color:inherit">&nbsp;</span><span style=3D"margin:0px;padding=
+:0px;border:1pt none windowtext;vertical-align:baseline;color:inherit"></sp=
+an><span style=3D"margin:0px;padding:0px;border:0px;vertical-align:baseline=
+;color:inherit"></span></p>
+<p style=3D"margin:0px;font-family:Calibri,sans-serif;font-size:11pt;color:=
+rgb(0,0,0);line-height:11.75pt">
+<span style=3D"margin:0px;padding:0px;border:1pt none windowtext;font-weigh=
+t:inherit;font-size:inherit;line-height:inherit;font-family:&quot;Comic San=
+s MS&quot;,serif,EmojiFont;vertical-align:baseline;color:inherit">&nbsp;Ple=
+ase reach out if you have any questions.</span><span style=3D"margin:0px;pa=
+dding:0px;border:1pt none windowtext;vertical-align:baseline;color:inherit"=
+></span><span style=3D"margin:0px;padding:0px;border:0px;vertical-align:bas=
+eline;color:inherit"></span></p>
+<p style=3D"margin:0px 0px 8pt;font-family:Calibri,sans-serif;font-size:11p=
+t;color:rgb(0,0,0);line-height:15.6933px">
+<span style=3D"margin:0px;padding:0px;border:1pt none windowtext;vertical-a=
+lign:baseline;color:inherit"><br>
+</span></p>
+<p style=3D"margin:0px 0px 8pt;font-family:Calibri,sans-serif;font-size:11p=
+t;color:rgb(0,0,0);line-height:15.6933px">
+<span style=3D"margin:0px;padding:0px;border:1pt none windowtext;vertical-a=
+lign:baseline;color:inherit">&nbsp;</span><span style=3D"margin:0px;padding=
+:0px;border:0px;vertical-align:baseline;color:inherit"></span></p>
+<p style=3D"margin:0px 0px 8pt;font-family:Calibri,sans-serif;font-size:11p=
+t;color:rgb(0,0,0);line-height:15.6933px">
+<span style=3D"margin:0px;padding:0px;border:1pt none windowtext;font-weigh=
+t:inherit;font-size:inherit;line-height:inherit;font-family:&quot;Comic San=
+s MS&quot;,serif,EmojiFont;vertical-align:baseline;color:inherit;background=
+-color:yellow">USERNAME</span><span style=3D"margin:0px;padding:0px;border:=
+1pt none windowtext;font-weight:inherit;font-size:inherit;line-height:inher=
+it;font-family:&quot;Comic Sans MS&quot;,serif,EmojiFont;vertical-align:bas=
+eline;color:inherit">:<a href=3D"mailto:universal@universallogistics.net" t=
+arget=3D"_blank">universal@universallogistics.net</a><b style=3D"font-weigh=
+t:bolder"></b></span><span style=3D"margin:0px;padding:0px;border:0px;verti=
+cal-align:baseline;color:inherit"></span></p>
+<p style=3D"margin:0px 0px 8pt;font-family:Calibri,sans-serif;font-size:11p=
+t;color:rgb(0,0,0);line-height:15.6933px">
+<span style=3D"margin:0px;padding:0px;border:1pt none windowtext;font-weigh=
+t:inherit;font-size:inherit;line-height:inherit;font-family:&quot;Comic San=
+s MS&quot;,serif,EmojiFont;vertical-align:baseline;color:inherit;background=
+-color:yellow">PASSWORD</span><span style=3D"margin:0px;padding:0px;border:=
+1pt none windowtext;font-weight:inherit;font-size:inherit;line-height:inher=
+it;font-family:&quot;Comic Sans MS&quot;,serif,EmojiFont;vertical-align:bas=
+eline;color:inherit">:1117680</span></p>
+</div>
+<p style=3D"color:rgb(85,85,85);margin-top:32px">Sent <span>by <a style=3D"=
+text-decoration:none;color:rgb(135,90,123)" href=3D"https://nam11.safelinks=
+.protection.outlook.com/?url=3Dhttp%3A%2F%2Ftmxintermodal.com%2F&amp;data=
+=3D05%7C01%7Ccatchall%40tmxintermodal.com%7Cda47c1442f27400eb6e508daa00344b=
+6%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637998233171905198%7CUnknown=
+%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6=
+Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DtHXbg7qabJ%2FTn31%2BhxqRXA13uUHz7dwCEXhK=
+lIYFu1I%3D&amp;reserved=3D0" originalsrc=3D"http://tmxintermodal.com/" shas=
+h=3D"AClHtcn4b2UhAJTF19OWKjea5uoV5Ja377evc9hcCpoPsPv2CHSYl3iPLqWABsenyn1TKl=
+465ObpDHqmC3tWNork/BQT8eUa3VmRBhF2xFc0ZwWSenMvX9I7yvNT93Xa+u8Gjz6f/94IaVvfq=
+Hgy0G52VYYQ/FSNjjGOjdn1jJo=3D" target=3D"_blank">
+<span>TMX Intermodal</span> </a></span>using <a href=3D"https://nam11.safel=
+inks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fwww.odoo.com%2F%3Futm_sour=
+ce%3Ddb%26utm_medium%3Demail&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.=
+com%7Cda47c1442f27400eb6e508daa00344b6%7Cea53da9730f747b6b275c7aa732edda6%7=
+C0%7C0%7C637998233172060860%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJ=
+QIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3Dc7i=
+Cd0IECGpsRdmqFQqGblL01CoV79yvuPqX2%2BH0oEk%3D&amp;reserved=3D0" originalsrc=
+=3D"https://www.odoo.com/?utm_source=3Ddb&amp;utm_medium=3Demail" shash=3D"=
+JWGC0vrmAytjVcND0brVB7Xl80pCte/waeSmzc0xCH3IXyZ5tAf+G/NsmLjLWc6mt9bolr3ESi/=
+5SRJd9jkBu/8GYmCKGJrsZ/J1FpeSRlvdB8n+ptaGhSCd7A+p+Pucdrs1VPZG+yfTGqVm8zjVnj=
+DLPn+WR3i2ouZHAcXwgrc=3D" style=3D"text-decoration:none;color:rgb(135,90,12=
+3)" target=3D"_blank">
+Odoo</a>. </p>
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+<p></p>
+-- <br>
+You received this message because you are subscribed to the Google Groups &=
+quot;UNIVERSAL&quot; group.<br>
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to
+<a href=3D"mailto:universal+unsubscribe@universallogistics.net" target=3D"_=
+blank">universal+unsubscribe@universallogistics.net</a>.<br>
+To view this discussion on the web visit <a href=3D"https://nam11.safelinks=
+.protection.outlook.com/?url=3Dhttps%3A%2F%2Fgroups.google.com%2Fa%2Funiver=
+sallogistics.net%2Fd%2Fmsgid%2Funiversal%2F078057819297513.1664183624.19859=
+0993881226-openerp-15586-res.partner%2540ip-172-31-25-70%3Futm_medium%3Dema=
+il%26utm_source%3Dfooter&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.com%=
+7Cda47c1442f27400eb6e508daa00344b6%7Cea53da9730f747b6b275c7aa732edda6%7C0%7=
+C0%7C637998233172060860%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjo=
+iV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DdKAh9Gc=
+JOwNtzaW%2BuBNHAUmBM2mk5RE%2FTCAMQ6cwO10%3D&amp;reserved=3D0" originalsrc=
+=3D"https://groups.google.com/a/universallogistics.net/d/msgid/universal/07=
+8057819297513.1664183624.198590993881226-openerp-15586-res.partner%40ip-172=
+-31-25-70?utm_medium=3Demail&amp;utm_source=3Dfooter" shash=3D"eaV5bzHgw4Dv=
+j5eI/v+enBEmh5XbZPfkCJgQRLgSnbPzuVcNxzNyx5PJY6kByNlPVgcTGrxCW/3UnJCnVOs6TJt=
+N0G6X+dI1SeSNjXm6dDL5LNzDN+SNfgJN/aKNuajyF2OwekJxISoMHQOfHky8ytKH3CQnEPiAio=
+rz7a9+lwM=3D" target=3D"_blank">
+https://groups.google.com/a/universallogistics.net/d/msgid/universal/078057=
+819297513.1664183624.198590993881226-openerp-15586-res.partner%40ip-172-31-=
+25-70</a>.<br>
+</blockquote>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+--00000000000001ae0c05e99aeeca--

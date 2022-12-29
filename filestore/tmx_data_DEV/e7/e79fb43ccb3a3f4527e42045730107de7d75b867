@@ -1,0 +1,305 @@
+Received: from GivensEm16s.local.givens.net (10.0.0.158) by
+ GivensEm16P.local.givens.net (10.0.0.157) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2242.12; Tue, 28 Jun 2022 13:18:03 -0400
+Received: from barracuda.givens.com (10.0.0.24) by
+ GivensEm16s.local.givens.net (10.0.0.155) with Microsoft SMTP Server id
+ 15.1.2242.12 via Frontend Transport; Tue, 28 Jun 2022 13:18:03 -0400
+X-ASG-Debug-ID: 1656436682-0f0ce9139c362b0001-1FVkuk
+Received: from outbound-ip76a.ess.barracuda.com
+ (outbound-ip76a.ess.barracuda.com [209.222.82.240]) by barracuda.givens.com
+ with ESMTP id V5dljNq1M8aGHz7Q for <cfitspatrick@givensts.com>; Tue, 28 Jun
+ 2022 13:18:02 -0400 (EDT)
+X-Barracuda-Envelope-From: houinsidesales@tmxintermodal.com
+X-Barracuda-RBL-Trusted-Forwarder: 209.222.82.240
+X-Barracuda-Ext-Sender: cfitspatrick@givensts.com
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2045.outbound.protection.outlook.com [40.107.92.45]) by
+ mx-inbound14-73.us-east-2a.ess.aws.cudaops.com (version=TLSv1.2
+ cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO); Tue, 28 Jun 2022
+ 17:18:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none; 
+ =?utf-8?q?b=3DLp18dDcCiejyR7T05F/BWM3y5NDMKIedf5V+4KfhSVgdOhtiPNqCJuMcAZKfe?=
+ =?utf-8?q?zNYwOf4vWCu5Zm+Ou5OaXsc6U1CfGS3u5yk7ZjSgr+E3fha5lILehiWiC4fJR8zkP?=
+ =?utf-8?q?Ippb+KKx44rKUcb1ZkfDpgzeinbXy3w20OAOXGVLZxAs282FzMxyiQSg/pnJnzz4x?=
+ =?utf-8?q?JJsXrnAfmLuyiGZQBgDC0g8Cm3WldcHIRn5WDWJxHU2/dKz3LlG0rTkIwujZ3/cPw?=
+ =?utf-8?q?QDan1x7YLg0dtdh132/+8tgwIkdAkMYK7npdj5/B2s196kuxfx8kwYytGZDb1qcNa?=
+ =?utf-8?q?+SLJ99aj8Wfq8aCd6YGTg=3D=3D?=
+X-Barracuda-RBL-IP: 40.107.92.45
+X-Barracuda-Effective-Source-IP:
+ mail-bn7nam10on2045.outbound.protection.outlook.com[40.107.92.45]
+X-Barracuda-Apparent-Source-IP: 40.107.92.45
+X-Barracuda-BBL-IP: 40.107.92.45
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AConte?=
+ =?utf-8?q?nt-Type=3AMIME-Version=3AX-MS-Exchange-AntiSpam-MessageData-Chunk?=
+ =?utf-8?q?Count=3AX-MS-Exchange-AntiSpam-MessageData-0=3AX-MS-Exchange-Anti?=
+ =?utf-8?q?Spam-MessageData-1=3B?=
+ bh=wlf0chl34AdHzwHRic0H7zHAuhmW0ct4bEzZST1QAIc=; =?utf-8?q?b=3DEM9RIN3AEmsN?=
+ =?utf-8?q?qsrxTpUI4wNb3wPyT8pNnYklwG2ASJ9kM7ibyB9re5g4B4YivhrmRu5Ww1i6jm9lZ?=
+ =?utf-8?q?ia5ODxVpOCwX+e9qSZoRNfqG4jdttchHgx3hXKQFSzVM8oRsBNea23cPhKv4n1LFl?=
+ =?utf-8?q?5HUL+mfhbAfs900cjEq/7DLTzGYtTreGKOu1Q53GX6tQZFu2DCDD/xZKwlHq++/MX?=
+ =?utf-8?q?1U5bmQR1As7LbrzIvAupjuuuW6DExGlKzrv1uZgcgUUrNTg5KMuzrvJM0hEKsiZJF?=
+ =?utf-8?q?P4913WcsOoM+0thA7uS+lduSQJmQCjI7fSzedDp14SNdiTwr5mEdgMQFqQKgFSAHn?=
+ =?utf-8?q?Fozcw=3D=3D?=
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=tmxintermodal.com; dmarc=pass action=none
+ header.from=tmxintermodal.com; dkim=pass header.d=tmxintermodal.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=TMXIntermodal78.onmicrosoft.com;
+ s=selector2-TMXIntermodal78-onmicrosoft-com; =?utf-8?q?h=3DFrom=3ADate=3ASu?=
+ =?utf-8?q?bject=3AMessage-ID=3AContent-Type=3AMIME-Version=3AX-MS-Exchange-?=
+ =?utf-8?q?SenderADCheck=3B?= bh=wlf0chl34AdHzwHRic0H7zHAuhmW0ct4bEzZST1QAIc=;
+ =?utf-8?q?b=3DDUMrd7Z6dMsp1gRBjTP0xZQzDY9nLCvaouccpBa1eABZU2AZ6uIALqruRg+Cd?=
+ =?utf-8?q?LPrLHEaABdjli0D/kbd4JDqbrajiliDTxFO++v+hUKxv2hcDNOuraXOztxHDsJatF?=
+ =?utf-8?q?lS1YXXy/d6kYSh5m5cPie5gZCT+1scyMjVn8mmYixjMec=3D?=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=tmxintermodal.com;
+Received: from DM5PR0102MB3590.prod.exchangelabs.com (2603:10b6:4:a4::25) by
+ CY4PR01MB2454.prod.exchangelabs.com (2603:10b6:903:68::20) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5373.18; Tue, 28 Jun 2022 17:17:59 +0000
+Received: from DM5PR0102MB3590.prod.exchangelabs.com
+ ([fe80::d5f4:9d8b:9dd3:6551]) by DM5PR0102MB3590.prod.exchangelabs.com
+ ([fe80::d5f4:9d8b:9dd3:6551%7]) with mapi id 15.20.5373.018; Tue, 28 Jun 2022
+ 17:17:59 +0000
+Message-ID: <582251816338435.1656433191.704065561294556-openerp-25290-crm.lead@ip-172-31-25-70>
+Subject: Weekly Capacity Report ***** Availability in Charleston
+From: Stacey Russell <houinsidesales@tmxintermodal.com>
+X-ASG-Orig-Subj: Weekly Capacity Report ***** Availability in Charleston
+Reply-To: TMX Intermodal Sales <info@tmxintermodal.com>
+To: <Cfitspatrick@givensts.com>
+Date: Tue, 28 Jun 2022 17:16:41 +0000
+X-Odoo-Objects: crm.lead-25290
+Content-Type: multipart/alternative;
+	boundary="===============2772493889194928853=="
+X-ClientProxiedBy: BL0PR02CA0080.namprd02.prod.outlook.com
+ (2603:10b6:208:51::21) To DM5PR0102MB3590.prod.exchangelabs.com
+ (2603:10b6:4:a4::25)
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: c3ed4344-49a1-41fd-5c43-08da5929f83a
+X-MS-TrafficTypeDiagnostic: CY4PR01MB2454:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: =?utf-8?q?9oIz9VIDZpMVwIzTSP9f5dIJSU9rh0M?=
+ =?utf-8?q?EqMGyP+p13L45ehq2S2mc8Cp7+/J53j/5FmgJa224T29Y3egv5r3h7oMcvmQ9V+C3?=
+ =?utf-8?q?WdhnJxzrkj2CEX/Aj6sh85261WUsReyPPhIrRTcOU+T9M8byGlO4X200weVKD7ZSO?=
+ =?utf-8?q?3ECz1bMEFaJIl/cboTjtsaR+qPIOjCVgV/vB4i6FiXPjKOySh5xuy1jKJeFcR1ebN?=
+ =?utf-8?q?ZOwYPzQRwMRq8Mtcp1MvbQLcM7XXUyV2mGMSAYGzcjMMds4BMpN/LHPHMsssw13kF?=
+ =?utf-8?q?GLjy6sAlcDG4i2tgkCxTlSRpzmlkperTZ/vRFyI40tL7KN5iAHtyND/Xu0pN7By1f?=
+ =?utf-8?q?hcg7rdAlVDVRsCWF876sqYCzXh706KvLdR1GNhEzzvlcI+iNlKlI4FF3WaRQfLXiO?=
+ =?utf-8?q?0ijhpk/CmkyYRRge+IYSz1ZTErl78NYHEjMCda/bLDoNHdgqzRMkBVe0kKsoCNjO3?=
+ =?utf-8?q?WTLXUgXZIIZoxS3appSCLZlAFgdEPcbCqIXRCtkXvkJuzegKBIMmHoLaEeyvcj72P?=
+ =?utf-8?q?xcjLbqgsA1HBp7ZPnNwuk+R03CO1WTfcYv9HVnFspEL6xxUG4dwmz7ufzsB6ffhnl?=
+ =?utf-8?q?rtP/z665+56aNAxWNHsLezGG7DnYalROoeQ4cDNyQpr3Yb6bkbcNCUzs/KaQUxo8N?=
+ =?utf-8?q?iTzCdaJ3xgoGSTpLYNekNe0sxQAhYvmbeD7afVUqs2mc/XgucXn5vIR2wB6sj084f?=
+ =?utf-8?q?CvlcTQuiJF8d9mgb39zf+isC6Dh4Ha9JEmu7eJ59sU403QCecLSSPCgoVgFqgTwbG?=
+ =?utf-8?q?byZaGcsAuf2+E+mKfiu+F734iN4yETIFgXekA0FWugA=3D=3D?=
+X-Forefront-Antispam-Report: =?utf-8?b?Q0lQOjI1NS4yNTUuMjU1LjI1NTtDVFJZOjtM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOkRNNVBSMDEwMk1C?=
+ =?utf-8?q?3590=2Eprod=2Eexchangelabs=2Ecom=3BPTR=3A=3BCAT=3ANONE=3BSFS=3A?=
+ =?utf-8?q?=2813230016=29=287916004=29=28366004=29=2839850400004=29=28136003?=
+ =?utf-8?b?KSgzNDYwMDIpKDM5NjAwMykoMzc2MDAyKSg2NDg2MDAyKSg4NjM2MjAwMSkoNDc4?=
+ =?utf-8?b?NjAwMDAxKSgxNjYwMDIpKDY1MDYwMDcpKDY2NTU2MDA4KSg2NjY2MDA0KSgz?=
+ =?utf-8?q?8100700002=29=28103116003=29=2866476007=29=286512007=29=283371600?=
+ =?utf-8?q?1=29=2883380400001=29=2838350700002=29=2841300700001=29=2826005?=
+ =?utf-8?b?KSg1MjExNjAwMikoMzM5NjQwMDQpKDk2ODYwMDMpKDY2OTQ2MDA3KSg4OTM2?=
+ =?utf-8?q?002=29=288676002=29=285660300002=29=2819627405001=29=282906002=29?=
+ =?utf-8?q?=2876236003=29=28316002=29=286916009=29=28186003=29=2840000500001?=
+ =?utf-8?q?=29=3BDIR=3AOUT=3BSFP=3A1101=3B?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+ NniMhR0nJGB9y9mlxQ1UtoamYF1m+wF7Ol8//JAlvzqy0=?utf-8?q?9Hrm2EUTo5WaHEzFNOUa?=
+ =?utf-8?q?g7knV4wUP9qpmp6OTnpfGuOzQEuY5lBE+lEkDkEsOw5S183EcRecVdJNfiIZ2oDAM?=
+ =?utf-8?q?6Z5XepJ/ZxXYruaWEgQJfkEsJcdj7l/e1EkJUeQBYFbd2Ic5RYyH0qL1oDPhZhOBV?=
+ =?utf-8?q?+ChKHs1NR9Zc7CqXhClsuFesl5rpmgUkn+hVDE+JeoIftPqIj1oyfWZ7W00lldLw4?=
+ =?utf-8?q?KDvKTzyC6H6NMl1oXlKlWPM77ca7eSX+ubvJmxxJL8fqc0NUjWl/y/bP6WMNqZTuR?=
+ =?utf-8?q?rVQ+7tZqYkd/uL1XS6X/mf5lSwp0r51gNNXokcE6S75+X1ymxUHd4Vf5UUakmsYTv?=
+ =?utf-8?q?0Xlo/OlC7YDZbyMh+WlRH1aLAVLpxjWs3vvmMLwD7j7CjlixYBaFaYUQl91IzO1jl?=
+ =?utf-8?q?5sJQULywCtPd4ZIKPpi6FsXwe9/VAc8isGL/EpSmjnjtwXIcUQXa4gECZOO9DEihw?=
+ =?utf-8?q?YPjVJq/mHYDNkQdAp6g5Vn6B4i8xfWYYDWp/S8jmt9KTagRZCi0OfN/Oqx7z8egN0?=
+ =?utf-8?q?r0y8rQ8qVQMM91gYax1qPBPIC6/2MDAtp6+qHrdvgZwvSxfm6Vq9M4rVCl81sxny7?=
+ =?utf-8?q?D09UqN23PE/K6ZUXokKtkCde9DTsLCyEyWLmM8+1PoBarXvnDxF3X7ey22EsnbJNT?=
+ =?utf-8?q?mDPMXkuwxagsEN0Yh+fIPZBlIRe2ptoq+SJsfncp/5/GfUQDfhh1oGptWaPD29o8Y?=
+ =?utf-8?q?svpA0/kK/CGiaQsQ53HAl4Rr+orRaHBGriG0p7ezn15XDmF96CwNOyya4LDHDNCAM?=
+ =?utf-8?q?g8UxcjRf1DlITZBGD/7mmDT/sp0zMI6u3E+rIIOfZF9Jf1XRgvfEE5QU0GDwhjHXI?=
+ =?utf-8?q?ax4dGa2AkgufG202nMS4eUG146DWl/N9vCVxG2VB55rWQKf53ck/aeps3A94rKVR4?=
+ =?utf-8?q?mxIPHJIsv01xnTVpFoeVBL/RSDGpOdTIK4RbDR49XWts3flKhS2a1j8SqyEZoT6uA?=
+ =?utf-8?q?KyZQiUZ7JT6xRaoqwbx4OQ/CGtpbp4DuOi8Nw3wIeMqgbYuNC5QOVx8Sm4DEfrr0q?=
+ =?utf-8?q?NK34IpcQsIl9FiwIxBgOPu5NaLAbzQ6wXWi7Uo7vy0maRl8fuH7cY292S67dNYPTn?=
+ =?utf-8?q?XLuBXa6jhOrnMulHIZtjTGQ2VRPX5H74LYSECcH2H7N4LAcFXLZeFmAv4Fv++fAxr?=
+ =?utf-8?q?HKFH2qrr+RQ8HdGrU/euyWKdRmDSm8BHVJGVy1JBidixoAqtX6F8UgdrK0zaaiqrz?=
+ =?utf-8?q?2B3WY0LxKcwHrVq+DlprV4UaA/M/tB8teHrl40WM/kEZ4fVZK4lRG0gL+Vy+KkcC/?=
+ =?utf-8?q?uUrfORjHknyGEQLc0l47hqyW1QypBvuGbZaXzUMA/FCIrcfbCoKZ8qaLwnzN4ehgw?=
+ =?utf-8?q?WnBjW4epZ2/DoPn/JHRV0bNV6SdyvezGWeA+cRPFjfWZdum9vwoZsNNeXUboFb0c3?=
+ =?utf-8?q?kJtHY8Ek6jBNJ8DCVbk+vTy8oo4Hzy+WWEV8YOUEmSaDWxP4NUHe8k2OZNr+vGrL5?=
+ =?utf-8?q?TdF0zOOMu0oxWNiWV0GTyQZuq4pVqlT4rAV7jqql7ZYlDJuJuJb2UsEg3mS7wcRVz?=
+ =?utf-8?q?N5HO2jHpJ0Ljv7FBD4=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ c3ed4344-49a1-41fd-5c43-08da5929f83a
+X-MS-Exchange-CrossTenant-AuthSource: DM5PR0102MB3590.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Jun 2022 17:16:42.0858
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: =?utf-8?q?H9Zrl04dGYlEVoxJYpnqX?=
+ =?utf-8?q?y984cySB0YPg1qdd8NUIGIqhEFlPMsT7PkANhDyw55Eh3ZnhMmNFqAdg312F+eo9X?=
+ =?utf-8?q?NNihlGaq4slp1mZz3vlBAh0pdvxYvepe6nJTqhCo+A?=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR01MB2454
+X-BESS-ID: 1656436680-103657-5437-20639-1
+X-BESS-VER: 2019.1_20220627.1822
+X-BESS-Apparent-Source-IP: 40.107.92.45
+X-BESS-Spam-Status: SCORE=1.95 using global scores of QUARANTINE_LEVEL=N/A
+ KILL_LEVEL=5.0 tests=HTML_MESSAGE, BSF_SC7_SG0146_1, HTML_IMAGE_RATIO_02,
+ UPPERCASE_75_100_2, UPPERCASE_75_100
+X-BESS-Spam-Report: Code version 3.2, rules version 3.2.2.241003 [from
+ cloudscan21-	113.us-east-2b.ess.aws.cudaops.com]	Rule breakdown below	 pts
+ rule name              description	---- ----------------------
+ --------------------------------	0.00 HTML_MESSAGE           BODY: HTML
+ included in message 	0.01 BSF_SC7_SG0146_1       META: Custom rule SG0146_1 
+	0.00 HTML_IMAGE_RATIO_02    BODY: HTML has a low ratio of text to image area
+ 	1.93 UPPERCASE_75_100_2     META: message body is 75-100% uppercase 	0.01
+ UPPERCASE_75_100       META: message body is 75-100% uppercase 
+X-BESS-Spam-Score: 1.95
+X-BESS-BRTS-Status: 1
+X-Barracuda-Connect: outbound-ip76a.ess.barracuda.com[209.222.82.240]
+X-Barracuda-Start-Time: 1656436682
+X-Barracuda-URL: https://10.0.0.24:443/cgi-mod/mark.cgi
+X-Barracuda-BRTS-Status: 1
+X-Virus-Scanned: by bsmtpd at givens.com
+X-Barracuda-Scan-Msg-Size: 4433
+X-Barracuda-Spam-Score: 1.95
+X-Barracuda-Spam-Status: No, SCORE=1.95 using global scores of TAG_LEVEL=5.0
+ QUARANTINE_LEVEL=6.0 KILL_LEVEL=8.0 tests=BSF_SC7_SG0146_1,
+ HTML_IMAGE_RATIO_02, HTML_MESSAGE, UPPERCASE_75_100, UPPERCASE_75_100_2
+X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.99018	Rule
+ breakdown below	 pts rule name              description	----
+ ---------------------- --------------------------------------------------
+	0.00 HTML_IMAGE_RATIO_02    BODY: HTML has a low ratio of text to image area
+	0.00 HTML_MESSAGE           BODY: HTML included in message	0.01
+ UPPERCASE_75_100       message body is 75-100% uppercase	0.01
+ BSF_SC7_SG0146_1       Custom rule SG0146_1	1.93 UPPERCASE_75_100_2    
+ message body is 75-100% uppercase
+Return-Path: houinsidesales@tmxintermodal.com
+MIME-Version: 1.0
+
+--===============2772493889194928853==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+
+Q0FVVElPTjogVGhpcyBlbWFpbCBvcmlnaW5hdGVkIGZyb20gb3V0c2lkZSB5
+b3VyIG9yZ2FuaXphdGlvbi4gRXhlcmNpc2UgY2F1dGlvbiB3aGVuIG9wZW5p
+bmcgYXR0YWNobWVudHMgb3Igb24gY2xpY2tpbmcgbGlua3MgZnJvbSB1bmtu
+b3duIHNlbmRlcnMuCg0KV2Vla2x5IENhcGFjaXR5IFJlcG9ydCAqKioqKiBB
+dmFpbGFiaWxpdHkgaW4gQ2hhcmxlc3Rvbg0NCg0NCg0NCg0NClVuc3Vic2Ny
+aWJlPGh0dHBzOi8vY3JtLnRteGludGVybW9kYWwuY29tL21haWwvbWFpbGlu
+Zy8xMDcvdW5zdWJzY3JpYmU/cmVzX2lkPTI1MjkwJmVtYWlsPUNmaXRzcGF0
+cmljayU0MGdpdmVuc3RzLmNvbSZ0b2tlbj05MjIxY2UzYmFlNmU0OGRiNDM4
+ZDI5NTg0NWQ1N2NjOTBhNDI5MTU4ZmJlOTNkOGY4MTRiMmE4MzVhZTA2Yzg5
+NmE5YjU4OGI3MDI3ZmNiYjdkNjlmNDI3YTljN2RjYmNlNDIzNTNhMmY5N2Zl
+YjYzMjA2MDVkMDgyZGYxMWNiZT5baHR0cHM6Ly9jcm0udG14aW50ZXJtb2Rh
+bC5jb20vd2ViL2ltYWdlLzQ5NjkwLWQzZWEwZmI1L3RodW1ibmFpbF93ZWVr
+bHklMjBjYXAlMjAlMjg0JTI5LnBuZz9hY2Nlc3NfdG9rZW49NzllNTY2MWQt
+NDcxNy00MWZlLTg5ZGEtNGJiOWFkY2ViZmZhXQ0NCg0NCltodHRwczovL2Ny
+bS50bXhpbnRlcm1vZGFsLmNvbS9tYWlsL3RyYWNrLzg5NDM3LzhjNjc4NDVi
+NzI1MTM1MzY3ZjE0MmYyMmI3NTY3YTFjMDdhNzEyZDRhOGFkZWZkOWI5M2Vl
+YTJhZDFmNjQ5YzcvYmxhbmsuZ2lmXSAqKiogRFVFIFRPIFRIRSBDSEFTU0lT
+IFNIT1JUQUdFLCBWU0wgREVMQVlTLCBMSU1JVEVEIFRFUk1JTkFMIEFQUE9J
+TlRNRU5UUywgQU5EIExJTUlURUQgRU1QVFkgUkVUVVJOIExPQ0FUSU9OUywg
+V0UgQVJFIFVOQUJMRSBUTyBHVUFSQU5URUUgUElDSy1VUCBCRUZPUkUgVEhF
+IExBU1QgRlJFRSBEQVkgQU5EIEVNUFRZIFJFVFVSTiBCRUZPUkUgUEVSIERJ
+RU0gQkVHSU5TLiBUTVggSU5URVJNT0RBTCBXSUxMIE5PVCBCRSBSRVNQT05T
+SUJMRSBGT1IgQU5ZIERFTVVSUkFHRSwgUEVSIERJRU0sIEFORCBPVEhFUiBB
+Q0NFU1NPUklBTCBDSEFSR0VTIFRIQVQgTUFZIE9DQ1VSKioqKiogV0UgQVJF
+IFVOQUJMRSBUTyBHVUFSQU5URUUgT04gVElNRSBBUlJJVkFMIEZPUiBBUFBP
+SU5UTUVOVFMgRk9SIFBJQ0stVVBTIEFORCBERUxJVkVSSUVTLiAqKioNDQo=
+
+--===============2772493889194928853==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><b=
+>CAUTION: This email originated from outside your organization. Exercise ca=
+ution when opening attachments or on clicking links from unknown senders.</=
+b>
+<br>=0D
+<!DOCTYPE html>=0D
+<html xmlns=3D"http://www.w3.org/1999/xhtml">=0D
+<head>=0D
+=0D
+<meta name=3D"format-detection" content=3D"telephone=3Dno">=0D
+<meta name=3D"viewport" content=3D"width=3Ddevice-width; initial-scale=3D1.=
+0; maximum-scale=3D1.0; user-scalable=3Dno;">=0D
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3D9; IE=3D8; IE=3D7; IE=
+=3DEDGE">=0D
+<style>=0D
+            @media screen and (max-width: 768px) {=0D
+                .o_mail_col_mv {=0D
+                    display: block !important;=0D
+                    width: auto !important;=0D
+                }=0D
+                .o_mail_table_styles {=0D
+                    width: 100% !important;=0D
+                }=0D
+                .o_mail_col_container {=0D
+                    margin: 0px 0px 10px 0px !important;=0D
+                }=0D
+            }=0D
+        </style>=0D
+</head>=0D
+<body>=0D
+<div style=3D"display:none; font-size:1px; height:0px; width:0px; opacity:0=
+">Weekly Capacity Report ***** Availability in Charleston=0D
+</div>=0D
+<div class=3D"o_layout o_basic_theme" style=3D"padding:0px; margin:0px; col=
+or:black; font-family:-apple-system, HelveticaNeue, &quot;Helvetica Neue&qu=
+ot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif; font-size:14p=
+x; background-color:white; min-height:100%; width:94%">=0D
+<div class=3D"oe_structure" style=3D"width:100%">=0D
+<div class=3D"o_mail_no_options">=0D
+<p style=3D"margin:0px 0 0px 0; color:black; font-family:-apple-system, Hel=
+veticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Gran=
+de&quot;, sans-serif; font-size:13px">=0D
+<br>=0D
+</p>=0D
+<p style=3D"margin:0px 0 0px 0; color:black; font-family:-apple-system, Hel=
+veticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Gran=
+de&quot;, sans-serif; font-size:13px">=0D
+<br>=0D
+</p>=0D
+<p style=3D"margin:0px 0 0px 0; color:black; font-family:-apple-system, Hel=
+veticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Gran=
+de&quot;, sans-serif; font-size:13px">=0D
+<br>=0D
+<a href=3D"https://crm.tmxintermodal.com/mail/mailing/107/unsubscribe?res_i=
+d=3D25290&amp;email=3DCfitspatrick%40givensts.com&amp;token=3D9221ce3bae6e4=
+8db438d295845d57cc90a429158fbe93d8f814b2a835ae06c896a9b588b7027fcbb7d69f427=
+a9c7dcbce42353a2f97feb6320605d082df11cbe" class=3D"o_default_snippet_text" =
+style=3D"text-decoration:none; background-color:transparent; color:rgb(38, =
+115, 114)">Unsubscribe</a><img class=3D"img-fluid o_we_custom_image o_we_se=
+lected_image" src=3D"https://crm.tmxintermodal.com/web/image/49690-d3ea0fb5=
+/thumbnail_weekly cap %284%29.png?access_token=3D79e5661d-4717-41fe-89da-4b=
+b9adcebffa" data-original-id=3D"49690" data-original-src=3D"/web/image/4969=
+0-d3ea0fb5/thumbnail_weekly cap %284%29.png" data-mimetype=3D"image/png" st=
+yle=3D"border-style:none; display:inline-block; height:auto; max-width:100%=
+; vertical-align:middle; width:auto" width=3D"960" height=3D"1280">=0D
+</p>=0D
+</div>=0D
+</div>=0D
+</div>=0D
+<img src=3D"https://crm.tmxintermodal.com/mail/track/89437/8c67845b72513536=
+7f142f22b7567a1c07a712d4a8adefd9b93eea2ad1f649c7/blank.gif"> *** DUE TO THE=
+ CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED E=
+MPTY RETURN LOCATIONS, WE ARE UNABLE=0D
+ TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER =
+DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER =
+DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GU=
+ARANTEE ON TIME ARRIVAL FOR APPOINTMENTS=0D
+ FOR PICK-UPS AND DELIVERIES. ***=0D
+</body>=0D
+</html>=0D
+
+--===============2772493889194928853==--

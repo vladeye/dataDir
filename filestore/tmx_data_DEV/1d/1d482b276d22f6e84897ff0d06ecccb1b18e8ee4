@@ -1,0 +1,527 @@
+Received: from mail.maoinc.com (10.36.209.11) by mail.maoinc.com
+ (10.36.209.11) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Fri, 22 Jul
+ 2022 18:29:14 -0500
+Received: from us-smtp-1.mimecast.com (205.139.110.120) by mail.maoinc.com
+ (10.36.209.16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28 via Frontend
+ Transport; Fri, 22 Jul 2022 18:29:14 -0500
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+	d=dkim.mimecast.com; s=201903; t=1658532554;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:mime-version:mime-version:
+	 content-type:content-type:dkim-signature;
+	bh=p7gwE+IWp+wrDTwpD0IHw767cQuv9/I4AaGAtmFKCDY=;
+	b=a/FLJ7YXGmV2BZaaGUukb+Jvg7EmXcJZAwsbmJfFXcSUW0SLbfbOnNwRdVTawKBA/an2H1
+	vZcI4zgprAuoUeWde40Zth6wCSV0d1+UAsnL/1kIDmHQmDRwsUcdxiT3BbtG6ONTPwm6b1
+	3e6rPJ35jPar5VfBGR20pq+vPJoWnmxtFvvCdAnOF786Pkaj3LvP7R/Qa+bAUA742JuFUF
+	mQ96LujBJOVe7DCdm5XucBz9ImyVD1SZ6UMq1ZCwY9a+MV+mQwpfJReE6GRdxVXjJHkvBf
+	bYK5Nr/wCovFSgxhkUrfAWLl2jq6Uoo7xwTktYr13TqfsywV+B8N7EdDKZ8GhA==
+ARC-Seal: i=2; s=201903; d=dkim.mimecast.com; t=1658532554; a=rsa-sha256;
+	cv=pass;
+	b=gxpmFF++GjaHM3d+QWC8ciWa5dQKOonVRJ/yYhiwQEbz/oriZzwJsAKfsgQX9YqIPiOOu+
+	sHEr0zvUiiG+oessGWTj1OfLeZ7muPPsj+NgSm+d4eDKuxsY2eo1X84ONUogHttgRxYCaG
+	4v1BfQNH9vFebtIhliT+Azj8PIJOFzSb5dmxFdexHes59ye5af6zbeZNdm60nK7hvNAhQr
+	yL+kjBRFnXncaeDYub7/8YDxXVWImg3uljfPkMG1hiWp6Jry534a8lQcqUI62h0YGPTqZX
+	jlaYunUWEsFlB1M4LT5DAXExQg4W5EzMVfETo6I9k9RjEh+qSAra/CvYCYz5Ew==
+ARC-Authentication-Results: i=2;	relay.mimecast.com;	dkim=pass
+ header.d=TMXIntermodal78.onmicrosoft.com
+ header.s=selector2-TMXIntermodal78-onmicrosoft-com header.b=DGy3wKvz;
+	arc=pass ("microsoft.com:s=arcselector9901:i=1");	dmarc=none;	spf=pass
+ (relay.mimecast.com: domain of val@tmxintermodal.com designates 40.107.223.63
+ as permitted sender) smtp.mailfrom=val@tmxintermodal.com
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11on2063.outbound.protection.outlook.com [40.107.223.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-158-oWCacdRwP6Wz9X4bGr6JbA-1; Fri, 22 Jul 2022 19:29:06 -0400
+X-MC-Unique: oWCacdRwP6Wz9X4bGr6JbA-1
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none; 
+ =?utf-8?q?b=3DlJU8TGTjFeLQF44iyq9EFZhMAnR06MpG/9n0ifBiGSCEc0uNb8Yu5SJzD6T1E?=
+ =?utf-8?q?Fo6TgsY5uURt79J6NTmHatDwdrvWg4OVkWmbVP+exBdr2TXwGlrfflU9xN//7wF5p?=
+ =?utf-8?q?YC6/b/ymxqxIDr+MvL07XqZCKjbs550357n/f2fWh+HRI9vz0NhI1Z/58wzsBt3TX?=
+ =?utf-8?q?U/BeiLzhtTYSZNyHGRibCpSkg6M29eBY/UoCzVLFg55Z5WIpF/G5d9sIn21IKLDHG?=
+ =?utf-8?q?IROdeSRZx7JcK5Nx9FaDsEpBfI6sTXbYpBZmAQU+ObtQLY//Xth46NU4wUD36JUvX?=
+ =?utf-8?q?gv4ummcaeb7wClqsTmMpw=3D=3D?=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901; =?utf-8?q?h=3DFrom=3ADate=3ASubject=3AMessage-ID=3AConte?=
+ =?utf-8?q?nt-Type=3AMIME-Version=3AX-MS-Exchange-AntiSpam-MessageData-Chunk?=
+ =?utf-8?q?Count=3AX-MS-Exchange-AntiSpam-MessageData-0=3AX-MS-Exchange-Anti?=
+ =?utf-8?q?Spam-MessageData-1=3B?=
+ bh=0lFXBiJXxTendz1kulSDGKx/981rePJXUDZ/5IDWh3Q=; =?utf-8?q?b=3DcOPWiAG46yAn?=
+ =?utf-8?q?y9jkYpd7jFoA6/Qx9Xm0W+psNY8ufgTmtfypxqcYgTMFGXuSpgkrYbVtYOXxnjlO1?=
+ =?utf-8?q?cx72gK5lWvu1y8081mRLh7Q53w7SrCwFoebXN8LLwerWxrBPd+nF7Jw/wzBVobgQt?=
+ =?utf-8?q?0KymJXP/r4f+RTSOUKVXueGFPvnseCg+m18bWTKrWeXooPM/TjKBMD8e+uLdhjCm2?=
+ =?utf-8?q?jsFJnvdhB3cATYT7rQY0U3t3j5J6XrUFT29ng3jhxbLMV/K+3K0f+bDW7fnBi1KJF?=
+ =?utf-8?q?7q6S7fnfYyPrsTkipNWlLfd3SFK67kYarJ0hwdxYxWAE+cYKkFFyn1w6ZuQwziniy?=
+ =?utf-8?q?8tOFA=3D=3D?=
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=tmxintermodal.com; dmarc=pass action=none
+ header.from=tmxintermodal.com; dkim=pass header.d=tmxintermodal.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=TMXIntermodal78.onmicrosoft.com;
+ s=selector2-TMXIntermodal78-onmicrosoft-com; =?utf-8?q?h=3DFrom=3ADate=3ASu?=
+ =?utf-8?q?bject=3AMessage-ID=3AContent-Type=3AMIME-Version=3AX-MS-Exchange-?=
+ =?utf-8?q?SenderADCheck=3B?= bh=0lFXBiJXxTendz1kulSDGKx/981rePJXUDZ/5IDWh3Q=;
+ =?utf-8?q?b=3DDGy3wKvzmpCwn2nolXK1LC08ZeXoKMLP4nBZLlp4Eaz+rQRzWXhEjq7F4Owyr?=
+ =?utf-8?q?z+U3f6vjZNOohXqyn9iIVgrVNL8qVk6KrAEIVohbS3nIcOJYNyINvPVC8H4F5ym0n?=
+ =?utf-8?q?MraLB1/N6+THT+cQg56+5HCdEpDkfU7oM+ptEbe9tBHzk=3D?=
+Received: from BL0PR01MB4180.prod.exchangelabs.com (2603:10b6:208:44::25) by
+ SA1PR01MB6781.prod.exchangelabs.com (2603:10b6:806:1a5::23) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5438.14; Fri, 22 Jul 2022 23:29:04 +0000
+Received: from BL0PR01MB4180.prod.exchangelabs.com
+ ([fe80::204d:305e:5d21:47c]) by BL0PR01MB4180.prod.exchangelabs.com
+ ([fe80::204d:305e:5d21:47c%4]) with mapi id 15.20.5458.019; Fri, 22 Jul 2022
+ 23:29:04 +0000
+Message-ID: <159650732191922.1658532287.857453346252441-openerp-27545-crm.lead@ip-172-31-25-70>
+Subject: ***TGIF - TMX Intermodal, Availability Next Week!***
+From: <val@tmxintermodal.com>
+Reply-To: TMX Intermodal Sales <info@tmxintermodal.com>
+To: <janellkedroski@maoinc.com>
+Date: Fri, 22 Jul 2022 23:25:37 +0000
+Return-Path: val@tmxintermodal.com
+X-Odoo-Objects: crm.lead-27545
+X-ClientProxiedBy: MN2PR16CA0060.namprd16.prod.outlook.com
+ (2603:10b6:208:234::29) To BL0PR01MB4180.prod.exchangelabs.com
+ (2603:10b6:208:44::25)
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 934bfcc1-7910-47aa-c921-08da6c397bc9
+X-MS-TrafficTypeDiagnostic: SA1PR01MB6781:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0
+X-Microsoft-Antispam-Message-Info: =?utf-8?q?2rCbgN/9bePRJanc5iB/OqvAWJv1DiM?=
+ =?utf-8?q?1u4ZIN/izoCHc6Qq5v/Z/wFTXmgcdx/o4M4klNbZi1s7sYAXdjepsDkv60ggidiMz?=
+ =?utf-8?q?aKT4wOqrZ+YklXzxB2jp1UUefyNPoCLeSrPih3YXjKcT4KNggzFLXYw2b08AeJJVm?=
+ =?utf-8?q?6GGTAioGbi9h+4Dw91FbD0UiAiW41yFMwILkB4avfFzfONupOgEnGWeDbBcWIuho2?=
+ =?utf-8?q?ciIjzdqEsKYtgs4mnDRdfm6z48sYLrcJVWworJGmZs6UpmlXb2d1CuV8bZKnWsrcv?=
+ =?utf-8?q?2XcHag6dv0x5sMKMu5MO5mWvX3tSaFHLGVzg7f78AhHn6GYV9UOQAXDF3+Jd6ni+c?=
+ =?utf-8?q?9/+8Yde4zynGtKzsg9sS0AdTxZPwDsRWISLO1tOy86gFHO8ZN0/vkKaJglYSO2TsL?=
+ =?utf-8?q?YMJmjgc6yeOQxMioySTfaN2+6ES0KeYrDeAjlCMlAvkq8uT9yiACb/3N+M9fmOlRk?=
+ =?utf-8?q?N5ArpsQX0YG7PIw5JPLM9EXyNW8gP6RZCMtgjaNnuBUySHIPPxsV8Say8YSxOixd5?=
+ =?utf-8?q?qBbX4TkvaFsFWxwi0DNMm2Kw/qXZsZxdzSYGuMaNZEjXax7MYaQUreaKFPKZk2LNh?=
+ =?utf-8?q?tQ1PaAJQ8sa/Hr4IfJRggw4sOTXNu702lMExyKKOpJYGzolnMRXFmQj24CI+aSw/D?=
+ =?utf-8?q?tiOD5w1J0ua5/w0PSXROc4BrNHji680FEMON+LSlrRcOX2M0fGixAzDZc/18vJvei?=
+ =?utf-8?q?ARaj+zkgqoC+FtBUwkOZyK6XYEk2Wcm3k2lV4Kjcb4/D5J9KSr2QpZy8ioIF3QzyZ?=
+ =?utf-8?q?wzOFb4gKQgEORuZinTVJ+rXmcJ6wa9ERwlACC1IrK6Nv1WTryEcg7UWzo+AToJuc?=
+ =?utf-8?q?=3D?=
+X-Forefront-Antispam-Report: =?utf-8?b?Q0lQOjI1NS4yNTUuMjU1LjI1NTtDVFJZOjtM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOkJMMFBSMDFNQjQx?=
+ =?utf-8?b?ODAucHJvZC5leGNoYW5nZWxhYnMuY29tO1BUUjo7Q0FUOk5PTkU7U0ZTOigx?=
+ =?utf-8?q?3230016=29=287916004=29=2839850400004=29=28366004=29=28376002=29?=
+ =?utf-8?b?KDEzNjAwMykoMzk2MDAzKSgzNDYwMDIpKDk2ODYwMDMpKDI2MDA1KSg2NTEyMDA3?=
+ =?utf-8?b?KSg0Nzg2MDAwMDEpKDY5MTYwMDkpKDY0ODYwMDIpKDY2NTU2MDA4KSgxMDMx?=
+ =?utf-8?b?MTYwMDMpKDE4NjAwMykoMTY2MDAyKSg3NjIzNjAwMykoNjY5NDYwMDcpKDY2?=
+ =?utf-8?q?476007=29=288676002=29=288936002=29=2886362001=29=2883380400001?=
+ =?utf-8?q?=29=2833964004=29=285660300002=29=2838350700002=29=2819627405001?=
+ =?utf-8?b?KSgzMTYwMDIpKDY2NjYwMDQpKDMzNzE2MDAxKSg0MTMwMDcwMDAwMSkoNTIx?=
+ =?utf-8?q?16002=29=286506007=29=2838100700002=29=282906002=29=2840000500001?=
+ =?utf-8?q?=29=3BDIR=3AOUT=3BSFP=3A1101?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+ zaBB8sVNXGPv0ov0FiRk69enbjpD2ZAf/qvuJ4fqgnBC/=?utf-8?q?70T9zNnvDB/pAKfjbhCy?=
+ =?utf-8?q?MtUoB1MxiCskHeyvAG9k6BIkOk7n8GeybT2oeFLtQUwdtZx6u2wZkouVcbEsvBtrR?=
+ =?utf-8?q?yvmzLoNW5YLLukqKybOy/iZccmjAxPNbT7O4RoFb5/ypQd0aAo8NiwvcjjF756zc0?=
+ =?utf-8?q?ZocQnMy8SXBRLwIfylWV/qpgzQxEmhCGDfXq39lrNZ/HSNy7U4O1zy07wIkVKv9g2?=
+ =?utf-8?q?vvwVoJyvAOoJsYgsAalLc2rsfp3gMUGGZXP2irLDdiK4tt+hUBmYVD5NmWkX6BqhD?=
+ =?utf-8?q?qVmI03nDVBDznoVmyIG8DjV7LWM8/nCwVfT5OpbGabAWO6FV6d26BhgQ+BljkE4Mr?=
+ =?utf-8?q?oYudbiB/u0K7hGsFJcAPwi7kZyWZGfEbZu6xzpaBzFPme/W85bCdtvOhAL9EwR3Jx?=
+ =?utf-8?q?BJjjJSCat5kWDbYQSBjeADyTnOjQqbMpbCT6tzksNPwT/m0M3/RTwNXXT1uYhDxp6?=
+ =?utf-8?q?hjBg4scPrIzVur3eI75No7G89sLt7pTCxJ8ciB/KwLpnUrqOtDpoGuIPSmjm2MT3V?=
+ =?utf-8?q?g3fQ+RPaP+12dAy0z+MeVHbTc9ICSpvhz06mEJGnrMHmt6YL5HHdFkE7QQaYJjpKS?=
+ =?utf-8?q?aN8mwuGxB6LzEWlshemvybtImTA2t3wVvghg3lGKLdwoXNyzIWVOX4mFo1muEyyUc?=
+ =?utf-8?q?g+73cyQEk6JQQBCet8GaXJPayVsNPZBEiyeNGYe6NfbgQc/IFXQkeeJ6T67TF9UNN?=
+ =?utf-8?q?266KN8gvLBOBqu29wX3ccW+zCUdiPMIuuj0aOWNpzHOSvCmb4Gh8Q9AJYOa+nRd0g?=
+ =?utf-8?q?ChyBHXzenLTtDzT/7UbYUfjLs1QlO+TvYzhAUE6XsTgDvcdY/G/EO0T6TVzf+s/kT?=
+ =?utf-8?q?gqQU7hXiUfbabrMWem1fd0NnzBiov9bO9D6a9sLkQnB9tHwtddvFysKF7zV4j9mf/?=
+ =?utf-8?q?G+l8ua7fQMY7gJ+R9o7l0zQoDAefowZTElqzN3wI+UTxJNhbuYANZLBoT7VEY1wOd?=
+ =?utf-8?q?/g7IHoFUV8mvGBMikIpyM056BCuXoe6ThOoOysqT2JEv95AZ061+1T7t4a1TYgdY9?=
+ =?utf-8?q?98rv0d2w+V5kWyAR8lRwphKDVgf0ywDy77i1Mq8PKT38bWf6gmE0+0GJ/DKFSMUUR?=
+ =?utf-8?q?cC3Wk0tIgI1DrqZWmU/y+U4uP2fIaoCqkRSY8YL8JDfca0gtZnlVpetxGVziXZ+fr?=
+ =?utf-8?q?rSd3GN/bN5L+o8VU0SP7uvPWTZnllJUEdpnbtFIgYu3dMvrdYQL3uyXcQZiEmbC5/?=
+ =?utf-8?q?qwuVjohJXT+DIRF22yYZY4GxrtpF7yG79nXJDAgz+M76JFdyKflpHOl9IvEatuBM0?=
+ =?utf-8?q?p6So8ViUJwvKuWkEH3WXELApniZ3fvpIwCD2cmR+WIBkorcdxqqEehpkkPpyK0vhq?=
+ =?utf-8?q?n89LL5Kb5L/RRruMWUBPbGIwJ0RMpe4I75UyGuqVh5ck0W4dKXDprvCHgbAOZfMhi?=
+ =?utf-8?q?uTJgPvwlaNs999CWmw+/oz9FBikPhURjuS8QOajE0bOUQ2HukiOvjWG5A8RGVGFNm?=
+ =?utf-8?q?ZTdlwsHTXS+ITDA?=Uvywm28mtmnyYzjIl8xRe+A4e
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ 934bfcc1-7910-47aa-c921-08da6c397bc9
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR01MB4180.prod.exchangelabs.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jul 2022 23:25:37.2885
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: =?utf-8?q?k/co4IdYK3O8m1cXO31Xj?=
+ =?utf-8?q?N5yGQQmLajGrbHlx0sx9sXbZn0FLPs8COyYhu9COEwJmsdX9/d05ahKJhw4Aj2Xbg?=
+ =?utf-8?q?=3D=3D?=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR01MB6781
+Authentication-Results: relay.mimecast.com;	dkim=pass
+ header.d=TMXIntermodal78.onmicrosoft.com
+ header.s=selector2-TMXIntermodal78-onmicrosoft-com header.b=DGy3wKvz;
+	arc=pass ("microsoft.com:s=arcselector9901:i=1");	dmarc=none;	spf=pass
+ (relay.mimecast.com: domain of val@tmxintermodal.com designates 40.107.223.63
+ as permitted sender) smtp.mailfrom=val@tmxintermodal.com
+X-Mimecast-Spam-Score: 2
+X-Mimecast-Impersonation-Protect: Policy=Executive Impersonation;Similar
+ Internal Domain=false;Similar Monitored External Domain=false;Custom External
+ Domain=false;Mimecast External Domain=false;Newly Observed
+ Domain=false;Internal User Name=false;Custom Display Name List=false;Reply-to
+ Address Mismatch=false;Targeted Threat Dictionary=false;Mimecast Threat
+ Dictionary=false;Custom Threat Dictionary=false
+X-Mimecast-Impersonation-Protect: Policy=Default Impersonation
+ Protection;Similar Internal Domain=false;Similar Monitored External
+ Domain=false;Custom External Domain=false;Mimecast External
+ Domain=false;Newly Observed Domain=false;Internal User Name=false;Custom
+ Display Name List=false;Reply-to Address Mismatch=true;Targeted Threat
+ Dictionary=false;Mimecast Threat Dictionary=false;Custom Threat
+ Dictionary=false;External=true
+Content-Type: multipart/alternative;
+	boundary="===============1551478873040829491=="
+MIME-Version: 1.0
+
+--===============1551478873040829491==
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+KioqVEdJRiAtIFRNWCBJbnRlcm1vZGFsLCBBdmFpbGFiaWxpdHkgTmV4dCBXZWVrISoqKg0KDQpb
+aHR0cHM6Ly9jcm0udG14aW50ZXJtb2RhbC5jb20vd2ViL2ltYWdlLzU5NzEwLTEwNzM3MDE1L3Ro
+dW1ibmFpbF93ZWVrbHkgY2FwICg0KS5wbmc/YWNjZXNzX3Rva2VuPTQ1MTliOGNjLTI0NDItNGJj
+ZC1iMmRjLTg0ODdjOWVjNTNmNl0NCg0KDQpVbnN1YnNjcmliZTxodHRwczovL2NybS50bXhpbnRl
+cm1vZGFsLmNvbS9tYWlsL21haWxpbmcvMTk5L3Vuc3Vic2NyaWJlP3Jlc19pZD0yNzU0NSZlbWFp
+bD1qYW5lbGxrZWRyb3NraSU0MG1hb2luYy5jb20mdG9rZW49M2NhMmU1Y2VlNzlkZDJlZGYyY2Y4
+ZWM3NjU3ZTBiZGFmYTIxMjkyM2FjMmJlODJjMDBjNjY2YzU5Y2I3ODI2MWQ5NjJiYjQ0NGU4ZGJm
+ZDkxNzEyN2U4ZDZmNzgzMzBiMjEyMDJiZDI3MTcyNTMxOGEzYmYzMTNlNDIwZmEzYmY+DQoNClto
+dHRwczovL2NybS50bXhpbnRlcm1vZGFsLmNvbS9tYWlsL3RyYWNrLzE1OTc2NS81NTkzZWZmMDIx
+YzUyMmY4ZmRlZjAxNjU5NWVkOGZhMTIyMjc4NGIzMGU5MzI5OWVmMWY3YmY2ZjljZmQ5MzY0L2Js
+YW5rLmdpZl0gKioqIERVRSBUTyBUSEUgQ0hBU1NJUyBTSE9SVEFHRSwgVlNMIERFTEFZUywgTElN
+SVRFRCBURVJNSU5BTCBBUFBPSU5UTUVOVFMsIEFORCBMSU1JVEVEIEVNUFRZIFJFVFVSTiBMT0NB
+VElPTlMsIFdFIEFSRSBVTkFCTEUgVE8gR1VBUkFOVEVFIFBJQ0stVVAgQkVGT1JFIFRIRSBMQVNU
+IEZSRUUgREFZIEFORCBFTVBUWSBSRVRVUk4gQkVGT1JFIFBFUiBESUVNIEJFR0lOUy4gVE1YIElO
+VEVSTU9EQUwgV0lMTCBOT1QgQkUgUkVTUE9OU0lCTEUgRk9SIEFOWSBERU1VUlJBR0UsIFBFUiBE
+SUVNLCBBTkQgT1RIRVIgQUNDRVNTT1JJQUwgQ0hBUkdFUyBUSEFUIE1BWSBPQ0NVUioqKioqIFdF
+IEFSRSBVTkFCTEUgVE8gR1VBUkFOVEVFIE9OIFRJTUUgQVJSSVZBTCBGT1IgQVBQT0lOVE1FTlRT
+IEZPUiBQSUNLLVVQUyBBTkQgREVMSVZFUklFUy4gKioqDQo=
+--===============1551478873040829491==
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html><html xmlns=3D"http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+<meta name=3D"viewport" content=3D"width=3Ddevice-width; initial-scale=3D1.=
+0; maximum-scale=3D1.0; user-scalable=3Dno;">
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3D9; IE=3D8; IE=3D7; IE=
+=3DEDGE">
+<style>
+            @media screen and (max-width: 768px) {
+                .o_mail_col_mv {
+                    display: block !important;
+                    width: auto !important;
+                }
+                .o_mail_table_styles {
+                    width: 100% !important;
+                }
+                .o_mail_col_container {
+                    margin: 0px 0px 10px 0px !important;
+                }
+            }
+        </style>
+</head>
+<body><table id=3D"mcpreviewzzyygg" style=3D"display: none; mso-hide: all; =
+width: 0px; height: 0px; max-width: 0px; max-height: 0px; font-size: 0px; l=
+ine-height: 0px; color: white;"><tr><td>***TGIF - TMX Intermodal, Availabil=
+ity Next Week!***Unsubscribe *** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, L=
+IMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UN=
+ABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY RETURN BEFORE =
+PER DIEM BEGINS. TMX&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C</td></tr></table><table id=3D"mcalertwrapperzzyygg" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tr><td><a href=3D"https://=
+us.report.cybergraph.mimecast.com/alert-details/?dep=3DN%2FuQ1YOz7lbRhCz%2F=
+Zm%2Fj%2Fg%3D%3DhVtQxnrSlUPoFdEMckGfdQ3TZlfB5V%2FH1CfTj3SP%2FVpem%2B1tgAPSO=
+C1bUpYVeg0Ktce%2FD6oFPEbN%2Bx%2BTvUir9Jyj%2BQVLe4S7TLkYfNtApZgqSY9pIA1taPfI=
+N%2FFGO9tK9U%2BEzv1ggvcl16hotWxjxzxKD2dm4WTTMWEj9%2Bmd5ZnFkmSovuCoYfo4E%2B9=
+cb4f87k0fYFjHI5eYBoN9pxe71InhnRWAQeDMzVdmTthggouk91Z8blG3dGMDrITDTxl3on630c=
+zPPZem%2F5d%2FgrAGyupQPDoWNaWwKBNq2pFTcFviTKwJUFBHLfpq%2FuU5QOGi6bq%2BuLuG8=
+%2FR3y6AK3r3PO5Xlig9s76A3qlkW60nqX4un4ndcSW0VAhe0ApvfDYb6NyPqWRGR6URFLiqfKR=
+ffrnPsPB3Psx5n693w4mIwazx%2BkYAQ1Ps%2F80DkQABifaDvY7s2ekUiDsTUFpfI0Tsqz9NCJ=
+1VKNvlHtnp1wQ6F9T1QhgeTrDfoWQze3pMxcwfe%2FahybHDrUMDtoS%2F6Ma%2Bb%2Fq1y4eMi=
+0NaCBjHXFg70Cs0%3D"><img id=3D"mcalertzzyygg" src=3D"https://alert-dg01.red=
+atatech.com/onprem_security_warning_fetch?r=3D1&amp;dep=3DN%2FuQ1YOz7lbRhCz=
+%2FZm%2Fj%2Fg%3D%3DhVtQxnrSlUPoFdEMckGfdQ3TZlfB5V%2FH1CfTj3SP%2FVpem%2B1tgA=
+PSOC1bUpYVeg0Ktce%2FD6oFPEbN%2Bx%2BTvUir9Jyj%2BQVLe4S7TLkYfNtApZgqSY9pIA1ta=
+PfIN%2FFGO9tK9U%2BEzv1ggvcl16hotWxjxzxKD2dm4WTTMWEj9%2Bmd5ZnFkmSovuCoYfo4E%=
+2B9cb4f87k0fYFjHI5eYBoN9pxe71InhnRWAQeDMzVdmTthggouk91Z8blG3dGMDrITDTxl3on6=
+30czPPZem%2F5d%2FgrAGyupQPDoWNaWwKBNq2pFTcFviTKwJUFBHLfpq%2FuU5QOGi6bq%2BuL=
+uG8%2FR3y6AK3r3PO5Xlig9s76A3qlkW60nqX4un4ndcSW0VAhe0ApvfDYb6NyPqWRGR6URFLiq=
+fKRffrnPsPB3Psx5n693w4mIwazx%2BkYAQ1Ps%2F80DkQABifaDvY7s2ekUiDsTUFpfI0Tsqz9=
+NCJ1VKNvlHtnp1wQ6F9T1QhgeTrDfoWQze3pMxcwfe%2FahybHDrUMDtoS%2F6Ma%2Bb%2Fq1y4=
+eMi0NaCBjHXFg70Cs0%3D" style=3D"display: block; border: 0px; border-style: =
+none;" border=3D"0"></a></td></tr></table>
+<div style=3D"display:none; font-size:1px; height:0px; width:0px; opacity:0=
+">***TGIF - TMX Intermodal, Availability Next Week!***
+</div>
+<div class=3D"o_layout o_basic_theme" style=3D"padding:0px; margin:0px; col=
+or:black; font-family:-apple-system, HelveticaNeue, &quot;Helvetica Neue&qu=
+ot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif; font-size:14p=
+x; background-color:white; min-height:100%; width:94%">
+<div class=3D"oe_structure" style=3D"width:100%">
+<div class=3D"o_mail_no_options">
+<p style=3D"margin:0px 0 0px 0; color:black; font-family:-apple-system, Hel=
+veticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Gran=
+de&quot;, sans-serif; font-size:13px">
+<img class=3D"img-fluid o_we_custom_image" src=3D"https://dg01.redatatech.c=
+om/onprem_image_fetch?dep=3DfMdcsbzzriNjU5Sra8W7xA%3D%3DC4%2FDW1FPsAthfBOxr=
+c87hA0CG90lDc0YHeNm%2F02YUNCsxhX6U86PWOaUC1xEuMH25ZR4Ztuwt7UxIKlMBLJtpUUPB3=
+d2VsnCCKwc%2FbOvPuVayB4qLCok6twFcHAwWZ9lbd%2BHgn1zAHAdr3Zwz6AbI7ugqJGCmdJGj=
+9IhiX2d6dj7T%2FSrTQoFvppCmC%2FTq3M08kE3cofm11HkZqtxinFChftpj74304JF9BjuU0SQ=
+gqAvfALwfM5eiPJHZ9KrJ0GgQx1jPBfew5InZH7hovGkXCjj15hkKsXPsbY4f%2FuFZ%2F4WpBs=
+tkHjcBvoazLqDdAdPt5KHTFcpQ490MoyXQfTgCm8efvkAYxHoiaNVXV61NHtDZ3Hi63kOivEQc%=
+2F2gyNGy73n7oZLwIfohXrEu%2FIMZWPkxXGwGTaYSW2M079wxL7nQhUuHtixP2%2F5xzcSmKqK=
+MOsNE0AG%2BgVNEdFU7XCb5ZpYMXklLs1cSiNIS2c0Lb5Mn6eTHOZtGjBX%2FHGSbD%2BL9lReM=
+A%2F9f2uSXEwXOVdaLxhtPeK6Rq3PiQ3981eVpwwUJR%2B7fNdogME3NsgxQ%2BsdcCUeu%2BWn=
+FqvBgm78kY%2B07Dg%3D%3D" style=3D"border-style:none; display:inline-block; =
+height:auto; max-width:100%; vertical-align:middle; width:auto" width=3D"10=
+77.23" height=3D"1394.66"><br>
+</p>
+<p style=3D"margin:0px 0 0px 0; color:black; font-family:-apple-system, Hel=
+veticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Gran=
+de&quot;, sans-serif; font-size:13px">
+<br>
+</p>
+<p style=3D"margin:0px 0 0px 0; color:black; font-family:-apple-system, Hel=
+veticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Gran=
+de&quot;, sans-serif; font-size:13px">
+<br>
+<a href=3D"https://crm.tmxintermodal.com/mail/mailing/199/unsubscribe?res_i=
+d=3D27545&amp;email=3Djanellkedroski%40maoinc.com&amp;token=3D3ca2e5cee79dd=
+2edf2cf8ec7657e0bdafa212923ac2be82c00c666c59cb78261d962bb444e8dbfd917127e8d=
+6f78330b21202bd271725318a3bf313e420fa3bf" class=3D"o_default_snippet_text" =
+style=3D"text-decoration:none; background-color:transparent; color:rgb(38, =
+115, 114)">Unsubscribe</a>
+</p>
+</div>
+</div>
+</div>
+<img src=3D"https://dg01.redatatech.com/onprem_image_fetch?dep=3DNTBSWsAknL=
+fC6%2Ffp5hyEsQ%3D%3DAvILWzp%2BLu9uI6y5yPEyTL9j3QHV7URiwNVEY9U%2BJEQOjDBV%2F=
+J2zD0XhOswDynpmnrLQUf6t%2BbxgFgySGkY0%2BrQPhXbUZWonr71085AIs8rwzvsFdcD0nLxw=
+0B4JHUZhAsR3En3eSu33uZzn1FZkyw%2BSvXTk75RS%2B2ex3%2F%2BNiiR9pasBcDMcP2GcKj0=
+H8RRLFMBXKH62nUyUC%2FcfPC%2FMIbRLrgMh9sppSos0Pc9DuyBUP5BtYva4AwGx%2BWYS7%2F=
+EguxVyZXcUh5Q52kFD9jUtWXrkbTd8cqyLZgE3Rhu7%2Fa0beByoP5pfOM0UTO7nTSN8OW2oakt=
+6%2BgW01w9hOlqLPzWK44jKC9C5jqrlvhbUCMsENs4uNMJgtHJ%2FppEewHwgqRU%2B1HZ%2Bpq=
+Tngt0UrzG0JtUuaeJi%2BZg83%2B8gFUzIeyfz77OXxk%2F3wkqGbMVrU7MZbtlsyeJK2Vz%2FU=
+r5L3Jy2QpjfAX%2Bn0epUebl2MTHPCuTvfuagY4lF2j0%2BGU9ic1QmBsSpnvbZk7xUHnAQlNcA=
+RQZxOhi6PsQzeemnRS%2BQyYE%3D"> *** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS,=
+ LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIONS, WE ARE =
+UNABLE
+ TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER =
+DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER =
+DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GU=
+ARANTEE ON TIME ARRIVAL FOR APPOINTMENTS
+ FOR PICK-UPS AND DELIVERIES. ***
+</body>
+</html>
+
+--===============1551478873040829491==--

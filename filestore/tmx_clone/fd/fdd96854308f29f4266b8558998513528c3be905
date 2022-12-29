@@ -1,0 +1,217 @@
+Received: from PH0PR01MB6503.prod.exchangelabs.com (2603:10b6:510:12::7) by
+ MN2PR01MB5726.prod.exchangelabs.com with HTTPS; Fri, 18 Feb 2022 20:58:15
+ +0000
+Received: from BN0PR02CA0022.namprd02.prod.outlook.com (2603:10b6:408:e4::27)
+ by PH0PR01MB6503.prod.exchangelabs.com (2603:10b6:510:12::7) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4995.16; Fri, 18 Feb 2022 20:58:11 +0000
+Received: from BN8NAM11FT032.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:e4:cafe::c1) by BN0PR02CA0022.outlook.office365.com
+ (2603:10b6:408:e4::27) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4995.14 via Frontend
+ Transport; Fri, 18 Feb 2022 20:58:11 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.128.54)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 209.85.128.54 as permitted sender) receiver=protection.outlook.com;
+ client-ip=209.85.128.54; helo=mail-wm1-f54.google.com;
+Received: from mail-wm1-f54.google.com (209.85.128.54) by
+ BN8NAM11FT032.mail.protection.outlook.com (10.13.177.88) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4995.15 via Frontend Transport; Fri, 18 Feb 2022 20:58:11 +0000
+Received: by mail-wm1-f54.google.com with SMTP id
+ bg21-20020a05600c3c9500b0035283e7a012so7281141wmb.0        for
+ <catchall@tmxintermodal.com>; Fri, 18 Feb 2022 12:58:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+        bh=zq9VZ1tYpxdZEyVGPsVeqby6W5TPxt9+NpSi7ixnv7c=;
+        b=Bk4Qr+y4NoyQuKlsBSwUn5Yy4tRePtHZW7p84Qzqdolw6tTa58lWwnVuEUlHOtvT83
+         uA4jaQBGH7r/iZgNjDx3Ityh52CWOM1H7BaJaqYEXlOvCyBAC4/rd298Wl9HyUIdG6qP
+         OtpPLxy0LAM9G0XSGoIYv4nnIXAaXi0qiKhz7gsVJ8Z8bkd3g6En7FJ4tb+Mti80IHmB
+         pWeOKukD4dikb2dJnM1in96sD7mZSKAcNrJPFDKc44WrHuSGKBYfJhgKQNwIdZRv2e+g
+         tvRpkMMVsTNkluowkPPHmFbSSEQNoTbszDRg8t490bPhPYhD11LFkGZxQIaHlQvjs68j
+         NnDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to;
+        bh=zq9VZ1tYpxdZEyVGPsVeqby6W5TPxt9+NpSi7ixnv7c=;
+        b=IPS/kSDGNTkue6pt1MFeesaski1diE6J/238x5c0Lks6y7qfBWWZpBph1lA4Kq45vg
+         cHdf1VwzMtNdG5XZ3EB+Uy6MuVNZWXljkki1INAN2G8P5KHNORlqgD7qSH36t/jRFEhS
+         tOABPrhbhiypL7E9+o2+Ou9OWt7K9rA0K9IgYl6AGaiDumEWTv+lAJijh7OGjt1fBHy7
+         Kz8GA2iGAciHb4bZLp2rsTGaC1KOdr/ot5QlcnBGmHPNDroekXjAIQESGnz+gkoSErez
+         XJIQgQ4Edqlm6k9SnF3rXtwQL1Kj/HgomYbayJGhkPGoJYi3N0S84dpKm7XfSXcBCWoh
+         vxSg==
+X-Gm-Message-State: AOAM530e8EzfFHPbejQbYhHWe9RBl+LY2AFmclcVyo+IilCkKNOLIXqj
+	QCkNl4fyndIgXpSCpz6aVPDfNldJsOcRl0vGTMR/s49I
+X-Google-Smtp-Source: =?utf-8?q?ABdhPJyuKZrq5PQFE4TDP2nB2f7Gu7IFdI5BGeYS85VD?=
+ =?utf-8?q?ARhRJTu7I5xBxWEzyHfh3oVSfmntpzhY0DmQ/qRqFJ/Sb8k=3D?=
+X-Received: by 2002:a05:600c:3d96:b0:350:3458:aee8 with SMTP id
+ bi22-20020a05600c3d9600b003503458aee8mr8503472wmb.146.1645217890353; Fri, 18
+ Feb 2022 12:58:10 -0800 (PST)
+References: <600606595865144.1645217794.002892971038818-openerp-7417-res.partner@ip-172-31-25-70>
+In-Reply-To: <600606595865144.1645217794.002892971038818-openerp-7417-res.partner@ip-172-31-25-70>
+From: Samantha Ramirez <samantha.daenerys.r.t@gmail.com>
+Date: Fri, 18 Feb 2022 15:57:59 -0500
+Message-ID: <CABeOyVX=iNvuGXd+t0Dm1c9B99ekHU9Y_GxbqGke9pZ4LxiYfA@mail.gmail.com>
+Subject: Re: Samantha_IT
+To: TMX Intermodal Samantha_IT <catchall@tmxintermodal.com>
+Content-Type: multipart/alternative; boundary="000000000000eec52605d85123e5"
+Return-Path: samantha.daenerys.r.t@gmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 18 Feb 2022 20:58:11.4643
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ 9ac6f7c4-d3d3-4c71-8d0c-08d9f3215fb2
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-Exchange-Organization-AuthSource: 
+ BN8NAM11FT032.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: 9ac6f7c4-d3d3-4c71-8d0c-08d9f3215fb2
+X-MS-TrafficTypeDiagnostic: PH0PR01MB6503:EE_
+X-MS-Oob-TLC-OOBClassifiers: OLM:1332;
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjIwOS44NS4xMjguNTQ7Q1RSWTpVUztM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOm1haWwtd20xLWY1?=
+ =?utf-8?q?4=2Egoogle=2Ecom=3BPTR=3Amail-wm1-f54=2Egoogle=2Ecom=3BCAT=3ANONE?=
+ =?utf-8?b?O1NGUzooMTMyMzAwMDEpKDMzNjAxMikoNTU0NDYwMDIpKDI2MDA1KSg4MjIwMjAw?=
+ =?utf-8?b?MykoMTY2MDAyKSgzNTYwMDUpKDEwOTYwMDMpKDc2MzYwMDMpKDQyMTg2MDA2KSg3?=
+ =?utf-8?q?596003=29=2876482006=29=2815843345004=29=285660300002=29=28691600?=
+ =?utf-8?b?OSkoODMzODA0MDAwMDEpKDczMzkyMDAzKSg3MTE2MDAzKSg4Njc2MDAyKSgz?=
+ =?utf-8?q?4756004=29=287066003=29=2833964004=29=286666004=29=2886362001=29?=
+ =?utf-8?q?=3BDIR=3AINB=3B?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Feb 2022 20:58:11.4643
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ 9ac6f7c4-d3d3-4c71-8d0c-08d9f3215fb2
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ BN8NAM11FT032.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR01MB6503
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.7663767
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.4975.021
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506458)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?utf-8?B?TUpzZVJMU211MjNyNE9kVlc5citQSzVwWnlOWU11ckVTYURLQ2xidDNCSzVj?=
+ =?utf-8?B?ZzZYNWoyVTFtUktHTjBrNDJqTWpQRTdDSWI4UFRISXRRTU1aeUQ5Q3ZXSXdD?=
+ =?utf-8?B?ZUNrL2poaHZ5dHJaUExPWEozYUNlaFFvc0tySDVKUENrcmJrMFVXMEEvbnR2?=
+ =?utf-8?B?N0lPVDc0bmZLSC9qd1FUaTlGSG5mNGxhRmVYR2NBSjNmaHkraGhUTDZBbWFI?=
+ =?utf-8?B?L2JBL0xqM0lISjdSb2FlN3hjQnRHelRWUmxTTU5MZVN2b201eWNueC9KNW5J?=
+ =?utf-8?B?ai9PejM5SmRtbkFpcnQ1ZUYvVTE4cGpsbXBiclBxVHg4L2txa0ZzYVh0MUQ5?=
+ =?utf-8?B?ODRTcmZhVmFZeDF0ekoyQUNmRCtJdVJpN1hLUENSbjZaWFBWRGYxMjJUREIx?=
+ =?utf-8?B?TFpyRkJIOHhFY3JlOGNhVXJmNVdvUS9kelZDSEE1elUyNkJvQ3crWjFTdFV3?=
+ =?utf-8?B?bk1iT3VLbzl6RnhyN1lMdFdVUlRYdXhob0RWcERSeVp0LzduQXBCVVlsRlZs?=
+ =?utf-8?B?dmllc05YWmwzanhGMXNpTjJjY1ZwdktWYk9ZbkQ4cXU4QUVjdjVWajRRVFhG?=
+ =?utf-8?B?Y1FtNzRzaC9yNnRxSFdWeTJrT1JmWXFia2FtdkMxUWFuMzh2STlMTmdWMmZ4?=
+ =?utf-8?B?YzFzZk5Na2d1WHBQWGhta0VIREF0eXRVTVlhTzN2VFFWaGw4aHd3Q0VxUjdz?=
+ =?utf-8?B?SS9SSG9NUDFKbDhmSFdjTEUzb2lHT3E4QmcyY3pCWGRVa3FLMVMxaGU3N2hR?=
+ =?utf-8?B?NHVnK2taUnV5L3RYZ2pqQ01YQVE5T0VHQXY2K3c0QlY4bEc2d2lEejBTNyty?=
+ =?utf-8?B?TllTemRmZU1SMFZEUXV4NXgza1lzakFKamNOVlJROWQ0MDhsNGVSaVRzUnV6?=
+ =?utf-8?B?QjRKU1Rabkl5TW02b0VETFo0UWtFNVU3UnZCOXRNT0ZjSUVBUmp5ZkhqYVA5?=
+ =?utf-8?B?cnRtMW9vc0pOdG5udURkY1V3N0RwZTBZZHhiVXhNaDRsMVBORjk0cURSN01i?=
+ =?utf-8?B?K3JQMDZicFpqa3M2bm8wR2VOdXJjMSsvdDhkTWRKTDQ1WFZLMW9yalJ3c0oy?=
+ =?utf-8?B?SjdIYWFsYjQzdkhHNzBYVDhyeXpQSURFQXFwMFRpbml2Q0tRWmhuMHV5VG5F?=
+ =?utf-8?B?QmNOdWt3YlBjL2tXdXdrUUcrOUZYYldrd3JnWDlmcWNXNEswMVpaWmVjZkp2?=
+ =?utf-8?B?UFFBbCtZQkRUekV5SHlyd2JMcDdzUExTKzVhbDlFWXJ3RzZGVHFib0x3QkhP?=
+ =?utf-8?B?b2VJdE5DSW5iZjA1OUJlSU9BekgydEhsYWF4WE5Td3FYRm9wR2ZKY3pIWlpM?=
+ =?utf-8?B?bkhweHNHUVJKTEQyRWdOVVphSmJ2Y3l5TnEyZFZEaTBxdzVhQWFNTS94aTM2?=
+ =?utf-8?B?K2lOOVZUTUJrZTJIOU9oSnJIbis5blNiVVN5aTZ0a2p6QmtRb0Jod3R0TXZ2?=
+ =?utf-8?B?bFE2MjQ2dWErSlh3T1c2Y0pyN0QrUWo3ekNzeTc3bzF6dzdra0xib3p6K1VC?=
+ =?utf-8?B?MUgwZkZzTWU1cDdudFF2T3B1NWNWR2UzeEJsSTFSaS8xc1N4UXdhOVBtdG1W?=
+ =?utf-8?B?MGF4NDdDM2ZYVFJZMnpJWXRKcUFWZ0FUT1dkRXQyVlRJTWhlSkRQWEdyU284?=
+ =?utf-8?B?Q2YwN2hRdXJvRGJlc2xFeHRpaDJDQW45MUFLUVprcTdOdnhWVlc1bXpsa3JN?=
+ =?utf-8?B?aGhtM2tncDZDRVVNTlBqeitiWUxBM2QzVU9LSHNXcEp0NjdMUUdFcWgrY2I1?=
+ =?utf-8?B?d0ExQ1RUUDdzZ1kwem1DaHh1b3NmYVdGYWhna3JWVnVRWEc1R3MxZ2FiQVJa?=
+ =?utf-8?B?RnVOSTREeFVBYS9QRGdtU25INzNNaEpGbWpMclIweEw5ZkpOYU9teHpXejlu?=
+ =?utf-8?B?K2cvYkFvRnRrRkptZHRtd1NvSVYvb2o0TjNqaDlqdjIvYzZIczY1OGF0dUFJ?=
+ =?utf-8?B?S1dxS3M1czBBaXlkU1lYdDExS0Fha2lJNFRsTkF1eDFSVE5kSE9FTHNFdVpr?=
+ =?utf-8?B?NTFocEJsZkVCUk1HeDY3RnNOM2VHOHdXTlJYSVZLM3EwdzIrMUtqSUI1UW1O?=
+ =?utf-8?B?cm9IWlIxZlpZRHJ3aDh4ZWp2ekRhUEJIZGtvclFMSkhtSkVGUC9HaTJiKzVs?=
+ =?utf-8?B?eC85K0VGSmdGb2oxNUY3aTBFQm8yVnhDUXp2RGhnNGlpbVZIWC9hMkFxYXV4?=
+ =?utf-8?B?YWxJVzB1R09FTll3T3pyNUg4OUNBOVRpSnQrd2QwbEk5dERtYUp5dTdRV1Vk?=
+ =?utf-8?B?d1JUSldlSy84OFFIUEN6SWhmSmZYTE5Lb1gyUnZxSTk3RWdaUXpxaGpRSTFl?=
+ =?utf-8?B?NEdZVmF6RFRSaDhwUXFGVUR4UjNlMytlYzF4UnUyYlVNd1NXenpaUzZQTEdv?=
+ =?utf-8?B?VW9ma2I2REhxSVM0bmVmY09xZitpVUZaWkQrTndjcTJuZ2VDbU1XUlpjY2tp?=
+ =?utf-8?B?aE9tZ2ttV0VMSS9HRk9RWndrQjhZWVd2Q2REWTR0MklLaEpuVU9qWCtvckN6?=
+ =?utf-8?B?ejV5YmlSNkozSENOamovK1hxM2gwVkdWVFhUdVE5NlJVcDEvbVkzR3NDd1I0?=
+ =?utf-8?B?b0VmSnlXbjB4UkJTakdDdGYwczBMaTl6ckdwQUJlcEkrSmJ6SlR5RzRhTzZi?=
+ =?utf-8?Q?VHGfewPh95nJ6z9S5vkLnuhFXDm4=3D?=
+MIME-Version: 1.0
+
+--000000000000eec52605d85123e5
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+answer to catchall number axy1
+
+El vie, 18 feb 2022 a la(s) 15:56, Administrator (tech@tmxintermodal.com<ma=
+ilto:tech@tmxintermodal.com>) escribi=C3=B3:
+
+number axy1
+
+--
+Administrator
+
+Sent by TMX Intermodal <http://tmxintermodal.com> using Odoo<https://www.od=
+oo.com?utm_source=3Ddb&utm_medium=3Demail>.
+
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro.
+
+--000000000000eec52605d85123e5
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+</head>
+<body>
+<div dir=3D"ltr">answer to catchall number axy1</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El vie, 18 feb 2022 a la(s) 15:56, Ad=
+ministrator (<a href=3D"mailto:tech@tmxintermodal.com">tech@tmxintermodal.c=
+om</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div>
+<div>
+<p>number axy1</p>
+</div>
+<div style=3D"font-size:13px"><span>-- <br>
+Administrator</span></div>
+<p style=3D"color:rgb(85,85,85);margin-top:32px">Sent <span>by <a style=3D"=
+text-decoration:none;color:rgb(135,90,123)" href=3D"http://tmxintermodal.co=
+m" target=3D"_blank">
+<span>TMX Intermodal</span> </a></span>using <a href=3D"https://www.odoo.co=
+m?utm_source=3Ddb&amp;utm_medium=3Demail" style=3D"text-decoration:none;col=
+or:rgb(135,90,123)" target=3D"_blank">
+Odoo</a>. </p>
+</div>
+</blockquote>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro.
+</body>
+</html>
+
+--000000000000eec52605d85123e5--

@@ -1,0 +1,518 @@
+Received: from BN6PR01MB2595.prod.exchangelabs.com (2603:10b6:404:ce::9) by
+ MW4PR01MB6212.prod.exchangelabs.com with HTTPS; Tue, 13 Sep 2022 23:21:57
+ +0000
+Received: from MW4PR04CA0177.namprd04.prod.outlook.com (2603:10b6:303:85::32)
+ by BN6PR01MB2595.prod.exchangelabs.com (2603:10b6:404:ce::9) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5612.20; Tue, 13 Sep 2022 23:21:54 +0000
+Received: from CO1NAM11FT047.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:303:85:cafe::82) by MW4PR04CA0177.outlook.office365.com
+ (2603:10b6:303:85::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.12 via Frontend
+ Transport; Tue, 13 Sep 2022 23:21:54 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.218.51)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 209.85.218.51 as permitted sender) receiver=protection.outlook.com;
+ client-ip=209.85.218.51; helo=mail-ej1-f51.google.com; pr=C
+Received: from mail-ej1-f51.google.com (209.85.218.51) by
+ CO1NAM11FT047.mail.protection.outlook.com (10.13.174.132) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.12 via Frontend Transport; Tue, 13 Sep 2022 23:21:54 +0000
+Received: by mail-ej1-f51.google.com with SMTP id go34so30908148ejc.2       
+ for <catchall@tmxintermodal.com>; Tue, 13 Sep 2022 16:21:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date;
+        bh=E8+2Xok2F31YuLimeIsnFk1HNHU1IGiKtYUvZqrEBNw=;
+        b=H4k4U91Ta34zyg5AYw1S2weHfLfnZdUFR9oL95g7yVrjLWUoe/cxRb0wPcDx/Vcafh
+         dfPr6nimsEqbmihp0YTqKTQ4rXDgdLcWAsrROKnYycu8USEidZCYqql3xNKjTyEnqwDr
+         R8DYGt0nXhZS7htgIXjm1/fy1BBUYJ32/pNPWCWOu8LNMZGLE7nFMtpPdsnDVrWUO1y7
+         EqVkVyMVDRciMAqJujmMb7CvkL7Z8EIPflFEHGspK/kfBvXGbgDHVrrjg2mV1kuMskUJ
+         w5n42mOLcv23MPDQPSdqfuP/yJtuRJpadwTvxyx/Bi1vuZWQmDJLz4MDVY/wHknsv46I
+         167Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=E8+2Xok2F31YuLimeIsnFk1HNHU1IGiKtYUvZqrEBNw=;
+        b=oJZgymVgQ1MDMQO1eJPaRFMzaSR9gNPganUF4X6/EypnSfUo+Ffmo1zJd7qc9zlzZB
+         er4R71odbK0hO5rCInl1V4ifS0YufvnoX/2vivKxYZTo7aIpO4QPcjAY1HiYqpDarwgh
+         98DZJ0b6+DBnwXv7UHAlaRJ+HGW1YLdPXohe70qgHfV8bqwy9eQB9/LjZkLfhQQx3/MM
+         vEo1UGAEnc3bwLf+xuHRBn6X0aw3rDUPXf2HKT5WGVOuvAEH4RjtyHYBgpiKNnqTcLcq
+         wyHp0t0nJkyBjXsaMbxu01V1I79Moez5ua6tjWdib4YNp79DIThQIi3uRg4zL0wZQsrd
+         5ATw==
+X-Gm-Message-State: ACgBeo0njJxY86GQbBnyJxN8I5rTX3au02C21G1ueTN7kFVHv06wPt1i
+	StmfPH+NbCDzB/bClWGsezPYI7iTcph+y+g/+cnxB4RV
+X-Google-Smtp-Source: =?utf-8?q?AA6agR42T+Tph0yLQ0RTBXj9VXub4BIi7mfPlPRqvLj3?=
+ =?utf-8?q?Sx5TsGlb+WsASJhXddivX14VZhk91LX9vk1GqZpMUhSQAgg=3D?=
+X-Received: by 2002:a17:906:4fc3:b0:72e:eab4:d9d7 with SMTP id
+ i3-20020a1709064fc300b0072eeab4d9d7mr23194230ejw.599.1663111312547; Tue, 13
+ Sep 2022 16:21:52 -0700 (PDT)
+References: <906726919630408.1663111236.849061727523804-openerp-7417-res.partner@ip-172-31-25-70>
+In-Reply-To: <906726919630408.1663111236.849061727523804-openerp-7417-res.partner@ip-172-31-25-70>
+From: Samantha Ramirez <samantha.daenerys.r.t@gmail.com>
+Date: Tue, 13 Sep 2022 19:21:39 -0400
+Message-ID: <CABeOyVWyEnj57wE91f0AE_avF2BkjP0_-OHectvHUbckVfDG_g@mail.gmail.com>
+Subject: Re: only test 2
+To: TMX Intermodal Samantha_IT <catchall@tmxintermodal.com>
+Content-Type: multipart/alternative; boundary="00000000000001a30805e897476b"
+Return-Path: samantha.daenerys.r.t@gmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 13 Sep 2022 23:21:54.3994
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 
+ ece0ee02-5530-4aa0-4861-08da95debee0
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: ea53da97-30f7-47b6-b275-c7aa732edda6:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1NAM11FT047:EE_|BN6PR01MB2595:EE_
+X-MS-Exchange-Organization-AuthSource: 
+ CO1NAM11FT047.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id: ece0ee02-5530-4aa0-4861-08da95debee0
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:  =?utf-8?b?Q0lQOjIwOS44NS4yMTguNTE7Q1RSWTpVUztM?=
+ =?utf-8?b?QU5HOmVuO1NDTDoxO1NSVjo7SVBWOk5MSTtTRlY6TlNQTTtIOm1haWwtZWoxLWY1?=
+ =?utf-8?q?1=2Egoogle=2Ecom=3BPTR=3Amail-ej1-f51=2Egoogle=2Ecom=3BCAT=3ANONE?=
+ =?utf-8?b?O1NGUzooMTMyMzAwMjIpKDQ2MzYwMDkpKDQ1MTE5OTAxNSkoMzU2MDA1KSg4Njc2?=
+ =?utf-8?q?002=29=2882202003=29=28336012=29=2819627405001=29=2873392003=29?=
+ =?utf-8?q?=2883380400001=29=28166002=29=286666004=29=287636003=29=288636200?=
+ =?utf-8?b?MSkoNzA2NjAwMykoMTU4NDMzNDUwMDQpKDMzOTY0MDA0KSg0MjE4NjAwNiko?=
+ =?utf-8?b?NjkxNjAwOSkoNzU5NjAwMykoNTU0NDYwMDIpKDI2MDA1KSg2NjU3NDAxNSko?=
+ =?utf-8?q?7116003=29=2834756004=29=2876482006=29=285660300002=29=281096003?=
+ =?utf-8?q?=29=3BDIR=3AINB=3B?=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Sep 2022 23:21:54.3525
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id:
+ ece0ee02-5530-4aa0-4861-08da95debee0
+X-MS-Exchange-CrossTenant-Id: ea53da97-30f7-47b6-b275-c7aa732edda6
+X-MS-Exchange-CrossTenant-AuthSource: 
+ CO1NAM11FT047.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR01MB2595
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.5616704
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.5612.022
+X-Microsoft-Antispam-Mailbox-Delivery: 
+	ucf:0;jmr:0;auth:0;dest:I;ENG:(910001)(944506478)(944626604)(920097)(930097);
+X-Microsoft-Antispam-Message-Info: 
+	=?Windows-1252?Q?acpC+47MkORBdEiPWRnQ6dAFYfbtzR1l2El2lEg7bCUMZfowPH6oxjsL?=
+ =?Windows-1252?Q?eC7JREbnm/HxUlluzLz/H2zpFruySUawPBj8MjoqViqLUURIP9Tr/jfl?=
+ =?Windows-1252?Q?f47mLZNYAMwYheI8mqIgLHwMdsif2fks2k/eYmjzFG6KLdNzuRfzzZwy?=
+ =?Windows-1252?Q?Fc3jIm83wOasWRDsd8STCrrSLx4OadRdsYgFK2xoxkTnKxet3/k0WWBl?=
+ =?Windows-1252?Q?VHHviElanEz7OSxuaRV6uKxjVLTBBrCo9SRiD1y2iwPNntRs04jyn6ZD?=
+ =?Windows-1252?Q?abPiauJAY/IrY7gNPFOwZzMuRxtrVei2ZqVMnwh04/HoKbJlJtSyq5VG?=
+ =?Windows-1252?Q?DFCrOtWBrsps14I17ICVlcjFJk0CLfwlftLpqFyu7LlDybdU2rg6oMBN?=
+ =?Windows-1252?Q?p8lzg5lB721bZwoJ6nMrHPavLJ/SLRFaK1BeCrx+2rZsiDxKcWVu59m9?=
+ =?Windows-1252?Q?BKJQLKUxJVk8EMM5DK93VNS6gyGH77SkJ53whaKQx5nMAIX6OBhGd3Pl?=
+ =?Windows-1252?Q?t5wAOPVfGs0B4klXaltat57Tj2d+js6IYvJdm6g3AsJFLCzR0HKRYlC3?=
+ =?Windows-1252?Q?byEnERDySuHn12H4JoBXV4y/B7QDG5opsE3BMtOenR0rF+pua+AB6W2O?=
+ =?Windows-1252?Q?KaGZ8dCHnJ9QX4AnSLWXlU/+MXWK0/sK9WIW3sTlqJ9AbSOsnDHd9mQy?=
+ =?Windows-1252?Q?QoRTaXqgOEj0GeYweMttyLo4L5u9cpugmo+4+lAZC9sXYIzvu6TB5xzc?=
+ =?Windows-1252?Q?1RuBuJA8IsfgJJIwTOgkq0WdQl3MZ2L4RJZajEae6mj5/rM4FyrNq4bq?=
+ =?Windows-1252?Q?xqN7CMEKdIQqEZOQ7/6fZFsf0+xVz+wxy6wxVwutRRToenI0P5h1zf+s?=
+ =?Windows-1252?Q?CL0STtqieHItxvFFMIU4+ZvG5PGUPqbut9Z+kLezEeUCMlB22Cqmq94K?=
+ =?Windows-1252?Q?oj04guvHyQeIx7mqeXK79biaL67oEsM4rhjghqag844yeOvglvIuC90H?=
+ =?Windows-1252?Q?vDCWNItVGJitmjrFe98R8aIRuuRsg2DxtpyFoht7wVeEw50SsPQ/1Viu?=
+ =?Windows-1252?Q?d3iJvfHYgl8xfN8jCxZb6kF7PoHlt6dGIaPR/eT+LlhQP1+HWOoolUts?=
+ =?Windows-1252?Q?45P9MyIDKqcNKl5qxyWrdNY2NNa45WhxNEeNrPCrRKqztoMFV59jF0e+?=
+ =?Windows-1252?Q?ly4dtAwSMLEtwfxoDaYFsPo/eGnnd077nW7+mTSHVXn3fV+jRWpCIxGh?=
+ =?Windows-1252?Q?oIl9aJSdQXMgCNrkWuMujh5xC+LLx9pDYI9lfgYASZYvqgAMiKaz4IO7?=
+ =?Windows-1252?Q?7SQ957k8jLBHxMgs31mQGPDzKHw8Y+F6MrxNKcJB5hngiRDh6qb2pRwl?=
+ =?Windows-1252?Q?Z2+d5h505rfPfNjnzwsBqYbi27CSXNmLba9sKgBH/W4M5i4pkHUwPTIL?=
+ =?Windows-1252?Q?3qnVpGTSV3HlwQqLxwFMEJ5/H48f1kX7uebs4UOPtw0F0C50GzPg1ENV?=
+ =?Windows-1252?Q?s9iSaQi2/kypQ18Mm8SFz09eQg0YcHIHizE+WOsL6j3CPzyXhbXasrPc?=
+ =?Windows-1252?Q?UrOp3uxP1OFAaXfmAlka3Mftyv2U6Nb3oFDQHndt8T9MYN9uFKpUcqLH?=
+ =?Windows-1252?Q?Waru9tApt9QPkKoNxYLvGB5KX9VTz4umpNca/xM6mvH1fHKcHu3kB0ze?=
+ =?Windows-1252?Q?Foa3H6WG5Srf87WG/P33lq1yQ5Qbyn/oKrgysmKrfjTVoX6lPT2ocor0?=
+ =?Windows-1252?Q?Nb/qUKdNYpZmGvPjedBzd0JD8nDq4KfDtCodUFExpDepSKW2gSMxgEvT?=
+ =?Windows-1252?Q?bIoAEFrluvhDLL2pP9JMi5cPUIzNSWtwBVwbIqlyDsoWiQvG9JE8tIKK?=
+ =?Windows-1252?Q?lnptJwQFn7ZbUesqS86KuEtVXkXuD/4YZvtJ79kGJAvbYGGPSe04KZnw?=
+ =?Windows-1252?Q?XSRi5rzGuTX59u5/CTQHnYA5tSBYwjHAYs9yoj208/Yg2G50/Myxkuid?=
+ =?Windows-1252?Q?fkz9qR4a?=
+MIME-Version: 1.0
+
+--00000000000001a30805e897476b
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+ok
+
+El mar, 13 sept 2022 a la(s) 19:21, Administrator (tech@tmxintermodal.com<m=
+ailto:tech@tmxintermodal.com>) escribi=C3=B3:
+
+Hello Amanda
+
+
+
+
+I am the Vice President of Sales and would like to introduce myself to you =
+or the right contact.  If you could point me in the right direction, any he=
+lp would be appreciated.  I am scheduling conference calls for the next two=
+ weeks.  Let me know what time is convenient and we=E2=80=99ll get this mee=
+ting coordinated.
+
+
+
+I would like to discuss new features on our website.  These portals can mak=
+e your team more productive by quickly handling transactions by receiving a=
+utomatic updates and access to live tracking.  In addition, POD=E2=80=99s w=
+ill be available same day.  These features can potentially help you attract=
+ new clients and increase sales.  We have availability at NJ, CHS, ATL, HOU=
+ and JAX locations
+
+
+
+One of our biggest strengths is communication and reliability.  We send con=
+stant updates on your shipment directly from our driver=E2=80=99s phone app=
+. from the moment we pick up until delivery.  You will receive a same day v=
+erbal POD and the paperwork within 24 hours.  In addition, we are a bonded =
+carrier.
+
+Also, it's our trucks, our men, our chassis.  We are also certified to hand=
+le and ship flexitanks
+
+You can now access our live tracking portal by logging into the 24/7 rates =
+portal.  You will see the tracking tab right next to the rates selection.
+
+
+
+Here are some updates for you.
+
+
+
+  *   on line tracking and rates portal, actual status of the location of y=
+our shipment.  Go to our website- tmxintermodal.com<http://tmxintermodal.co=
+m>
+
+     *   go to online tracking/rates,
+
+  *   Login =E2=80=93 userid:  email address-  password:  requesting access
+
+  *   Jaxport secures final dredging funds to deepen to 47 feet
+
+  *   We are also looking for export lanes from Camp Hill PA and Lancaster =
+PA  40=E2=80=99 HC MSC Boxes
+
+  *   We are launching live tracking and instant access to documents.
+
+
+
+I realize we are going through challenging times and TMX Intermodal is here=
+ to help if needed.  Our biggest asset, it=E2=80=99s our men, our truck, an=
+d our chassis.
+
+Sent by TMX Intermodal <http://tmxintermodal.com> using Odoo<https://www.od=
+oo.com?utm_source=3Ddb&utm_medium=3Demail>.
+
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY DEMURRAGE, PER DIEM, AND OTHER ACCESSORI=
+AL CHARGES THAT MAY OCCUR***** WE ARE UNABLE TO GUARANTEE ON TIME ARRIVAL F=
+OR APPOINTMENTS FOR PICK-UPS AND DELIVERIES. ***
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO a menos que reconozca al rem=
+itente y sepa que el contenido es seguro. *** DUE TO THE CHASSIS SHORTAGE, =
+VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND LIMITED EMPTY RETURN LOCATIO=
+NS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE THE LAST FREE DAY AND EMPTY R=
+ETURN BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR AN=
+Y DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE=
+ ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND =
+DELIVERIES. ***
+
+--00000000000001a30805e897476b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></=
+head>
+<body>
+<div dir=3D"ltr">ok</div>
+<br>
+<div class=3D"gmail_quote">
+<div dir=3D"ltr" class=3D"gmail_attr">El mar, 13 sept 2022 a la(s) 19:21, A=
+dministrator (<a href=3D"mailto:tech@tmxintermodal.com">tech@tmxintermodal.=
+com</a>) escribi=C3=B3:<br>
+</div>
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
+<div>
+<div>
+<div>
+<div style=3D"font-size:12pt;font-family:Calibri,Arial,Helvetica,sans-serif=
+,serif,EmojiFont;border:0px;line-height:inherit;margin:0px;padding:0px;vert=
+ical-align:baseline;color:black;background-color:rgb(230,242,250)">
+<div style=3D"font-size:15px;font-family:inherit;border:0px;font-weight:inh=
+erit;line-height:inherit;margin:0px;padding:0px;vertical-align:baseline;col=
+or:inherit">
+<p style=3D"font-size:11pt;font-family:Calibri,sans-serif;margin:0px"><span=
+ style=3D"border:0px;font-weight:inherit;font-size:14pt;line-height:inherit=
+;font-family:Arial,sans-serif,serif,EmojiFont;margin:0px;padding:0px;vertic=
+al-align:baseline;color:inherit">Hello
+ Amanda</span></p>
+<p style=3D"font-size:11pt;font-family:Calibri,sans-serif;margin:0px"><span=
+ style=3D"border:0px;font-weight:inherit;font-size:14pt;line-height:inherit=
+;font-family:Arial,sans-serif,serif,EmojiFont;margin:0px;padding:0px;vertic=
+al-align:baseline;color:rgb(12,100,192)"><br style=3D"display:none">
+</span></p>
+<p style=3D"font-size:11pt;font-family:Calibri,sans-serif;margin:0px"><span=
+ style=3D"border:0px;font-weight:inherit;font-size:14pt;line-height:inherit=
+;font-family:Arial,sans-serif,serif,EmojiFont;margin:0px;padding:0px;vertic=
+al-align:baseline;color:inherit">&nbsp; &nbsp;</span><span style=3D"border:=
+0px;font-weight:inherit;font-size:14pt;line-height:inherit;font-family:Aria=
+l,sans-serif,serif,EmojiFont;margin:0px;padding:0px;vertical-align:baseline=
+;color:inherit"><br>
+</span></p>
+</div>
+</div>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"font-size:14pt;font-family:&quot;Helvetica Neue&quot;;color:=
+black">I am the Vice President of Sales and would like to introduce myself =
+to you or the right contact.&nbsp; If you could point me in the right direc=
+tion, any help would be appreciated.&nbsp;&nbsp;</span><b style=3D"font-wei=
+ght:bolder"><span style=3D"font-size:14pt;font-family:&quot;Helvetica Neue&=
+quot;;color:rgb(32,31,30)">I
+ am scheduling&nbsp;<span>conference</span>&nbsp;<span>calls</span>&nbsp;fo=
+r the next two weeks.&nbsp; Let me know what time is convenient and we=E2=
+=80=99ll get this meeting coordinated.&nbsp;
+</span></b><span style=3D"color:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"color:rgb(32,31,30)">&nbsp;</span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"font-size:14pt;font-family:&quot;Helvetica Neue&quot;;color:=
+black">I</span><span style=3D"font-size:14pt;color:rgb(32,31,30)">&nbsp;wou=
+ld like to discuss new features on our website.&nbsp; These portals can mak=
+e your team more productive by quickly handling transactions
+ by receiving automatic updates and access to live tracking.&nbsp; In addit=
+ion, POD=E2=80=99s will be available same day.&nbsp; These features can pot=
+entially help you attract new clients and increase sales.&nbsp; We have ava=
+ilability at NJ, CHS, ATL, HOU and JAX locations</span><span style=3D"color=
+:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"color:rgb(32,31,30)">&nbsp;</span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"font-size:14pt;color:rgb(32,31,30)">One of our biggest stren=
+gths is communication and reliability.&nbsp; We send constant updates on yo=
+ur shipment directly from our driver=E2=80=99s phone app. from the moment w=
+e pick up until delivery.&nbsp; You will receive a same
+ day verbal POD and the paperwork within 24 hours.&nbsp; In addition, we ar=
+e a bonded carrier.</span><span style=3D"color:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<b style=3D"font-weight:bolder"><i><u><span style=3D"font-size:14pt;color:r=
+ed">Also, it's our trucks, our men, our chassis.&nbsp; We are also certifie=
+d to handle and ship flexitanks</span></u></i></b><span style=3D"color:rgb(=
+32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<b style=3D"font-weight:bolder"><span style=3D"font-size:14pt;color:rgb(32,=
+31,30)">You can now access our live tracking portal by logging into the 24/=
+7 rates portal.&nbsp; You will see the tracking tab right next to the rates=
+ selection.&nbsp;</span></b><span style=3D"color:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"font-size:14pt;color:rgb(32,31,30)">&nbsp;</span><span style=
+=3D"color:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"font-size:14pt;color:rgb(32,31,30)">Here are some updates fo=
+r you.</span><span style=3D"color:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"font-size:14pt;color:rgb(32,31,30)">&nbsp;</span><span style=
+=3D"color:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<ul style=3D"margin-top:0in" type=3D"disc">
+<li class=3D"MsoNormal" style=3D"color:rgb(32,31,30)"><b style=3D"font-weig=
+ht:bolder"><span style=3D"font-size:14pt">on line tracking and rates portal=
+, actual status of the location of your shipment.&nbsp; Go to our website-
+<a href=3D"https://nam11.safelinks.protection.outlook.com/?url=3Dhttp%3A%2F=
+%2Ftmxintermodal.com%2F&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.com%7=
+Cece0ee0255304aa0486108da95debee0%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C=
+0%7C637987081180560863%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoi=
+V2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DTK9gB%2F=
+iX5uFlPrTPIfe85kHoz%2BJuJrA%2BpRpejltS0wg%3D&amp;reserved=3D0" originalsrc=
+=3D"http://tmxintermodal.com/" shash=3D"Nc8JTYQ/ezKdWoCMoj0njuvxeDti7F+KDCM=
+Jb5bwkcOvAQ1B52ZYm5e8zzkEGGKuEx//4G2pSvWLjtCfStiSWngKTPOEFQIixqqwVBib2O7MBL=
+/Ixp8dnjAkFsQ9sLErHWlEJJJ1nyKhxtOZx6PbTwYfBO5B+ypDuXKhMOvghyM=3D" target=3D=
+"_blank">tmxintermodal.com</a></span></b><span style=3D"font-size:14pt">
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+</span></li><ul style=3D"margin-top:0in" type=3D"circle">
+<li class=3D"MsoNormal" style=3D"color:rgb(32,31,30)"><b style=3D"font-weig=
+ht:bolder"><span style=3D"font-size:14pt">go to online tracking/rates,</spa=
+n></b><span style=3D"font-size:14pt">
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+</span></li></ul>
+<li class=3D"MsoNormal" style=3D"color:rgb(32,31,30)"><b style=3D"font-weig=
+ht:bolder"><span style=3D"font-size:14pt">Login =E2=80=93 userid:&nbsp;&nbs=
+p;email address-&nbsp; password:&nbsp; requesting access</span></b><span st=
+yle=3D"font-size:14pt">
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+</span></li><li class=3D"MsoNormal" style=3D"color:rgb(32,31,30)"><span sty=
+le=3D"font-size:14pt">Jaxport secures final dredging funds to deepen to 47 =
+feet
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+</span></li><li class=3D"MsoNormal" style=3D"color:rgb(32,31,30)"><span sty=
+le=3D"font-size:14pt">We are also looking for export lanes from Camp Hill P=
+A and Lancaster PA&nbsp; 40=E2=80=99 HC MSC Boxes
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+</span></li><li class=3D"MsoNormal" style=3D"color:rgb(32,31,30)"><b style=
+=3D"font-weight:bolder"><i><u><span style=3D"font-size:14pt;color:red">We a=
+re launching live tracking and instant access to documents.</span></u></i><=
+/b><span style=3D"font-size:14pt">
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+</span></li></ul>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"font-size:14pt;color:rgb(32,31,30)">&nbsp;&nbsp;</span><span=
+ style=3D"color:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+<span style=3D"font-size:14pt;color:rgb(32,31,30)">I realize we are going t=
+hrough challenging times and TMX Intermodal is here to help if needed.&nbsp=
+; Our biggest asset, it=E2=80=99s our men, our truck, and our chassis.&nbsp=
+;</span><span style=3D"color:rgb(32,31,30)"></span></p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+<p style=3D"font-size:13px;font-family:&quot;Lucida Grande&quot;,Helvetica,=
+Verdana,Arial,sans-serif;margin:0px">
+</p>
+</div>
+<p style=3D"color:rgb(85,85,85);margin-top:32px">Sent <span>by <a style=3D"=
+text-decoration:none;color:rgb(135,90,123)" href=3D"https://nam11.safelinks=
+.protection.outlook.com/?url=3Dhttp%3A%2F%2Ftmxintermodal.com%2F&amp;data=
+=3D05%7C01%7Ccatchall%40tmxintermodal.com%7Cece0ee0255304aa0486108da95debee=
+0%7Cea53da9730f747b6b275c7aa732edda6%7C0%7C0%7C637987081180560863%7CUnknown=
+%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6=
+Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DTK9gB%2FiX5uFlPrTPIfe85kHoz%2BJuJrA%2BpR=
+pejltS0wg%3D&amp;reserved=3D0" originalsrc=3D"http://tmxintermodal.com/" sh=
+ash=3D"Nc8JTYQ/ezKdWoCMoj0njuvxeDti7F+KDCMJb5bwkcOvAQ1B52ZYm5e8zzkEGGKuEx//=
+4G2pSvWLjtCfStiSWngKTPOEFQIixqqwVBib2O7MBL/Ixp8dnjAkFsQ9sLErHWlEJJJ1nyKhxtO=
+Zx6PbTwYfBO5B+ypDuXKhMOvghyM=3D" target=3D"_blank">
+<span>TMX Intermodal</span> </a></span>using <a href=3D"https://nam11.safel=
+inks.protection.outlook.com/?url=3Dhttps%3A%2F%2Fwww.odoo.com%2F%3Futm_sour=
+ce%3Ddb%26utm_medium%3Demail&amp;data=3D05%7C01%7Ccatchall%40tmxintermodal.=
+com%7Cece0ee0255304aa0486108da95debee0%7Cea53da9730f747b6b275c7aa732edda6%7=
+C0%7C0%7C637987081180560863%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJ=
+QIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=3DXDz=
+PuuRyt6CzL10xPw2JCXGe6B%2BnjPcNn3XWpdKkS08%3D&amp;reserved=3D0" originalsrc=
+=3D"https://www.odoo.com/?utm_source=3Ddb&amp;utm_medium=3Demail" shash=3D"=
+XJ0IaRwW00JHsKb14QPe9DDo56YO/H3xbtcSe+q3O98tjiKYIBplA6It0qmWwShhjz6vz4erayL=
+siLYs8S1kPFAK5USpiN0GU1NOdD0Bk6EZbVGCO1FjrLDNJG9L+TJkcgbllUxFLHm6n9uR1BuQ7t=
+DU+I0aXfdbnT+GXFYA/kc=3D" style=3D"text-decoration:none;color:rgb(135,90,12=
+3)" target=3D"_blank">
+Odoo</a>. </p>
+</div>
+*** DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS,=
+ AND LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEF=
+ORE THE LAST FREE DAY AND EMPTY RETURN BEFORE PER DIEM BEGINS. TMX INTERMOD=
+AL WILL NOT BE RESPONSIBLE FOR ANY
+ DEMURRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE =
+ARE UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND D=
+ELIVERIES. ***
+</div>
+</blockquote>
+</div>
+This email originated from outside of TMX Intermodal. DO NOT CLICK LINKS OR=
+ OPEN ATTACHMENT unless you recognize the sender and know the contents is s=
+afe. Este correo electr=C3=B3nico se origin=C3=B3 fuera de TMX Intermodal. =
+NO HAGA CLIC EN LOS ENLACES NI ABRA EL ADJUNTO
+ a menos que reconozca al remitente y sepa que el contenido es seguro. *** =
+DUE TO THE CHASSIS SHORTAGE, VSL DELAYS, LIMITED TERMINAL APPOINTMENTS, AND=
+ LIMITED EMPTY RETURN LOCATIONS, WE ARE UNABLE TO GUARANTEE PICK-UP BEFORE =
+THE LAST FREE DAY AND EMPTY RETURN
+ BEFORE PER DIEM BEGINS. TMX INTERMODAL WILL NOT BE RESPONSIBLE FOR ANY DEM=
+URRAGE, PER DIEM, AND OTHER ACCESSORIAL CHARGES THAT MAY OCCUR***** WE ARE =
+UNABLE TO GUARANTEE ON TIME ARRIVAL FOR APPOINTMENTS FOR PICK-UPS AND DELIV=
+ERIES. ***
+</body>
+</html>
+
+--00000000000001a30805e897476b--
